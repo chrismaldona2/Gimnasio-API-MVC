@@ -1,0 +1,86 @@
+﻿.admin-login-large-btn {
+    font-size: 1em;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 2px;
+    padding: .8em 2em;
+    transition: background-color .3s ease;
+    &:hover
+
+{
+    background-color: var(--dark-red-color);
+}
+
+& i {
+    display: none;
+}
+
+}
+
+.user-login-btn {
+    font-size: 1em;
+    padding: 1em;
+    width: 100%;
+    background-color: #c1121f;
+    color: var(--white-color);
+    border: none;
+    border-radius: 1.2em;
+    transition: background-color .3s ease;
+    &:hover
+
+{
+    background-color: #a50e18;
+}
+
+}
+
+.subscription-btn {
+    border: none;
+    padding: 1em;
+    font-size: 1em;
+    font-weight: 600;
+    border-radius: 1em;
+    background-color: var(--white-color);
+    color: #4f4f4f;
+    transition: background-color .3s ease;
+    &:hover
+
+{
+    background-color: var(--light-grey-color);
+}
+
+}
+
+.admin-login-btn {
+    width: 100%;
+    background-color: var(--red-color);
+    color: var(--white-color);
+    border: none;
+    font-size: 1em;
+    padding: .8em;
+    border-radius: 6px;
+    transition: background-color .3s ease;
+    &:hover
+
+{
+    background-color: #a50e18;
+}
+
+}
+
+@media (max-width: 655px) {
+    .admin-login-large-btn {
+        padding: .8em;
+        & i
+
+{
+    display: inline-block;
+}
+
+& span {
+    display: none;
+}
+
+}
+}

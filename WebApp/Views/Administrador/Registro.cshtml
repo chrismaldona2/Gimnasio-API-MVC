@@ -1,0 +1,87 @@
+﻿@model RegistrarAdminModel
+
+@{
+    ViewData["Title"] = "Registrarse";
+}
+<head>
+    <link rel="stylesheet" href="~/css/pages/admin-signup.css" />
+    <script src="~/js/dateSelector.js" defer></script>
+</head>
+<header>
+    <div class="logo">
+        <img src="../images/logo.png" alt="logo">
+    </div>
+    <nav>
+        <ul class="nav-links">
+            <li><a asp-action="Index" asp-controller="Inicio">Inicio</a></li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="admin-signup-container">
+        <div class="top-form">
+            <div class="title">
+                <h1>Crear nueva cuenta</h1>
+            </div>
+            <div class="login-txt">
+                <span>¿Ya tienes cuenta de administrador?</span>
+                <a asp-action="Login" asp-controller="Administrador">Iniciar sesión</a>
+            </div>
+        </div>
+        <form asp-action="RegistrarAdmin" asp-controller="Administrador" method="post" class="admin-signup-form">
+            <div class="input-container">
+                <label asp-for="NombreUsuario">Nombre de usuario</label>
+                <input type="text" asp-for="NombreUsuario" class="admin-login-signup-inputs" required autocomplete="off">
+            </div>
+            <div class="input-container">
+                <label asp-for="Contraseña">Contraseña</label>
+                <input type="password" asp-for="Contraseña" class="admin-login-signup-inputs" required autocomplete="off">
+            </div>
+            <div class="mult-input-container">
+                <div class="input-container">
+                    <label asp-for="Dni">DNI</label>
+                    <input type="text" asp-for="Dni" class="admin-login-signup-inputs" required autocomplete="off">
+                </div>
+                <div class="input-container">
+                    <label asp-for="Sexo">Sexo</label>
+                    <select asp-for="Sexo" class="signup-selector-input">
+                        <option value="0">Masculino</option>
+                        <option value="1">Femenino</option>
+                        <option value="2">Otro</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="mult-input-container">
+                <div class="input-container">
+                    <label asp-for="Nombre">Nombre</label>
+                    <input type="text" asp-for="Nombre" class="admin-login-signup-inputs" required autocomplete="off">
+                </div>
+                <div class="input-container">
+                    <label asp-for="Apellido">Apellido</label>
+                    <input type="text" asp-for="Apellido" class="admin-login-signup-inputs" required autocomplete="off">
+                </div>
+            </div>
+            <div>
+                <span class="mult-input-top-span">Fecha de nacimiento</span>
+                <div class="mult-input-container">
+                    <div class="input-container">
+                        <select asp-for="diaNacimiento" id="dia-input" class="signup-selector-input"></select>
+                    </div>
+                    <div class="input-container">
+                        <select asp-for="mesNacimiento" id="mes-input" class="signup-selector-input"></select>
+                    </div>
+                    <div class="input-container">
+                        <select asp-for="añoNacimiento" id="año-input" class="signup-selector-input"></select>
+                    </div>
+                </div>
+            </div>
+            <div class="terms-conditions-container">
+                <span>Al hacer clic en 'Registrarse', aceptas nuestros <a href="#">términos y condiciones</a> y nuestra <a href="#">política de privacidad</a>.</span>
+            </div>
+            <div class="submit-input-container">
+                <input type="submit" value="Registrarse" class="admin-login-btn">
+            </div>
+        </form>
+    </div>
+</main>

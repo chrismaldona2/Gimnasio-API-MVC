@@ -1,0 +1,55 @@
+﻿@model AdminDashboardViewModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+<head>
+    <link rel="stylesheet" href="~/css/pages/admin-dashboard.css" />
+</head>
+
+<header>
+    <div class="logo">
+        <img src="../images/logo.png" alt="logo">
+    </div>
+    <nav class="top-nav-bar">
+        <ul class="nav-links">
+            <li>
+                <a asp-action="Index" asp-controller="Inicio">
+                    <button class="admin-login-large-btn">
+                        <i class="fa-solid fa-user"></i>
+                        <span>
+                            Cerrar sesión
+                        </span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <nav class="sidebar">
+        <ul class="sidebar-links">
+            <li><a href="#"><button class="sidebar-btn active"></button></a></li>
+            <li><a href="#"><button class="sidebar-btn"></button></a></li>
+            <li><a href="#"><button class="sidebar-btn"></button></a></li>
+            <li><a href="#"><button class="sidebar-btn"></button></a></li>
+            <li><a href="#"><button class="sidebar-btn"></button></a></li>
+        </ul>
+    </nav>
+    <div class="app">
+        <div class="top-welcome-card">
+            <div class="wc-left">
+                <img src="../images/dumbell-guy.png" class="person">
+            </div>
+            <div class="wc-right">
+                <h1>Hola, @Model.Nombre!</h1>
+                <span>ADMINISTRADOR</span>
+                <p>Bienvenido al gestor administrativo de datos y estadísticas de ICESFit.</p>
+            </div>
+        </div>
+        <div class="statistics-container">
+        </div>
+        <div class="main-functions-container">
+        </div>
+    </div>
+</main>

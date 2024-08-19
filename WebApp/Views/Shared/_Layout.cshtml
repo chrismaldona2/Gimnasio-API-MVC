@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ICESFit - @ViewData["Title"]</title>
+    <link rel="icon" type="image/png" href="~/images/favicon.png" />
+
+    <link rel="stylesheet" href="~/css/base/reset.css" />
+    <link rel="stylesheet" href="~/css/base/typography.css" />
+    <link rel="stylesheet" href="~/css/layout/general.css" />
+    <link rel="stylesheet" href="~/css/layout/footer.css" />
+    <link rel="stylesheet" href="~/css/layout/header.css" />
+    <link rel="stylesheet" href="~/css/components/buttons.css" />
+    <link rel="stylesheet" href="~/css/components/inputs.css" />
+    <link rel="stylesheet" href="~/css/components/alerts.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <script src="~/js/alerts.js" defer></script>
+</head>
+<body>
+    @if (TempData["ErrorMessage"] != null)
+    {
+        <div class="alert warning">
+            <i class="fa-solid fa-circle-xmark"></i>
+            <span>@TempData["ErrorMessage"]</span>
+        </div>
+    }
+
+    @if (TempData["SuccessMessage"] != null)
+    {
+        <div class="alert ok">
+            <i class="fa-solid fa-circle-check"></i>
+            <span>@TempData["SuccessMessage"]</span>
+        </div>
+    }
+
+
+    @RenderBody()
+
+    <footer>
+        <div class="contact-info">
+            <div class="left-side">
+                <span><b>Contactános</b></span>
+                <span>icessuperior@ices.edu.ar</span>
+                <span>Silvio Delloni 4013, Sunchales, Santa Fe</span>
+                <span>+54 9 3493 52-3774</span>
+            </div>
+            <div class="right-side">
+                <form action="#" class="subscription-form">
+                    <label for="email-input"><b>No te pierdas nuestras novedades</b></label>
+                    <div>
+                        <input type="text" name="email-input" id="email-input" placeholder="Ingresá tu email..." class="email-subscription-input">
+                        <input type="submit" value="Suscribirse" class="subscription-btn">
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="copyright-info">
+            <span>Copyright ICESFit | Establecimiento Deportivo - 2024. Todos los derechos reservados. </span>
+            <span>Creado por <a href="https://github.com/chrismaldona2" target="_blank">Christian Maldonado</a></span>
+        </div>
+    </footer>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
+

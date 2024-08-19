@@ -1,0 +1,59 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /*colors*/
+    --black-color: #1a1a1a;
+    --red-color: #c1121f;
+    --dark-red-color: #a50e18;
+    --grey-color: #b0b0b0;
+    --light-grey-color: #e1e1e1;
+    --dark-grey-color: #484848;
+    --white-color: #f6f6f6;
+    /*font*/
+    font-family: 'Inter', Arial;
+    font-size: 16px;
+    /*other*/
+    --header-size: 100px;
+}
+
+a {
+    color: var(--black-color);
+    text-decoration: none;
+}
+
+input {
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    outline: none;
+}
+
+input[type="submit"] {
+    cursor: pointer;
+}
+
+ul, ol, li {
+    list-style: none;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--white-color);
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #9c9c9c;
+}
+
+::selection {
+    background-color: #9c9c9c;
+}

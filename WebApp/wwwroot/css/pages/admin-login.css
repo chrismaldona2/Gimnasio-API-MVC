@@ -1,0 +1,78 @@
+﻿main {
+    display: grid;
+    place-content: center;
+    min-height: 68dvh;
+    position: relative;
+}
+
+.admin-login-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    color: var(--white-color);
+    &::before
+
+{
+    z-index: -1;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("../../images/background-2.jpg") no-repeat;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.2;
+}
+
+}
+
+.admin-login-container .top-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1em;
+    & h1
+
+{
+    font-size: 3em;
+}
+
+}
+
+.forgot-password-txt {
+    font-size: 1.25em;
+    text-align: center;
+    & a
+
+{
+    display: block;
+    font-weight: 600;
+    color: var(--red-color);
+}
+
+}
+
+.admin-login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1em;
+    & label
+
+{
+    display: block;
+    margin-bottom: 6px;
+}
+
+& .submit-input-container {
+    margin-top: 10px;
+}
+
+}
+
+@media (max-width: 830px) {
+    main {
+        font-size: 14px;
+    }
+}

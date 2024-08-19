@@ -1,0 +1,69 @@
+﻿footer {
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    font-size: 14px;
+    color: var(--white-color);
+}
+
+.contact-info {
+    flex: 1;
+    padding-block: 3em;
+    padding-inline: 5em;
+    display: grid;
+    grid-template-columns: auto auto;
+    place-content: center;
+    gap: 15%;
+    & .left-side, .subscription-form
+
+{
+    display: flex;
+    flex-direction: column;
+    gap: .7em;
+}
+
+}
+
+.subscription-form > div {
+    font-size: 11px;
+    display: flex;
+    gap: 8px;
+}
+
+.copyright-info {
+    padding: .7em 1rem;
+    background-color: #101010;
+    font-size: 1em;
+    display: flex;
+    justify-content: center;
+    gap: 3em;
+    text-align: center;
+    & a
+
+{
+    font-style: italic;
+    color: var(--white-color);
+}
+
+}
+
+
+@media (max-width: 1022px) {
+    footer {
+        font-size: 12px;
+    }
+
+        footer .copyright-info {
+            gap: .3rem;
+            flex-direction: column;
+        }
+}
+
+@media (max-width: 655px) {
+    .contact-info {
+        padding-block: 5em;
+        grid-template-columns: auto;
+        grid-template-rows: auto auto;
+        gap: 3em;
+    }
+}
