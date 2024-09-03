@@ -1,0 +1,53 @@
+@import url('/css/base/reset.css');
+@import url('/css/base/typography.css');
+@import url('/css/layout/header.css');
+@import url('/css/layout/footer.css');
+@import url('/css/components/buttons.css');
+@import url('/css/components/inputs.css');
+@import url('/css/components/alerts.css');
+@import url('/css/components/popups.css');
+@import url('/css/components/forms.css');
+@import url('/css/components/tables.css');
+
+:root {
+    font-family: Inter, sans-serif;
+    font-size: 13px;
+
+
+    --red-color: #bf1a26;
+    --dark-red-color: #b30a15;
+    --light-red-color: #f75d68;
+    --white-color: #faf9f6;
+    --dark-grey-color: #484848;
+
+
+    --fs-large: clamp(2rem, 1vw + 2.5rem, 4.5rem);;
+    --fs-medium: clamp(1.1rem, 1vw + 1rem, 1.5rem);;
+    --fs-small: clamp(1rem, 1vw + 0.5rem, 1.25rem);
+
+    --padding-inline-large: clamp(10px, 7vw, 8rem);
+
+
+    --user-login-inputs-size: clamp(.5rem, .5rem + 1vw, 1.25rem);
+    --user-login-inputs-b-radius: .8rem;
+
+
+    --header-max-height: 102px;
+}
+
+.body {
+    min-height: 100dvh;
+    background: var(--white-color);
+    display: grid;
+}
+
+::selection {
+    background-color: #db343479; 
+    color: #ffffff; 
+}
+
+/* Para navegadores basados en Mozilla (Firefox) */
+::-moz-selection {
+    background-color: #db343479;
+    color: #ffffff;
+}

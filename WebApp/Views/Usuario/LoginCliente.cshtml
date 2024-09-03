@@ -1,0 +1,65 @@
+﻿@{
+    ViewData["Title"] = "Inicio";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/pages/home.css">
+</head>
+
+<header class="header">
+    <a asp-controller="Usuario" asp-action="LoginCliente" class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </a>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a asp-controller="Usuario" asp-action="LoginCliente">Inicio</a>
+            </li>
+            <li>
+                <a asp-controller="Usuario" asp-action="LoginAdmin">
+                    <button class="admin-login-btn">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Iniciar como administrador</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+    <div class="app">
+        <form action="#" class="user-login-form">
+            <div class="input-container">
+                <input type="text" name="dni-input" id="dni-input" class="user-login-input" required>
+                <label for="dni-input" id="dni-label">DNI</label>
+            </div>
+            <div class="input-container">
+                <button type="submit" class="user-login-btn">Ingresar</button>
+            </div>
+        </form>
+    </div>
+</main>
+<section class="social-media">
+    <ul>
+        <li>
+            <a href="https://www.instagram.com/ices.superior.universitario/" target="_blank" id="instagram-link">
+                <i class="fa-brands fa-square-instagram"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://ar.linkedin.com/company/ices-superior/" target="_blank" id="linkedin-link">
+                <i class="fa-brands fa-linkedin"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://wa.me/+5493493523774" target="_blank" id="whatsapp-link">
+                <i class="fa-brands fa-whatsapp"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.facebook.com/ICES.FundacionGSS/" target="_blank" id="facebook-link">
+                <i class="fa-brands fa-square-facebook"></i>
+            </a>
+        </li>
+    </ul>
+</section>

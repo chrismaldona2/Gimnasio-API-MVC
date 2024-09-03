@@ -1,6 +1,6 @@
 ﻿document.addEventListener("DOMContentLoaded", function () {
 
-    const fadeOutTime = 3500; 
+    const fadeOutTime = 4000; 
 
     setTimeout(function () {
         const alerts = document.querySelectorAll('.alert');

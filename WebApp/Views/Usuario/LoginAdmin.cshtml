@@ -1,0 +1,57 @@
+﻿@using WebApp.Models.ViewModels
+@model AdministradorLoginModel
+
+@{
+    ViewData["Title"] = "Iniciar Sesión";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/pages/admin-login.css">
+    <script src="~/js/adminLogin.js" defer></script>
+</head>
+
+<header class="header">
+    <a asp-controller="Usuario" asp-action="LoginCliente" class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </a>
+    <nav class="nav">
+        <ul>
+            <li>
+                <a asp-controller="Usuario" asp-action="LoginCliente">Inicio</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+    <div class="app">
+        <div class="form-container">
+            <div class="form-top">
+                <h1>Bienvenido!</h1>
+                <h2>Iniciar como administrador</h2>
+            </div>
+            <form asp-action="AutenticarAdmin" method="post" class="admin-login-form">
+                <div class="input-container">
+                    <label for="usuarioAdmin" asp-for="Usuario">Nombre de usuario</label>
+                    <input type="text" id="usuarioAdmin" class="admin-login-input" asp-for="Usuario" required>
+                </div>
+                <div class="input-container">
+                    <label for="contraseñaAdmin" asp-for="Contraseña">Contraseña</label>
+                    <input type="password" id="contraseñaAdmin" class="admin-login-input admin-login-password" asp-for="Contraseña" required>
+                </div>
+                <div class="show-password-container">
+                    <label for="mostrarContraseña">Mostrar contraseña</label>
+                    <label class="checkbox-container" for="mostrarContraseña">
+                        <input type="checkbox" id="mostrarContraseña">
+                        <div class="checkmark"></div>
+                    </label>
+                </div>
+                <div class="input-container">
+                    <button type="submit" class="user-login-btn">Ingresar</button>
+                </div>
+            </form>
+        </div>
+        <div class="img-container">
+            <img src="/images/background-2.jpg" alt="">
+        </div>
+    </div>
+</main>

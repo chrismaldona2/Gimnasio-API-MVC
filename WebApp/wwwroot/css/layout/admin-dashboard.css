@@ -1,0 +1,179 @@
+.body {
+    grid-template-rows: auto minmax(80vh, 1fr) auto;
+}
+
+.main {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+
+.app {
+    background-color: #e5e5e5;
+}
+
+/* sidebar*/
+.sidebar {
+    min-height: 100%;
+    padding: clamp(.5rem, 1vw + 1rem, 2rem);
+}
+
+.sidebar ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.sidebar-btn {
+    font-size: var(--fs-small);
+    font-weight: 500;
+    color: #656565;
+    background-color: var(--white-color);
+    padding: 1.5rem clamp(1.25rem, 4vw + 1rem, 10rem) 1.5rem 1.25rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    transition: background-color .35s ease;
+}
+
+.sidebar-btn i {
+    font-size: calc(var(--fs-small) + 2px);
+}
+
+.sidebar-btn:not(.active):hover {
+    background-color: #e5e5e5;
+}
+
+.sidebar-btn.active {
+    color: var(--white-color);
+    background-color: var(--red-color);
+}
+
+.sidebar-btn.active:hover {
+    background-color: var(--dark-red-color);
+}
+
+
+
+.bottom-menu-container {
+    --box-shadow: inset 0px 10px 15px -3px rgba(0,0,0,0.1);
+    display: none;
+    z-index: 999999;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-height: 80px;
+    background-color: #fff;
+    box-shadow: var(--box-shadow);
+}
+.bottom-menu {
+    height: 100%;
+    width: 100%;
+}
+.bottom-menu ul {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.bottom-menu a, .bottom-menu button{
+    height: 80px;
+    width: 80px;
+}
+
+.bottom-menu .bottom-menu-btn {
+    position: relative;
+    border: none;
+    background: none;
+    font-size: var(--fs-medium);
+}
+
+.bottom-menu-btn i {
+    z-index: 1000;
+    position: relative;
+}
+
+.bottom-menu .bottom-menu-btn.active {
+    color: var(--white-color);
+    
+}
+.bottom-menu .bottom-menu-btn.active i::after {
+    content: "";
+    position: absolute;
+    top: 50%; /* Posiciona el modal a la mitad de la altura de la ventana */
+    left: 50%; /* Posiciona el modal a la mitad del ancho de la ventana */
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--red-color);
+    z-index: -10;
+}
+
+.nav .profile-btn-container, .nav .admin-logout-btn-2-container {
+    display: none;
+}
+
+.nav .profile-btn, .nav .admin-logout-btn-2 {
+    padding: 1.25rem;
+    background-color: #f1f1f1;
+    border-radius: 50%;
+    color: var(--red-color);
+    align-items: center;
+    transition: background-color .35s ease;
+    border: none;
+    font-size: var(--fs-medium);
+}
+
+.nav .profile-btn:hover, .nav .admin-logout-btn-2:hover {
+    background-color: #e5e5e5;
+}
+
+@media only screen and (max-width: 884px) {
+    .sidebar-btn {
+        padding: 1.5rem;
+        justify-content: center;
+    }
+    .sidebar-btn span {
+        display: none;
+    }
+
+    .sidebar-btn i {
+        font-size: var(--fs-medium);
+    }
+}
+
+@media only screen and (max-width: 615px) {
+    .nav ul {
+        gap: 2rem !important;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .bottom-menu-container {
+        display: block;
+    }
+
+    .body {
+        margin-bottom: 80px;
+    }
+
+    .nav .admin-logout-btn-container {
+        display: none;
+    }
+
+    .nav .profile-btn-container, .nav .admin-logout-btn-2-container {
+        display: block;
+    }
+
+
+}
+

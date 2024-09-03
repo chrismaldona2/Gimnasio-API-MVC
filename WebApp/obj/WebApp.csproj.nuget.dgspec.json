@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Christian\\Desktop\\Gimnasio\\WebApp\\WebApp.csproj": {}
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\WebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\Back.csproj": {
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\Back.csproj",
-        "projectName": "Back",
-        "projectPath": "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\Back.csproj",
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj",
+        "projectName": "Core",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\obj\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -28,6 +28,229 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "projectName": "Data",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[8.0.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\RestAPI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\RestAPI.csproj",
+        "projectName": "RestAPI",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\RestAPI.csproj",
+        "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\Services.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Swashbuckle.AspNetCore": {
+              "target": "Package",
+              "version": "[6.4.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\Services.csproj",
+        "projectName": "Services",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\Services.csproj",
+        "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj"
+              },
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -84,14 +307,14 @@
         }
       }
     },
-    "C:\\Users\\Christian\\Desktop\\Gimnasio\\WebApp\\WebApp.csproj": {
+    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\WebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Christian\\Desktop\\Gimnasio\\WebApp\\WebApp.csproj",
+        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\WebApp.csproj",
         "projectName": "WebApp",
-        "projectPath": "C:\\Users\\Christian\\Desktop\\Gimnasio\\WebApp\\WebApp.csproj",
+        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\WebApp.csproj",
         "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Christian\\Desktop\\Gimnasio\\WebApp\\obj\\",
+        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -108,8 +331,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\Back.csproj": {
-                "projectPath": "C:\\Users\\Christian\\Desktop\\Gimnasio\\Back\\Back.csproj"
+              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\RestAPI.csproj": {
+                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\RestAPI\\RestAPI.csproj"
               }
             }
           }
@@ -129,10 +352,6 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "dependencies": {
-            "BCrypt.Net-Next": {
-              "target": "Package",
-              "version": "[4.0.3, )"
-            },
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"

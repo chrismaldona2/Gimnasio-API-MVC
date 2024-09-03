@@ -1,107 +1,42 @@
-﻿using Back.Entidades;
-using Back.Implementaciones.Contratos;
-using GimnasioWebApp.Models;
+﻿using Core.Entidades;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using System.Net.Http;
+using WebApp.Models.ViewModels;
 using WebApp.Services;
+using WebApp.Services.Contracts;
+using WebApp.ViewPermissions;
 
-namespace GimnasioWebApp.Controllers
+namespace WebApp.Controllers
 {
+    [ValidarSesionAdmin]
     public class AdministradorController : Controller
     {
-        private readonly AdminAPIService _adminAPIService;
+        private readonly IAdministradorAPIService _administradorApiService;
 
-        public AdministradorController(AdminAPIService adminAPIService)
+        public AdministradorController(IAdministradorAPIService administradorApiService)
         {
-            _adminAPIService = adminAPIService;
+            _administradorApiService = administradorApiService;
         }
 
-        public IActionResult Login()
+        public IActionResult Inicio()
         {
+            HttpContext.Session.Clear();
             return View();
         }
 
-        public IActionResult Registro()
+        public IActionResult PanelInicio()
         {
-            return View();
+            var adminLogueado = HttpContext.Session.GetString("AdminLogueado");
+            string nombreAdmin = JsonConvert.DeserializeObject<Administrador>(adminLogueado).Nombre;
+            return View("PanelInicio", nombreAdmin);
         }
 
-        public IActionResult Dashboard()
+        public async Task<IActionResult> PanelAdministradores()
         {
-            var nombreAdmin = TempData["NombreAdministrador"] as string;
-
-            if (string.IsNullOrEmpty(nombreAdmin))
-            {
-                nombreAdmin = "buenas";
-            }
-
-            var model = new AdminDashboardViewModel
-            {
-                Nombre = nombreAdmin
-            };
-
-            return View(model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> AutenticarAdmin(IniciarSesionAdminModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Login", model); 
-            }
-
-            try
-            {
-                var resultado = await _adminAPIService.AutenticarAdmin(model);
-                if (resultado != null)
-                {
-                    TempData["NombreAdministrador"] = resultado;
-                    TempData["SuccessMessage"] = "Inicio de sesión exitoso.";
-                    return RedirectToAction("Dashboard"); 
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Nombre de usuario o contraseña incorrectos.";
-                    return View("Login", model); 
-                }
-
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = $"Error al intentar autenticar al administrador: {ex.Message}";
-                return View("Login", model);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> RegistrarAdmin(RegistrarAdminModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View("Registro", model); 
-            }
-
-            try
-            {
-                var resultado = await _adminAPIService.RegistrarAdmin(model);
-                if (resultado == true)
-                {
-                    TempData["SuccessMessage"] = "Cuenta registrada con exitoso.";
-                    return RedirectToAction("Login");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = "Error al registrar la cuenta, verifique los datos.";
-                    return View("Registro", model);
-                }
-
-            }
-            catch (Exception ex)
-            {
-                TempData["ErrorMessage"] = $"Error al registrar al administrador: {ex.Message}";
-                return View("Registro", model);
-            }
-
+            var listaAdministradores = await _administradorApiService.ListaAdministradores();
+            return View(listaAdministradores);
         }
     }
 }

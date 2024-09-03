@@ -1,22 +1,17 @@
-using Back;
-using Back.Entidades;
-using Back.Repositorios;
-using Back.Repositorios.Contratos;
-using Back.Implementaciones;
-using Back.Implementaciones.Contratos;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.EntityFrameworkCore;
 using WebApp.Services;
+using WebApp.Services.Contracts;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddHttpClient<APIService>();
+builder.Services.AddHttpClient<IAdministradorAPIService, AdministradorAPIService>();
+
+builder.Services.AddDistributedMemoryCache();
+
+builder.Services.AddSession();
 
 builder.Services.AddControllersWithViews();
-
-
-builder.Services.AddHttpClient<AdminAPIService>();
-
 
 var app = builder.Build();
 
@@ -27,13 +22,14 @@ if (!app.Environment.IsDevelopment())
 }
 app.UseStaticFiles();
 
+app.UseSession();
+
 app.UseRouting();
 
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Inicio}/{action=Index}/{id?}");
+    pattern: "{controller=Usuario}/{action=LoginCliente}/{id?}");
 
 app.Run();
-

@@ -1,104 +1,104 @@
-﻿main {
+.body {
+    grid-template-rows: auto minmax(75vh, 1fr) auto;
+}
+
+.main {
+    padding-inline: var(--padding-inline-large);
+}
+
+.app {
     position: relative;
-    min-height: 91dvh;
-    display: grid;
-    grid-template-rows: 1fr auto;
+    height: 100%;
+    min-width: 100%;
+    background: url('/images/background-1.jpg') no-repeat left / cover;
+    box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.15);
+    border-radius: 40px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-radius .5s ease;
 }
 
-.user-login-container {
-    display: grid;
-    place-content: center;
-    color: var(--white-color);
-    &::before
-        {
-            z-index: -1;
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: url("../../images/background-1.jpg") no-repeat;
-            background-size: cover;
-            background-position: center;
-            opacity: 0.2;
-        }
-}
-
-.title {
-    font-size: clamp(2em, 2vw + 1em, 3em);
-    font-weight: 600;
-    text-align: center;
-    margin-bottom: 1.20em;
+.app::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 .user-login-form {
+    z-index: 2;
+    width: clamp(100px, 80%, 300px);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+
+.user-login-form .input-container {
     position: relative;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 1.5em;
+    gap: 4px;
 }
 
-.input-container {
-    min-width: 100%;
+#dni-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.4em;
+    color: #a6a6a6;
+    text-align: center;
+    transition: transform .35s ease, font-size .35s ease, color .35s ease;
+    pointer-events: none;
 }
 
-.dni-input-container {
-    position: relative;
-    & label
-        {
-            position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%, -50%);
-            color: #9c9c9c;
-            font-size: 1.25em;
-            font-weight: 400;
-            transition: transform .35s ease, font-size .35s ease, color .35s ease;
-            pointer-events: none;
-        }
-
-    & input:focus ~ label, input:valid ~ label {
-        transform: translate(-50%, -240%);
-        font-size: 1.05em;
-        color: #fff;
-    }
+#dni-input:focus ~ #dni-label, #dni-input:valid ~ #dni-label {
+    transform: translate(-50%, -285%);
+    font-size: 1.05em;
+    color: #fff;
 }
 
-
-.social-media-container {
-    width: 100%;
-    background-color: #fff;
+.social-media {
+    padding-block: 2rem;
     display: flex;
     justify-content: center;
-    & ul
+}
 
-    {
-        padding-block: .8em;
-        display: flex;
-        gap: 1em;
-        font-size: 1.75em;
-    }
+.social-media ul{
+    display: flex;
+    gap: 2rem;
+}
 
-    & li a {
-        transition: color .25s ease;
-    }
+.social-media i {
+    font-size: clamp(1.5rem, 1vw + 1rem, 2rem);;
+    transition: color .35s ease;
+}
 
-    & #instagram-link:hover {
-        color: #da2e69;
-    }
+#instagram-link:hover{
+    color: #da2e69;
+}
 
-    & #linkedin-link:hover {
-        color: #0073ae;
-    }
+#linkedin-link:hover {
+    color: #0073ae;
+}
 
-    & #whatsapp-link:hover {
-        color: #2dd46c;
-    }
+#whatsapp-link:hover{
+    color: #2dd46c;
+}
 
-    & #facebook-link:hover {
-        color: #1b72ff;
+#facebook-link:hover{
+    color: #1b72ff;
+}
+
+@media only screen and (max-width: 768px) {
+    .app {
+        border-radius: 16px;
     }
 }

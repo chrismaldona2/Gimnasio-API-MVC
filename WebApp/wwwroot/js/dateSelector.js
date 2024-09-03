@@ -1,4 +1,4 @@
-﻿const selectDia = document.getElementById('dia-input');
+const selectDia = document.getElementById('dia-input');
 const selectMes = document.getElementById('mes-input');
 const selectAno = document.getElementById('año-input');
 
@@ -32,7 +32,7 @@ meses.forEach((mes, indice) => {
     opcion.value = indice + 1;
     opcion.text = mes;
     if (indice + 1 === mesActual) {
-        opcion.selected = true;
+        opcion.selected = true; 
     }
     selectMes.appendChild(opcion);
 });
@@ -43,7 +43,7 @@ function actualizarDias() {
 
 
     const diasEnMes = new Date(anoSeleccionado, mesSeleccionado, 0).getDate();
-
+    
 
     selectDia.innerHTML = '';
 

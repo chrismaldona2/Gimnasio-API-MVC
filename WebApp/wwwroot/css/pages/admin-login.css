@@ -1,78 +1,110 @@
-﻿main {
-    display: grid;
-    place-content: center;
-    min-height: 68dvh;
-    position: relative;
+.body {
+    grid-template-rows: auto minmax(80vh, 1fr) auto;
 }
 
-.admin-login-container {
+.main {
+    padding-bottom: clamp(4rem, 1vw + 3rem, 6rem);
+}
+
+.app {
+    height: 100%;
+    min-width: 100%;
+    display: grid;
+    grid-template-columns: minmax(330px, 1fr) 2.5fr;
+    grid-template-rows: 1fr;
+    column-gap: clamp(2rem, 7vw, 10rem);
+    padding-inline: var(--padding-inline-large);
+}
+
+.form-container {
+    padding-block: 2rem;
     display: flex;
     flex-direction: column;
-    gap: 2em;
-    color: var(--white-color);
-    &::before
-
-{
-    z-index: -1;
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: url("../../images/background-2.jpg") no-repeat;
-    background-size: cover;
-    background-position: center;
-    opacity: 0.2;
+    justify-content: center;
+    gap: 2.5rem;
 }
 
-}
-
-.admin-login-container .top-form {
+.form-top {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1em;
-    & h1
-
-{
-    font-size: 3em;
+    gap: .35rem;
 }
 
+.form-top h1 {
+    text-wrap: nowrap;
+    line-height: 1;
+    color: #1e1e1e;
+    font-size: var(--fs-large);
 }
 
-.forgot-password-txt {
-    font-size: 1.25em;
-    text-align: center;
-    & a
-
-{
-    display: block;
-    font-weight: 600;
-    color: var(--red-color);
-}
-
+.form-top h2 {
+    text-wrap: nowrap;
+    line-height: 1;
+    color: #696969;
+    font-size: var(--fs-medium);
 }
 
 .admin-login-form {
     display: flex;
     flex-direction: column;
-    gap: 1em;
-    & label
-
-{
-    display: block;
-    margin-bottom: 6px;
+    gap: 1.5rem;
 }
 
-& .submit-input-container {
-    margin-top: 10px;
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
 }
 
+.show-password-container {
+    padding-block: 4px;
+    display: flex;
+    flex-direction: row-reverse;
+    gap: .75rem;
 }
 
-@media (max-width: 830px) {
-    main {
-        font-size: 14px;
+.show-password-container label {
+    cursor: pointer;
+    user-select: none;
+    color: #616161;
+    font-weight: 600;
+    font-size: calc(var(--fs-small) - 3px);
+}
+
+.input-container label {
+    text-wrap: nowrap;
+    color: #848484;
+    font-size: var(--fs-small);
+    font-weight: 500;
+}
+
+.img-container {
+    pointer-events: none;
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow: 0px 7px 17px 0px rgba(0, 0, 0, 0.15);
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: right;
+}
+
+@media only screen and (max-width: 810px) {
+    .app {
+        grid-template-columns: 1fr;
+        place-items: center;
+    }
+
+    .form-container {
+        width: clamp(250px, 80%, 560px);
+    }
+    
+
+    .img-container {
+        display: none;
     }
 }

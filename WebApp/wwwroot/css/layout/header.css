@@ -1,36 +1,28 @@
-﻿header {
-    z-index: 1000;
-    max-height: 80px;
-    padding: 12px 50px 12px 20px;
-    background-color: #ffff;
+.header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 15px;
-}
-
-.logo {
-    height: 80%;
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+    padding-inline: var(--padding-inline-large);
+    max-height: var(--header-max-height);
 }
 
 .logo img {
-    max-height: 50px;
-    pointer-events: none;
-    user-select: none;
+    max-width: 100%;
+    height: auto;
+    max-height: 60px;
 }
 
-.nav-links {
+.header .nav ul {
     display: flex;
     align-items: center;
-    gap: 3em;
+    gap: 3rem;
 }
 
-.nav-links a {
+.header .nav a {
+    font-size: var(--fs-small);
     font-weight: 500;
+    color: var(--dark-grey-color);
 }
 
-@media (max-width: 800px) {
-    header {
-        padding: 12px 20px;
-    }
-}

@@ -1,0 +1,102 @@
+.table {
+    --border: solid 1px #ddd;
+    --border-radius: 1rem;
+    --cell-padding: 1.25rem 1.25rem 1.25rem 1.35rem;
+    font-size: calc(var(--fs-small) - 2px);
+    width: 100%;
+    table-layout: auto;
+    border-radius: var(--border-radius);
+    border-collapse: collapse;
+    overflow: hidden;
+    text-align: left;
+}
+
+.table thead {
+    background-color: var(--red-color);
+}
+
+.table thead tr th {
+    font-size: inherit;
+    color: var(--white-color);
+    font-weight: 600;
+    padding: var(--cell-padding);
+}
+
+.table tbody tr td {
+    font-size: inherit;
+    color: #313131;
+    font-weight: 400;
+    padding: var(--cell-padding);
+}
+
+.table tbody tr {
+    background-color: var(--white-color);
+    border-bottom: var(--border);
+}
+
+.table-action-btn {
+    text-align: center;
+}
+
+.table-action-btn button {
+    border: none;
+    background: none;
+    color: var(--red-color);
+    font-size: var(--fs-small);
+    transition: color .35s ease;
+}
+
+.table-action-btn button:hover {
+    color: var(--light-red-color);
+}
+
+.table thead tr:first-child th:first-child {
+    border-top-left-radius: var(--border-radius); 
+}
+
+.table thead tr:first-child th:last-child {
+    border-top-right-radius: var(--border-radius);
+}
+
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: var(--border-radius); 
+}
+
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: var(--border-radius);
+}
+
+
+
+@media only screen and (max-width: 1300px) {
+    .table thead {
+        display: none;
+    }
+    .table, .table tbody, .table tr, .table td {
+        display: block;
+        width: 100%;
+    }
+    .table tr {
+        margin-bottom: 1rem;
+        border-radius: var(--border-radius); 
+    }
+    .table tbody tr td {
+        padding: 1.25rem 1.5rem 1.25rem 1.25rem;
+        border-bottom: var(--border);
+        text-align: right;
+        padding-left: 50%;
+        position: relative;
+    }
+
+    .table td::before {
+        content: attr(data-label);
+        position: absolute;
+        left: 0;
+        width: 20%;
+        padding-left: 1.5rem;
+        text-align: left;
+        text-wrap: nowrap;
+        color: var(--red-color);
+        font-weight: 700;
+    }
+}
