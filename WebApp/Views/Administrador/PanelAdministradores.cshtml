@@ -1,4 +1,6 @@
-﻿@model IEnumerable<WebApp.Models.ViewModels.AdministradoresViewModel>
+﻿@model WebApp.Models.ViewModels.PanelAdministradoresViewModel
+
+
 @{
     ViewData["Title"] = "Panel de Administradores";
 }
@@ -12,39 +14,39 @@
 
 
 <dialog class="popup signup-admin-form">
-    <form action="#" class="form">
+    <form asp-action="RegistrarAdmin" method="post" class="form">
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Nombre</label>
-                <input type="text" class="regular-form-input" required>
+                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Nombre" required>
             </div>
             <div class="input-container">
                 <label>Apellido</label>
-                <input type="text" class="regular-form-input" required>
+                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Apellido" required>
             </div>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI</label>
-                <input type="text" class="regular-form-input" required>
+                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Dni" required>
             </div>
             <div class="input-container">
                 <label>Teléfono</label>
-                <input type="tel" class="regular-form-input" required>
+                <input type="tel" class="regular-form-input" asp-for="AdministradorRegistroDto.Telefono" required>
             </div>
         </div>
         <div class="input-container">
             <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" required>
+            <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Email" required>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Usuario</label>
-                <input type="text" class="regular-form-input" required>
+                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Usuario" required>
             </div>
             <div class="input-container">
                 <label>Contraseña</label>
-                <input type="password" class="regular-form-input" required>
+                <input type="password" class="regular-form-input" asp-for="AdministradorRegistroDto.Contraseña" required>
             </div>
         </div>
         <div class="date-selector-input-container">
@@ -52,21 +54,21 @@
             <div class="multiple-input-container">
                 <div class="input-container">
                     <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input" required></select>
+                    <select class="regular-form-input" id="dia-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Dia" required></select>
                 </div>
                 <div class="input-container">
                     <label class="date-selector-label">Mes</label>
-                    <select class="regular-form-input" id="mes-input" required></select>
+                    <select class="regular-form-input" id="mes-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Mes" required></select>
                 </div>
                 <div class="input-container">
                     <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input" required></select>
+                    <select class="regular-form-input" id="año-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Año" required></select>
                 </div>
             </div>
         </div>
         <div class="input-container">
             <label>Sexo</label>
-            <select class="regular-form-input" required>
+            <select class="regular-form-input" asp-for="AdministradorRegistroDto.Sexo" required>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -124,7 +126,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
                         <button class="bottom-menu-btn">
                             <i class="fa-solid fa-dumbbell"></i>
                         </button>
@@ -168,7 +170,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
                         <button class="sidebar-btn">
                             <i class="fa-solid fa-dumbbell"></i>
                             <span>Clientes</span>
@@ -239,7 +241,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.ListaAdministradores)
                     {
                         <tr>
                             <td data-label="Usuario">

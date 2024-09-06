@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebApp.Models.ViewModels;
+using WebApp.Models.DTOs;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Controllers
@@ -28,7 +28,7 @@ namespace WebApp.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> AutenticarAdmin(AdministradorLoginModel model)
+        public async Task<IActionResult> AutenticarAdmin(AdministradorLoginDTO model)
         {
             if (!ModelState.IsValid)
             {

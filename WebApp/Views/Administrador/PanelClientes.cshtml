@@ -1,0 +1,276 @@
+﻿@model WebApp.Models.ViewModels.PanelClientesViewModel
+
+
+@{
+    ViewData["Title"] = "Panel de Clientes";
+}
+
+<head>
+    <script src="~/js/dateSelector.js" defer></script>
+    <script src="~/js/formPopups.js" defer></script>
+    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
+    <link rel="stylesheet" href="~/css/pages/admin-administrators.css">
+</head>
+
+
+
+
+<dialog class="popup signup-admin-form">
+    <form asp-action="RegistrarCliente" method="post" class="form">
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Nombre</label>
+                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Nombre" required>
+            </div>
+            <div class="input-container">
+                <label>Apellido</label>
+                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Apellido" required>
+            </div>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>DNI</label>
+                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Dni" required>
+            </div>
+            <div class="input-container">
+                <label>Teléfono</label>
+                <input type="tel" class="regular-form-input" asp-for="ClienteRegistroDto.Telefono" required>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Correo electrónico</label>
+            <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Email" required>
+        </div>
+        <div class="date-selector-input-container">
+            <label>Fecha de nacimiento</label>
+            <div class="multiple-input-container">
+                <div class="input-container">
+                    <label class="date-selector-label">Día</label>
+                    <select class="regular-form-input" id="dia-input" asp-for="ClienteRegistroDto.FechaNacimiento.Dia" required></select>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Mes</label>
+                    <select class="regular-form-input" id="mes-input" asp-for="ClienteRegistroDto.FechaNacimiento.Mes" required></select>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Año</label>
+                    <select class="regular-form-input" id="año-input" asp-for="ClienteRegistroDto.FechaNacimiento.Año" required></select>
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Sexo</label>
+            <select class="regular-form-input" asp-for="ClienteRegistroDto.Sexo" required>
+                <option value="0">Masculino</option>
+                <option value="1">Femenino</option>
+                <option value="2">Otro</option>
+            </select>
+        </div>
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn">Registrar</button>
+            <button class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+
+<header class="header">
+    <a asp-controller="Administrador" asp-action="PanelInicio" class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </a>
+
+    <nav class="nav">
+        <ul>
+            <li class="profile-btn-container">
+                <a>
+                    <button class="profile-btn">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                </a>
+            </li>
+            <li class="admin-logout-btn-2-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn-2">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </a>
+            </li>
+            <li class="admin-logout-btn-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn">
+                        <span>Cerrar sesión</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+    <div class="bottom-menu-container">
+        <nav class="bottom-menu">
+            <ul>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelInicio">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-house"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
+                        <button class="bottom-menu-btn active">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <div class="sidebar-container">
+        <nav class="sidebar">
+            <ul>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelInicio">
+                        <button class="sidebar-btn">
+                            <i class="fa-solid fa-house"></i>
+                            <span>Inicio</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
+                        <button class="sidebar-btn active">
+                            <i class="fa-solid fa-dumbbell"></i>
+                            <span>Clientes</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <button class="sidebar-btn">
+                            <i class="fa-solid fa-star"></i>
+                            <span>Membresías</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <button class="sidebar-btn">
+                            <i class="fa-solid fa-cash-register"></i>
+                            <span>Pagos</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                        <button class="sidebar-btn">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                            <span>Administradores</span>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a>
+                        <button class="sidebar-btn">
+                            <i class="fa-solid fa-user"></i>
+                            <span>Mi perfil</span>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- App -->
+    <div class="app">
+        <div class="action-btns">
+            <button class="admin-action-btn admin-signup-btn">
+                <i class="fa-solid fa-user-plus"></i>
+                <span>Registrar <br>Cliente</span>
+            </button>
+        </div>
+
+        <!-- Lista de administradores -->
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>DNI</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Email</th>
+                        <th>Teléfono</th>
+                        <th>Fecha de nacimiento</th>
+                        <th>Sexo</th>
+                        <th>Id de membresía</th>
+                        <th>Vencimiento de membresía</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaClientes)
+                    {
+                        <tr>
+                            <td data-label="DNI">
+                                @Html.DisplayFor(modelItem => item.Dni)
+                            </td>
+                            <td data-label="Nombre">
+                                @Html.DisplayFor(modelItem => item.Nombre)
+                            </td>
+                            <td data-label="Apellido">
+                                @Html.DisplayFor(modelItem => item.Apellido)
+                            </td>
+                            <td data-label="Email">
+                                @Html.DisplayFor(modelItem => item.Email)
+                            </td>
+                            <td data-label="Telefono">
+                                @Html.DisplayFor(modelItem => item.Telefono)
+                            </td>
+                            <td data-label="FechaNacimiento">
+                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                            </td>
+                            <td data-label="Sexo">
+                                @Html.DisplayFor(modelItem => item.Sexo)
+                            </td>
+                            <td data-label="Id de membresía">
+                                @Html.DisplayFor(modelItem => item.IdMembresia)
+                            </td>
+                            <td data-label="Vencimiento de membresía">
+                                @Html.DisplayFor(modelItem => item.FechaVencimientoMembresia)
+                            </td>
+                            <td data-label="Acciones" class="table-action-btn">
+                                <button><i class="fa-solid fa-trash"></i></button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

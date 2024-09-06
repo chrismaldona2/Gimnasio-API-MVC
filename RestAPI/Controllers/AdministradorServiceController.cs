@@ -20,7 +20,7 @@ namespace RestAPI.Controllers
         }
         //alta
         [HttpPost("Registrar")]
-        public async Task<IActionResult> registrarAdministrador(AdministradorDTO administradorDto)
+        public async Task<IActionResult> registrarAdministrador([FromBody] AdministradorDTO administradorDto)
         {
             if (administradorDto == null)
             {
@@ -85,7 +85,7 @@ namespace RestAPI.Controllers
 
         //modificacion
         [HttpPut("Modificar")]
-        public async Task<IActionResult> ModificarAdministrador(int id, AdministradorDTO administradorDto)
+        public async Task<IActionResult> ModificarAdministrador(int id, [FromBody] AdministradorDTO administradorDto)
         {
             if (administradorDto == null)
             {

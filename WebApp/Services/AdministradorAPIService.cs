@@ -6,43 +6,42 @@ using System.Net;
 using System.Net.Http;
 using System.Text;
 using WebApp.Models.ViewModels;
+using WebApp.Models.DTOs;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Services
 {
-    public class ApiRespuesta
-    {
-        public bool Exitoso { get; set; }
-        public string Mensaje { get; set; }
-    }
+
     public class AdministradorAPIService : APIService, IAdministradorAPIService
     {
         public AdministradorAPIService(HttpClient httpClient) : base(httpClient) { }
 
-        public async Task<ApiRespuesta> AutenticarAdminAsync(string usuario, string contraseña)
+        public async Task<APIResponse> AutenticarAdminAsync(string usuario, string contraseña)
         {
             var response = await _httpClient.GetAsync($"api/AdministradorService/Autenticar?Usuario={usuario}&Contraseña={contraseña}");
 
+            var responseMessage = await response.Content.ReadAsStringAsync();
+
             if (response.IsSuccessStatusCode)
             {
-                return new ApiRespuesta
+                return new APIResponse
                 {
                     Exitoso = true,
-                    Mensaje = "Inicio de sesión exitoso."
+                    Mensaje = responseMessage
                 };
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            else if (response.StatusCode == HttpStatusCode.NotFound)
             {
-                return new ApiRespuesta
+                return new APIResponse
                 {
                     Exitoso = false,
-                    Mensaje = "Nombre de usuario o contraseña incorrectos."
+                    Mensaje = responseMessage
                 };
             }
-            else if (response.StatusCode == System.Net.HttpStatusCode.BadRequest)
+            else if (response.StatusCode == HttpStatusCode.BadRequest)
             {
                 var errorMessage = await response.Content.ReadAsStringAsync();
-                return new ApiRespuesta
+                return new APIResponse
                 {
                     Exitoso = false,
                     Mensaje = errorMessage
@@ -50,26 +49,26 @@ namespace WebApp.Services
             }
             else
             {
-                return new ApiRespuesta
+                return new APIResponse
                 {
                     Exitoso = false,
-                    Mensaje = "Error inesperado del servidor."
+                    Mensaje = responseMessage
                 };
             }
         }
 
-        public async Task<Models.Entidades.AdministradorModel> BuscarAdminAsync(string usuario)
+        public async Task<AdministradoresViewModel> BuscarAdminAsync(string usuario)
         {
             var response = await _httpClient.GetAsync($"api/AdministradorService/Buscar?Usuario={usuario}");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Models.Entidades.AdministradorModel>(jsonResponse);
+                return JsonConvert.DeserializeObject<AdministradoresViewModel>(jsonResponse);
             }
             else
             {
-                return new Models.Entidades.AdministradorModel
+                return new AdministradoresViewModel
                 {
                     Nombre = "Administrador"
                 };
@@ -85,11 +84,52 @@ namespace WebApp.Services
             {
                 string data = await response.Content.ReadAsStringAsync();
                 listaAdministradores = JsonConvert.DeserializeObject<List<AdministradoresViewModel>>(data);
+
                 return listaAdministradores;
+            }
+            return listaAdministradores;
+        }
+
+        public async Task<APIResponse> RegistrarAdminAsync(AdministradorRegistroDTO datosAdmin)
+        {
+            var jsonContent = JsonConvert.SerializeObject(datosAdmin);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PostAsync("api/AdministradorService/Registrar", content);
+
+            var responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else if (response.StatusCode == HttpStatusCode.Conflict)
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+            else if (response.StatusCode == HttpStatusCode.BadRequest)
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
             }
             else
             {
-                return listaAdministradores;
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
             }
         }
     }

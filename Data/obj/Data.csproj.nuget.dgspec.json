@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj": {}
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj",
-        "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\obj\\",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -22,6 +22,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -60,21 +61,21 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj": {
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\Data.csproj",
-        "packagesPath": "C:\\Users\\Christian\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Data\\obj\\",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Christian\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -82,14 +83,15 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\Core\\Core.csproj"
+              "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj"
               }
             }
           }
@@ -140,7 +142,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.205/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -1,0 +1,128 @@
+[
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "autenticarAdmin",
+    "RelativePath": "api/AdministradorService/Autenticar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Usuario",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Contrase\u00F1a",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "buscarAdministrador",
+    "RelativePath": "api/AdministradorService/Buscar",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Usuario",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "EliminarAdmin",
+    "RelativePath": "api/AdministradorService/Eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "listaAdministradores",
+    "RelativePath": "api/AdministradorService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "ModificarAdministrador",
+    "RelativePath": "api/AdministradorService/Modificar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "administradorDto",
+        "Type": "RestAPI.Models.DTOs.AdministradorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "registrarAdministrador",
+    "RelativePath": "api/AdministradorService/Registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "administradorDto",
+        "Type": "RestAPI.Models.DTOs.AdministradorDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaAdministradores",
+    "RelativePath": "api/ClienteService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "registrarCliente",
+    "RelativePath": "api/ClienteService/Registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "clienteDto",
+        "Type": "RestAPI.Models.DTOs.ClienteDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

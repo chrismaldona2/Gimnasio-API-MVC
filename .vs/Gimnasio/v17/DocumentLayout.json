@@ -1,10 +1,42 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\",
+  "WorkspaceRootPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\christian\\documents\\github\\gimnasio-api-mvc\\webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\models\\dtos\\clienteregistrodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\models\\dtos\\clienteregistrodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{FADEF9A2-4039-4E77-BE8E-07F31F913CD2}|Core\\Core.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\core\\entidades\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{FADEF9A2-4039-4E77-BE8E-07F31F913CD2}|Core\\Core.csproj|solutionrelative:core\\entidades\\cliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\models\\viewmodels\\clientesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\models\\viewmodels\\clientesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C376AEA0-04B7-4CE3-85F5-9661945517F5}|Services\\Services.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C376AEA0-04B7-4CE3-85F5-9661945517F5}|Services\\Services.csproj|solutionrelative:services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B4F269F-A58C-4026-8EA4-255114ACE494}|RestAPI\\RestAPI.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\restapi\\controllers\\clienteservicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B4F269F-A58C-4026-8EA4-255114ACE494}|RestAPI\\RestAPI.csproj|solutionrelative:restapi\\controllers\\clienteservicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\models\\viewmodels\\panelclientesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\models\\viewmodels\\panelclientesviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\controllers\\administradorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\controllers\\administradorcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\paneladministradores.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\paneladministradores.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -13,47 +45,125 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 1,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 200,
+          "SelectedChildIndex": 6,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\Program.cs",
-              "RelativeDocumentMoniker": "WebApp\\Program.cs",
-              "ToolTip": "C:\\Users\\Christian\\Documents\\GitHub\\Gimnasio-API-MVC\\WebApp\\Program.cs",
-              "RelativeToolTip": "WebApp\\Program.cs",
-              "ViewState": "AQIAABYAAAAAAAAAAAAkwCMAAAAAAAAA",
+              "DocumentIndex": 2,
+              "Title": "Cliente.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Entidades\\Cliente.cs",
+              "RelativeDocumentMoniker": "Core\\Entidades\\Cliente.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Entidades\\Cliente.cs",
+              "RelativeToolTip": "Core\\Entidades\\Cliente.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-09-03T12:06:53.92Z",
+              "WhenOpened": "2024-09-06T16:05:32.304Z",
               "EditorCaption": ""
-            }
-          ]
-        },
-        {
-          "DockedWidth": 1,
-          "SelectedChildIndex": -1,
-          "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{0ad07096-bba9-4900-a651-0598d26f6d24}"
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ClientesViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\ViewModels\\ClientesViewModel.cs",
+              "RelativeDocumentMoniker": "WebApp\\Models\\ViewModels\\ClientesViewModel.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\ViewModels\\ClientesViewModel.cs",
+              "RelativeToolTip": "WebApp\\Models\\ViewModels\\ClientesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T16:04:06.745Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:7:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ClienteService.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\ClienteService.cs",
+              "RelativeDocumentMoniker": "Services\\ClienteService.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\ClienteService.cs",
+              "RelativeToolTip": "Services\\ClienteService.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAgwCkAAABlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T16:02:22.479Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:9:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClienteServiceController.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\RestAPI\\Controllers\\ClienteServiceController.cs",
+              "RelativeDocumentMoniker": "RestAPI\\Controllers\\ClienteServiceController.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\RestAPI\\Controllers\\ClienteServiceController.cs",
+              "RelativeToolTip": "RestAPI\\Controllers\\ClienteServiceController.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAgwB8AAAA7AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:56:35.616Z",
+              "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:10:0:{e8034f19-ab72-4f06-83fd-f6832b41aa63}"
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "PanelClientesViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\ViewModels\\PanelClientesViewModel.cs",
+              "RelativeDocumentMoniker": "WebApp\\Models\\ViewModels\\PanelClientesViewModel.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\ViewModels\\PanelClientesViewModel.cs",
+              "RelativeToolTip": "WebApp\\Models\\ViewModels\\PanelClientesViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:55:38.648Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "ClienteRegistroDTO.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\DTOs\\ClienteRegistroDTO.cs",
+              "RelativeDocumentMoniker": "WebApp\\Models\\DTOs\\ClienteRegistroDTO.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Models\\DTOs\\ClienteRegistroDTO.cs",
+              "RelativeToolTip": "WebApp\\Models\\DTOs\\ClienteRegistroDTO.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:55:18.936Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "PanelClientes.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ViewState": "AgIAAPYAAAAAAAAAAAAAAAABAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-06T15:52:14.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "PanelAdministradores.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelAdministradores.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelAdministradores.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelAdministradores.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelAdministradores.cshtml",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAAB8AAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-06T15:54:40.064Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "AdministradorController.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Controllers\\AdministradorController.cs",
+              "RelativeDocumentMoniker": "WebApp\\Controllers\\AdministradorController.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Controllers\\AdministradorController.cs",
+              "RelativeToolTip": "WebApp\\Controllers\\AdministradorController.cs",
+              "ViewState": "AgIAAEwAAAAAAAAAAAAAAF0AAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-09-06T15:52:27.904Z",
+              "EditorCaption": ""
             }
           ]
         }

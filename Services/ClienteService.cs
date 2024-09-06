@@ -40,7 +40,6 @@ namespace Services
             }
 
             var cliente = new Cliente(dni, nombre, apellido, email, telefono, fechaNacimiento, sexo);
-
             try
             {
                 await _clienteRepository.CrearAsync(cliente);
