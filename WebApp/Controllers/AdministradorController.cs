@@ -16,11 +16,13 @@ namespace WebApp.Controllers
     {
         private readonly IAdministradorAPIService _administradorService;
         private readonly IClienteAPIService _clienteService;
+        private readonly IMembresiaAPIService _membresiaService;
 
-        public AdministradorController(IAdministradorAPIService administradorService, IClienteAPIService clienteService)
+        public AdministradorController(IAdministradorAPIService administradorService, IClienteAPIService clienteService, IMembresiaAPIService membresiaService)
         {
             _administradorService = administradorService;
             _clienteService = clienteService;
+            _membresiaService = membresiaService;
         }
 
         public IActionResult Inicio()
@@ -56,6 +58,15 @@ namespace WebApp.Controllers
             return View(model);
         }
 
+        public async Task<IActionResult> PanelMembresias()
+        {
+            var model = new PanelMembresiasViewModel
+            {
+                ListaMembresias = await _membresiaService.ListaMembresias(),
+                MembresiaRegistroDto = new MembresiaRegistroDTO()
+            };
+            return View(model);
+        }
 
         [HttpPost]
         public async Task<IActionResult> RegistrarAdmin(AdministradorRegistroDTO administradorRegistroDto)

@@ -1,13 +1,27 @@
+const registrarClienteBtn = document.getElementById('registrarClienteBtn');
+const registrarAdminBtn = document.getElementById('registrarAdminBtn');
+const registrarMembresiaBtn = document.getElementById('registrarMembresiaBtn');
 
 
-const signUpBtn = document.querySelector('.admin-signup-btn');
-const popUpForm = document.querySelector('.signup-admin-form');
-const popUpFormCancelBtn = document.querySelector('.signup-admin-form .cancel-btn');
+const registrarClienteForm = document.getElementById('registrarClienteForm');
+const registrarAdminForm = document.getElementById('registrarAdminForm');
 
-signUpBtn.addEventListener('click', () => {
-    popUpForm.showModal()
-})
 
-popUpFormCancelBtn.addEventListener('click', () => {
-    popUpForm.close()
-})
+if (registrarAdminBtn) {
+    registrarAdminBtn.addEventListener('click', () => registrarAdminForm.showModal());
+    document.querySelector('#registrarAdminForm .cancel-btn').addEventListener('click', () => registrarAdminForm.close());
+}
+
+if (registrarClienteBtn) {
+    registrarClienteBtn.addEventListener('click', () => registrarClienteForm.showModal());
+    document.querySelector('#registrarClienteForm .cancel-btn').addEventListener('click', () => registrarClienteForm.close());
+}
+
+if (registrarMembresiaBtn) {
+    registrarClienteBtn.addEventListener('click', () => registrarClienteForm.showModal());
+    document.querySelector('#registrarClienteForm .cancel-btn').addEventListener('click', () => registrarClienteForm.close());
+}
+
+
+
+

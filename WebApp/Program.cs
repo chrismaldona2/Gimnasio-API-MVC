@@ -7,10 +7,15 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddHttpClient<APIService>();
 builder.Services.AddHttpClient<IAdministradorAPIService, AdministradorAPIService>();
 builder.Services.AddHttpClient<IClienteAPIService, ClienteAPIService>();
+builder.Services.AddHttpClient<IMembresiaAPIService, MembresiaAPIService>();
+
 
 builder.Services.AddDistributedMemoryCache();
 
-builder.Services.AddSession();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(35); 
+});
 
 builder.Services.AddControllersWithViews();
 

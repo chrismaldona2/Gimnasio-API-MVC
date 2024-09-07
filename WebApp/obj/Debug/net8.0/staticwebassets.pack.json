@@ -53,10 +53,6 @@
       "PackagePath": "staticwebassets\\css\\layout\\header.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\pages\\admin-administrators.css",
-      "PackagePath": "staticwebassets\\css\\pages\\admin-administrators.css"
-    },
-    {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\pages\\admin-home.css",
       "PackagePath": "staticwebassets\\css\\pages\\admin-home.css"
     },

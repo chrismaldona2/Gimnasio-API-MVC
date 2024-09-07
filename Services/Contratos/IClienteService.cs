@@ -12,9 +12,11 @@ namespace Services.Contratos
         Task<IEnumerable<Cliente>> ObtenerClientesAsync();
         Task<IEnumerable<Cliente>> ObtenerClientesConTipoMembresiaAsync(int idMembresia);
         Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync();
-        Task<Cliente> InicioClientePorDniAsync(string dni, bool registrarAsistencia);
         Task RegistrarClienteAsync(string dni, string nombre, string apellido, string email, string telefono, DateOnly fechanacimiento, Sexo sexo);
         Task EliminarClienteAsync(int id);
         Task ModificarClienteAsync(Cliente cliente);
+        Task<Cliente> BuscarClientePorDniAsync(string dni);
+        Task RegistrarAsistenciaAsync(string dniCliente);
+
     }
 }

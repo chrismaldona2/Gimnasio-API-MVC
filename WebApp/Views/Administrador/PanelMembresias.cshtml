@@ -1,8 +1,8 @@
-﻿@model WebApp.Models.ViewModels.PanelAdministradoresViewModel
+﻿@model WebApp.Models.ViewModels.PanelMembresiasViewModel
 
 
 @{
-    ViewData["Title"] = "Panel de Administradores";
+    ViewData["Title"] = "Panel de Membresías";
 }
 
 <head>
@@ -12,74 +12,6 @@
 
 </head>
 
-
-<dialog class="popup" id="registrarAdminForm">
-    <form asp-action="RegistrarAdmin" method="post" class="form">
-        <div class="multiple-input-container">
-            <div class="input-container">
-                <label>Nombre</label>
-                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Nombre" required>
-            </div>
-            <div class="input-container">
-                <label>Apellido</label>
-                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Apellido" required>
-            </div>
-        </div>
-        <div class="multiple-input-container">
-            <div class="input-container">
-                <label>DNI</label>
-                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Dni" required>
-            </div>
-            <div class="input-container">
-                <label>Teléfono</label>
-                <input type="tel" class="regular-form-input" asp-for="AdministradorRegistroDto.Telefono" required>
-            </div>
-        </div>
-        <div class="input-container">
-            <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Email" required>
-        </div>
-        <div class="multiple-input-container">
-            <div class="input-container">
-                <label>Usuario</label>
-                <input type="text" class="regular-form-input" asp-for="AdministradorRegistroDto.Usuario" required>
-            </div>
-            <div class="input-container">
-                <label>Contraseña</label>
-                <input type="password" class="regular-form-input" asp-for="AdministradorRegistroDto.Contraseña" required>
-            </div>
-        </div>
-        <div class="date-selector-input-container">
-            <label>Fecha de nacimiento</label>
-            <div class="multiple-input-container">
-                <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Dia" required></select>
-                </div>
-                <div class="input-container">
-                    <label class="date-selector-label">Mes</label>
-                    <select class="regular-form-input" id="mes-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Mes" required></select>
-                </div>
-                <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input" asp-for="AdministradorRegistroDto.FechaNacimiento.Año" required></select>
-                </div>
-            </div>
-        </div>
-        <div class="input-container">
-            <label>Sexo</label>
-            <select class="regular-form-input" asp-for="AdministradorRegistroDto.Sexo" required>
-                <option value="0">Masculino</option>
-                <option value="1">Femenino</option>
-                <option value="2">Otro</option>
-            </select>
-        </div>
-        <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Registrar</button>
-            <button class="cancel-btn regular-form-cancel-btn">Cancelar</button>
-        </div>
-    </form>
-</dialog>
 
 
 
@@ -114,6 +46,9 @@
         </ul>
     </nav>
 </header>
+
+
+
 <main class="main">
     <div class="bottom-menu-container">
         <nav class="bottom-menu">
@@ -134,7 +69,7 @@
                 </li>
                 <li>
                     <a asp-controller="Administrador" asp-action="PanelMembresias">
-                        <button class="bottom-menu-btn">
+                        <button class="bottom-menu-btn active">
                             <i class="fa-solid fa-star"></i>
                         </button>
                     </a>
@@ -148,7 +83,7 @@
                 </li>
                 <li>
                     <a asp-controller="Administrador" asp-action="PanelAdministradores">
-                        <button class="bottom-menu-btn active">
+                        <button class="bottom-menu-btn">
                             <i class="fa-solid fa-unlock-keyhole"></i>
                         </button>
                     </a>
@@ -179,7 +114,7 @@
                 </li>
                 <li>
                     <a asp-controller="Administrador" asp-action="PanelMembresias">
-                        <button class="sidebar-btn">
+                        <button class="sidebar-btn active">
                             <i class="fa-solid fa-star"></i>
                             <span>Membresías</span>
                         </button>
@@ -195,7 +130,7 @@
                 </li>
                 <li>
                     <a asp-controller="Administrador" asp-action="PanelAdministradores">
-                        <button class="sidebar-btn active">
+                        <button class="sidebar-btn">
                             <i class="fa-solid fa-unlock-keyhole"></i>
                             <span>Administradores</span>
                         </button>
@@ -217,9 +152,9 @@
     <!-- App -->
     <div class="app">
         <div class="action-btns">
-            <button class="admin-action-btn" id="registrarAdminBtn">
+            <button class="admin-action-btn" id="registrarMembresiaBtn">
                 <i class="fa-solid fa-user-plus"></i>
-                <span>Registrar <br>administrador</span>
+                <span>Registrar <br>Membresía</span>
             </button>
         </div>
 
@@ -229,44 +164,28 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>Usuario</th>
-                        <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
-                        <th>Teléfono</th>
-                        <th>Fecha de nacimiento</th>
-                        <th>Sexo</th>
+                        <th>Identificador</th>
+                        <th>Descripción</th>
+                        <th>Duración (Días)</th>
+                        <th>Precio</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaAdministradores)
+                    @foreach (var item in Model.ListaMembresias)
                     {
                         <tr>
-                            <td data-label="Usuario">
-                                @Html.DisplayFor(modelItem => item.Usuario)
+                            <td data-label="Identificador">
+                                @Html.DisplayFor(modelItem => item.Id)
                             </td>
-                            <td data-label="DNI">
-                                @Html.DisplayFor(modelItem => item.Dni)
+                            <td data-label="Descripción">
+                                @Html.DisplayFor(modelItem => item.Tipo)
                             </td>
-                            <td data-label="Nombre">
-                                @Html.DisplayFor(modelItem => item.Nombre)
+                            <td data-label="Duración (Días)">
+                                @Html.DisplayFor(modelItem => item.DuracionDias)
                             </td>
-                            <td data-label="Apellido">
-                                @Html.DisplayFor(modelItem => item.Apellido)
-                            </td>
-                            <td data-label="Email">
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td data-label="Teléfono">
-                                @Html.DisplayFor(modelItem => item.Telefono)
-                            </td>
-                            <td data-label="Fecha de nacimiento">
-                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
-                            </td>
-                            <td data-label="Sexo">
-                                @Html.DisplayFor(modelItem => item.Sexo)
+                            <td data-label="Precio">
+                                @($"{item.Precio:N2} ARS")
                             </td>
                             <td data-label="Acciones" class="table-action-btn">
                                 <button><i class="fa-solid fa-trash"></i></button>

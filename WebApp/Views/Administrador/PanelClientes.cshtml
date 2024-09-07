@@ -9,13 +9,11 @@
     <script src="~/js/dateSelector.js" defer></script>
     <script src="~/js/formPopups.js" defer></script>
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
-    <link rel="stylesheet" href="~/css/pages/admin-administrators.css">
+
 </head>
 
 
-
-
-<dialog class="popup signup-admin-form">
+<dialog class="popup" id="registrarClienteForm">
     <form asp-action="RegistrarCliente" method="post" class="form">
         <div class="multiple-input-container">
             <div class="input-container">
@@ -125,7 +123,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelMembresias">
                         <button class="bottom-menu-btn">
                             <i class="fa-solid fa-star"></i>
                         </button>
@@ -170,7 +168,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelMembresias">
                         <button class="sidebar-btn">
                             <i class="fa-solid fa-star"></i>
                             <span>Membresías</span>
@@ -209,7 +207,7 @@
     <!-- App -->
     <div class="app">
         <div class="action-btns">
-            <button class="admin-action-btn admin-signup-btn">
+            <button class="admin-action-btn" id="registrarClienteBtn">
                 <i class="fa-solid fa-user-plus"></i>
                 <span>Registrar <br>Cliente</span>
             </button>
@@ -249,20 +247,20 @@
                             <td data-label="Email">
                                 @Html.DisplayFor(modelItem => item.Email)
                             </td>
-                            <td data-label="Telefono">
+                            <td data-label="Teléfono">
                                 @Html.DisplayFor(modelItem => item.Telefono)
                             </td>
-                            <td data-label="FechaNacimiento">
+                            <td data-label="Fecha de nacimiento">
                                 @Html.DisplayFor(modelItem => item.FechaNacimiento)
                             </td>
                             <td data-label="Sexo">
                                 @Html.DisplayFor(modelItem => item.Sexo)
                             </td>
                             <td data-label="Id de membresía">
-                                @Html.DisplayFor(modelItem => item.IdMembresia)
+                                @(item.IdMembresia == null ? "No definido" : item.IdMembresia.ToString())
                             </td>
                             <td data-label="Vencimiento de membresía">
-                                @Html.DisplayFor(modelItem => item.FechaVencimientoMembresia)
+                                @(item.FechaVencimientoMembresia == null ? "No definido" : item.FechaVencimientoMembresia.ToString())
                             </td>
                             <td data-label="Acciones" class="table-action-btn">
                                 <button><i class="fa-solid fa-trash"></i></button>

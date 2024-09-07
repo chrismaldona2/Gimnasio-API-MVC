@@ -6,6 +6,8 @@
         Femenino = 1,
         Otro = 2
     }
+
+    //creado para mostrar admins ocultando contraseñas para mayor seguridad.
     public class AdministradorModel
     {
         public int Id { get; set; }

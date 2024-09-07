@@ -179,24 +179,16 @@ namespace Services
         }
 
 
-        //inicio sesion cliente
-        public async Task<Cliente> InicioClientePorDniAsync(string dni, bool registrarAsistencia)
+        //buscar por dni
+        public async Task<Cliente> BuscarClientePorDniAsync(string dni)
         {
 
             try
             {
                 var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
-
                 if (cliente == null)
                 {
                     throw new KeyNotFoundException("El cliente con el DNI especificado no existe.");
-                }
-
-                if (registrarAsistencia)
-                {
-                    var asistencia = new Asistencia(cliente.Id, DateTime.Now);
-                    await _asistenciaRepository.CrearAsync(asistencia);
-                    await _asistenciaRepository.GuardarCambiosAsync();
                 }
 
                 return cliente;
@@ -206,5 +198,32 @@ namespace Services
                 throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
             }
         }
+
+        //registrar asistencia
+        public async Task RegistrarAsistenciaAsync(string dni)
+        {
+            var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
+            if (cliente == null)
+            {
+                throw new Exception("La cliente especificado no fue encontrado.");
+            }
+            var asistencia = new Asistencia(cliente.Id, DateTime.Now);
+
+            try
+            {
+                await _asistenciaRepository.CrearAsync(asistencia);
+                await _asistenciaRepository.GuardarCambiosAsync();
+
+            }
+            catch (DbUpdateException)
+            {
+                throw new InvalidOperationException("Se produjo un error al intentar registrar la asistencia.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
+            }
+        }
+
     }
 }

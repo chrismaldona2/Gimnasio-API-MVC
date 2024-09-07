@@ -9,7 +9,5 @@
         public string Telefono { get; set; }
         public FechaNacimiento FechaNacimiento { get; set; }
         public int Sexo { get; set; }
-        public int? IdMembresia { get; set; }
-        public DateTime? FechaVencimientoMembresia { get; set; }
     }
 }

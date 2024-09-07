@@ -8,7 +8,6 @@
         'two two three'
     ;
     gap: clamp(1rem, 5vw + 1rem, 2.5rem);
-    padding: 1.5rem clamp(1rem, 5vw + 1rem, 4rem) 3rem;
     --cards-border-radius: 20px;
 }
 

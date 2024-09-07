@@ -61,7 +61,7 @@ namespace RestAPI.Controllers
 
         //baja
         [HttpDelete("Eliminar")]
-        public async Task<IActionResult> EliminarAdmin(int id)
+        public async Task<IActionResult> eliminarAdmin(int id)
         {
             if (id <= 0)
             {
@@ -85,7 +85,7 @@ namespace RestAPI.Controllers
 
         //modificacion
         [HttpPut("Modificar")]
-        public async Task<IActionResult> ModificarAdministrador(int id, [FromBody] AdministradorDTO administradorDto)
+        public async Task<IActionResult> modificarAdministrador(int id, [FromBody] AdministradorDTO administradorDto)
         {
             if (administradorDto == null)
             {
@@ -211,6 +211,7 @@ namespace RestAPI.Controllers
                 
                 if (admin != null)
                 {
+                    //oculto contraseña para mayor seguridad
                     var adminModel = new AdministradorModel
                     {
                         Id = admin.Id,

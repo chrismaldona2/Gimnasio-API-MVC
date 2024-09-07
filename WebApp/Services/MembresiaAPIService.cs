@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Net;
 using System.Text;
 using WebApp.Models.DTOs;
 using WebApp.Models.ViewModels;
@@ -7,16 +6,16 @@ using WebApp.Services.Contracts;
 
 namespace WebApp.Services
 {
-    public class ClienteAPIService : APIService, IClienteAPIService
+    public class MembresiaAPIService : APIService, IMembresiaAPIService
     {
-        public ClienteAPIService(HttpClient httpClient) : base(httpClient) { }
+        public MembresiaAPIService(HttpClient httpClient) : base(httpClient) { }
 
-        public async Task<APIResponse> RegistrarClienteAsync(ClienteRegistroDTO datosCliente)
+        public async Task<APIResponse> RegistrarMembresiaAsync(MembresiaRegistroDTO datosMembresia)
         {
-            var jsonContent = JsonConvert.SerializeObject(datosCliente);
+            var jsonContent = JsonConvert.SerializeObject(datosMembresia);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
 
-            var response = await _httpClient.PostAsync("api/ClienteService/Registrar", content);
+            var response = await _httpClient.PostAsync("api/MembresiaService/Registrar", content);
 
             var responseMessage = await response.Content.ReadAsStringAsync();
 
@@ -38,19 +37,19 @@ namespace WebApp.Services
             }
         }
 
-        public async Task<List<ClientesViewModel>> ListaClientes()
+        public async Task<List<MembresiasViewModel>> ListaMembresias()
         {
-            List<ClientesViewModel> listaClientes = new List<ClientesViewModel>();
-            var response = await _httpClient.GetAsync($"api/ClienteService/Lista");
+            List<MembresiasViewModel> listaMembresias = new List<MembresiasViewModel>();
+            var response = await _httpClient.GetAsync($"api/MembresiaService/Lista");
 
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();
-                listaClientes = JsonConvert.DeserializeObject<List<ClientesViewModel>>(data);
+                listaMembresias = JsonConvert.DeserializeObject<List<MembresiasViewModel>>(data);
 
-                return listaClientes;
+                return listaMembresias;
             }
-            return listaClientes;
+            return listaMembresias;
         }
     }
 }

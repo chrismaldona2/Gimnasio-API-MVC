@@ -38,7 +38,7 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
-    "Method": "EliminarAdmin",
+    "Method": "eliminarAdmin",
     "RelativePath": "api/AdministradorService/Eliminar",
     "HttpMethod": "DELETE",
     "IsController": true,
@@ -64,7 +64,7 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
-    "Method": "ModificarAdministrador",
+    "Method": "modificarAdministrador",
     "RelativePath": "api/AdministradorService/Modificar",
     "HttpMethod": "PUT",
     "IsController": true,
@@ -101,12 +101,65 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "buscarPorDni",
+    "RelativePath": "api/ClienteService/BuscarPorDni",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dni",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "eliminarCliente",
+    "RelativePath": "api/ClienteService/Eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "listaAdministradores",
     "RelativePath": "api/ClienteService/Lista",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "modificarCliente",
+    "RelativePath": "api/ClienteService/Modificar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "clienteDto",
+        "Type": "RestAPI.Models.DTOs.ClienteDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -120,6 +173,32 @@
       {
         "Name": "clienteDto",
         "Type": "RestAPI.Models.DTOs.ClienteDTO",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "listaMembresias",
+    "RelativePath": "api/MembresiaService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "registrarMembresia",
+    "RelativePath": "api/MembresiaService/Registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "membresiaDto",
+        "Type": "RestAPI.Models.DTOs.MembresiaDTO",
         "IsRequired": true
       }
     ],

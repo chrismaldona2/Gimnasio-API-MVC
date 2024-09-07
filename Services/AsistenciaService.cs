@@ -24,7 +24,7 @@ namespace Services
         }
 
         //alta
-        public async Task RegistrarAsistenciaAsync(int idCliente, DateTime fechaAsistencia)
+        public async Task RegistrarAsistenciaManualAsync(int idCliente, DateTime fechaAsistencia)
         {
             var cliente = await _clienteRepository.EncontrarPorIDAsync(idCliente);
             if (cliente == null)

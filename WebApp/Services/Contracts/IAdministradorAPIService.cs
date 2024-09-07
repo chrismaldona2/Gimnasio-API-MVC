@@ -8,7 +8,6 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> AutenticarAdminAsync(string usuario, string contraseña);
         Task<AdministradoresViewModel> BuscarAdminAsync(string usuario);
         Task<List<AdministradoresViewModel>> ListaAdministradores();
-
         Task<APIResponse> RegistrarAdminAsync(AdministradorRegistroDTO datosAdmin);
     }
 }

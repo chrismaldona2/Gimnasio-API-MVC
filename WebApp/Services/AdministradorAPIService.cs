@@ -30,23 +30,6 @@ namespace WebApp.Services
                     Mensaje = responseMessage
                 };
             }
-            else if (response.StatusCode == HttpStatusCode.NotFound)
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = responseMessage
-                };
-            }
-            else if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                var errorMessage = await response.Content.ReadAsStringAsync();
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = errorMessage
-                };
-            }
             else
             {
                 return new APIResponse
@@ -104,22 +87,6 @@ namespace WebApp.Services
                 return new APIResponse
                 {
                     Exitoso = true,
-                    Mensaje = responseMessage
-                };
-            }
-            else if (response.StatusCode == HttpStatusCode.Conflict)
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = responseMessage
-                };
-            }
-            else if (response.StatusCode == HttpStatusCode.BadRequest)
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
                     Mensaje = responseMessage
                 };
             }
