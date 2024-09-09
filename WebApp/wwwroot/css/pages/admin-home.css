@@ -78,7 +78,9 @@
 }
 
 .welcome-card h1 {
+    display: block;
     font-size: calc(var(--fs-large) - 2px);
+    color: var(--white-color);
     font-weight: 700;
 }
 .welcome-card h2 {
@@ -161,8 +163,6 @@
         ;
     }
 }
-
-
 
 
 @media only screen and (max-width: 686px) {

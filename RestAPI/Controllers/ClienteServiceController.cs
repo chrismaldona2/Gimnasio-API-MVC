@@ -156,11 +156,13 @@ namespace RestAPI.Controllers
             try
             {
                 var cliente = await _clienteService.BuscarClientePorDniAsync(dni);
-                return Ok(cliente);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return BadRequest(ex.Message);
+                if (cliente != null)
+                {
+                    return Ok(cliente);
+                }
+
+                return NotFound("Cliente no encontrado, revise los datos.");
+                
             }
             catch (InvalidOperationException ex)
             {
@@ -171,8 +173,6 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
-
-
 
     }
 }

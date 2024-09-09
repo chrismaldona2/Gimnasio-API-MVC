@@ -52,5 +52,31 @@ namespace WebApp.Services
             }
             return listaClientes;
         }
+
+
+        public async Task<APIResponse> BuscarClientePorDni(string dni)
+        { 
+            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarPorDni?dni={dni}");
+
+            var responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+        }
+
     }
 }

@@ -1,0 +1,167 @@
+.popup {
+    max-width: 700px;
+    padding: 2rem min(5vw, 2.5rem); 
+}
+
+.user-card-container {
+    display: flex;
+    gap: 2rem;
+    font-size: var(--fs-medium);
+}
+
+.user-card-container label {
+    color: #696969;
+}
+
+.user-card-container .left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+}
+
+.user-card-container .left span{
+    font-weight: 600;
+    color: #489f4e;
+    font-size: calc(var(--fs-medium) + 2px);
+}
+
+.info-field {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.user-pic {
+    background-color: #ffc9cd;
+    border-radius: 16px;
+    aspect-ratio: 3/4;
+    max-height: 75%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    overflow: hidden;
+}
+
+    .user-pic img {
+        width: 100%;
+        aspect-ratio: 1/1;
+    }
+
+.user-card-container .right {
+    flex: 2;
+    display: grid;
+    grid-template-areas: 
+        'dni sexo'
+        'nombre apellido'
+        'email email'
+        'telefono nacimiento'
+        'botones botones';
+    gap: .5rem;
+}
+
+.user-card-container .right label {
+    font-size: calc(var(--fs-medium) - 2px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    font-weight: 400;
+}
+
+.user-card-container .right span {
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 95%;
+    font-weight: 700;
+    color: #333333;
+}
+
+#dni-field {
+    grid-area: dni;
+}
+
+#sex-field {
+    grid-area: sexo;
+}
+
+#name-field {
+    grid-area: nombre;
+}
+
+#lastname-field {
+    grid-area: apellido;
+}
+
+#email-field {
+    grid-area: email;
+}
+
+#tel-field {
+    grid-area: telefono;
+}
+
+#tel-field span{
+    white-space: normal;
+}
+
+#birthdate-field {
+    grid-area: nacimiento;
+}
+
+.user-card-container .action-btns {
+    grid-area: botones;
+    display: flex;
+    gap: .5rem;
+}
+
+
+.user-card-container .action-btns button {
+    padding: 1rem;
+    border: none;
+    outline: none;
+    border-radius: 1rem;
+    transition: background-color .35s ease;
+}
+
+.user-card-container .action-btns .close-btn {
+    aspect-ratio: 1/1;
+    background-color: var(--red-color);
+    color: var(--white-color);
+}
+
+.user-card-container .action-btns .close-btn:hover {
+    background-color: #d61525;
+}
+
+.user-card-container .action-btns .show-payments-btn {
+    flex: 1;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    justify-content: center;
+    background-color: #e9e9e9;
+    font-weight: 700;
+    color: #484848;
+}
+
+.user-card-container .action-btns .show-payments-btn:hover {
+    background-color: #dfdfdf;
+}
+
+@media screen and (max-width: 555px) {
+    .user-card-container .action-btns .show-payments-btn i {
+        display: none;
+    }
+    
+}
+
+@media screen and (max-width: 480px) {
+    #tel-field span{
+        white-space: nowrap;
+    }
+}
+

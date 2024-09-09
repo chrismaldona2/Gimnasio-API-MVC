@@ -1,10 +1,72 @@
-﻿@{
+﻿@model WebApp.Models.ViewModels.ClientesViewModel
+
+@{
     ViewData["Title"] = "Inicio";
 }
 
 <head>
     <link rel="stylesheet" href="~/css/pages/home.css">
+    <link rel="stylesheet" href="~/css/components/user-info-card.css">
+    <script src="~/js/showCustomerInfo.js" defer></script> <!-- Ver explicacion del script dentro del archivo .js-->
 </head>
+
+
+@if (Model != null)
+{
+    <!-- Si model es null lo siguiente no es renderizado.-->
+        <!-- Tajerta de información  de cliente -->
+    <dialog id="user-info-card-modal" class="popup">
+        <div class="user-card-container">
+            <div class="left">
+                <div class="user-pic">
+                    <img src="/images/user-pic.png" alt="User Picture">
+                </div>
+                <div class="info-field">
+                    <label>Vencimiento de membresía</label>
+                    <span style="color: @(Model.FechaVencimientoMembresia == null ? "var(--red-color)" : "#489f4e");">
+                        @(Model.FechaVencimientoMembresia?.ToString() ?? "Sin membresía")
+                    </span>
+                </div>
+            </div>
+
+            <div class="right">
+                <div class="info-field" id="dni-field">
+                    <label>DNI</label>
+                    <span>@Model.Dni</span>
+                </div>
+                <div class="info-field" id="sex-field">
+                    <label>Sexo</label>
+                    <span>@Model.Sexo</span>
+                </div>
+                <div class="info-field" id="name-field">
+                    <label>Nombre</label>
+                    <span>@Model.Nombre</span>
+                </div>
+                <div class="info-field" id="lastname-field">
+                    <label>Apellido</label>
+                    <span>@Model.Apellido</span>
+                </div>
+                <div class="info-field" id="email-field">
+                    <label>Email</label>
+                    <span>@Model.Email</span>
+                </div>
+                <div class="info-field" id="tel-field">
+                    <label>Teléfono</label>
+                    <span>@Model.Telefono</span>
+                </div>
+                <div class="info-field" id="birthdate-field">
+                    <label>Fecha de nacimiento</label>
+                    <span>@Model.FechaNacimiento</span>
+                </div>
+                <div class="action-btns">
+                    <button class="show-payments-btn">Ver pagos recientes<i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="close-btn" id="close-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+                </div>
+            </div>
+        </div>
+    </dialog>
+
+}
 
 <header class="header">
     <a asp-controller="Usuario" asp-action="LoginCliente" class="logo">
@@ -28,9 +90,9 @@
 </header>
 <main class="main">
     <div class="app">
-        <form action="#" class="user-login-form">
+        <form asp-controller="Usuario" asp-action="VerInformacionCliente" method="post" class="user-login-form">
             <div class="input-container">
-                <input type="text" name="dni-input" id="dni-input" class="user-login-input" required>
+                <input type="text" name="dniInput" id="dni-input" class="user-login-input" required>
                 <label for="dni-input" id="dni-label">DNI</label>
             </div>
             <div class="input-container">
@@ -63,3 +125,25 @@
         </li>
     </ul>
 </section>
+
+<footer class="footer">
+    <div class="footer-top">
+        <div class="contact-info">
+            <h2>Contactános</h2>
+            <span>icessuperior@ices.edu.ar</span>
+            <span>Silvio Delloni 4013, Sunchales, Santa Fe</span>
+            <span>+54 9 3493 52-3774</span>
+        </div>
+        <div class="subscription-container">
+            <h2>Contactános</h2>
+            <form onsubmit="alert('Función aún no implementada')" class="subscription-form">
+                <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." required>
+                <button type="submit" class="subscription-submit-btn">Enviar</button>
+            </form>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <span>Copyright &#169; ICESFit | Establecimiento Deportivo - 2024. Todos los derechos reservados.</span>
+        <span>Creado por <a href="https://github.com/chrismaldona2" target="_blank">Christian Maldonado</a></span>
+    </div>
+</footer>

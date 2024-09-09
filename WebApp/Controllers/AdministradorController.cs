@@ -38,6 +38,11 @@ namespace WebApp.Controllers
             return View("PanelInicio", nombreAdmin);
         }
 
+
+
+
+
+        //Panel de administradores y sus funciones:
         public async Task<IActionResult> PanelAdministradores()
         {
             var model = new PanelAdministradoresViewModel
@@ -47,27 +52,6 @@ namespace WebApp.Controllers
             };
             return View(model);
         }
-
-        public async Task<IActionResult> PanelClientes()
-        {
-            var model = new PanelClientesViewModel
-            {
-                ListaClientes = await _clienteService.ListaClientes(),
-                ClienteRegistroDto = new ClienteRegistroDTO()
-            };
-            return View(model);
-        }
-
-        public async Task<IActionResult> PanelMembresias()
-        {
-            var model = new PanelMembresiasViewModel
-            {
-                ListaMembresias = await _membresiaService.ListaMembresias(),
-                MembresiaRegistroDto = new MembresiaRegistroDTO()
-            };
-            return View(model);
-        }
-
         [HttpPost]
         public async Task<IActionResult> RegistrarAdmin(AdministradorRegistroDTO administradorRegistroDto)
         {
@@ -76,7 +60,7 @@ namespace WebApp.Controllers
                 var model = new PanelAdministradoresViewModel
                 {
                     ListaAdministradores = await _administradorService.ListaAdministradores(),
-                    AdministradorRegistroDto = administradorRegistroDto 
+                    AdministradorRegistroDto = administradorRegistroDto
                 };
                 return View("PanelAdministradores", model);
             }
@@ -101,6 +85,23 @@ namespace WebApp.Controllers
         }
 
 
+
+
+
+
+
+
+        //Panel de clientes y sus funciones:
+        public async Task<IActionResult> PanelClientes()
+        {
+            var model = new PanelClientesViewModel
+            {
+                ListaClientes = await _clienteService.ListaClientes(),
+                ClienteRegistroDto = new ClienteRegistroDTO()
+            };
+            return View(model);
+        }
+
         [HttpPost]
         public async Task<IActionResult> RegistrarCliente(ClienteRegistroDTO clienteRegistroDto)
         {
@@ -115,6 +116,7 @@ namespace WebApp.Controllers
             }
 
             var respuesta = await _clienteService.RegistrarClienteAsync(clienteRegistroDto);
+
             if (respuesta.Exitoso)
             {
                 TempData["SuccessMessage"] = respuesta.Mensaje;
@@ -131,5 +133,54 @@ namespace WebApp.Controllers
                 return View("PanelClientes", model);
             }
         }
+
+
+
+
+
+
+
+        //Panel de membresias y sus funciones:
+        public async Task<IActionResult> PanelMembresias()
+        {
+            var model = new PanelMembresiasViewModel
+            {
+                ListaMembresias = await _membresiaService.ListaMembresias(),
+                MembresiaRegistroDto = new MembresiaRegistroDTO()
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> RegistrarMembresia(MembresiaRegistroDTO membresiaRegistroDto)
+        {
+            if (!ModelState.IsValid)
+            {
+                var model = new PanelMembresiasViewModel
+                {
+                    ListaMembresias = await _membresiaService.ListaMembresias(),
+                    MembresiaRegistroDto = membresiaRegistroDto
+                };
+                return View("PanelMembresias", model);
+            }
+
+            var respuesta = await _membresiaService.RegistrarMembresiaAsync(membresiaRegistroDto);
+            if (respuesta.Exitoso)
+            {
+                TempData["SuccessMessage"] = respuesta.Mensaje;
+                return RedirectToAction("PanelMembresias");
+            }
+            else
+            {
+                TempData["ErrorMessage"] = respuesta.Mensaje;
+                var model = new PanelMembresiasViewModel
+                {
+                    ListaMembresias = await _membresiaService.ListaMembresias(),
+                    MembresiaRegistroDto = membresiaRegistroDto
+                };
+                return View("PanelMembresias", model);
+            }
+        }
+
     }
 }

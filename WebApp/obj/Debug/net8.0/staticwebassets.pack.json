@@ -41,6 +41,10 @@
       "PackagePath": "staticwebassets\\css\\components\\tables.css"
     },
     {
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\user-info-card.css",
+      "PackagePath": "staticwebassets\\css\\components\\user-info-card.css"
+    },
+    {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\layout\\admin-dashboard.css",
       "PackagePath": "staticwebassets\\css\\layout\\admin-dashboard.css"
     },
@@ -101,6 +105,10 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\user-pic.png",
+      "PackagePath": "staticwebassets\\images\\user-pic.png"
+    },
+    {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\adminLogin.js",
       "PackagePath": "staticwebassets\\js\\adminLogin.js"
     },
@@ -115,6 +123,10 @@
     {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\formPopups.js",
       "PackagePath": "staticwebassets\\js\\formPopups.js"
+    },
+    {
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\showCustomerInfo.js",
+      "PackagePath": "staticwebassets\\js\\showCustomerInfo.js"
     },
     {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\site.js",

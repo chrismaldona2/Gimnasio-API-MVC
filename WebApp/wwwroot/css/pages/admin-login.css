@@ -1,9 +1,27 @@
 .body {
+    display: grid;
     grid-template-rows: auto minmax(80vh, 1fr) auto;
 }
 
 .main {
     padding-bottom: clamp(4rem, 1vw + 3rem, 6rem);
+}
+
+/*Boton de inicio para formulario de login admin*/
+.admin-login-form-btn {
+    border-radius: var(--user-login-inputs-b-radius);
+    padding-block: var(--user-login-inputs-size);
+    background-color: var(--red-color);
+    font-size: 1.25rem;
+    color: var(--white-color);
+    text-wrap: nowrap;
+    text-align: center;
+    border: none;
+    transition: background-color .35s ease;
+}
+
+.admin-login-form-btn:hover {
+    background-color: var(--dark-red-color);
 }
 
 .app {

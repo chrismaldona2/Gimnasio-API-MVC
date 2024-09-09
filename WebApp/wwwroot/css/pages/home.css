@@ -1,4 +1,5 @@
 .body {
+    display: grid;
     grid-template-rows: auto minmax(75vh, 1fr) auto;
 }
 
@@ -39,12 +40,28 @@
     gap: 1rem;
 }
 
-
 .user-login-form .input-container {
     position: relative;
     display: flex;
     flex-direction: column;
     gap: 4px;
+}
+
+/* Boton de inicio de sesion del cliente */
+.user-login-btn {
+    border-radius: var(--user-login-inputs-b-radius);
+    padding-block: var(--user-login-inputs-size);
+    background-color: var(--red-color);
+    font-size: 1.25rem;
+    color: var(--white-color);
+    text-wrap: nowrap;
+    text-align: center;
+    border: none;
+    transition: background-color .35s ease;
+}
+
+.user-login-btn:hover {
+    background-color: var(--dark-red-color);
 }
 
 #dni-label {

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "DGimouEZLN0CViwYG4FfiU6mlVmfnRQ/ecMzFtCa/nY=",
+  "Hash": "Gyc5BO5OZpbRTyEBYIjzBMEcv0vB1mTkqasqZO2jnAs=",
   "Source": "WebApp",
   "BasePath": "_content/WebApp",
   "Mode": "Default",
@@ -236,6 +236,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\components\\tables.css"
+    },
+    {
+      "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\user-info-card.css",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "css/components/user-info-card.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\components\\user-info-card.css"
     },
     {
       "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\layout\\admin-dashboard.css",
@@ -523,6 +542,25 @@
       "OriginalItemSpec": "wwwroot\\images\\logo.png"
     },
     {
+      "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\user-pic.png",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "images/user-pic.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\user-pic.png"
+    },
+    {
       "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\adminLogin.js",
       "SourceId": "WebApp",
       "SourceType": "Discovered",
@@ -597,6 +635,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\formPopups.js"
+    },
+    {
+      "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\showCustomerInfo.js",
+      "SourceId": "WebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\",
+      "BasePath": "_content/WebApp",
+      "RelativePath": "js/showCustomerInfo.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\showCustomerInfo.js"
     },
     {
       "Identity": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\site.js",

@@ -7,5 +7,6 @@ namespace WebApp.Services.Contracts
     {
         Task<APIResponse> RegistrarClienteAsync(ClienteRegistroDTO datosCliente);
         Task<List<ClientesViewModel>> ListaClientes();
+        Task<APIResponse> BuscarClientePorDni(string dni);
     }
 }

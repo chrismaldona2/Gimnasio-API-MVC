@@ -5,7 +5,7 @@ const registrarMembresiaBtn = document.getElementById('registrarMembresiaBtn');
 
 const registrarClienteForm = document.getElementById('registrarClienteForm');
 const registrarAdminForm = document.getElementById('registrarAdminForm');
-
+const registrarMembresiaForm = document.getElementById('registrarMembresiaForm');
 
 if (registrarAdminBtn) {
     registrarAdminBtn.addEventListener('click', () => registrarAdminForm.showModal());
@@ -18,8 +18,8 @@ if (registrarClienteBtn) {
 }
 
 if (registrarMembresiaBtn) {
-    registrarClienteBtn.addEventListener('click', () => registrarClienteForm.showModal());
-    document.querySelector('#registrarClienteForm .cancel-btn').addEventListener('click', () => registrarClienteForm.close());
+    registrarMembresiaBtn.addEventListener('click', () => registrarMembresiaForm.showModal());
+    document.querySelector('#registrarMembresiaForm .cancel-btn').addEventListener('click', () => registrarMembresiaForm.close());
 }
 
 

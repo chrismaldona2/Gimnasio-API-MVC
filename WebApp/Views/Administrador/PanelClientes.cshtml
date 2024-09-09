@@ -12,7 +12,7 @@
 
 </head>
 
-
+<!-- Formulario de registro de cliente-->
 <dialog class="popup" id="registrarClienteForm">
     <form asp-action="RegistrarCliente" method="post" class="form">
         <div class="multiple-input-container">
@@ -71,8 +71,7 @@
     </form>
 </dialog>
 
-
-
+<!-- barra de navegacion superior -->
 <header class="header">
     <a asp-controller="Administrador" asp-action="PanelInicio" class="logo">
         <img src="/images/logo.png" alt="Logo">
@@ -104,7 +103,10 @@
         </ul>
     </nav>
 </header>
+
 <main class="main">
+
+    <!-- menu inferior, aparece en pantallas chicas -->
     <div class="bottom-menu-container">
         <nav class="bottom-menu">
             <ul>
@@ -147,74 +149,97 @@
         </nav>
     </div>
 
+    <!-- menu de la izquierda, aparece en pantallas grandes -->
+    <nav class="sidebar">
+        <ul>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelInicio">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelClientes">
+                    <button class="sidebar-btn active">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Clientes</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelMembresias">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Membresías</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-cash-register"></i>
+                        <span>Pagos</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-unlock-keyhole"></i>
+                        <span>Administradores</span>
+                    </button>
+                </a>
+            </li>
 
-    <div class="sidebar-container">
-        <nav class="sidebar">
-            <ul>
-                <li>
-                    <a asp-controller="Administrador" asp-action="PanelInicio">
-                        <button class="sidebar-btn">
-                            <i class="fa-solid fa-house"></i>
-                            <span>Inicio</span>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Administrador" asp-action="PanelClientes">
-                        <button class="sidebar-btn active">
-                            <i class="fa-solid fa-dumbbell"></i>
-                            <span>Clientes</span>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Administrador" asp-action="PanelMembresias">
-                        <button class="sidebar-btn">
-                            <i class="fa-solid fa-star"></i>
-                            <span>Membresías</span>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <button class="sidebar-btn">
-                            <i class="fa-solid fa-cash-register"></i>
-                            <span>Pagos</span>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a asp-controller="Administrador" asp-action="PanelAdministradores">
-                        <button class="sidebar-btn">
-                            <i class="fa-solid fa-unlock-keyhole"></i>
-                            <span>Administradores</span>
-                        </button>
-                    </a>
-                </li>
-                <li>
-                    <a>
-                        <button class="sidebar-btn">
-                            <i class="fa-solid fa-user"></i>
-                            <span>Mi perfil</span>
-                        </button>
-                    </a>
-                </li>
-            </ul>
-        </nav>
-    </div>
-
+        </ul>
+        <ul>
+            <li>
+                <a>
+                    <button class="sidebar-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                        <span>Ayuda</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Mi perfil</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
 
     <!-- App -->
     <div class="app">
+        <h1>
+            Listado de clientes
+        </h1>
+
         <div class="action-btns">
-            <button class="admin-action-btn" id="registrarClienteBtn">
-                <i class="fa-solid fa-user-plus"></i>
-                <span>Registrar <br>Cliente</span>
-            </button>
+            <div class="search-box">
+                <form action="#" class="search-form">
+                    <input type="text" placeholder="Buscar registro...">
+                    <select>
+                        <option>DNI</option>
+                        <option>Nombre</option>
+                    </select>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div>
+                <button class="admin-action-btn" id="registrarClienteBtn">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>Nuevo registro</span>
+                </button>
+            </div>
         </div>
 
         <!-- Lista de administradores -->
-
         <div class="table-container">
             <table class="table">
                 <thead>
@@ -257,13 +282,13 @@
                                 @Html.DisplayFor(modelItem => item.Sexo)
                             </td>
                             <td data-label="Id de membresía">
-                                @(item.IdMembresia == null ? "No definido" : item.IdMembresia.ToString())
+                                @(item.IdMembresia == null ? "Sin membresía" : item.IdMembresia.ToString())
                             </td>
                             <td data-label="Vencimiento de membresía">
-                                @(item.FechaVencimientoMembresia == null ? "No definido" : item.FechaVencimientoMembresia.ToString())
+                                @(item.FechaVencimientoMembresia == null ? "Sin membresía" : item.FechaVencimientoMembresia.ToString())
                             </td>
                             <td data-label="Acciones" class="table-action-btn">
-                                <button><i class="fa-solid fa-trash"></i></button>
+                                <button><i class="fa-solid fa-ellipsis"></i></button>
                             </td>
                         </tr>
                     }
