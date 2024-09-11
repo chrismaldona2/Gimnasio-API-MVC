@@ -201,32 +201,65 @@ namespace RestAPI.Controllers
             }
         }
 
-        //lista
-        [HttpGet("Buscar")]
-        public async Task<IActionResult> buscarAdministrador(string Usuario)
+        //buscar por usuario
+        [HttpGet("BuscarUsuario")]
+        public async Task<IActionResult> buscarAdministradorUsuario(string Usuario)
         {
             try
             {
                 var admin = await _administradorService.BuscarAdminPorUsuarioAsync(Usuario);
-                
-                if (admin != null)
+                var adminModel = new AdministradorModel
                 {
-                    //oculto contraseña para mayor seguridad
-                    var adminModel = new AdministradorModel
-                    {
-                        Id = admin.Id,
-                        Usuario = admin.Usuario,
-                        Dni = admin.Dni,
-                        Nombre = admin.Nombre,
-                        Apellido = admin.Apellido,
-                        Email = admin.Email,
-                        Telefono = admin.Telefono,
-                        FechaNacimiento = admin.FechaNacimiento,
-                        Sexo = (SexoModel)admin.Sexo
-                    };
-                    return Ok(adminModel);
-                }
-                return NotFound("Usuario no encontrado.");
+                    Id = admin.Id,
+                    Usuario = admin.Usuario,
+                    Dni = admin.Dni,
+                    Nombre = admin.Nombre,
+                    Apellido = admin.Apellido,
+                    Email = admin.Email,
+                    Telefono = admin.Telefono,
+                    FechaNacimiento = admin.FechaNacimiento,
+                    Sexo = (SexoModel)admin.Sexo
+                };
+                return Ok(adminModel);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+        //buscar por dni
+        [HttpGet("BuscarDNI")]
+        public async Task<IActionResult> buscarAdministradorDni(string Dni)
+        {
+            try
+            {
+                var admin = await _administradorService.BuscarAdminPorDniAsync(Dni);
+                var adminModel = new AdministradorModel
+                {
+                    Id = admin.Id,
+                    Usuario = admin.Usuario,
+                    Dni = admin.Dni,
+                    Nombre = admin.Nombre,
+                    Apellido = admin.Apellido,
+                    Email = admin.Email,
+                    Telefono = admin.Telefono,
+                    FechaNacimiento = admin.FechaNacimiento,
+                    Sexo = (SexoModel)admin.Sexo
+                };
+                return Ok(adminModel);
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (InvalidOperationException ex)
             {

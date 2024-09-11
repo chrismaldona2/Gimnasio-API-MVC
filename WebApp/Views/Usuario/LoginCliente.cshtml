@@ -24,7 +24,7 @@
                 <div class="info-field">
                     <label>Vencimiento de membresía</label>
                     <span style="color: @(Model.FechaVencimientoMembresia == null ? "var(--red-color)" : "#489f4e");">
-                        @(Model.FechaVencimientoMembresia?.ToString() ?? "Sin membresía")
+                        @(Model.FechaVencimientoMembresia?.ToString("dd/MM/yyyy") ?? "Sin membresía")
                     </span>
                 </div>
             </div>

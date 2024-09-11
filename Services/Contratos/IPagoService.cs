@@ -12,6 +12,7 @@ namespace Services.Contratos
         Task RegistrarPagoAsync(int idCliente, int idMembresia);
         Task EliminarPagoAsync(int idPago);
         Task<IEnumerable<Pago>> ObtenerPagosAsync();
+        Task<IEnumerable<Pago>> ObtenerPagosPorIdClienteAsync(int id);  
         Task<IEnumerable<Pago>> ObtenerPagosPorDniClienteAsync(string dni);
     }
 }

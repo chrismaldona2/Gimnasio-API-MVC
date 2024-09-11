@@ -40,22 +40,28 @@ namespace WebApp.Services
             }
         }
 
-        public async Task<AdministradoresViewModel> BuscarAdminAsync(string usuario)
+        public async Task<AdministradoresViewModel> BuscarAdminPorUsuarioAsync(string usuario)
         {
-            var response = await _httpClient.GetAsync($"api/AdministradorService/Buscar?Usuario={usuario}");
+            var response = await _httpClient.GetAsync($"api/AdministradorService/BuscarUsuario?Usuario={usuario}");
 
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();
                 return JsonConvert.DeserializeObject<AdministradoresViewModel>(jsonResponse);
             }
-            else
+            return null;
+        }
+
+        public async Task<AdministradoresViewModel> BuscarAdminPorDniAsync(string dni)
+        {
+            var response = await _httpClient.GetAsync($"api/AdministradorService/BuscarDNI?Dni={dni}");
+
+            if (response.IsSuccessStatusCode)
             {
-                return new AdministradoresViewModel
-                {
-                    Nombre = "Administrador"
-                };
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AdministradoresViewModel>(jsonResponse);
             }
+            return null;
         }
 
         public async Task<List<AdministradoresViewModel>> ListaAdministradores()

@@ -22,8 +22,24 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
-    "Method": "buscarAdministrador",
-    "RelativePath": "api/AdministradorService/Buscar",
+    "Method": "buscarAdministradorDni",
+    "RelativePath": "api/AdministradorService/BuscarDNI",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Dni",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "buscarAdministradorUsuario",
+    "RelativePath": "api/AdministradorService/BuscarUsuario",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -100,6 +116,64 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
+    "Method": "listaAsistenciasPorDniCliente",
+    "RelativePath": "api/AsistenciaService/AsistenciasClientePorDni",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DniCliente",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
+    "Method": "listaAsistenciasPorIdCliente",
+    "RelativePath": "api/AsistenciaService/AsistenciasClientePorId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdCliente",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
+    "Method": "eliminarAsistencia",
+    "RelativePath": "api/AsistenciaService/Eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
+    "Method": "listaAsistencias",
+    "RelativePath": "api/AsistenciaService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "buscarPorDni",
     "RelativePath": "api/ClienteService/BuscarPorDni",
@@ -108,7 +182,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "dni",
+        "Name": "Dni",
         "Type": "System.String",
         "IsRequired": false
       }
@@ -124,7 +198,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Id",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -133,8 +207,34 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "listaAdministradores",
+    "Method": "listaClientes",
     "RelativePath": "api/ClienteService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaClientesMembresia",
+    "RelativePath": "api/ClienteService/ListaConMembresiaEspecifica",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "idMembresia",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaClientesMembresiaVencida",
+    "RelativePath": "api/ClienteService/ListaConMembresiaVencida",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -150,12 +250,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Id",
         "Type": "System.Int32",
         "IsRequired": false
       },
       {
-        "Name": "clienteDto",
+        "Name": "ClienteDto",
         "Type": "RestAPI.Models.DTOs.ClienteDTO",
         "IsRequired": true
       }
@@ -179,6 +279,38 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "registrarAsistencia",
+    "RelativePath": "api/ClienteService/RegistrarAsistencia",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dni",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "eliminarMembresia",
+    "RelativePath": "api/MembresiaService/Eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
     "Method": "listaMembresias",
     "RelativePath": "api/MembresiaService/Lista",
@@ -186,6 +318,27 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "modificarCliente",
+    "RelativePath": "api/MembresiaService/Modificar",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "MembresiaDTO",
+        "Type": "RestAPI.Models.DTOs.MembresiaDTO",
+        "IsRequired": true
+      }
+    ],
     "ReturnTypes": []
   },
   {
@@ -200,6 +353,85 @@
         "Name": "membresiaDto",
         "Type": "RestAPI.Models.DTOs.MembresiaDTO",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "eliminarPago",
+    "RelativePath": "api/PagoService/Eliminar",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "listaPagos",
+    "RelativePath": "api/PagoService/Lista",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "listaPagosPorDniCliente",
+    "RelativePath": "api/PagoService/PagosClientePorDni",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "DniCliente",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "listaPagosPorIdCliente",
+    "RelativePath": "api/PagoService/PagosClientePorId",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdCliente",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "registrarPago",
+    "RelativePath": "api/PagoService/Registrar",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "IdCliente",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "IdMembresia",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []

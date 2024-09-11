@@ -9,9 +9,9 @@ namespace Services.Contratos
 {
     public interface IAsistenciaService
     {
-        Task RegistrarAsistenciaManualAsync(int idCliente, DateTime fechaAsistencia);
-        Task EliminarAsistenciaAsync(int id);
         Task<IEnumerable<Asistencia>> ObtenerAsistenciasAsync();
+        Task<IEnumerable<Asistencia>> ObtenerAsistenciasIdClienteAsync(int id);
         Task<IEnumerable<Asistencia>> ObtenerAsistenciasDniClienteAsync(string dni);
+        Task EliminarAsistenciaAsync(int id);
     }
 }

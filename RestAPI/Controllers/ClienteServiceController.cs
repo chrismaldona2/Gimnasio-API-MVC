@@ -56,15 +56,15 @@ namespace RestAPI.Controllers
 
         //baja
         [HttpDelete("Eliminar")]
-        public async Task<IActionResult> eliminarCliente(int id)
+        public async Task<IActionResult> eliminarCliente(int Id)
         {
-            if (id <= 0)
+            if (Id <= 0)
             {
                 return BadRequest("El Id del cliente es inválido.");
             }
             try
             {
-                await _clienteService.EliminarClienteAsync(id);
+                await _clienteService.EliminarClienteAsync(Id);
                 return Ok("Cliente eliminado exitosamente.");
             }
             catch (KeyNotFoundException ex)
@@ -79,28 +79,28 @@ namespace RestAPI.Controllers
 
         //modificacion
         [HttpPut("Modificar")]
-        public async Task<IActionResult> modificarCliente(int id, [FromBody] ClienteDTO clienteDto)
+        public async Task<IActionResult> modificarCliente(int Id, [FromBody] ClienteDTO ClienteDto)
         {
-            if (clienteDto == null)
+            if (ClienteDto == null)
             {
                 return BadRequest("Los datos del administrador son requeridos.");
             }
 
-            if (id <= 0)
+            if (Id <= 0)
             {
                 return BadRequest("El Id del administrador es inválido.");
             }
 
             var clienteModificado = new Cliente()
             {
-                Id = id,
-                Dni = clienteDto.Dni,
-                Nombre = clienteDto.Nombre,
-                Apellido = clienteDto.Apellido,
-                Email = clienteDto.Email,
-                Telefono = clienteDto.Telefono,
-                FechaNacimiento = new DateOnly(clienteDto.FechaNacimiento.Año, clienteDto.FechaNacimiento.Mes, clienteDto.FechaNacimiento.Dia),
-                Sexo = (Sexo)clienteDto.Sexo
+                Id = Id,
+                Dni = ClienteDto.Dni,
+                Nombre = ClienteDto.Nombre,
+                Apellido = ClienteDto.Apellido,
+                Email = ClienteDto.Email,
+                Telefono = ClienteDto.Telefono,
+                FechaNacimiento = new DateOnly(ClienteDto.FechaNacimiento.Año, ClienteDto.FechaNacimiento.Mes, ClienteDto.FechaNacimiento.Dia),
+                Sexo = (Sexo)ClienteDto.Sexo
             };
 
             try
@@ -128,11 +128,63 @@ namespace RestAPI.Controllers
 
         //lista
         [HttpGet("Lista")]
-        public async Task<IActionResult> listaAdministradores()
+        public async Task<IActionResult> listaClientes()
         {
             try
             {
                 var clientes = await _clienteService.ObtenerClientesAsync();
+                if (!clientes.Any())
+                {
+                    return NotFound("No hay ningun cliente registrado.");
+                }
+                return Ok(clientes);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+        //lista2
+        [HttpGet("ListaConMembresiaEspecifica")]
+        public async Task<IActionResult> listaClientesMembresia(int idMembresia)
+        {
+            try
+            {
+                var clientes = await _clienteService.ObtenerClientesConTipoMembresiaAsync(idMembresia);
+                if (!clientes.Any())
+                {
+                    return NotFound("No hay clientes el tipo de membresía especificado.");
+                }
+
+                return Ok(clientes);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+        //lista
+        [HttpGet("ListaConMembresiaVencida")]
+        public async Task<IActionResult> listaClientesMembresiaVencida()
+        {
+            try
+            {
+                var clientes = await _clienteService.ObtenerClientesConMembresiaVencidaAsync();
+                if (!clientes.Any())
+                {
+                    return NotFound("No hay clientes con su membresía vencida.");
+                }
+
                 return Ok(clientes);
             }
             catch (InvalidOperationException ex)
@@ -147,22 +199,21 @@ namespace RestAPI.Controllers
 
         //buscar
         [HttpGet("BuscarPorDni")]
-        public async Task<IActionResult> buscarPorDni(string dni)
+        public async Task<IActionResult> buscarPorDni(string Dni)
         {
-            if (dni.IsNullOrEmpty())
+            if (Dni.IsNullOrEmpty())
             {
                 return BadRequest("El DNI del cliente es requerido.");
             }
             try
             {
-                var cliente = await _clienteService.BuscarClientePorDniAsync(dni);
-                if (cliente != null)
-                {
-                    return Ok(cliente);
-                }
+                var cliente = await _clienteService.BuscarClientePorDniAsync(Dni);
+                return Ok(cliente);
 
-                return NotFound("Cliente no encontrado, revise los datos.");
-                
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
             }
             catch (InvalidOperationException ex)
             {
@@ -173,6 +224,35 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
+
+
+        //asistencias
+        [HttpGet("RegistrarAsistencia")]
+        public async Task<IActionResult> registrarAsistencia(string dni)
+        {
+            if (dni.IsNullOrEmpty())
+            {
+                return BadRequest("El DNI del cliente es requerido.");
+            }
+            try
+            {
+                await _clienteService.RegistrarAsistenciaAsync(dni);
+                return Ok("Asistencia registrada exitosamente.");
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
 
     }
 }

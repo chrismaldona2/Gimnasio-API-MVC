@@ -18,6 +18,7 @@ namespace WebApp.Controllers
             _clienteService = clienteService;
         }
 
+
         public IActionResult LoginCliente()
         {
             HttpContext.Session.Clear();
@@ -25,11 +26,13 @@ namespace WebApp.Controllers
             return View(model);
         }
 
+
         public IActionResult LoginAdmin()
         {
             HttpContext.Session.Clear();
             return View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> AutenticarAdmin(AdministradorLoginDTO model)
@@ -44,7 +47,7 @@ namespace WebApp.Controllers
             {
                 TempData["SuccessMessage"] = $"{respuesta.Mensaje}";
 
-                var adminLoguado = await _administradorApiService.BuscarAdminAsync(model.Usuario);
+                var adminLoguado = await _administradorApiService.BuscarAdminPorUsuarioAsync(model.Usuario);
 
                 HttpContext.Session.SetString("AdminLogueado", JsonConvert.SerializeObject(adminLoguado));
 

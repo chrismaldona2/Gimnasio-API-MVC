@@ -32,13 +32,13 @@ namespace Services
             var cliente = await _clienteRepository.EncontrarPorIDAsync(idCliente);
             if (cliente == null)
             {
-                throw new Exception("La cliente especificado no fue encontrado.");
+                throw new KeyNotFoundException("La cliente especificado no fue encontrado.");
             }
 
             var membresia = await _membresiaRepository.EncontrarPorIDAsync(idMembresia);
             if (membresia == null)
             {
-                throw new Exception("La membresía especificada no fue encontrada.");
+                throw new KeyNotFoundException("La membresía especificada no fue encontrada.");
             }
 
             var pago = new Pago(idCliente, idMembresia, membresia.Precio);
@@ -84,8 +84,20 @@ namespace Services
                 {
                     throw new KeyNotFoundException("El pago con el Id especificado no existe.");
                 }
+
+                var cliente = await _clienteRepository.EncontrarPorIDAsync(pagoExistente.IdCliente);
+                var membresia = await _membresiaRepository.EncontrarPorIDAsync(pagoExistente.IdMembresia);
+
                 await _pagoRepository.EliminarAsync(idPagoEliminar);
                 await _pagoRepository.GuardarCambiosAsync();
+
+
+                if (cliente != null && membresia != null && cliente.FechaVencimientoMembresia.HasValue)
+                {
+                    cliente.FechaVencimientoMembresia = cliente.FechaVencimientoMembresia.Value.AddDays(-(membresia.DuracionDias));
+                    await _clienteRepository.ModificarAsync(cliente);
+                    await _clienteRepository.GuardarCambiosAsync();
+                }
             }
             catch (DbUpdateException)
             {
@@ -114,19 +126,44 @@ namespace Services
             }
         }
 
+
+        public async Task<IEnumerable<Pago>> ObtenerPagosPorIdClienteAsync(int idCliente)
+        {
+
+            try
+            {
+                var cliente = await _clienteRepository.EncontrarPorIDAsync(idCliente);
+
+                if (cliente == null)
+                {
+                    throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
+                }
+
+                return await _pagoRepository.ObtenerPagoPorClienteAsync(idCliente);
+            }
+            catch (DbUpdateException)
+            {
+                throw new InvalidOperationException("Se produjo un error al intentar retornar la lista de asistencias del cliente.");
+            }
+            catch (Exception ex)
+            {
+                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
+            }
+        }
+
         public async Task<IEnumerable<Pago>> ObtenerPagosPorDniClienteAsync(string dniCliente)
         {
 
             try
             {
-                var clienteQuery = await _clienteRepository.EncontrarPorCondicionAsync(a => a.Dni == dniCliente);
-                var clienteExistente = await clienteQuery.FirstOrDefaultAsync();
-                if (clienteExistente == null)
+                var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dniCliente);
+                if (cliente == null)
                 {
                     throw new KeyNotFoundException("El cliente con el DNI especificado no existe.");
                 }
 
-                return await _pagoRepository.ObtenerPagoPorClienteAsync(clienteExistente.Id);
+                return await _pagoRepository.ObtenerPagoPorClienteAsync(cliente.Id);
+
             }
             catch (DbUpdateException)
             {

@@ -188,7 +188,7 @@ namespace Services
                 var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
                 if (cliente == null)
                 {
-                    return null;
+                    throw new KeyNotFoundException("La cliente especificado no fue encontrado.");
                 }
                 return cliente;
             }
@@ -202,10 +202,12 @@ namespace Services
         public async Task RegistrarAsistenciaAsync(string dni)
         {
             var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
+
             if (cliente == null)
             {
-                throw new Exception("La cliente especificado no fue encontrado.");
+                throw new KeyNotFoundException("La cliente especificado no fue encontrado.");
             }
+
             var asistencia = new Asistencia(cliente.Id, DateTime.Now);
 
             try

@@ -56,7 +56,7 @@ namespace WebApp.Services
 
         public async Task<APIResponse> BuscarClientePorDni(string dni)
         { 
-            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarPorDni?dni={dni}");
+            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarPorDni?Dni={dni}");
 
             var responseMessage = await response.Content.ReadAsStringAsync();
 
