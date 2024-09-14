@@ -25,12 +25,12 @@ namespace Services
         {
             if (precio < 0)
             {
-                throw new ArgumentException("El precio debe ser un número mayor o igual a cero");
+                throw new ArgumentException("El precio debe ser un número mayor o igual a cero.");
             }
 
             if (duraciondias <= 0)
             {
-                throw new ArgumentException("La duración en meses debe ser mayor a 0.");
+                throw new ArgumentException("La duración debe ser mayor a 0 días.");
             }
 
             var membresia = new Membresia(tipo, duraciondias, precio);
@@ -83,12 +83,12 @@ namespace Services
 
             if (membresiaModificar.Precio < 0)
             {
-                throw new ArgumentException("El precio debe ser un número mayor o igual a cero");
+                throw new ArgumentException("El precio debe ser un número mayor o igual a cero.");
             }
 
             if (membresiaModificar.DuracionDias <= 0)
             {
-                throw new ArgumentException("La duración en meses debe ser mayor a 0.");
+                throw new ArgumentException("La duración debe ser mayor a 0 días.");
             }
 
             try

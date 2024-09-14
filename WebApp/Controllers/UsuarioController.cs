@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using WebApp.Models.DTOs;
-using WebApp.Models.ViewModels;
+using WebApp.Models.Administrador;
+using WebApp.Models.Cliente;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Controllers
@@ -22,7 +22,7 @@ namespace WebApp.Controllers
         public IActionResult LoginCliente()
         {
             HttpContext.Session.Clear();
-            ClientesViewModel? model = null;
+            ClienteModel? model = null;
             return View(model);
         }
 
@@ -35,7 +35,7 @@ namespace WebApp.Controllers
 
 
         [HttpPost]
-        public async Task<IActionResult> AutenticarAdmin(AdministradorLoginDTO model)
+        public async Task<IActionResult> AutenticarAdmin(LoginAdminDTO model)
         {
             if (!ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace WebApp.Controllers
 
             if (respuesta.Exitoso)
             {
-                var model = JsonConvert.DeserializeObject<ClientesViewModel>(respuesta.Mensaje);
+                var model = JsonConvert.DeserializeObject<ClienteModel>(respuesta.Mensaje);
                 return View("LoginCliente", model);
             }
             else

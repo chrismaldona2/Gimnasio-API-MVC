@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
+      "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj",
       "projectName": "Core",
-      "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
+      "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj",
       "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\obj\\",
+      "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",

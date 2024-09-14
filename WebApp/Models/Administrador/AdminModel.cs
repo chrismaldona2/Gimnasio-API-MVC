@@ -1,16 +1,10 @@
-﻿namespace WebApp.Models.ViewModels
+﻿namespace WebApp.Models.Administrador
 {
-    public enum SexoEnum
-    {
-        Masculino = 0,
-        Femenino = 1,
-        Otro = 2
-    }
-
-    public class AdministradoresViewModel
+    public class AdminModel : RegistroAdminDTO
     {
         public int Id { get; set; }
         public string Usuario { get; set; }
+        public string? Contraseña { get; set; }
         public string Dni { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }

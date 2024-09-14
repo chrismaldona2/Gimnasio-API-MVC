@@ -12,8 +12,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <script src="~/js/alerts.js" defer></script>
-    <script src="~/js/site.js" defer></script>
+    <script src="~/js/general/alerts.js" defer></script>
+    <script src="~/js/general/site.js" defer></script>
 </head>
 <body class="body transition-off">
     @if (TempData["ErrorMessage"] != null)
@@ -35,4 +35,28 @@
     @RenderBody()
 
 </body>
+
+
+<script>
+    function mostrarError(errorMsg) {
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'alert warning';
+        errorDiv.innerHTML = `
+                        <i class="fa-solid fa-circle-xmark"></i>
+                        <span>${errorMsg}</span>
+                    `;
+
+        document.body.appendChild(errorDiv);
+
+        const fadeOutTime = 4000;
+
+        setTimeout(function () {
+            const alerts = document.querySelectorAll('.alert');
+            alerts.forEach(alert => {
+                alert.classList.add('fade-out');
+            });
+
+        }, fadeOutTime);
+    }
+</script>
 </html>

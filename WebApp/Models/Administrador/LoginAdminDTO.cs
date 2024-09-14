@@ -1,6 +1,7 @@
-﻿namespace WebApp.Models.DTOs
+﻿namespace WebApp.Models.Administrador
 {
-    public class AdministradorLoginDTO
+
+    public class LoginAdminDTO
     {
         public string Usuario { get; set; }
         public string Contraseña { get; set; }

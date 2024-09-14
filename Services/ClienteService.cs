@@ -31,7 +31,7 @@ namespace Services
 
             if (fechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
             {
-                throw new ArgumentException("Fecha de nacimiento inválida.");
+                throw new FechaNacimientoException();
             }
 
             if (await _clienteRepository.ObtenerClienteConDniAsync(dni) != null)
@@ -82,22 +82,14 @@ namespace Services
                 throw new ArgumentNullException("El cliente a modificar no puede ser nulo.");
             }
 
-            if (clienteModificar.IdMembresia.HasValue)
+            if (clienteModificar.FechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
             {
-                var membresia = await _membresiaRepository.EncontrarPorIDAsync(clienteModificar.IdMembresia.Value);
-                if (membresia == null)
-                {
-                    throw new Exception("La membresía especificada no fue encontrada.");
-                }
-            }
-            else
-            {
-                throw new ArgumentException("Número de membresía inválido.");
+                throw new FechaNacimientoException();
             }
 
             var dniUsado = await _clienteRepository.ObtenerClienteConDniAsync(clienteModificar.Dni);
 
-            if (dniUsado != null && dniUsado.Dni != clienteModificar.Dni)
+            if (dniUsado != null && dniUsado.Id != clienteModificar.Id)
             {
                 throw new DniRegistradoException();
             };
@@ -117,8 +109,6 @@ namespace Services
                 clienteExistente.Telefono = clienteModificar.Telefono;
                 clienteExistente.FechaNacimiento = clienteModificar.FechaNacimiento;
                 clienteExistente.Sexo = clienteModificar.Sexo;
-                clienteExistente.IdMembresia = clienteModificar.IdMembresia;
-                clienteExistente.FechaVencimientoMembresia = clienteModificar.FechaVencimientoMembresia;
 
                 await _clienteRepository.ModificarAsync(clienteExistente);
                 await _clienteRepository.GuardarCambiosAsync();

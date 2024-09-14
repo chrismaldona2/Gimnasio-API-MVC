@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj": {}
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\Data.csproj": {}
   },
   "projects": {
-    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj": {
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj",
         "projectName": "Core",
-        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\obj\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -65,14 +65,14 @@
         }
       }
     },
-    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj": {
+    "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\Data.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "projectUniqueName": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\Data.csproj",
         "projectName": "Data",
-        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj",
+        "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\Data.csproj",
         "packagesPath": "C:\\Users\\chris\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\obj\\",
+        "outputPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\chris\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -90,8 +90,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj"
+              "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj": {
+                "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Core\\Core.csproj"
               }
             }
           }

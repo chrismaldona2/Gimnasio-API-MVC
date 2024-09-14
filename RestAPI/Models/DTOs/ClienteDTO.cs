@@ -7,7 +7,7 @@
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
-        public FechaNacimiento FechaNacimiento { get; set; }
+        public FechaNacimiento FechaNacimientoDTO { get; set; }
         public int Sexo { get; set; }
     }
 }

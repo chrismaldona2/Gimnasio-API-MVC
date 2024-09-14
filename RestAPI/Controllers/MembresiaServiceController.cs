@@ -89,7 +89,7 @@ namespace RestAPI.Controllers
 
         //modificacion
         [HttpPut("Modificar")]
-        public async Task<IActionResult> modificarCliente(int Id, [FromBody] MembresiaDTO MembresiaDTO)
+        public async Task<IActionResult> modificarMembresia(int Id, [FromBody] MembresiaDTO MembresiaDTO)
         {
             if (MembresiaDTO == null)
             {

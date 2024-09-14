@@ -46,6 +46,11 @@ namespace Services
                 throw new DniRegistradoException();
             }
 
+            if (fechanacimiento > DateOnly.FromDateTime(DateTime.Now))
+            {
+                throw new FechaNacimientoException();
+            }
+
             var admin = new Administrador(usuario, BCrypt.Net.BCrypt.HashPassword(contraseña), dni, nombre, apellido, email, telefono, fechanacimiento, sexo);
 
             try
@@ -97,18 +102,24 @@ namespace Services
                 throw new ArgumentException("La contraseña no puede contener espacios.");
             }
 
-            var usuarioExistente = await _adminRepository.ObtenerAdminConUsuarioAsync(adminModificar.Usuario);
+            if (adminModificar.FechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
+            {
+                throw new FechaNacimientoException();
+            }
 
-            if (usuarioExistente != null && usuarioExistente.Usuario != adminModificar.Usuario)
+
+            var usuarioUsado = await _adminRepository.ObtenerAdminConUsuarioAsync(adminModificar.Usuario);
+            if (usuarioUsado != null && usuarioUsado.Id != adminModificar.Id)
             {
                 throw new UsuarioRegistradoException();
             }
 
             var dniUsado = await _adminRepository.ObtenerAdminConDniAsync(adminModificar.Dni);
-            if (dniUsado != null && dniUsado.Dni != adminModificar.Dni)
+            if (dniUsado != null && dniUsado.Id != adminModificar.Id)
             {
                 throw new DniRegistradoException();
             }
+
 
             try
             {

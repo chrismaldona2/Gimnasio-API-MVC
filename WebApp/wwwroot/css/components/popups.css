@@ -60,3 +60,10 @@
 .popup::backdrop {
     background-color: rgba(0, 0, 0, 0.45);
 }
+
+.popup h2 {
+    font-size: 2rem;
+    color: var(--red-color);
+    text-align: center;
+    margin-bottom: 1rem;
+}

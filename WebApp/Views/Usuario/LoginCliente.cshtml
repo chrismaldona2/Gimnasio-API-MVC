@@ -1,4 +1,5 @@
-﻿@model WebApp.Models.ViewModels.ClientesViewModel
+﻿@using WebApp.Models.Cliente
+@model ClienteModel
 
 @{
     ViewData["Title"] = "Inicio";
@@ -7,7 +8,7 @@
 <head>
     <link rel="stylesheet" href="~/css/pages/home.css">
     <link rel="stylesheet" href="~/css/components/user-info-card.css">
-    <script src="~/js/showCustomerInfo.js" defer></script> <!-- Ver explicacion del script dentro del archivo .js-->
+    <script src="~/js/services/showCustomerInfo.js" defer></script> <!-- Ver explicacion del script dentro del archivo .js-->
 </head>
 
 
@@ -19,7 +20,7 @@
         <div class="user-card-container">
             <div class="left">
                 <div class="user-pic">
-                    <img src="/images/user-pic.png" alt="User Picture">
+                    <img src="/images/user-pic-2.png" alt="User Picture">
                 </div>
                 <div class="info-field">
                     <label>Vencimiento de membresía</label>
@@ -136,9 +137,9 @@
         </div>
         <div class="subscription-container">
             <h2>Contactános</h2>
-            <form onsubmit="alert('Función aún no implementada')" class="subscription-form">
+            <form class="subscription-form">
                 <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." required>
-                <button type="submit" class="subscription-submit-btn">Enviar</button>
+                <button type="button" class="subscription-submit-btn" onclick="mostrarError('Funcion aún no implementada.')">Enviar</button>
             </form>
         </div>
     </div>

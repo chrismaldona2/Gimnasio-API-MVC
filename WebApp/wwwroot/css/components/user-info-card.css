@@ -35,7 +35,9 @@
 }
 
 .user-pic {
-    background-color: #ffc9cd;
+    /*    background-color: #ffc9cd;*/
+
+    background-color: #D4D4D4;
     border-radius: 16px;
     aspect-ratio: 3/4;
     max-height: 75%;

@@ -1,4 +1,6 @@
 .alert {
+    user-select: none;
+    pointer-events: none;
     z-index: 1000;
     position: fixed;
     top: 3.5%;

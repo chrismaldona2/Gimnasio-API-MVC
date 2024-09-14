@@ -82,6 +82,7 @@
     font-size: calc(var(--fs-large) - 2px);
     color: var(--white-color);
     font-weight: 700;
+    margin-bottom: 4px;
 }
 .welcome-card h2 {
     font-size: calc(var(--fs-medium) + 4px);

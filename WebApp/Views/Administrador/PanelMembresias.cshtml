@@ -1,41 +1,114 @@
-﻿@model WebApp.Models.ViewModels.PanelMembresiasViewModel
-
-
-@{
+﻿@{
     ViewData["Title"] = "Panel de Membresías";
 }
 
+@using WebApp.Models.Membresias
+@model PanelMembresiasModel
+
 <head>
-    <script src="~/js/dateSelector.js" defer></script>
-    <script src="~/js/formPopups.js" defer></script>
+    <script src="~/js/services/membresiaService.js" defer></script>
+
+    <script src="~/js/general/tables.js" defer></script>
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 
 </head>
 
-<!-- Formulario de registro de membresia-->
+<!-- Formulario de registro de membresia -->
 <dialog class="popup" id="registrarMembresiaForm">
+    <h2>Nueva membresía</h2>
     <form asp-action="RegistrarMembresia" method="post" class="form">
-
         <div class="input-container">
             <label>Descripción</label>
-            <input type="text" class="regular-form-input" asp-for="MembresiaRegistroDto.Tipo" required>
+            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" required>
         </div>
         <div class="input-container">
             <label>Duración (Días)</label>
-            <input type="number" class="regular-form-input" asp-for="MembresiaRegistroDto.DuracionDias" required>
+            <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" required>
         </div>
 
         <div class="input-container">
             <label>Precio (ARS)</label>
-            <input type="text" class="regular-form-input" asp-for="MembresiaRegistroDto.Precio" required>
+            <input type="text" class="regular-form-input" name="Precio" asp-for="Precio" required>
         </div>
-
         <div class="multiple-input-container">
             <button type="submit" class="regular-form-submit-btn">Registrar</button>
             <button class="cancel-btn regular-form-cancel-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
+
+
+
+<!-- formulario de modificacion de membresia -->
+<dialog class="popup" id="modificarMembresiaForm">
+    <h2>Modificar membresía</h2>
+    <form asp-action="ModificarMembresia" method="post" class="form">
+
+        <div class="input-container">
+            <label>Identificador</label>
+            <input type="text" class="regular-form-input" name="Id" asp-for="Id" readonly>
+        </div>
+
+        <div class="input-container">
+            <label>Descripción</label>
+            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" required>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Duración (Días)</label>
+                <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" required>
+            </div>
+
+            <div class="input-container">
+                <label>Precio (ARS)</label>
+                <input type="text" class="regular-form-input" name="Precio" asp-for="Precio" required>
+            </div>
+
+        </div>
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn">Modificar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+
+
+<!-- formulario de eliminar membresia -->
+<dialog class="popup" id="eliminarMembresiaForm">
+    <h2>Eliminar membresía</h2>
+    <form asp-action="EliminarMembresia" method="post" class="form">
+        <div class="input-container">
+            <label>Identificador</label>
+            <input type="text" class="regular-form-input" name="Id" asp-for="Id" readonly>
+        </div>
+
+        <div class="input-container">
+            <label>Descripción</label>
+            <input type="text" class="regular-form-input" name="Tipo" readonly>
+        </div>
+
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Duración (Días)</label>
+                <input type="number" class="regular-form-input" name="DuracionDias" readonly>
+            </div>
+
+            <div class="input-container">
+                <label>Precio (ARS)</label>
+                <input type="text" class="regular-form-input" name="Precio" readonly>
+            </div>
+        </div>
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn">Eliminar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
 
 
 <!-- barra de navegacion superior -->
@@ -46,7 +119,7 @@
 
     <nav class="nav">
         <ul>
-            <li class="profile-btn-container">
+            <li class="profile-btn-container" onclick="mostrarError('Funcion aún no implementada.')">
                 <a>
                     <button class="profile-btn">
                         <i class="fa-solid fa-user"></i>
@@ -101,7 +174,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelPagos">
                         <button class="bottom-menu-btn">
                             <i class="fa-solid fa-cash-register"></i>
                         </button>
@@ -148,7 +221,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a asp-controller="Administrador" asp-action="PanelPagos">
                     <button class="sidebar-btn">
                         <i class="fa-solid fa-cash-register"></i>
                         <span>Pagos</span>
@@ -168,7 +241,7 @@
         <ul>
             <li>
                 <a>
-                    <button class="sidebar-btn">
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
                         <i class="fa-regular fa-circle-question"></i>
                         <span>Ayuda</span>
                     </button>
@@ -176,7 +249,7 @@
             </li>
             <li>
                 <a>
-                    <button class="sidebar-btn">
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
                         <i class="fa-solid fa-user"></i>
                         <span>Mi perfil</span>
                     </button>
@@ -240,8 +313,14 @@
                             <td data-label="Precio">
                                 @($"{item.Precio:N2} ARS")
                             </td>
-                            <td data-label="Acciones" class="table-action-btn">
-                                <button><i class="fa-solid fa-ellipsis"></i></button>
+                            <td data-label="Acciones" class="table-action-btn-container">
+                                <button class="table-action-btn">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <div class="action-dropdown-menu">
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarMembresiaForm('@item.Id', '@item.Tipo', '@item.DuracionDias', '@item.Precio')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarModicarMembresiaForm('@item.Id', '@item.Tipo', '@item.DuracionDias', '@item.Precio')">Editar</a>
+                                    </div>
+                                </button>
                             </td>
                         </tr>
                     }

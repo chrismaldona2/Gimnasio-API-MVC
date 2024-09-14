@@ -1,5 +1,5 @@
-﻿@using WebApp.Models.DTOs
-@model AdministradorLoginDTO
+﻿@using WebApp.Models.Administrador
+@model LoginAdminDTO
 
 @{
     ViewData["Title"] = "Iniciar Sesión";
@@ -7,7 +7,7 @@
 
 <head>
     <link rel="stylesheet" href="~/css/pages/admin-login.css">
-    <script src="~/js/adminLogin.js" defer></script>
+    <script src="~/js/services/adminLogin.js" defer></script>
 </head>
 
 <header class="header">
@@ -66,9 +66,9 @@
         </div>
         <div class="subscription-container">
             <h2>Contactános</h2>
-            <form onsubmit="alert('Función aún no implementada')" class="subscription-form">
+            <form class="subscription-form">
                 <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." required>
-                <button type="submit" class="subscription-submit-btn">Enviar</button>
+                <button type="button" class="subscription-submit-btn" onclick="mostrarError('Funcion aún no implementada.')">Enviar</button>
             </form>
         </div>
     </div>

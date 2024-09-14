@@ -1,0 +1,235 @@
+﻿@{
+    ViewData["Title"] = "Panel de Pagos";
+}
+
+@using WebApp.Models.Pago
+@model PanelPagosModel
+
+<head>
+    <script src="~/js/general/tables.js" defer></script>
+    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
+
+</head>
+
+<!-- barra de navegacion superior -->
+<header class="header">
+    <a asp-controller="Administrador" asp-action="PanelInicio" class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </a>
+
+    <nav class="nav">
+        <ul>
+            <li class="profile-btn-container" onclick="mostrarError('Funcion aún no implementada.')">
+                <a>
+                    <button class="profile-btn">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                </a>
+            </li>
+            <li class="admin-logout-btn-2-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn-2">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </a>
+            </li>
+            <li class="admin-logout-btn-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn">
+                        <span>Cerrar sesión</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+    <!-- menu inferior, aparece en pantallas chicas -->
+    <div class="bottom-menu-container">
+        <nav class="bottom-menu">
+            <ul>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelInicio">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-house"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelMembresias">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelPagos">
+                        <button class="bottom-menu-btn active">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+
+    <!-- menu de la izquierda, aparece en pantallas grandes -->
+    <nav class="sidebar">
+        <ul>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelInicio">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelClientes">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Clientes</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelMembresias">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Membresías</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelPagos">
+                    <button class="sidebar-btn active">
+                        <i class="fa-solid fa-cash-register"></i>
+                        <span>Pagos</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-unlock-keyhole"></i>
+                        <span>Administradores</span>
+                    </button>
+                </a>
+            </li>
+
+        </ul>
+        <ul>
+            <li>
+                <a>
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                        <i class="fa-regular fa-circle-question"></i>
+                        <span>Ayuda</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a>
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Mi perfil</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+
+    <!-- App -->
+    <div class="app">
+        <h1>
+            Listado de pagos
+        </h1>
+
+        <div class="action-btns">
+            <div class="search-box">
+                <form action="#" class="search-form">
+                    <input type="text" placeholder="Buscar registro...">
+                    <select>
+                        <option>ID</option>
+                        <option>Descripción</option>
+                    </select>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+            <div>
+                <button class="admin-action-btn" id="registrarPagoBtn">
+                    <i class="fa-solid fa-circle-plus"></i>
+                    <span>Nuevo registro</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Lista de administradores -->
+
+        <div class="table-container">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Identificador</th>
+                        <th>Id de Cliente</th>
+                        <th>Id de Membresía</th>
+                        <th>Fecha de pago</th>
+                        <th>Monto</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.ListaPagos)
+                    {
+                        <tr>
+                            <td data-label="Identificador">
+                                @Html.DisplayFor(modelItem => item.Id)
+                            </td>
+                            <td data-label="Id de Cliente">
+                                @Html.DisplayFor(modelItem => item.IdCliente)
+                            </td>
+                            <td data-label="Id de Membresía">
+                                @Html.DisplayFor(modelItem => item.IdMembresia)
+                            </td>
+                            <td data-label="Fecha de pago">
+                                @item.FechaPago.ToString("dd/MM/yyyy HH:mm")
+                            </td>
+                            <td data-label="Monto">
+                                @($"{item.Monto:N2} ARS")
+                            </td>
+                            <td data-label="Acciones" class="table-action-btn-container">
+                                <button class="table-action-btn">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <div class="action-dropdown-menu">
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Editar</a>
+                                    </div>
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</main>

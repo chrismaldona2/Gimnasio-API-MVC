@@ -20,9 +20,9 @@ namespace RestAPI.Controllers
         }
         //alta
         [HttpPost("Registrar")]
-        public async Task<IActionResult> registrarAdministrador([FromBody] AdministradorDTO administradorDto)
+        public async Task<IActionResult> registrarAdministrador([FromBody] AdministradorDTO AdministradorDto)
         {
-            if (administradorDto == null)
+            if (AdministradorDto == null)
             {
                 return BadRequest("Los datos del administrador son requeridos.");
             }
@@ -30,15 +30,15 @@ namespace RestAPI.Controllers
             try
             {
                 await _administradorService.RegistrarAdminAsync(
-                    administradorDto.Usuario,
-                    administradorDto.Contraseña,
-                    administradorDto.Dni,
-                    administradorDto.Nombre,
-                    administradorDto.Apellido,
-                    administradorDto.Email,
-                    administradorDto.Telefono,
-                    new DateOnly(administradorDto.FechaNacimiento.Año, administradorDto.FechaNacimiento.Mes, administradorDto.FechaNacimiento.Dia),
-                    (Sexo)administradorDto.Sexo);
+                    AdministradorDto.Usuario,
+                    AdministradorDto.Contraseña,
+                    AdministradorDto.Dni,
+                    AdministradorDto.Nombre,
+                    AdministradorDto.Apellido,
+                    AdministradorDto.Email,
+                    AdministradorDto.Telefono,
+                    new DateOnly(AdministradorDto.FechaNacimientoDTO.Año, AdministradorDto.FechaNacimientoDTO.Mes, AdministradorDto.FechaNacimientoDTO.Dia),
+                    (Sexo)AdministradorDto.Sexo);
                 return Ok("Administrador registrado exitosamente.");
             }
             catch (UsuarioRegistradoException ex)
@@ -48,6 +48,10 @@ namespace RestAPI.Controllers
             catch (DniRegistradoException ex)
             {
                 return Conflict(ex.Message);
+            }
+            catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (ArgumentException ex)
             {
@@ -61,16 +65,16 @@ namespace RestAPI.Controllers
 
         //baja
         [HttpDelete("Eliminar")]
-        public async Task<IActionResult> eliminarAdmin(int id)
+        public async Task<IActionResult> eliminarAdmin(int Id)
         {
-            if (id <= 0)
+            if (Id <= 0)
             {
                 return BadRequest("El Id del administrador es inválido.");
             }
 
             try
             {
-                await _administradorService.EliminarAdminAsync(id);
+                await _administradorService.EliminarAdminAsync(Id);
                 return Ok("Administrador eliminado exitosamente.");
             }
             catch (KeyNotFoundException ex)
@@ -85,34 +89,35 @@ namespace RestAPI.Controllers
 
         //modificacion
         [HttpPut("Modificar")]
-        public async Task<IActionResult> modificarAdministrador(int id, [FromBody] AdministradorDTO administradorDto)
+        public async Task<IActionResult> modificarAdministrador(int Id, [FromBody] AdministradorDTO AdministradorDto)
         {
-            if (administradorDto == null)
+            if (AdministradorDto == null)
             {
                 return BadRequest("Los datos del administrador son requeridos.");
             }
 
-            if (id <= 0)
+            if (Id <= 0)
             {
                 return BadRequest("El Id del administrador es inválido.");
             }
 
             var adminModificado = new Administrador()
             {
-                Id = id,
-                Usuario = administradorDto.Usuario,
-                Contraseña = administradorDto.Contraseña,
-                Dni = administradorDto.Dni,
-                Nombre = administradorDto.Nombre,
-                Apellido = administradorDto.Apellido,
-                Email = administradorDto.Email,
-                Telefono = administradorDto.Telefono,
-                FechaNacimiento = new DateOnly(administradorDto.FechaNacimiento.Año, administradorDto.FechaNacimiento.Mes, administradorDto.FechaNacimiento.Dia),
-                Sexo = (Sexo)administradorDto.Sexo
+                Id = Id,
+                Usuario = AdministradorDto.Usuario,
+                Contraseña = AdministradorDto.Contraseña,
+                Dni = AdministradorDto.Dni,
+                Nombre = AdministradorDto.Nombre,
+                Apellido = AdministradorDto.Apellido,
+                Email = AdministradorDto.Email,
+                Telefono = AdministradorDto.Telefono,
+                FechaNacimiento = new DateOnly(AdministradorDto.FechaNacimientoDTO.Año, AdministradorDto.FechaNacimientoDTO.Mes, AdministradorDto.FechaNacimientoDTO.Dia),
+                Sexo = (Sexo)AdministradorDto.Sexo
             };
 
             try
             {
+
                 await _administradorService.ModificarAdminAsync(adminModificado);
                 return Ok("Administrador modificado exitosamente.");
             }
@@ -123,6 +128,10 @@ namespace RestAPI.Controllers
             catch (DniRegistradoException ex)
             {
                 return Conflict(ex.Message);
+            }
+            catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (ArgumentException ex)
             {
@@ -145,6 +154,10 @@ namespace RestAPI.Controllers
             try
             {
                 var administradores = await _administradorService.ObtenerAdministradoresAsync();
+                if (!administradores.Any())
+                {
+                    return NotFound("No hay ningun administrador registrado.");
+                }
 
                 //admin a dto para no mostrar contraseñas
                 var administradoresModel = administradores.Select(admin => new AdministradorModel

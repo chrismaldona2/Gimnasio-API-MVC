@@ -1,15 +1,16 @@
-﻿using WebApp.Models.DTOs;
-using WebApp.Models.ViewModels;
+﻿using WebApp.Models.Administrador;
 
 namespace WebApp.Services.Contracts
 {
     public interface IAdministradorAPIService
     {
         Task<APIResponse> AutenticarAdminAsync(string usuario, string contraseña);
-        Task<AdministradoresViewModel> BuscarAdminPorUsuarioAsync(string usuario);
-        Task<AdministradoresViewModel> BuscarAdminPorDniAsync(string dni);
-        Task<List<AdministradoresViewModel>> ListaAdministradores();
-        Task<APIResponse> RegistrarAdminAsync(AdministradorRegistroDTO datosAdmin);
+        Task<AdminModel> BuscarAdminPorUsuarioAsync(string usuario);
+        Task<AdminModel> BuscarAdminPorDniAsync(string dni);
+        Task<List<AdminModel>> ListaAdministradores();
+        Task<APIResponse> RegistrarAdminAsync(AdminModel datosAdmin);
+        Task<APIResponse> ModificarAdminAsync(AdminModel datosAdmin);
+        Task<APIResponse> EliminarAdminAsync(int id);
 
     }
 }

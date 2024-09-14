@@ -15,4 +15,9 @@ namespace Services
     {
         public DniRegistradoException() : base("El número de DNI ya está registrado.") { }
     }
+
+    public class FechaNacimientoException : Exception 
+    {
+        public FechaNacimientoException() : base("Fecha de nacimiento inválida. Verifique los datos.") { }
+    }
 }

@@ -1,8 +1,8 @@
 ﻿using Newtonsoft.Json;
 using System.Net;
 using System.Text;
-using WebApp.Models.DTOs;
-using WebApp.Models.ViewModels;
+using WebApp.Models.Administrador;
+using WebApp.Models.Cliente;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Services
@@ -11,7 +11,7 @@ namespace WebApp.Services
     {
         public ClienteAPIService(HttpClient httpClient) : base(httpClient) { }
 
-        public async Task<APIResponse> RegistrarClienteAsync(ClienteRegistroDTO datosCliente)
+        public async Task<APIResponse> RegistrarClienteAsync(ClienteModel datosCliente)
         {
             var jsonContent = JsonConvert.SerializeObject(datosCliente);
             var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
@@ -38,15 +38,67 @@ namespace WebApp.Services
             }
         }
 
-        public async Task<List<ClientesViewModel>> ListaClientes()
+        public async Task<APIResponse> ModificarClienteAsync(ClienteModel datosCliente)
         {
-            List<ClientesViewModel> listaClientes = new List<ClientesViewModel>();
+
+            var jsonContent = JsonConvert.SerializeObject(datosCliente);
+            var content = new StringContent(jsonContent, Encoding.UTF8, "application/json");
+
+            var response = await _httpClient.PutAsync($"api/ClienteService/Modificar?Id={datosCliente.Id}", content);
+            var responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+        }
+
+
+        public async Task<APIResponse> EliminarClienteAsync(int id)
+        {
+
+            var response = await _httpClient.DeleteAsync($"api/ClienteService/Eliminar?Id={id}");
+            var responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+        }
+
+        public async Task<List<ClienteModel>> ListaClientes()
+        {
+            List<ClienteModel> listaClientes = new();
             var response = await _httpClient.GetAsync($"api/ClienteService/Lista");
 
             if (response.IsSuccessStatusCode)
             {
                 string data = await response.Content.ReadAsStringAsync();
-                listaClientes = JsonConvert.DeserializeObject<List<ClientesViewModel>>(data);
+                listaClientes = JsonConvert.DeserializeObject<List<ClienteModel>>(data);
 
                 return listaClientes;
             }

@@ -1,64 +1,70 @@
-﻿@model WebApp.Models.ViewModels.PanelClientesViewModel
-
-
-@{
+﻿@{
     ViewData["Title"] = "Panel de Clientes";
 }
 
-<head>
-    <script src="~/js/dateSelector.js" defer></script>
-    <script src="~/js/formPopups.js" defer></script>
-    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
+@using WebApp.Models.Cliente
+@model PanelClientesModel
 
+
+<head>
+    <script src="~/js/general/dateSelector.js" defer></script>
+
+    <script src="~/js/services/clienteService.js" defer></script>
+    <script src="~/js/general/tables.js" defer></script>
+
+    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 </head>
+
+
 
 <!-- Formulario de registro de cliente-->
 <dialog class="popup" id="registrarClienteForm">
+    <h2>Nuevo cliente</h2>
     <form asp-action="RegistrarCliente" method="post" class="form">
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Nombre</label>
-                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Nombre" required>
+                <input type="text" class="regular-form-input" asp-for="Nombre" required>
             </div>
             <div class="input-container">
                 <label>Apellido</label>
-                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Apellido" required>
+                <input type="text" class="regular-form-input" asp-for="Apellido" required>
             </div>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI</label>
-                <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Dni" required>
+                <input type="text" class="regular-form-input" asp-for="Dni" required>
             </div>
             <div class="input-container">
                 <label>Teléfono</label>
-                <input type="tel" class="regular-form-input" asp-for="ClienteRegistroDto.Telefono" required>
+                <input type="tel" class="regular-form-input" asp-for="Telefono" required>
             </div>
         </div>
         <div class="input-container">
             <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" asp-for="ClienteRegistroDto.Email" required>
+            <input type="text" class="regular-form-input" asp-for="Email" required>
         </div>
         <div class="date-selector-input-container">
             <label>Fecha de nacimiento</label>
             <div class="multiple-input-container">
                 <div class="input-container">
                     <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input" asp-for="ClienteRegistroDto.FechaNacimiento.Dia" required></select>
+                    <select class="regular-form-input" id="dia-input-c" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
                 </div>
                 <div class="input-container">
                     <label class="date-selector-label">Mes</label>
-                    <select class="regular-form-input" id="mes-input" asp-for="ClienteRegistroDto.FechaNacimiento.Mes" required></select>
+                    <select class="regular-form-input" id="mes-input-c" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
                 </div>
                 <div class="input-container">
                     <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input" asp-for="ClienteRegistroDto.FechaNacimiento.Año" required></select>
+                    <select class="regular-form-input" id="año-input-c" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
                 </div>
             </div>
         </div>
         <div class="input-container">
             <label>Sexo</label>
-            <select class="regular-form-input" asp-for="ClienteRegistroDto.Sexo" required>
+            <select class="regular-form-input" asp-for="Sexo" required>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -71,6 +77,147 @@
     </form>
 </dialog>
 
+
+
+
+
+<!-- formulario de modificacion de cliente -->
+<dialog class="popup" id="modificarClienteForm">
+    <h2>Modificar cliente</h2>
+    <form asp-action="ModificarCliente" method="post" class="form">
+
+        <div class="input-container">
+            <label>Identificador</label>
+            <input type="text" class="regular-form-input" id="id_mod" name="Id" asp-for="Id" readonly>
+        </div>
+
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Nombre</label>
+                <input type="text" class="regular-form-input" id="nombre_mod" name="Nombre" asp-for="Nombre" required>
+            </div>
+            <div class="input-container">
+                <label>Apellido</label>
+                <input type="text" class="regular-form-input" id="apellido_mod" name="Apellido" asp-for="Apellido" required>
+            </div>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>DNI</label>
+                <input type="text" class="regular-form-input" id="dni_mod" name="Dni" asp-for="Dni" required>
+            </div>
+            <div class="input-container">
+                <label>Teléfono</label>
+                <input type="tel" class="regular-form-input" id="tel_mod" name="Telefono" asp-for="Telefono" required>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Correo electrónico</label>
+            <input type="text" class="regular-form-input" id="email_mod" name="Email" asp-for="Email" required>
+        </div>
+        <div class="date-selector-input-container">
+            <label>Fecha de nacimiento</label>
+            <div class="multiple-input-container">
+                <div class="input-container">
+                    <label class="date-selector-label">Día</label>
+                    <select class="regular-form-input" id="dia-input-u" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Mes</label>
+                    <select class="regular-form-input" id="mes-input-u" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Año</label>
+                    <select class="regular-form-input" id="año-input-u" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Sexo</label>
+            <select class="regular-form-input" id="sexo_mod" name="Sexo" asp-for="Sexo" required>
+                <option value="0">Masculino</option>
+                <option value="1">Femenino</option>
+                <option value="2">Otro</option>
+            </select>
+        </div>
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn">Modificar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+
+
+
+
+<!-- formulario de eliminacion de cliente -->
+<dialog class="popup" id="eliminarClienteForm">
+    <h2>Eliminar cliente</h2>
+    <form asp-action="EliminarCliente" method="post" class="form">
+        <div class="input-container">
+            <label>Identificador</label>
+            <input type="text" class="regular-form-input" id="id_del" name="Id" asp-for="Id" readonly>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Nombre</label>
+                <input type="text" class="regular-form-input" id="nombre_del" name="Nombre" readonly>
+            </div>
+            <div class="input-container">
+                <label>Apellido</label>
+                <input type="text" class="regular-form-input" id="apellido_del" name="Apellido" readonly>
+            </div>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>DNI</label>
+                <input type="text" class="regular-form-input" id="dni_del" name="Dni" readonly>
+            </div>
+            <div class="input-container">
+                <label>Teléfono</label>
+                <input type="tel" class="regular-form-input" id="tel_del" name="Telefono" readonly>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Correo electrónico</label>
+            <input type="text" class="regular-form-input" id="email_del" name="Email" readonly>
+        </div>
+        <div class="date-selector-input-container">
+            <label>Fecha de nacimiento</label>
+            <div class="multiple-input-container">
+                <div class="input-container">
+                    <label class="date-selector-label">Día</label>
+                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Dia" readonly>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Mes</label>
+                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Mes" readonly>
+                </div>
+                <div class="input-container">
+                    <label class="date-selector-label">Año</label>
+                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Año" readonly>
+                </div>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Sexo</label>
+            <input type="text" class="regular-form-input" id="sexo_del" name="Sexo" readonly>
+        </div>
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn">Eliminar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+
+
+
 <!-- barra de navegacion superior -->
 <header class="header">
     <a asp-controller="Administrador" asp-action="PanelInicio" class="logo">
@@ -81,7 +228,7 @@
         <ul>
             <li class="profile-btn-container">
                 <a>
-                    <button class="profile-btn">
+                    <button class="profile-btn" onclick="mostrarError('Funcion aún no implementada.')">
                         <i class="fa-solid fa-user"></i>
                     </button>
                 </a>
@@ -132,7 +279,7 @@
                     </a>
                 </li>
                 <li>
-                    <a>
+                    <a asp-controller="Administrador" asp-action="PanelPagos">
                         <button class="bottom-menu-btn">
                             <i class="fa-solid fa-cash-register"></i>
                         </button>
@@ -177,7 +324,7 @@
                 </a>
             </li>
             <li>
-                <a>
+                <a asp-controller="Administrador" asp-action="PanelPagos">
                     <button class="sidebar-btn">
                         <i class="fa-solid fa-cash-register"></i>
                         <span>Pagos</span>
@@ -197,7 +344,7 @@
         <ul>
             <li>
                 <a>
-                    <button class="sidebar-btn">
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
                         <i class="fa-regular fa-circle-question"></i>
                         <span>Ayuda</span>
                     </button>
@@ -205,7 +352,7 @@
             </li>
             <li>
                 <a>
-                    <button class="sidebar-btn">
+                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
                         <i class="fa-solid fa-user"></i>
                         <span>Mi perfil</span>
                     </button>
@@ -276,7 +423,7 @@
                                 @Html.DisplayFor(modelItem => item.Telefono)
                             </td>
                             <td data-label="Fecha de nacimiento">
-                                @Html.DisplayFor(modelItem => item.FechaNacimiento)
+                                @item.FechaNacimiento.ToString("dd/MM/yyyy")
                             </td>
                             <td data-label="Sexo">
                                 @Html.DisplayFor(modelItem => item.Sexo)
@@ -285,10 +432,18 @@
                                 @(item.IdMembresia == null ? "Sin membresía" : item.IdMembresia.ToString())
                             </td>
                             <td data-label="Vencimiento de membresía">
-                                @(item.FechaVencimientoMembresia == null ? "Sin membresía" : item.FechaVencimientoMembresia.ToString())
+                                @(item.FechaVencimientoMembresia == null ? "Sin membresía" : item.FechaVencimientoMembresia.Value.ToString("dd/MM/yyyy HH:mm"))
                             </td>
-                            <td data-label="Acciones" class="table-action-btn">
-                                <button><i class="fa-solid fa-ellipsis"></i></button>
+                            <td data-label="Acciones" class="table-action-btn-container">
+                                <button class="table-action-btn">
+                                    <i class="fa-solid fa-ellipsis"></i>
+                                    <div class="action-dropdown-menu">
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Renovar membresía</a>
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Ver pagos</a>
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarClienteForm('@item.Id', '@item.Nombre', '@item.Apellido', '@item.Dni', '@item.Telefono', '@item.Email', '@item.FechaNacimiento.Day', '@item.FechaNacimiento.Month', '@item.FechaNacimiento.Year', '@item.Sexo')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarModificarClienteForm('@item.Id', '@item.Nombre', '@item.Apellido', '@item.Dni', '@item.Telefono', '@item.Email', '@item.FechaNacimiento.Day', '@item.FechaNacimiento.Month', '@item.FechaNacimiento.Year', '@((int)(item.Sexo))')">Editar</a>
+                                    </div>
+                                </button>
                             </td>
                         </tr>
                     }
@@ -297,3 +452,4 @@
         </div>
     </div>
 </main>
+

@@ -36,9 +36,13 @@ namespace RestAPI.Controllers
                     clienteDto.Apellido,
                     clienteDto.Email,
                     clienteDto.Telefono,
-                    new DateOnly(clienteDto.FechaNacimiento.Año, clienteDto.FechaNacimiento.Mes, clienteDto.FechaNacimiento.Dia),
+                    new DateOnly(clienteDto.FechaNacimientoDTO.Año, clienteDto.FechaNacimientoDTO.Mes, clienteDto.FechaNacimientoDTO.Dia),
                     (Sexo)clienteDto.Sexo);
                 return Ok("Cliente registrado exitosamente.");
+            }
+            catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (DniRegistradoException ex)
             {
@@ -99,7 +103,7 @@ namespace RestAPI.Controllers
                 Apellido = ClienteDto.Apellido,
                 Email = ClienteDto.Email,
                 Telefono = ClienteDto.Telefono,
-                FechaNacimiento = new DateOnly(ClienteDto.FechaNacimiento.Año, ClienteDto.FechaNacimiento.Mes, ClienteDto.FechaNacimiento.Dia),
+                FechaNacimiento = new DateOnly(ClienteDto.FechaNacimientoDTO.Año, ClienteDto.FechaNacimientoDTO.Mes, ClienteDto.FechaNacimientoDTO.Dia),
                 Sexo = (Sexo)ClienteDto.Sexo
             };
 
@@ -111,6 +115,10 @@ namespace RestAPI.Controllers
             catch (DniRegistradoException ex)
             {
                 return Conflict(ex.Message);
+            }
+            catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
             }
             catch (ArgumentException ex)
             {

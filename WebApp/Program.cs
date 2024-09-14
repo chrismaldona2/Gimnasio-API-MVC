@@ -8,7 +8,7 @@ builder.Services.AddHttpClient<APIService>();
 builder.Services.AddHttpClient<IAdministradorAPIService, AdministradorAPIService>();
 builder.Services.AddHttpClient<IClienteAPIService, ClienteAPIService>();
 builder.Services.AddHttpClient<IMembresiaAPIService, MembresiaAPIService>();
-
+builder.Services.AddHttpClient<IPagoAPIService, PagoAPIService>();
 
 builder.Services.AddDistributedMemoryCache();
 

@@ -61,7 +61,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Id",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -87,12 +87,12 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "Id",
         "Type": "System.Int32",
         "IsRequired": false
       },
       {
-        "Name": "administradorDto",
+        "Name": "AdministradorDto",
         "Type": "RestAPI.Models.DTOs.AdministradorDTO",
         "IsRequired": true
       }
@@ -108,7 +108,7 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "administradorDto",
+        "Name": "AdministradorDto",
         "Type": "RestAPI.Models.DTOs.AdministradorDTO",
         "IsRequired": true
       }
@@ -322,7 +322,7 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
-    "Method": "modificarCliente",
+    "Method": "modificarMembresia",
     "RelativePath": "api/MembresiaService/Modificar",
     "HttpMethod": "PUT",
     "IsController": true,
