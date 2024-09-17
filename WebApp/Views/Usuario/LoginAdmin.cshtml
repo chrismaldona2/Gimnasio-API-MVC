@@ -32,11 +32,11 @@
             <form asp-action="AutenticarAdmin" method="post" class="admin-login-form">
                 <div class="input-container">
                     <label for="usuarioAdmin" asp-for="Usuario">Nombre de usuario</label>
-                    <input type="text" id="usuarioAdmin" class="admin-login-input" asp-for="Usuario" required>
+                    <input type="text" id="usuarioAdmin" class="admin-login-input" asp-for="Usuario" autocomplete="off" required>
                 </div>
                 <div class="input-container">
                     <label for="contraseñaAdmin" asp-for="Contraseña">Contraseña</label>
-                    <input type="password" id="contraseñaAdmin" class="admin-login-input admin-login-password" asp-for="Contraseña" required>
+                    <input type="password" id="contraseñaAdmin" class="admin-login-input admin-login-password" asp-for="Contraseña" autocomplete="off" required>
                 </div>
                 <div class="show-password-container">
                     <label for="mostrarContraseña">Mostrar contraseña</label>
@@ -67,7 +67,7 @@
         <div class="subscription-container">
             <h2>Contactános</h2>
             <form class="subscription-form">
-                <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." required>
+                <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." autocomplete="off" required>
                 <button type="button" class="subscription-submit-btn" onclick="mostrarError('Funcion aún no implementada.')">Enviar</button>
             </form>
         </div>

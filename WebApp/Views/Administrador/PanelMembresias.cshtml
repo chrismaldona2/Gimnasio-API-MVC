@@ -19,20 +19,20 @@
     <form asp-action="RegistrarMembresia" method="post" class="form">
         <div class="input-container">
             <label>Descripción</label>
-            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" required>
+            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" autocomplete="off" required>
         </div>
         <div class="input-container">
             <label>Duración (Días)</label>
-            <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" required>
+            <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" autocomplete="off" required>
         </div>
 
         <div class="input-container">
             <label>Precio (ARS)</label>
-            <input type="text" class="regular-form-input" name="Precio" asp-for="Precio" required>
+            <input type="number" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
         </div>
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Registrar</button>
-            <button class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -51,24 +51,24 @@
 
         <div class="input-container">
             <label>Descripción</label>
-            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" required>
+            <input type="text" class="regular-form-input" name="Tipo" asp-for="Tipo" autocomplete="off" required>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Duración (Días)</label>
-                <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" required>
+                <input type="number" class="regular-form-input" name="DuracionDias" asp-for="DuracionDias" autocomplete="off" required>
             </div>
 
             <div class="input-container">
                 <label>Precio (ARS)</label>
-                <input type="text" class="regular-form-input" name="Precio" asp-for="Precio" required>
+                <input type="number" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
             </div>
 
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Modificar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Modificar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -98,13 +98,13 @@
 
             <div class="input-container">
                 <label>Precio (ARS)</label>
-                <input type="text" class="regular-form-input" name="Precio" readonly>
+                <input type="number" class="regular-form-input" name="Precio" readonly>
             </div>
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Eliminar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -268,7 +268,7 @@
         <div class="action-btns">
             <div class="search-box">
                 <form action="#" class="search-form">
-                    <input type="text" placeholder="Buscar registro...">
+                    <input type="text" placeholder="Buscar registro..." autocomplete="off">
                     <select>
                         <option>ID</option>
                         <option>Descripción</option>

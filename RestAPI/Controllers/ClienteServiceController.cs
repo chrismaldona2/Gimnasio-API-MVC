@@ -216,12 +216,13 @@ namespace RestAPI.Controllers
             try
             {
                 var cliente = await _clienteService.BuscarClientePorDniAsync(Dni);
-                return Ok(cliente);
+                if (cliente != null)
+                {
+                    return Ok(cliente);
+                }
+                
+                return NotFound("El cliente especificado no fue encontrado");
 
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
             }
             catch (InvalidOperationException ex)
             {

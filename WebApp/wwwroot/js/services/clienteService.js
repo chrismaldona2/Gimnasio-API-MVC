@@ -36,6 +36,6 @@ function mostrarEliminarClienteForm(id, nombre, apellido, dni, telefono, email, 
     eliminarClienteForm.querySelector('input[name="Sexo"]').value = sexo;
     eliminarClienteForm.showModal();
 }
-document.querySelector('#eliminarClienteForm .cancel-btn').addEventListener('click', () => eliminarAdminForm.close());
+document.querySelector('#eliminarClienteForm .cancel-btn').addEventListener('click', () => eliminarClienteForm.close());
 
 

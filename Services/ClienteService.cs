@@ -178,7 +178,7 @@ namespace Services
                 var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
                 if (cliente == null)
                 {
-                    throw new KeyNotFoundException("La cliente especificado no fue encontrado.");
+                    return null;
                 }
                 return cliente;
             }

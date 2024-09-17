@@ -20,21 +20,14 @@ namespace RestAPI.Controllers
         [HttpPost("Registrar")]
         public async Task<IActionResult> registrarPago(int IdCliente, int IdMembresia)
         {
-            if (IdCliente == null || IdMembresia == null)
+            if (IdCliente == 0 || IdMembresia == 0)
             {
-                return BadRequest("Los datos del pago son requeridos.");
+                return BadRequest("Id de membresía o cliente inválido.");
             }
             try
             {
                 await _pagoService.RegistrarPagoAsync(IdCliente, IdMembresia);
-                var pagos = await _pagoService.ObtenerPagosPorIdClienteAsync(IdCliente);
-                var pago = pagos.LastOrDefault();
-                return Ok($"Pago registrado exitosamente.\n\n" +
-                    $"Id: {pago.Id}\n" +
-                    $"Id_Cliente: {pago.IdCliente}\n" +
-                    $"Id_Membresía: {pago.IdMembresia}\n" +
-                    $"Monto: {pago.Monto} ARS\n" +
-                    $"Fecha: {pago.FechaPago}");
+                return Ok("Pago registrado exitosamente.");
             }
             catch (KeyNotFoundException ex)
             {

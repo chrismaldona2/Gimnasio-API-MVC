@@ -1,10 +1,10 @@
-    .form {
-        display: flex;
-        flex-direction: column;
-        gap: 1.25rem;
-        color: #3a3a3a;
-        font-size: calc(var(--fs-small) - 1px);
-    }
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    color: #3a3a3a;
+    font-size: calc(var(--fs-small) - 1px);
+}
 
     .form .multiple-input-container {
         display: flex;
@@ -18,49 +18,181 @@
         gap: 5px;
     }
 
-    .date-selector-label {
-        color: #5c5c5c;
-        font-size: calc(var(--fs-small) - 2px);
+.date-selector-label {
+    color: #5c5c5c;
+    font-size: calc(var(--fs-small) - 2px);
+}
+
+.multiple-input-container .form-action-btn {
+    flex: 1;
+    padding: 1rem 1.25rem;
+}
+
+.form > div:last-child {
+    margin-top: 1.25rem;
+}
+
+.input-search-container {
+    display: flex;
+    gap: .5rem;
+}
+
+
+    .input-search-container > input {
+        flex-grow: 1;
     }
 
-    .multiple-input-container button {
-        flex: 1;
-        padding: 1rem 1.25rem;
-    }
-
-    .form > div:last-child {
-        margin-top: 1.25rem;
-    }
-
-    /* Botones de formularios */
-    .regular-form-submit-btn {
-        border-radius: var(--user-login-inputs-b-radius);
-        padding-block: var(--user-login-inputs-size);
-        background-color: var(--red-color);
-        font-size: 1.25rem;
-        color: var(--white-color);
-        text-wrap: nowrap;
-        text-align: center;
+    .input-search-container button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         border: none;
-        transition: background-color .35s ease;
+        border-radius: 8px;
+        box-shadow: 0 0 0 1.6px var(--red-color);
+        background-color: var(--red-color);
+        color: var(--white-color);
+        aspect-ratio: 1/1;
+        flex: auto;
+        height: 100%;
+        width: auto;
     }
+
+
+
+.selection-data {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 1.1rem;
+    margin-bottom: 1rem;
+}
+
+    .selection-data label {
+        color: var(--red-color);
+        font-weight: 600;
+    }
+
+    .selection-data span {
+        color: #949494;
+    }
+
+.cliente-data, .membresia-data {
+    display: flex;
+    gap: 4px;
+}
+
+    .cliente-data > span, .membresia-data > span {
+        flex: 1;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        color: #bcbcbc;
+    }
+
+    .cliente-data label, .membresia-data label {
+        font-weight: 400;
+        color: #969696;
+    }
+
+.cliente-data-container, .membresia-data-container {
+    display: flex;
+    flex-direction: column;
+}
+
+
+.vencimiento-warning-container {
+    cursor: pointer;
+    position: relative;
+}
+
+
+.vencimiento-warning-ico {
+    color: var(--red-color);
+    margin-left: .35rem;
+}
+
+.vencimiento-warning {
+    pointer-events: none;
+    position: absolute;
+    bottom: 2rem;
+    left: 0;
+    padding: 1rem;
+    width: 210%;
+    text-align: center;
+    color: var(--red-color);
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0px 0px 15px 5px rgba(0,0,0,0.1);
+}
+
+.oculto {
+    display: none;
+}
+
+.vencimiento-warning-animacion {
+    animation: vencimientoWarningAnimacion 2.1s;
+}
+
+@keyframes vencimientoWarningAnimacion {
+    0% {
+        opacity: 0;
+    }
+
+    10% {
+        opacity: 1;
+    }
+
+    90% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+
+
+.eliminar-pago-advice {
+    padding: 1rem 1.25rem;
+    border-radius: .6rem;
+    box-shadow: 0 0 0 1.6px var(--red-color);
+    color: var(--red-color);
+    display: flex;
+    align-items: center;
+    font-size: var(--fs-small);
+    gap: 2rem;
+}
+
+
+/* Botones de formularios */
+.regular-form-submit-btn {
+    border-radius: var(--user-login-inputs-b-radius);
+    padding-block: var(--user-login-inputs-size);
+    background-color: var(--red-color);
+    font-size: 1.25rem;
+    color: var(--white-color);
+    text-wrap: nowrap;
+    text-align: center;
+    border: none;
+    transition: background-color .35s ease;
+}
 
     .regular-form-submit-btn:hover {
         background-color: var(--dark-red-color);
     }
 
-    .regular-form-cancel-btn {
-        border-radius: var(--user-login-inputs-b-radius);
-        padding-block: var(--user-login-inputs-size);
-        background-color: var(--white-color);
-        box-shadow: 0 0 0 1.6px var(--red-color);
-        font-size: 1.25rem;
-        color: var(--red-color);
-        text-wrap: nowrap;
-        text-align: center;
-        border: none;
-        transition: background-color .35s ease;
-    }
+.regular-form-cancel-btn {
+    border-radius: var(--user-login-inputs-b-radius);
+    padding-block: var(--user-login-inputs-size);
+    background-color: var(--white-color);
+    box-shadow: 0 0 0 1.6px var(--red-color);
+    font-size: 1.25rem;
+    color: var(--red-color);
+    text-wrap: nowrap;
+    text-align: center;
+    border: none;
+    transition: background-color .35s ease;
+}
 
     .regular-form-cancel-btn:hover {
         background-color: #f0f0f0;

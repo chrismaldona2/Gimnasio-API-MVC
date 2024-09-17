@@ -7,9 +7,222 @@
 
 <head>
     <script src="~/js/general/tables.js" defer></script>
+    <script src="~/js/services/pagoService.js" defer></script>
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 
 </head>
+
+
+
+
+
+
+<!-- lista de clientes usada para cargar los datos de los clientes y poder buscarlos en caso de ser requeridos -->
+<!-- están ocultos, y cada cliente se representa por un div-->
+<div id="clientesData" style="display: none;">
+    @foreach (var cliente in Model.ListaClientes)
+    {
+        <div cliente-id-data ="@cliente.Id"
+             cliente-dni-data="@cliente.Dni"
+             cliente-nombre-data=" @cliente.Nombre @cliente.Apellido"
+             cliente-membresia-data="@cliente.IdMembresia"
+             cliente-vencimiento-data="@cliente.FechaVencimientoMembresia.Value.ToString("dd/MM/yyyy")">
+        </div>
+    }
+</div>
+
+<!-- lista de membresias usada para cargar los datos de los membresias y poder buscarlos en caso de ser requeridos -->
+<!-- están ocultos, y cada cliente se representa por un div-->
+<!-- se usa especificamente para mostrar la información de la membresia en la eliminacion de pagos -->
+<div id="membresiasData" style="display: none;">
+    @foreach (var membresia in Model.ListaMembresias)
+    {
+        <div membresia-id-data="@membresia.Id"
+             membresia-tipo-data="@membresia.Tipo"
+             membresia-dias-data="@membresia.DuracionDias"
+             membresia-precio-data="@membresia.Precio">
+        </div>
+    }
+</div>
+
+
+
+
+
+
+
+<!-- formulario de registro de pago -->
+<dialog class="popup" id="registrarPagoForm">
+    <h2>Pago de membresía</h2>
+    <form asp-action="RegistrarPago" method="post" class="form">
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>DNI del Cliente</label>
+                <div class="input-search-container" >
+                    <input type="search" class="regular-form-input" id="dniClienteInput" name="DniCliente" asp-for="DniCliente" autocomplete="off">
+                    <button type="button" id="buscarClienteBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+            <div class="input-container">
+                <label>Membresía</label>
+                 <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia">
+                    @foreach (var item in Model.ListaMembresias)
+                    {
+                        <option value="@item.Id" membresia-duracion-dias-data="@item.DuracionDias" membresia-precio-data="@item.Precio">@item.Tipo</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="selection-data">
+            <div class="cliente-data-container">
+                <label>Datos del cliente:</label>
+                <div class="cliente-data">
+                    <label>Nombre:</label>
+                    <span id="clienteNombreSel-c">...</span>
+                </div>
+                <div class="cliente-data">
+                    <label>Id. Membresía actual:</label>
+                    <span id="clienteMembresiaIdSel-c">...</span>
+                </div>
+                <div class="cliente-data">
+                    <label>Vencimiento actual:</label>
+                    <span id="clienteVencimientoSel-c">...</span>
+                </div>
+            </div>
+
+
+            <div class="membresia-data-container">
+                <label>Membresía seleccionada:</label>
+                <div class="membresia-data">
+                    <label>Id:</label>
+                    <span id="membresiaSelId-c">...</span>
+                </div>
+                <div class="membresia-data">
+                    <label>Duración (Días):</label>
+                    <span id="membresiaSelDias-c">...</span>
+                </div>
+                <div class="membresia-data">
+                    <label>Duración (Meses):</label>
+                    <span id="membresiaSelMeses-c">...</span>
+                </div>
+            </div>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <div>
+                    <label class="vencimiento-warning-container">
+                        <span>Vencimiento actualizado</span>
+                        <i class="fa-solid fa-circle-exclamation vencimiento-warning-ico"></i>
+                        <div class="vencimiento-warning oculto">Buscar cliente por DNI para obtener la fecha de vencimiento de su membresía con el pago aplicado.</div>
+                    </label>
+                </div>
+                <input type="text" class="regular-form-input" id="vencimientoNuevo-c" disabled>
+            </div>
+            <div class="input-container">
+                <label>Monto a pagar (ARS)</label>
+                <input type="text" class="regular-form-input" id="membresiaSelPrecio-c" disabled>
+            </div>
+
+        </div>
+
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+<!-- formulario de eliminar pago -->
+<dialog class="popup" id="eliminarPagoForm">
+    <h2>Eliminar pago</h2>
+    <form asp-action="EliminarPago" method="post" class="form">
+        <div class="input-container">
+            <label>Identificador de pago</label>
+            <input type="text" class="regular-form-input" name="Id" asp-for="Id" readonly>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Identificador de cliente</label>
+                <input type="number" class="regular-form-input" name="IdCliente" readonly>
+            </div>
+
+            <div class="input-container">
+                <label>Identificador de membresía</label>
+                <input type="text" class="regular-form-input" name="IdMembresia" readonly>
+            </div>
+        </div>
+
+        <div class="selection-data">
+            <div class="cliente-data-container">
+                <label>Datos del cliente:</label>
+                <div class="cliente-data">
+                    <label>Nombre:</label>
+                    <span id="clienteNombreSel-d">...</span>
+                </div>
+                <div class="cliente-data">
+                    <label>DNI:</label>
+                    <span id="clienteDniSel-d">...</span>
+                </div>
+                <div class="cliente-data">
+                    <label>Vencimiento actual:</label>
+                    <span id="clienteVencimientoSel-d">...</span>
+                </div>
+            </div>
+
+
+            <div class="membresia-data-container">
+                <label>Datos de la membresía:</label>
+                <div class="membresia-data">
+                    <label>Tipo:</label>
+                    <span id="membresiaSelTipo-d">...</span>
+                </div>
+                <div class="membresia-data">
+                    <label>Duración (Días):</label>
+                    <span id="membresiaSelDias-d">...</span>
+                </div>
+                <div class="membresia-data">
+                    <label>Duración (Meses):</label>
+                    <span id="membresiaSelMeses-d">...</span>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="eliminar-pago-advice">
+            <i class="fa-solid fa-circle-exclamation"></i>
+            <span>Tener en cuenta que la eliminación de un pago revierte la renovación de membresía efectuada por dicho pago.</span>
+        </div>
+        <div class="input-container">
+            <label style="color: var(--dark-red-color);">Vencimiento de membresía revertido</label>
+            <input type="text" class="regular-form-input" id="vencimientoNuevo-d" style="background-color: #FFEFEF; color: var(--dark-red-color); box-shadow: 0 0 0 1.6px var(--dark-red-color);" readonly>
+        </div>
+
+
+
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Fecha de pago</label>
+                <input type="text" class="regular-form-input" name="FechaPagoDel" readonly>
+            </div>
+
+            <div class="input-container">
+                <label>Monto pagado (ARS)</label>
+                <input type="text" class="regular-form-input" name="Monto" readonly>
+            </div>
+        </div>
+
+        <div class="multiple-input-container">
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
+        </div>
+    </form>
+</dialog>
+
+
+
+
 
 <!-- barra de navegacion superior -->
 <header class="header">
@@ -212,17 +425,18 @@
                                 @Html.DisplayFor(modelItem => item.IdMembresia)
                             </td>
                             <td data-label="Fecha de pago">
-                                @item.FechaPago.ToString("dd/MM/yyyy HH:mm")
+                                @item.FechaPago.Value.ToString("dd/MM/yyyy HH:mm")
                             </td>
                             <td data-label="Monto">
                                 @($"{item.Monto:N2} ARS")
-                            </td>
+                            </td>   
                             <td data-label="Acciones" class="table-action-btn-container">
                                 <button class="table-action-btn">
                                     <i class="fa-solid fa-ellipsis"></i>
                                     <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Editar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Detalle del cliente</a>
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Detalle de la membresía</a>
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarPagoForm('@item.Id', '@item.IdCliente', '@item.IdMembresia', '@item.FechaPago.Value.ToString("dd/MM/yyyy HH:mm")', '@($"{item.Monto:N2}")')">Eliminar</a>
                                     </div>
                                 </button>
                             </td>

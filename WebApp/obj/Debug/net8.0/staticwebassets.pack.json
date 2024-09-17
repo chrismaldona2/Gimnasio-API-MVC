@@ -1,379 +1,383 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\WebApp.bundle.scp.css",
       "PackagePath": "staticwebassets\\WebApp.bundle.scp.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\base\\general.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\base\\general.css",
       "PackagePath": "staticwebassets\\css\\base\\general.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\base\\reset.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\base\\reset.css",
       "PackagePath": "staticwebassets\\css\\base\\reset.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\base\\typography.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\base\\typography.css",
       "PackagePath": "staticwebassets\\css\\base\\typography.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\alerts.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\alerts.css",
       "PackagePath": "staticwebassets\\css\\components\\alerts.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\buttons.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\buttons.css",
       "PackagePath": "staticwebassets\\css\\components\\buttons.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\forms.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\forms.css",
       "PackagePath": "staticwebassets\\css\\components\\forms.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\inputs.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\inputs.css",
       "PackagePath": "staticwebassets\\css\\components\\inputs.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\popups.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\popups.css",
       "PackagePath": "staticwebassets\\css\\components\\popups.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\tables.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\tables.css",
       "PackagePath": "staticwebassets\\css\\components\\tables.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\components\\user-info-card.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\user-info-card.css",
       "PackagePath": "staticwebassets\\css\\components\\user-info-card.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\layout\\admin-dashboard.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\layout\\admin-dashboard.css",
       "PackagePath": "staticwebassets\\css\\layout\\admin-dashboard.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\layout\\footer.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\layout\\footer.css",
       "PackagePath": "staticwebassets\\css\\layout\\footer.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\layout\\header.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\layout\\header.css",
       "PackagePath": "staticwebassets\\css\\layout\\header.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\pages\\admin-home.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\pages\\admin-home.css",
       "PackagePath": "staticwebassets\\css\\pages\\admin-home.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\pages\\admin-login.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\pages\\admin-login.css",
       "PackagePath": "staticwebassets\\css\\pages\\admin-login.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\css\\pages\\home.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\pages\\home.css",
       "PackagePath": "staticwebassets\\css\\pages\\home.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\favicon.ico",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\favicon.ico",
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\fonts\\Inter-Italic-VariableFont.ttf",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\fonts\\Inter-Italic-VariableFont.ttf",
       "PackagePath": "staticwebassets\\fonts\\Inter-Italic-VariableFont.ttf"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\fonts\\Inter-VariableFont.ttf",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\fonts\\Inter-VariableFont.ttf",
       "PackagePath": "staticwebassets\\fonts\\Inter-VariableFont.ttf"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\background-1.jpg",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\background-1.jpg",
       "PackagePath": "staticwebassets\\images\\background-1.jpg"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\background-2.jpg",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\background-2.jpg",
       "PackagePath": "staticwebassets\\images\\background-2.jpg"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\background-3.jpg",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\background-3.jpg",
       "PackagePath": "staticwebassets\\images\\background-3.jpg"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\dumbell-guy.png",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\dumbell-guy.png",
       "PackagePath": "staticwebassets\\images\\dumbell-guy.png"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\favicon.png",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\favicon.png",
       "PackagePath": "staticwebassets\\images\\favicon.png"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\logo.png",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\logo.png",
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\user-pic-2.png",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\user-pic-2.png",
       "PackagePath": "staticwebassets\\images\\user-pic-2.png"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\images\\user-pic.png",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\user-pic.png",
       "PackagePath": "staticwebassets\\images\\user-pic.png"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\general\\alerts.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\alerts.js",
       "PackagePath": "staticwebassets\\js\\general\\alerts.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\general\\dateSelector.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\dateSelector.js",
       "PackagePath": "staticwebassets\\js\\general\\dateSelector.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\general\\site.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\site.js",
       "PackagePath": "staticwebassets\\js\\general\\site.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\general\\tables.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\tables.js",
       "PackagePath": "staticwebassets\\js\\general\\tables.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\services\\adminLogin.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\adminLogin.js",
       "PackagePath": "staticwebassets\\js\\services\\adminLogin.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\services\\administradorService.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\administradorService.js",
       "PackagePath": "staticwebassets\\js\\services\\administradorService.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\services\\clienteService.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\clienteService.js",
       "PackagePath": "staticwebassets\\js\\services\\clienteService.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\services\\membresiaService.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\membresiaService.js",
       "PackagePath": "staticwebassets\\js\\services\\membresiaService.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\js\\services\\showCustomerInfo.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\pagoService.js",
+      "PackagePath": "staticwebassets\\js\\services\\pagoService.js"
+    },
+    {
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\showCustomerInfo.js",
       "PackagePath": "staticwebassets\\js\\services\\showCustomerInfo.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\LICENSE",
       "PackagePath": "staticwebassets\\lib\\bootstrap"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
       "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery\\LICENSE.txt",
       "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
     },
     {
-      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {

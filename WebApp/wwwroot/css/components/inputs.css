@@ -114,3 +114,7 @@
     border-radius: 8px;
     transition: box-shadow .35s ease;
 }
+
+    .regular-form-input:focus {
+        box-shadow: 0 0 0 2px #adadad;
+    }

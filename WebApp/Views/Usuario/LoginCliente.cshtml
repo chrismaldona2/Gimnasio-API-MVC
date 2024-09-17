@@ -24,7 +24,7 @@
                 </div>
                 <div class="info-field">
                     <label>Vencimiento de membresía</label>
-                    <span style="color: @(Model.FechaVencimientoMembresia == null ? "var(--red-color)" : "#489f4e");">
+                    <span style="color: @(Model.FechaVencimientoMembresia == null || Model.FechaVencimientoMembresia < DateTime.Now ? "var(--red-color)" : "#489f4e");">
                         @(Model.FechaVencimientoMembresia?.ToString("dd/MM/yyyy") ?? "Sin membresía")
                     </span>
                 </div>
@@ -93,7 +93,7 @@
     <div class="app">
         <form asp-controller="Usuario" asp-action="VerInformacionCliente" method="post" class="user-login-form">
             <div class="input-container">
-                <input type="text" name="dniInput" id="dni-input" class="user-login-input" required>
+                <input type="text" name="dniInput" id="dni-input" class="user-login-input" autocomplete="off" required>
                 <label for="dni-input" id="dni-label">DNI</label>
             </div>
             <div class="input-container">
@@ -138,7 +138,7 @@
         <div class="subscription-container">
             <h2>Contactános</h2>
             <form class="subscription-form">
-                <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." required>
+                <input type="email" name="" id="" class="subscription-form-input" placeholder="Ingresá tu email..." autocomplete="off" required>
                 <button type="button" class="subscription-submit-btn" onclick="mostrarError('Funcion aún no implementada.')">Enviar</button>
             </form>
         </div>

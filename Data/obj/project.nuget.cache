@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "QywtoNL6bug=",
+  "dgSpecHash": "Kc+lxl01NQg=",
   "success": true,
-  "projectFilePath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC - Copy\\Data\\Data.csproj",
+  "projectFilePath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Data\\Data.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\chris\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\chris\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",

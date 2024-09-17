@@ -23,51 +23,53 @@
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Nombre</label>
-                <input type="text" class="regular-form-input" asp-for="Nombre" required>
+                <input type="text" class="regular-form-input" asp-for="Nombre" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Apellido</label>
-                <input type="text" class="regular-form-input" asp-for="Apellido" required>
+                <input type="text" class="regular-form-input" asp-for="Apellido" autocomplete="off" required>
             </div>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI</label>
-                <input type="text" class="regular-form-input" asp-for="Dni" required>
+                <input type="text" class="regular-form-input" asp-for="Dni" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Teléfono</label>
-                <input type="tel" class="regular-form-input"  asp-for="Telefono" required>
+                <input type="tel" class="regular-form-input" asp-for="Telefono" autocomplete="off" required>
             </div>
         </div>
         <div class="input-container">
             <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" asp-for="Email" required>
+            <input type="text" class="regular-form-input" asp-for="Email" autocomplete="off" required>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Usuario</label>
-                <input type="text" class="regular-form-input" asp-for="Usuario" required>
+                <input type="text" class="regular-form-input" asp-for="Usuario" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Contraseña</label>
-                <input type="password" class="regular-form-input"  asp-for="Contraseña" required>
+                <input type="password" class="regular-form-input" asp-for="Contraseña" autocomplete="off" required>
             </div>
         </div>
         <div class="date-selector-input-container">
             <label>Fecha de nacimiento</label>
             <div class="multiple-input-container">
                 <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input-c" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
+                    <label class="date-selector-label">Año</label>
+                    <select class="regular-form-input" id="año-input-c" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
                 </div>
+
                 <div class="input-container">
                     <label class="date-selector-label">Mes</label>
                     <select class="regular-form-input" id="mes-input-c" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
                 </div>
+
                 <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input-c" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
+                    <label class="date-selector-label">Día</label>
+                    <select class="regular-form-input" id="dia-input-c" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
                 </div>
             </div>
         </div>
@@ -80,8 +82,8 @@
             </select>
         </div>
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Registrar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -103,51 +105,53 @@
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Nombre</label>
-                <input type="text" class="regular-form-input" id="nombre_mod" name="Nombre" asp-for="Nombre" required>
+                <input type="text" class="regular-form-input" id="nombre_mod" name="Nombre" asp-for="Nombre" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Apellido</label>
-                <input type="text" class="regular-form-input" id="apellido_mod" name="Apellido" asp-for="Apellido" required>
+                <input type="text" class="regular-form-input" id="apellido_mod" name="Apellido" asp-for="Apellido" autocomplete="off" required>
             </div>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI</label>
-                <input type="text" class="regular-form-input" id="dni_mod" name="Dni" asp-for="Dni" required>
+                <input type="text" class="regular-form-input" id="dni_mod" name="Dni" asp-for="Dni" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Teléfono</label>
-                <input type="tel" class="regular-form-input" id="tel_mod" name="Telefono" asp-for="Telefono" required>
+                <input type="tel" class="regular-form-input" id="tel_mod" name="Telefono" asp-for="Telefono" autocomplete="off" required>
             </div>
         </div>
         <div class="input-container">
             <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" id="email_mod" name="Email" asp-for="Email" required>
+            <input type="text" class="regular-form-input" id="email_mod" name="Email" asp-for="Email" autocomplete="off" required>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Usuario</label>
-                <input type="text" class="regular-form-input" id="usuario_mod" name="Usuario" asp-for="Usuario" required>
+                <input type="text" class="regular-form-input" id="usuario_mod" name="Usuario" asp-for="Usuario" autocomplete="off" required>
             </div>
             <div class="input-container">
                 <label>Contraseña</label>
-                <input type="password" class="regular-form-input" id="pass_mod" asp-for="Contraseña" required>
+                <input type="password" class="regular-form-input" id="pass_mod" asp-for="Contraseña" autocomplete="off" required>
             </div>
         </div>
         <div class="date-selector-input-container">
             <label>Fecha de nacimiento</label>
             <div class="multiple-input-container">
                 <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input-u" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
+                    <label class="date-selector-label">Año</label>
+                    <select class="regular-form-input" id="año-input-u" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
                 </div>
+
                 <div class="input-container">
                     <label class="date-selector-label">Mes</label>
                     <select class="regular-form-input" id="mes-input-u" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
                 </div>
+
                 <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input-u" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
+                    <label class="date-selector-label">Día</label>
+                    <select class="regular-form-input" id="dia-input-u" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
                 </div>
             </div>
         </div>
@@ -161,8 +165,8 @@
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Modificar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Modificar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -210,16 +214,18 @@
             <label>Fecha de nacimiento</label>
             <div class="multiple-input-container">
                 <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Dia" readonly>
+                    <label class="date-selector-label">Año</label>
+                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Año" readonly>
                 </div>
+
                 <div class="input-container">
                     <label class="date-selector-label">Mes</label>
                     <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Mes" readonly>
                 </div>
+
                 <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Año" readonly>
+                    <label class="date-selector-label">Día</label>
+                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Dia" readonly>
                 </div>
             </div>
         </div>
@@ -229,8 +235,8 @@
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn">Eliminar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn">Cancelar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
 </dialog>
@@ -392,7 +398,7 @@
         <div class="action-btns">
             <div class="search-box">
                 <form action="#" class="search-form">
-                    <input type="text" placeholder="Buscar registro...">
+                    <input type="text" placeholder="Buscar registro..." autocomplete="off">
                     <select>
                         <option>Usuario</option>
                         <option>DNI</option>
