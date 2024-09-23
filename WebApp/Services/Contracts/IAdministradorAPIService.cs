@@ -7,6 +7,7 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> AutenticarAdminAsync(string usuario, string contraseña);
         Task<AdminModel> BuscarAdminPorUsuarioAsync(string usuario);
         Task<AdminModel> BuscarAdminPorDniAsync(string dni);
+        Task<AdminModel> BuscarAdminPorIdAsync(int id);
         Task<List<AdminModel>> ListaAdministradores();
         Task<APIResponse> RegistrarAdminAsync(AdminModel datosAdmin);
         Task<APIResponse> ModificarAdminAsync(AdminModel datosAdmin);

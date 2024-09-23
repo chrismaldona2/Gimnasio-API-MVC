@@ -2,6 +2,6 @@
 {
     public class PanelClientesModel : ClienteModel
     {
-        public List<ClienteModel>? ListaClientes {  get; set; }
+        public List<ClienteModel>? ListaClientes { get; set; }
     }
 }

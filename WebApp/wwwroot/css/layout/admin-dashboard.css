@@ -9,7 +9,7 @@
     overflow: hidden;
 }
 
-.app {
+.app.dashboard {
     flex: 1;
     min-height: 100%;
     overflow-y: auto;
@@ -20,24 +20,22 @@
     gap: 1.5rem;
 }
 
-    .app.home {
-        padding: clamp(1rem, 5vh + 1rem, 3rem) clamp(1rem, 5vw + 1rem, 3rem);
+
+
+    .app.dashboard h1 {
+        display: none;
+        font-size: var(--fs-large);
+        line-height: 1;
+        font-weight: 600;
+        color: var(--red-color);
     }
 
-.app h1 {
-    display: none;
-    font-size: var(--fs-large);
-    line-height: 1;
-    font-weight: 600;
-    color: var(--red-color);
-}
-
 /* botones de accion sobre la tabla */
-.app .action-btns {
-    display: flex;
-    justify-content: space-between;
-    gap: .35rem;
-}
+    .app.dashboard .action-btns {
+        display: flex;
+        justify-content: space-between;
+        gap: .35rem;
+    }
 
 .search-form {
     height: 100%;
@@ -241,7 +239,7 @@
 }
 
 @media only screen and (max-width: 884px) {
-    .app h1 {
+    .app.dashboard h1 {
         display: block;
     }
 
@@ -279,14 +277,10 @@
         display: block;
     }
 
-    .app {
+    .app.dashboard {
         padding-bottom: 70px;
     }
 
-        .app.home {
-            padding-top: 10px;
-            padding-bottom: 110px;
-        }
 
     .nav .admin-logout-btn-container {
         display: none;

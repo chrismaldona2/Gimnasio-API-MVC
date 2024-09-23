@@ -1,4 +1,4 @@
-﻿namespace WebApp.Models.Membresias
+﻿namespace WebApp.Models.Membresia
 {
     public class MembresiaModel
     {

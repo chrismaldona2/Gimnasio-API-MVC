@@ -8,6 +8,7 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> ModificarClienteAsync(ClienteModel datosCliente);
         Task<APIResponse> EliminarClienteAsync(int id);
         Task<List<ClienteModel>> ListaClientes();
-        Task<APIResponse> BuscarClientePorDni(string dni);
+        Task<ClienteModel> BuscarClientePorDni(string dni);
+        Task<ClienteModel> BuscarClientePorId(int id);
     }
 }

@@ -13,7 +13,7 @@ builder.Services.AddDbContext<GimnasioContext>(options => options.UseSqlServer("
 builder.Services.AddScoped<IAdministradorRepositorio, AdministradorRepositorio>();
 builder.Services.AddScoped<IAsistenciaRepositorio, AsistenciaRepositorio>();
 builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
-builder.Services.AddScoped<IRepositorio<Membresia>, MembresiaRepositorio>();
+builder.Services.AddScoped<IMembresiaRepositorio, MembresiaRepositorio>();
 builder.Services.AddScoped<IPagoRepositorio, PagoRepositorio>();
 
 //servicios
@@ -23,7 +23,12 @@ builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IMembresiaService, MembresiaService>();
 builder.Services.AddScoped<IPagoService, PagoService>();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.DefaultIgnoreCondition = System.Text.Json.Serialization.JsonIgnoreCondition.WhenWritingNull;
+    });
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

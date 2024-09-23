@@ -1,14 +1,9 @@
-﻿using Core.Entidades;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
-using System.Net.Http;
-using WebApp.Models;
 using WebApp.Models.Administrador;
 using WebApp.Models.Cliente;
-using WebApp.Models.Membresias;
+using WebApp.Models.Membresia;
 using WebApp.Models.Pago;
-using WebApp.Services;
 using WebApp.Services.Contracts;
 using WebApp.ViewPermissions;
 
@@ -30,21 +25,32 @@ namespace WebApp.Controllers
         }
 
 
-
-        //PANTALLA DE INICIO
+        // PANTALLAS
+        ////de inicio
         public IActionResult PanelInicio()
         {
             var adminLogueado = HttpContext.Session.GetString("AdminLogueado");
-            string nombreAdmin = JsonConvert.DeserializeObject<AdminModel>(adminLogueado).Nombre;
-            string nombre = (nombreAdmin.Trim()).Split(' ', StringSplitOptions.RemoveEmptyEntries)[0];
-            return View("PanelInicio", nombre);
+
+            var nombreAdminLogueado = adminLogueado != null ? JsonConvert.DeserializeObject<AdminModel>(adminLogueado).Nombre : null;
+
+            string nombreAdmin = nombreAdminLogueado ?? "Administrador";
+
+            return View("PanelInicio", (nombreAdmin.Trim()).Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]);
         }
 
+        ////de ayuda
+        public IActionResult PanelAyuda()
+        {
+            return View();
+        }
 
+        ////de perfil
+        public IActionResult PanelPerfil()
+        {
+            return View();
+        }
 
-
-
-        //PANTALLA DE ADMINISTRADORES
+        ////de administrador
         public async Task<IActionResult> PanelAdministradores()
         {
             var listaAdministradores = await _administradorService.ListaAdministradores();
@@ -53,9 +59,82 @@ namespace WebApp.Controllers
             {
                 ListaAdministradores = listaAdministradores ?? new()
             };
+
             return View("PanelAdministradores", model);
         }
 
+        ////de membresias
+        public async Task<IActionResult> PanelMembresias()
+        {
+            var listaMembresias = await _membresiaService.ListaMembresias();
+
+            PanelMembresiasModel model = new()
+            {
+                ListaMembresias = listaMembresias ?? new()
+            };
+
+            return View("PanelMembresias", model);
+        }
+        ////de clientes
+        public async Task<IActionResult> PanelClientes()
+        {
+            var listaClientes = await _clienteService.ListaClientes();
+
+            PanelClientesModel model = new()
+            {
+                ListaClientes = listaClientes ?? new()
+            };
+            return View("PanelClientes", model);
+        }        
+        ////de pagos
+        public async Task<IActionResult> PanelPagos()
+        {
+            var listaPagos = await _pagoService.ListaPagos();
+
+            PanelPagosModel model = new()
+            {
+                ListaPagos = listaPagos ?? new()
+            };
+            return View("PanelPagos", model);
+        }
+
+
+
+
+
+
+
+
+        //METODOS COMUNES ENTRE PANTALLAS
+
+        [HttpGet]
+        public async Task<IActionResult> BuscarCliente(int idCliente)
+        {
+            var cliente = await _clienteService.BuscarClientePorId(idCliente);
+            if (cliente != null)
+            {
+                return Json(cliente);
+            }
+            return NotFound();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> BuscarMembresia(int idMembresia)
+        {
+            var membresia = await _membresiaService.BuscarMembresiaPorId(idMembresia);
+            if (membresia != null)
+            {
+                return Json(membresia);
+            }
+            return NotFound();
+        }
+
+
+
+
+
+
+        //METODOS DE LA PANTALLA DE ADMINISTRADOR
         [HttpPost]
         public async Task<IActionResult> RegistrarAdmin(PanelAdminModel model)
         {
@@ -71,10 +150,32 @@ namespace WebApp.Controllers
                     Apellido = model.Apellido,
                     Telefono = model.Telefono,
                     Email = model.Email,
-                    FechaNacimientoDTO = model.FechaNacimientoDTO,
+                    FechaNacimiento = model.FechaNacimiento,
                     Sexo = model.Sexo
                 };
                 var respuesta = await _administradorService.RegistrarAdminAsync(data);
+
+                if (respuesta.Exitoso)
+                {
+                    TempData["SuccessMessage"] = respuesta.Mensaje;
+                    return RedirectToAction("PanelAdministradores");
+                }
+                else
+                {
+                    TempData["ErrorMessage"] = respuesta.Mensaje;
+                    return RedirectToAction("PanelAdministradores");
+                }
+            }
+            TempData["ErrorMessage"] = "Error inesperado.";
+            return RedirectToAction("PanelAdministradores");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EliminarAdmin(PanelAdminModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var respuesta = await _administradorService.EliminarAdminAsync(model.Id);
 
                 if (respuesta.Exitoso)
                 {
@@ -106,7 +207,7 @@ namespace WebApp.Controllers
                     Apellido = model.Apellido,
                     Telefono = model.Telefono,
                     Email = model.Email,
-                    FechaNacimientoDTO = model.FechaNacimientoDTO,
+                    FechaNacimiento = model.FechaNacimiento,
                     Sexo = model.Sexo
                 };
                 var respuesta = await _administradorService.ModificarAdminAsync(data);
@@ -126,43 +227,23 @@ namespace WebApp.Controllers
             return RedirectToAction("PanelAdministradores");
         }
 
-
-        [HttpPost]
-        public async Task<IActionResult> EliminarAdmin(PanelAdminModel model)
+        [HttpGet]
+        public async Task<IActionResult> BuscarAdmin(int idAdmin)
         {
-            if (ModelState.IsValid)
+            var admin = await _administradorService.BuscarAdminPorIdAsync(idAdmin);
+            if (admin != null)
             {
-                var respuesta = await _administradorService.EliminarAdminAsync(model.Id);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelAdministradores");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelAdministradores");
-                }
+                return Json(admin);
             }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelAdministradores");
+            return NotFound();
         }
 
-        
 
-        //PANTALLA DE MEMBRESIAS
-        public async Task<IActionResult> PanelMembresias()
-        {
 
-            var listaMembresias = await _membresiaService.ListaMembresias();
-            PanelMembresiasModel model = new()
-            {
-                ListaMembresias = listaMembresias ?? new()
-            };
-            return View("PanelMembresias", model);
-        }
 
+
+
+        //METODOS DE LA PANTALLA DE MEMBRESIAS
         [HttpPost]
         public async Task<IActionResult> RegistrarMembresia(PanelMembresiasModel model)
         {
@@ -221,7 +302,6 @@ namespace WebApp.Controllers
             return RedirectToAction("PanelMembresias");
         }
 
-
         [HttpPost]
         public async Task<IActionResult> EliminarMembresia(PanelMembresiasModel model)
         {
@@ -242,196 +322,6 @@ namespace WebApp.Controllers
             }
             TempData["ErrorMessage"] = "Error inesperado.";
             return RedirectToAction("PanelMembresias");
-        }
-
-
-
-
-
-        //PANEL DE CLIENTES
-        public async Task<IActionResult> PanelClientes()
-        {
-            var listaClientes = await _clienteService.ListaClientes();
-
-            PanelClientesModel model = new()
-            {
-                ListaClientes = listaClientes ?? new()
-            };
-            return View("PanelClientes", model);
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> RegistrarCliente(PanelClientesModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                ClienteModel data = new()
-                {
-                    Dni = model.Dni,
-                    Nombre = model.Nombre,
-                    Apellido = model.Apellido,
-                    Telefono = model.Telefono,
-                    Email = model.Email,
-                    FechaNacimientoDTO = model.FechaNacimientoDTO,
-                    Sexo = model.Sexo
-                };
-                var respuesta = await _clienteService.RegistrarClienteAsync(data);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-            }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelClientes");
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> ModificarCliente(PanelClientesModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                ClienteModel data = new()
-                {
-                    Id = model.Id,
-                    Dni = model.Dni,
-                    Nombre = model.Nombre,
-                    Apellido = model.Apellido,
-                    Telefono = model.Telefono,
-                    Email = model.Email,
-                    FechaNacimientoDTO = model.FechaNacimientoDTO,
-                    Sexo = model.Sexo
-                };
-                var respuesta = await _clienteService.ModificarClienteAsync(data);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-            }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelClientes");
-        }
-
-
-        [HttpPost]
-        public async Task<IActionResult> EliminarCliente(PanelClientesModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var respuesta = await _clienteService.EliminarClienteAsync(model.Id);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelClientes");
-                }
-            }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelClientes");
-        }
-
-
-
-
-
-
-        //PANEL DE PAGOS
-        public async Task<IActionResult> PanelPagos()
-        {
-            var listaPagos = await _pagoService.ListaPagos();
-            var listaMembresias = await _membresiaService.ListaMembresias();
-            var listaClientes = await _clienteService.ListaClientes();
-
-            PanelPagosModel model = new()
-            {
-                ListaPagos = listaPagos ?? new(),
-                ListaMembresias = listaMembresias ?? new(),
-                ListaClientes = listaClientes ?? new()
-            };
-            return View("PanelPagos", model);
-        }
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> RegistrarPago(PanelPagosModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var cliente = await _clienteService.BuscarClientePorDni(model.DniCliente);
-
-                if (!cliente.Exitoso)
-                {
-                    TempData["ErrorMessage"] = "Cliente no encontrado.";
-                    return RedirectToAction("PanelPagos");
-                }
-                var clienteData = JsonConvert.DeserializeObject<ClienteModel>(cliente.Mensaje);
-
-                PagoModel data = new()
-                {
-                    IdCliente = clienteData.Id,
-                    IdMembresia = model.IdMembresia
-                };
-
-                var respuesta = await _pagoService.RegistrarPagoAsync(data);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelPagos");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelPagos");
-                }
-            }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelPagos");
-        }
-
-
-
-
-        [HttpPost]
-        public async Task<IActionResult> EliminarPago(PanelPagosModel model)
-        {
-            if (ModelState.IsValid)
-            {
-                var respuesta = await _pagoService.EliminarPagoAsync(model.Id);
-
-                if (respuesta.Exitoso)
-                {
-                    TempData["SuccessMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelPagos");
-                }
-                else
-                {
-                    TempData["ErrorMessage"] = respuesta.Mensaje;
-                    return RedirectToAction("PanelPagos");
-                }
-            }
-            TempData["ErrorMessage"] = "Error inesperado.";
-            return RedirectToAction("PanelPagos");
         }
 
 

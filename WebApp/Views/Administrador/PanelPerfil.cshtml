@@ -1,0 +1,168 @@
+﻿@{
+    ViewData["Title"] = "Perfil";
+}
+
+<head>
+    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
+    <link rel="stylesheet" href="~/css/pages/admin-account.css">
+</head>
+
+
+
+<!-- barra de navegacion superior -->
+<header class="header">
+    <a asp-controller="Administrador" asp-action="PanelInicio" class="logo">
+        <img src="/images/logo.png" alt="Logo">
+    </a>
+
+    <nav class="nav">
+        <ul>
+
+            <!-- Estos siguientes dos botones aparecen solo en pantallas chicas-->
+            <li class="profile-btn-container">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="profile-btn active">
+                        <i class="fa-solid fa-user"></i>
+                    </button>
+                </a>
+            </li>
+
+            <li class="admin-logout-btn-2-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn-2">
+                        <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    </button>
+                </a>
+            </li>
+
+
+            <!-- Este boton aparece solo en pantallas grandes-->
+            <li class="admin-logout-btn-container">
+                <a asp-controller="Usuario" asp-action="LoginCliente">
+                    <button class="admin-logout-btn">
+                        <span>Cerrar sesión</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+
+
+
+<main class="main">
+
+
+    <!-- menu inferior, aparece en pantallas chicas -->
+    <div class="bottom-menu-container">
+        <nav class="bottom-menu">
+            <ul>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelInicio">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-house"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelClientes">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-dumbbell"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelMembresias">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelPagos">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-cash-register"></i>
+                        </button>
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                        <button class="bottom-menu-btn">
+                            <i class="fa-solid fa-unlock-keyhole"></i>
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+
+
+    <!-- menu de la izquierda, aparece en pantallas grandes -->
+    <nav class="sidebar">
+        <ul>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelInicio">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-house"></i>
+                        <span>Inicio</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelClientes">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <span>Clientes</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelMembresias">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-star"></i>
+                        <span>Membresías</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelPagos">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-cash-register"></i>
+                        <span>Pagos</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelAdministradores">
+                    <button class="sidebar-btn">
+                        <i class="fa-solid fa-unlock-keyhole"></i>
+                        <span>Administradores</span>
+                    </button>
+                </a>
+            </li>
+
+        </ul>
+        <ul>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="sidebar-btn">
+                        <i class="fa-regular fa-circle-question"></i>
+                        <span>Ayuda</span>
+                    </button>
+                </a>
+            </li>
+            <li>
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="sidebar-btn active">
+                        <i class="fa-solid fa-user"></i>
+                        <span>Mi perfil</span>
+                    </button>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <!-- app -->
+    <div class="app help">
+    </div>
+</main>

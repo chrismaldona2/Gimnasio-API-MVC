@@ -16,6 +16,7 @@ namespace Services.Contratos
         Task EliminarClienteAsync(int id);
         Task ModificarClienteAsync(Cliente cliente);
         Task<Cliente> BuscarClientePorDniAsync(string dni);
+        Task<Cliente> BuscarClientePorIdAsync(int id);
         Task RegistrarAsistenciaAsync(string dniCliente);
 
     }

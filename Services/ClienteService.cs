@@ -15,10 +15,10 @@ namespace Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepositorio _clienteRepository;
-        private readonly IRepositorio<Membresia> _membresiaRepository;
+        private readonly IMembresiaRepositorio _membresiaRepository;
         private readonly IAsistenciaRepositorio _asistenciaRepository;
 
-        public ClienteService(IClienteRepositorio clienteRepository, IRepositorio<Membresia> membresiaRepository, IAsistenciaRepositorio asistenciaRepository)
+        public ClienteService(IClienteRepositorio clienteRepository, IMembresiaRepositorio membresiaRepository, IAsistenciaRepositorio asistenciaRepository)
         {
             _clienteRepository = clienteRepository;
             _membresiaRepository = membresiaRepository;
@@ -187,6 +187,24 @@ namespace Services
                 throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
             }
         }
+
+        public async Task<Cliente> BuscarClientePorIdAsync(int id)
+        {
+            try
+            {
+                var cliente = await _clienteRepository.ObtenerClienteConIdAsync(id);
+                if (cliente == null)
+                {
+                    return null;
+                }
+                return cliente;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
+
 
         //registrar asistencia
         public async Task RegistrarAsistenciaAsync(string dni)

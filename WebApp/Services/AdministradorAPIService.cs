@@ -7,7 +7,7 @@ using System.Net.Http;
 using System.Text;
 using WebApp.Models.Administrador;
 using WebApp.Models.Cliente;
-using WebApp.Models.Membresias;
+using WebApp.Models.Membresia;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Services
@@ -57,6 +57,17 @@ namespace WebApp.Services
         {
             var response = await _httpClient.GetAsync($"api/AdministradorService/BuscarDNI?Dni={dni}");
 
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<AdminModel>(jsonResponse);
+            }
+            return null;
+        }
+
+        public async Task<AdminModel> BuscarAdminPorIdAsync(int id)
+        {
+            var response = await _httpClient.GetAsync($"api/AdministradorService/BuscarID?Id={id}");
             if (response.IsSuccessStatusCode)
             {
                 var jsonResponse = await response.Content.ReadAsStringAsync();

@@ -33,6 +33,16 @@ namespace WebApp.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> BuscarCliente(string dniCliente)
+        {
+            var cliente = await _clienteService.BuscarClientePorDni(dniCliente);
+            if (cliente != null)
+            {
+                return Json(cliente);
+            }
+            return NotFound();
+        }
 
         [HttpPost]
         public async Task<IActionResult> AutenticarAdmin(LoginAdminDTO model)
@@ -57,23 +67,6 @@ namespace WebApp.Controllers
             {
                 TempData["ErrorMessage"] = $"{respuesta.Mensaje}";
                 return View("LoginAdmin", model);
-            }
-        }
-
-        [HttpPost]
-        public async Task<IActionResult> VerInformacionCliente(string dniInput)
-        {
-            var respuesta = await _clienteService.BuscarClientePorDni(dniInput);
-
-            if (respuesta.Exitoso)
-            {
-                var model = JsonConvert.DeserializeObject<ClienteModel>(respuesta.Mensaje);
-                return View("LoginCliente", model);
-            }
-            else
-            {
-                TempData["ErrorMessage"] = $"{respuesta.Mensaje}";
-                return RedirectToAction("LoginCliente");
             }
         }
     }

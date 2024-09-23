@@ -6,6 +6,7 @@ using Core.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Services;
 using RestAPI.Models.Entidades;
+using System.Net;
 
 namespace RestAPI.Controllers
 {
@@ -37,7 +38,7 @@ namespace RestAPI.Controllers
                     AdministradorDto.Apellido,
                     AdministradorDto.Email,
                     AdministradorDto.Telefono,
-                    new DateOnly(AdministradorDto.FechaNacimientoDTO.Año, AdministradorDto.FechaNacimientoDTO.Mes, AdministradorDto.FechaNacimientoDTO.Dia),
+                    DateOnly.ParseExact(AdministradorDto.FechaNacimiento, "yyyy-MM-dd"),
                     (Sexo)AdministradorDto.Sexo);
                 return Ok("Administrador registrado exitosamente.");
             }
@@ -111,7 +112,7 @@ namespace RestAPI.Controllers
                 Apellido = AdministradorDto.Apellido,
                 Email = AdministradorDto.Email,
                 Telefono = AdministradorDto.Telefono,
-                FechaNacimiento = new DateOnly(AdministradorDto.FechaNacimientoDTO.Año, AdministradorDto.FechaNacimientoDTO.Mes, AdministradorDto.FechaNacimientoDTO.Dia),
+                FechaNacimiento = DateOnly.ParseExact(AdministradorDto.FechaNacimiento, "yyyy-MM-dd"),
                 Sexo = (Sexo)AdministradorDto.Sexo
             };
 
@@ -282,6 +283,42 @@ namespace RestAPI.Controllers
             {
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
+        }
+
+        [HttpGet("BuscarID")]
+        public async Task<IActionResult> buscarAdministradorId(int Id)
+        {
+            try
+            {
+                var admin = await _administradorService.BuscarAdminPorIdAsync(Id);
+                var adminModel = new AdministradorModel
+                {
+                    Id = admin.Id,
+                    Usuario = admin.Usuario,
+                    Dni = admin.Dni,
+                    Nombre = admin.Nombre,
+                    Apellido = admin.Apellido,
+                    Email = admin.Email,
+                    Telefono = admin.Telefono,
+                    FechaNacimiento = admin.FechaNacimiento,
+                    Sexo = (SexoModel)admin.Sexo
+                };
+                return Ok(adminModel);
+
+            }
+            catch (KeyNotFoundException ex)
+            {
+                return NotFound(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+
         }
     }
 }

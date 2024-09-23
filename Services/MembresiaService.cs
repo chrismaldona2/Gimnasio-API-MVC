@@ -13,9 +13,9 @@ namespace Services
 {
     public class MembresiaService : IMembresiaService
     {
-        private readonly IRepositorio<Membresia> _membresiaRepository;
+        private readonly IMembresiaRepositorio _membresiaRepository;
 
-        public MembresiaService(IRepositorio<Membresia> membresiaRepository)
+        public MembresiaService(IMembresiaRepositorio membresiaRepository)
         {
             _membresiaRepository = membresiaRepository;
         }
@@ -130,6 +130,24 @@ namespace Services
             catch (Exception ex)
             {
                 throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
+            }
+        }
+
+
+        public async Task<Membresia> BuscarMembresiaPorIdAsync(int id)
+        {
+            try
+            {
+                var membresia = await _membresiaRepository.EncontrarPorIDAsync(id);
+                if (membresia == null)
+                {
+                    return null;
+                }
+                return membresia;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
             }
         }
     }

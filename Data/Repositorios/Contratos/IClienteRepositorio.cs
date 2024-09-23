@@ -13,5 +13,6 @@ namespace Data.Repositorios.Contratos
         Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync();
         Task<IEnumerable<Cliente>> ObtenerClientesConTipoMembresiaAsync(int idMembresia);
         Task<Cliente> ObtenerClienteConDniAsync(string dni);
+        Task<Cliente> ObtenerClienteConIdAsync(int id);
     }
 }

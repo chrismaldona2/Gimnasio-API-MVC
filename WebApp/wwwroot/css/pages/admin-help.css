@@ -1,0 +1,46 @@
+/*main app*/
+.app.help {
+    display: grid;
+    flex: 1;
+    grid-template-areas:
+        'one one one'
+        'two two three'
+        'two two three'
+        'two two three';
+    gap: clamp(1rem, 5vw + 1rem, 2.5rem);
+    min-height: 100%;
+    overflow-y: auto;
+    background-color: #e5e5e5;
+    padding: clamp(1rem, 5vh + 1rem, 3rem) clamp(1rem, 5vw + 1rem, 3rem);
+    --cards-border-radius: 20px;
+}
+
+    .app.help .card {
+        box-shadow: 0px 5px 5px -2px rgba(0,0,0,0.1);
+    }
+
+
+
+
+
+
+
+
+@media only screen and (max-width: 1026px) {
+    .app.help {
+        display: grid;
+        grid-template-areas:
+            'one one one'
+            'two two two'
+            'three three three';
+    }
+}
+
+
+@media only screen and (max-width: 686px) {
+
+    .app.help {
+        padding-top: 10px;
+        padding-bottom: 110px;
+    }
+}

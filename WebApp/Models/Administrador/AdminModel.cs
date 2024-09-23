@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Models.Administrador
 {
-    public class AdminModel : RegistroAdminDTO
+    public class AdminModel
     {
         public int Id { get; set; }
         public string Usuario { get; set; }

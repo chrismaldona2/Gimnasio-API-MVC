@@ -20,8 +20,8 @@
 
             <!-- Estos siguientes dos botones aparecen solo en pantallas chicas-->
             <li class="profile-btn-container">
-                <a>
-                    <button class="profile-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="profile-btn">
                         <i class="fa-solid fa-user"></i>
                     </button>
                 </a>
@@ -144,16 +144,16 @@
         </ul>
         <ul>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="sidebar-btn">
                         <i class="fa-regular fa-circle-question"></i>
                         <span>Ayuda</span>
                     </button>
                 </a>
             </li>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="sidebar-btn">
                         <i class="fa-solid fa-user"></i>
                         <span>Mi perfil</span>
                     </button>

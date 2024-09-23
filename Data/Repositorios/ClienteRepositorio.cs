@@ -24,6 +24,10 @@ namespace Data.Repositorios
             return await this._context.Set<Cliente>().Where(c => c.IdMembresia == idMembresia).ToListAsync();
         }
 
+        public async Task<Cliente> ObtenerClienteConIdAsync(int id)
+        {
+            return await this._context.Set<Cliente>().Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
         public async Task<Cliente> ObtenerClienteConDniAsync(string dni)
         {
             return await this._context.Set<Cliente>().Where(c => c.Dni == dni).FirstOrDefaultAsync();

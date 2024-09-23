@@ -1,6 +1,6 @@
 ﻿namespace WebApp.Models.Cliente
 {
-    public class ClienteModel : RegistroClienteDTO
+    public class ClienteModel
     {
         public int Id { get; set; }
         public string Dni { get; set; }

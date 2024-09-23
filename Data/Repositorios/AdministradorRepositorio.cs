@@ -13,6 +13,11 @@ namespace Data.Repositorios
     public class AdministradorRepositorio : Repositorio<Administrador>, IRepositorio<Administrador>, IAdministradorRepositorio
     {
         public AdministradorRepositorio(GimnasioContext context) : base(context) { }
+
+        public async Task<Administrador> ObtenerAdminConIdAsync(int id)
+        {
+            return await this._context.Set<Administrador>().Where(c => c.Id == id).FirstOrDefaultAsync();
+        }
         public async Task<Administrador> ObtenerAdminConUsuarioAsync(string usuario)
         {
             return await this._context.Set<Administrador>().Where(c => c.Usuario == usuario).FirstOrDefaultAsync();

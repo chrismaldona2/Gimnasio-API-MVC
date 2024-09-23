@@ -10,6 +10,7 @@ namespace Services.Contratos
     public interface IMembresiaService
     {
         Task<IEnumerable<Membresia>> ObtenerMembresiasAsync();
+        Task<Membresia> BuscarMembresiaPorIdAsync(int id);
         Task RegistrarMembresiaAsync(string tipo, int duraciondias, double precio);
         Task EliminarMembresiaAsync(int id);
         Task ModificarMembresiaAsync(Membresia membresia);

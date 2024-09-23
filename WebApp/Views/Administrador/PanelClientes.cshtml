@@ -7,9 +7,8 @@
 
 
 <head>
-    <script src="~/js/general/dateSelector.js" defer></script>
 
-    <script src="~/js/services/clienteService.js" defer></script>
+    <script src="~/js/services/panelClienteService.js" defer></script>
     <script src="~/js/general/tables.js" defer></script>
 
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
@@ -18,7 +17,7 @@
 
 
 <!-- Formulario de registro de cliente-->
-<dialog class="popup" id="registrarClienteForm">
+<dialog class="popup" id="registrarClienteModal">
     <h2>Nuevo cliente</h2>
     <form asp-action="RegistrarCliente" method="post" class="form">
         <div class="multiple-input-container">
@@ -45,23 +44,9 @@
             <label>Correo electrónico</label>
             <input type="text" class="regular-form-input" asp-for="Email" autocomplete="off" required>
         </div>
-        <div class="date-selector-input-container">
+        <div class="input-container">
             <label>Fecha de nacimiento</label>
-            <div class="multiple-input-container">
-
-                <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input-c" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
-                </div>
-                <div class="input-container">
-                    <label class="date-selector-label">Mes</label>
-                    <select class="regular-form-input" id="mes-input-c" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
-                </div>
-                <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input-c" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
-                </div>
-            </div>
+            <input class="regular-form-input" type="date" asp-for="FechaNacimiento" required>
         </div>
         <div class="input-container">
             <label>Sexo</label>
@@ -83,7 +68,7 @@
 
 
 <!-- formulario de modificacion de cliente -->
-<dialog class="popup" id="modificarClienteForm">
+<dialog class="popup" id="modificarClienteModal">
     <h2>Modificar cliente</h2>
     <form asp-action="ModificarCliente" method="post" class="form">
 
@@ -116,25 +101,9 @@
             <label>Correo electrónico</label>
             <input type="text" class="regular-form-input" id="email_mod" name="Email" asp-for="Email" autocomplete="off" required>
         </div>
-        <div class="date-selector-input-container">
+        <div class="input-container">
             <label>Fecha de nacimiento</label>
-            <div class="multiple-input-container">
-                <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <select class="regular-form-input" id="año-input-u" name="FechaNacimientoDTO.Año" asp-for="FechaNacimientoDTO.Año" required></select>
-                </div>
-
-                <div class="input-container">
-                    <label class="date-selector-label">Mes</label>
-                    <select class="regular-form-input" id="mes-input-u" name="FechaNacimientoDTO.Mes" asp-for="FechaNacimientoDTO.Mes" required></select>
-                </div>
-
-
-                <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <select class="regular-form-input" id="dia-input-u" name="FechaNacimientoDTO.Dia" asp-for="FechaNacimientoDTO.Dia" required></select>
-                </div>
-            </div>
+            <input class="regular-form-input" type="date" id="nac_mod" asp-for="FechaNacimiento" required>
         </div>
         <div class="input-container">
             <label>Sexo</label>
@@ -158,7 +127,7 @@
 
 
 <!-- formulario de eliminacion de cliente -->
-<dialog class="popup" id="eliminarClienteForm">
+<dialog class="popup" id="eliminarClienteModal">
     <h2>Eliminar cliente</h2>
     <form asp-action="EliminarCliente" method="post" class="form">
         <div class="input-container">
@@ -168,49 +137,36 @@
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Nombre</label>
-                <input type="text" class="regular-form-input" id="nombre_del" name="Nombre" readonly>
+                <input type="text" class="regular-form-input" name="Nombre" disabled>
             </div>
             <div class="input-container">
                 <label>Apellido</label>
-                <input type="text" class="regular-form-input" id="apellido_del" name="Apellido" readonly>
+                <input type="text" class="regular-form-input" name="Apellido" disabled>
             </div>
         </div>
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI</label>
-                <input type="text" class="regular-form-input" id="dni_del" name="Dni" readonly>
+                <input type="text" class="regular-form-input" name="Dni" disabled>
             </div>
             <div class="input-container">
                 <label>Teléfono</label>
-                <input type="tel" class="regular-form-input" id="tel_del" name="Telefono" readonly>
+                <input type="tel" class="regular-form-input" name="Telefono" disabled>
             </div>
         </div>
         <div class="input-container">
             <label>Correo electrónico</label>
-            <input type="text" class="regular-form-input" id="email_del" name="Email" readonly>
+            <input type="text" class="regular-form-input" name="Email" disabled>
         </div>
-        <div class="date-selector-input-container">
-            <label>Fecha de nacimiento</label>
-            <div class="multiple-input-container">
-                <div class="input-container">
-                    <label class="date-selector-label">Año</label>
-                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Año" readonly>
-                </div>
-
-                <div class="input-container">
-                    <label class="date-selector-label">Mes</label>
-                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Mes" readonly>
-                </div>
-
-                <div class="input-container">
-                    <label class="date-selector-label">Día</label>
-                    <input type="text" class="regular-form-input" name="FechaNacimientoDTO.Dia" readonly>
-                </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Fecha de nacimiento</label>
+                <input type="text" class="regular-form-input" name="FechaNacimiento" disabled>
             </div>
-        </div>
-        <div class="input-container">
-            <label>Sexo</label>
-            <input type="text" class="regular-form-input" id="sexo_del" name="Sexo" readonly>
+            <div class="input-container">
+                <label>Sexo</label>
+                <input type="text" class="regular-form-input" name="Sexo" disabled>
+            </div>
         </div>
 
         <div class="multiple-input-container">
@@ -233,8 +189,8 @@
     <nav class="nav">
         <ul>
             <li class="profile-btn-container">
-                <a>
-                    <button class="profile-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="profile-btn">
                         <i class="fa-solid fa-user"></i>
                     </button>
                 </a>
@@ -349,16 +305,16 @@
         </ul>
         <ul>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="sidebar-btn">
                         <i class="fa-regular fa-circle-question"></i>
                         <span>Ayuda</span>
                     </button>
                 </a>
             </li>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="sidebar-btn">
                         <i class="fa-solid fa-user"></i>
                         <span>Mi perfil</span>
                     </button>
@@ -368,7 +324,7 @@
     </nav>
 
     <!-- App -->
-    <div class="app">
+    <div class="app dashboard">
         <h1>
             Listado de clientes
         </h1>
@@ -446,8 +402,8 @@
                                     <div class="action-dropdown-menu">
                                         <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Renovar membresía</a>
                                         <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Ver pagos</a>
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarClienteForm('@item.Id', '@item.Nombre', '@item.Apellido', '@item.Dni', '@item.Telefono', '@item.Email', '@item.FechaNacimiento.Day', '@item.FechaNacimiento.Month', '@item.FechaNacimiento.Year', '@item.Sexo')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarModificarClienteForm('@item.Id', '@item.Nombre', '@item.Apellido', '@item.Dni', '@item.Telefono', '@item.Email', '@item.FechaNacimiento.Day', '@item.FechaNacimiento.Month', '@item.FechaNacimiento.Year', '@((int)(item.Sexo))')">Editar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarClienteModal('@item.Id')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarModificarClienteModal('@item.Id')">Editar</a>
                                     </div>
                                 </button>
                             </td>

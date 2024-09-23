@@ -38,6 +38,22 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "buscarAdministradorId",
+    "RelativePath": "api/AdministradorService/BuscarID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
     "Method": "buscarAdministradorUsuario",
     "RelativePath": "api/AdministradorService/BuscarUsuario",
     "HttpMethod": "GET",
@@ -176,7 +192,7 @@
   {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "buscarPorDni",
-    "RelativePath": "api/ClienteService/BuscarPorDni",
+    "RelativePath": "api/ClienteService/BuscarDNI",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -184,6 +200,22 @@
       {
         "Name": "Dni",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "buscarPorId",
+    "RelativePath": "api/ClienteService/BuscarID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],
@@ -289,6 +321,22 @@
       {
         "Name": "dni",
         "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "buscarPorId",
+    "RelativePath": "api/MembresiaService/BuscarID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
         "IsRequired": false
       }
     ],

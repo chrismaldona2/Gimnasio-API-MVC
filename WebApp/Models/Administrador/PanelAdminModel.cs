@@ -1,5 +1,4 @@
-﻿
-namespace WebApp.Models.Administrador
+﻿namespace WebApp.Models.Administrador
 {
     public class PanelAdminModel : AdminModel
     {

@@ -214,6 +214,25 @@ namespace Services
             }
         }
 
+        //buscar
+        public async Task<Administrador> BuscarAdminPorIdAsync(int id)
+        {
+            try
+            {
+                var admin = await _adminRepository.ObtenerAdminConIdAsync(id);
+
+                if (admin == null)
+                {
+                    throw new KeyNotFoundException("No hay un administrador registrado con ese ID.");
+                }
+
+                return admin;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
 
         //buscar
         public async Task<Administrador> BuscarAdminPorDniAsync(string dni)

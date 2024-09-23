@@ -2,19 +2,18 @@
     ViewData["Title"] = "Panel de Membresías";
 }
 
-@using WebApp.Models.Membresias
+@using WebApp.Models.Membresia
 @model PanelMembresiasModel
 
 <head>
-    <script src="~/js/services/membresiaService.js" defer></script>
-
+    <script src="~/js/services/panelMembresiaService.js" defer></script>
     <script src="~/js/general/tables.js" defer></script>
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 
 </head>
 
 <!-- Formulario de registro de membresia -->
-<dialog class="popup" id="registrarMembresiaForm">
+<dialog class="popup" id="registrarMembresiaModal">
     <h2>Nueva membresía</h2>
     <form asp-action="RegistrarMembresia" method="post" class="form">
         <div class="input-container">
@@ -28,7 +27,7 @@
 
         <div class="input-container">
             <label>Precio (ARS)</label>
-            <input type="number" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
+            <input type="number" step="500" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
         </div>
         <div class="multiple-input-container">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
@@ -40,7 +39,7 @@
 
 
 <!-- formulario de modificacion de membresia -->
-<dialog class="popup" id="modificarMembresiaForm">
+<dialog class="popup" id="modificarMembresiaModal">
     <h2>Modificar membresía</h2>
     <form asp-action="ModificarMembresia" method="post" class="form">
 
@@ -61,7 +60,7 @@
 
             <div class="input-container">
                 <label>Precio (ARS)</label>
-                <input type="number" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
+                <input type="number" step="500" class="regular-form-input" name="Precio" asp-for="Precio" autocomplete="off" required>
             </div>
 
         </div>
@@ -77,7 +76,7 @@
 
 
 <!-- formulario de eliminar membresia -->
-<dialog class="popup" id="eliminarMembresiaForm">
+<dialog class="popup" id="eliminarMembresiaModal">
     <h2>Eliminar membresía</h2>
     <form asp-action="EliminarMembresia" method="post" class="form">
         <div class="input-container">
@@ -87,18 +86,18 @@
 
         <div class="input-container">
             <label>Descripción</label>
-            <input type="text" class="regular-form-input" name="Tipo" readonly>
+            <input type="text" class="regular-form-input" name="Tipo" disabled>
         </div>
 
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Duración (Días)</label>
-                <input type="number" class="regular-form-input" name="DuracionDias" readonly>
+                <input type="number" class="regular-form-input" name="DuracionDias" disabled>
             </div>
 
             <div class="input-container">
                 <label>Precio (ARS)</label>
-                <input type="number" class="regular-form-input" name="Precio" readonly>
+                <input type="number" class="regular-form-input" name="Precio" disabled>
             </div>
         </div>
 
@@ -119,8 +118,8 @@
 
     <nav class="nav">
         <ul>
-            <li class="profile-btn-container" onclick="mostrarError('Funcion aún no implementada.')">
-                <a>
+            <li class="profile-btn-container">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
                     <button class="profile-btn">
                         <i class="fa-solid fa-user"></i>
                     </button>
@@ -240,16 +239,16 @@
         </ul>
         <ul>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="sidebar-btn">
                         <i class="fa-regular fa-circle-question"></i>
                         <span>Ayuda</span>
                     </button>
                 </a>
             </li>
             <li>
-                <a>
-                    <button class="sidebar-btn" onclick="mostrarError('Funcion aún no implementada.')">
+                <a asp-controller="Administrador" asp-action="PanelPerfil">
+                    <button class="sidebar-btn">
                         <i class="fa-solid fa-user"></i>
                         <span>Mi perfil</span>
                     </button>
@@ -260,7 +259,7 @@
 
 
     <!-- App -->
-    <div class="app">
+    <div class="app dashboard">
         <h1>
             Listado de membresías
         </h1>
@@ -317,8 +316,8 @@
                                 <button class="table-action-btn">
                                     <i class="fa-solid fa-ellipsis"></i>
                                     <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarMembresiaForm('@item.Id', '@item.Tipo', '@item.DuracionDias', '@item.Precio')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarModicarMembresiaForm('@item.Id', '@item.Tipo', '@item.DuracionDias', '@item.Precio')">Editar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarMembresiaModal('@item.Id')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarModificarMembresiaModal('@item.Id')">Editar</a>
                                     </div>
                                 </button>
                             </td>

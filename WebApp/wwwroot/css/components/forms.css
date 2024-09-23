@@ -9,6 +9,7 @@
     .form .multiple-input-container {
         display: flex;
         gap: 1rem;
+        align-items: flex-end;
     }
 
     .form .input-container, .date-selector-input-container {

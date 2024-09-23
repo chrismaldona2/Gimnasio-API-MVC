@@ -127,5 +127,33 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
+
+        [HttpGet("BuscarID")]
+        public async Task<IActionResult> buscarPorId(int Id)
+        {
+            if (Id <= 0)
+            {
+                return BadRequest("Id de membresía inválido.");
+            }
+            try
+            {
+                var membresia = await _membresiaService.BuscarMembresiaPorIdAsync(Id);
+                if (membresia != null)
+                {
+                    return Ok(membresia);
+                }
+
+                return NotFound("La membresía especificada no fue encontrada");
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
     }
 }

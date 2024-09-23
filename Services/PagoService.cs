@@ -16,9 +16,9 @@ namespace Services
     {
         private readonly IPagoRepositorio _pagoRepository;
         private readonly IClienteRepositorio _clienteRepository;
-        private readonly IRepositorio<Membresia> _membresiaRepository;
+        private readonly IMembresiaRepositorio _membresiaRepository;
 
-        public PagoService(IPagoRepositorio pagoRepository, IClienteRepositorio clienteRepository, IRepositorio<Membresia> membresiaRepository)
+        public PagoService(IPagoRepositorio pagoRepository, IClienteRepositorio clienteRepository, IMembresiaRepositorio membresiaRepository)
         {
             _pagoRepository = pagoRepository;
             _clienteRepository = clienteRepository;

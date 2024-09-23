@@ -36,7 +36,7 @@ namespace RestAPI.Controllers
                     clienteDto.Apellido,
                     clienteDto.Email,
                     clienteDto.Telefono,
-                    new DateOnly(clienteDto.FechaNacimientoDTO.Año, clienteDto.FechaNacimientoDTO.Mes, clienteDto.FechaNacimientoDTO.Dia),
+                    DateOnly.ParseExact(clienteDto.FechaNacimiento, "yyyy-MM-dd"),
                     (Sexo)clienteDto.Sexo);
                 return Ok("Cliente registrado exitosamente.");
             }
@@ -103,7 +103,7 @@ namespace RestAPI.Controllers
                 Apellido = ClienteDto.Apellido,
                 Email = ClienteDto.Email,
                 Telefono = ClienteDto.Telefono,
-                FechaNacimiento = new DateOnly(ClienteDto.FechaNacimientoDTO.Año, ClienteDto.FechaNacimientoDTO.Mes, ClienteDto.FechaNacimientoDTO.Dia),
+                FechaNacimiento = DateOnly.ParseExact(ClienteDto.FechaNacimiento, "yyyy-MM-dd"),
                 Sexo = (Sexo)ClienteDto.Sexo
             };
 
@@ -206,7 +206,7 @@ namespace RestAPI.Controllers
         }
 
         //buscar
-        [HttpGet("BuscarPorDni")]
+        [HttpGet("BuscarDNI")]
         public async Task<IActionResult> buscarPorDni(string Dni)
         {
             if (Dni.IsNullOrEmpty())
@@ -221,6 +221,34 @@ namespace RestAPI.Controllers
                     return Ok(cliente);
                 }
                 
+                return NotFound("El cliente especificado no fue encontrado");
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+        [HttpGet("BuscarID")]
+        public async Task<IActionResult> buscarPorId(int Id)
+        {
+            if (Id <= 0)
+            {
+                return BadRequest("Id de cliente inválido.");
+            }
+            try
+            {
+                var cliente = await _clienteService.BuscarClientePorIdAsync(Id);
+                if (cliente != null)
+                {
+                    return Ok(cliente);
+                }
+
                 return NotFound("El cliente especificado no fue encontrado");
 
             }

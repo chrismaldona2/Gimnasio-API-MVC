@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text;
-using WebApp.Models.Membresias;
+using WebApp.Models.Cliente;
+using WebApp.Models.Membresia;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Services
@@ -106,6 +107,19 @@ namespace WebApp.Services
                     Mensaje = responseMessage
                 };
             }
+        }
+
+        public async Task<MembresiaModel> BuscarMembresiaPorId(int id)
+        {
+
+            var response = await _httpClient.GetAsync($"api/MembresiaService/BuscarID?Id={id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<MembresiaModel>(jsonResponse);
+            }
+            return null;
+
         }
 
     }

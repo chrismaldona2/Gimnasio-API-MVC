@@ -14,6 +14,7 @@ namespace Services.Contratos
         Task ModificarAdminAsync(Administrador adminModificar);
         Task<Administrador> AutenticarAdminAsync(string usuario, string contraseña);
         Task<IEnumerable<Administrador>> ObtenerAdministradoresAsync();
+        Task<Administrador> BuscarAdminPorIdAsync(int id);
         Task<Administrador> BuscarAdminPorUsuarioAsync(string usuario);
         Task<Administrador> BuscarAdminPorDniAsync(string dni);
     }

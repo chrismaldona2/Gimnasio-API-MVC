@@ -106,29 +106,36 @@ namespace WebApp.Services
         }
 
 
-        public async Task<APIResponse> BuscarClientePorDni(string dni)
+        public async Task<ClienteModel> BuscarClientePorDni(string dni)
         { 
-            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarPorDni?Dni={dni}");
+            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarDNI?Dni={dni}");
 
             var responseMessage = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
             {
-                return new APIResponse
-                {
-                    Exitoso = true,
-                    Mensaje = responseMessage
-                };
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ClienteModel>(jsonResponse);
             }
-            else
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = responseMessage
-                };
-            }
+            return null;
+
         }
 
+        public async Task<ClienteModel> BuscarClientePorId(int id)
+        {
+
+            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarID?Id={id}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<ClienteModel>(jsonResponse);
+            }
+            return null;
+
+        }
+
+
+        
     }
 }

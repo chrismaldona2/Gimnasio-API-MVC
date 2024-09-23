@@ -1,73 +1,64 @@
-﻿@using WebApp.Models.Cliente
-@model ClienteModel
-
-@{
+﻿@{
     ViewData["Title"] = "Inicio";
 }
 
 <head>
     <link rel="stylesheet" href="~/css/pages/home.css">
     <link rel="stylesheet" href="~/css/components/user-info-card.css">
-    <script src="~/js/services/showCustomerInfo.js" defer></script> <!-- Ver explicacion del script dentro del archivo .js-->
+    <script src="~/js/services/loginClienteService.js" defer></script>
 </head>
 
 
-@if (Model != null)
-{
-    <!-- Si model es null lo siguiente no es renderizado.-->
-        <!-- Tajerta de información  de cliente -->
-    <dialog id="user-info-card-modal" class="popup">
-        <div class="user-card-container">
-            <div class="left">
-                <div class="user-pic">
-                    <img src="/images/user-pic-2.png" alt="User Picture">
-                </div>
-                <div class="info-field">
-                    <label>Vencimiento de membresía</label>
-                    <span style="color: @(Model.FechaVencimientoMembresia == null || Model.FechaVencimientoMembresia < DateTime.Now ? "var(--red-color)" : "#489f4e");">
-                        @(Model.FechaVencimientoMembresia?.ToString("dd/MM/yyyy") ?? "Sin membresía")
-                    </span>
-                </div>
+<dialog id="user-info-card-modal" class="popup">
+    <div class="user-card-container">
+        <div class="left">
+            <div class="user-pic">
+                <img src="/images/user-pic-2.png" alt="User Picture">
             </div>
-
-            <div class="right">
-                <div class="info-field" id="dni-field">
-                    <label>DNI</label>
-                    <span>@Model.Dni</span>
-                </div>
-                <div class="info-field" id="sex-field">
-                    <label>Sexo</label>
-                    <span>@Model.Sexo</span>
-                </div>
-                <div class="info-field" id="name-field">
-                    <label>Nombre</label>
-                    <span>@Model.Nombre</span>
-                </div>
-                <div class="info-field" id="lastname-field">
-                    <label>Apellido</label>
-                    <span>@Model.Apellido</span>
-                </div>
-                <div class="info-field" id="email-field">
-                    <label>Email</label>
-                    <span>@Model.Email</span>
-                </div>
-                <div class="info-field" id="tel-field">
-                    <label>Teléfono</label>
-                    <span>@Model.Telefono</span>
-                </div>
-                <div class="info-field" id="birthdate-field">
-                    <label>Fecha de nacimiento</label>
-                    <span>@Model.FechaNacimiento</span>
-                </div>
-                <div class="action-btns">
-                    <button class="show-payments-btn">Ver pagos recientes<i class="fa-solid fa-arrow-right"></i></button>
-                    <button class="close-btn" id="close-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
-                </div>
+            <div class="info-field" id="vencimiento-field">
+                <label>Vencimiento de membresía</label>
+                <span></span>
             </div>
         </div>
-    </dialog>
 
-}
+        <div class="right">
+            <div class="info-field" id="dni-field">
+                <label>DNI</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="sex-field">
+                <label>Sexo</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="name-field">
+                <label>Nombre</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="lastname-field">
+                <label>Apellido</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="email-field">
+                <label>Email</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="tel-field">
+                <label>Teléfono</label>
+                <span>...</span>
+            </div>
+            <div class="info-field" id="birthdate-field">
+                <label>Fecha de nacimiento</label>
+                <span>...</span>
+            </div>
+            <div class="action-btns">
+                <button class="show-payments-btn">Ver pagos recientes<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="close-btn" id="close-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
+            </div>
+        </div>
+    </div>
+</dialog>
+
+
 
 <header class="header">
     <a asp-controller="Usuario" asp-action="LoginCliente" class="logo">
@@ -91,7 +82,7 @@
 </header>
 <main class="main">
     <div class="app">
-        <form asp-controller="Usuario" asp-action="VerInformacionCliente" method="post" class="user-login-form">
+        <form id="buscarClienteForm" class="user-login-form">
             <div class="input-container">
                 <input type="text" name="dniInput" id="dni-input" class="user-login-input" autocomplete="off" required>
                 <label for="dni-input" id="dni-label">DNI</label>
