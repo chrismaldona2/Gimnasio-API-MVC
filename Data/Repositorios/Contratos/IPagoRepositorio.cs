@@ -11,5 +11,6 @@ namespace Data.Repositorios.Contratos
     public interface IPagoRepositorio : IRepositorio<Pago>
     {
         Task<IEnumerable<Pago>> ObtenerPagoPorClienteAsync(int idCliente);
+
     }
 }

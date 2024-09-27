@@ -192,7 +192,7 @@ namespace Services
         {
             try
             {
-                var cliente = await _clienteRepository.ObtenerClienteConIdAsync(id);
+                var cliente = await _clienteRepository.EncontrarPorIDAsync(id);
                 if (cliente == null)
                 {
                     return null;

@@ -9,7 +9,6 @@ namespace Data.Repositorios.Contratos
 {
     public interface IAdministradorRepositorio : IRepositorio<Administrador>
     {
-        Task<Administrador> ObtenerAdminConIdAsync(int id);
         Task<Administrador> ObtenerAdminConUsuarioAsync(string usuario);
         Task<Administrador> ObtenerAdminConDniAsync(string dni);
     }

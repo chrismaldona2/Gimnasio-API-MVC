@@ -9,7 +9,7 @@
     .form .multiple-input-container {
         display: flex;
         gap: 1rem;
-        align-items: flex-end;
+        align-items: left;
     }
 
     .form .input-container, .date-selector-input-container {
@@ -172,7 +172,7 @@
     background-color: var(--red-color);
     font-size: 1.25rem;
     color: var(--white-color);
-    text-wrap: nowrap;
+
     text-align: center;
     border: none;
     transition: background-color .35s ease;
@@ -183,10 +183,11 @@
     }
 
 .regular-form-cancel-btn {
+    min-height: 100%;
     border-radius: var(--user-login-inputs-b-radius);
     padding-block: var(--user-login-inputs-size);
     background-color: var(--white-color);
-    box-shadow: 0 0 0 1.6px var(--red-color);
+    box-shadow: inset 0 0 0 1.6px var(--red-color);
     font-size: 1.25rem;
     color: var(--red-color);
     text-wrap: nowrap;

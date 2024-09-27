@@ -407,6 +407,22 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "buscarPorId",
+    "RelativePath": "api/PagoService/BuscarID",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
     "Method": "eliminarPago",
     "RelativePath": "api/PagoService/Eliminar",
     "HttpMethod": "DELETE",

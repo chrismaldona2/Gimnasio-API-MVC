@@ -1,18 +1,4 @@
-﻿
-async function buscarClientePorId(idCliente) {
-
-    const response = await fetch(`/Administrador/BuscarCliente?idCliente=${idCliente}`);
-
-    if (!response.ok) {
-        throw new Error('Cliente no encontrado.');
-    }
-
-    const cliente = await response.json();
-    console.log(cliente);
-    return cliente;
-}
-
-
+﻿import { buscarClientePorId } from './busquedaService.js';
 
 const registrarBtn = document.getElementById('registrarClienteBtn');
 const registrarModal = document.getElementById('registrarClienteModal');
@@ -39,7 +25,7 @@ async function mostrarEliminarClienteModal(idCliente) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarEliminarClienteModal = mostrarEliminarClienteModal; //agrego la funcion al window para que sea accesible globalmente
 eliminarModal.querySelector('.cancel-btn').addEventListener('click', () => eliminarModal.close());
 
 
@@ -61,5 +47,5 @@ async function mostrarModificarClienteModal(idCliente) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarModificarClienteModal = mostrarModificarClienteModal; //agrego la funcion al window para que sea accesible globalmente
 modificarModal.querySelector('.cancel-btn').addEventListener('click', () => modificarModal.close());

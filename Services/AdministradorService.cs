@@ -219,7 +219,7 @@ namespace Services
         {
             try
             {
-                var admin = await _adminRepository.ObtenerAdminConIdAsync(id);
+                var admin = await _adminRepository.EncontrarPorIDAsync(id);
 
                 if (admin == null)
                 {

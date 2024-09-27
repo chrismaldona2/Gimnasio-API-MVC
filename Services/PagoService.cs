@@ -174,5 +174,23 @@ namespace Services
                 throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
             }
         }
+
+
+        public async Task<Pago> BuscarPagoPorIdAsync(int id)
+        {
+            try
+            {
+                var pago = await _pagoRepository.EncontrarPorIDAsync(id);
+                if (pago == null)
+                {
+                    return null;
+                }
+                return pago;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
     }
 }

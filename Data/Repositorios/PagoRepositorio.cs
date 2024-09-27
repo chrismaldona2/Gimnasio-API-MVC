@@ -18,5 +18,6 @@ namespace Data.Repositorios
         {
             return await this._context.Set<Pago>().Where(c => c.IdCliente == idCliente).ToListAsync();
         }
+
     }
 }

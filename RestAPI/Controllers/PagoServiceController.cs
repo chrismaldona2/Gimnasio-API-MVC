@@ -141,5 +141,33 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
+
+        [HttpGet("BuscarID")]
+        public async Task<IActionResult> buscarPorId(int Id)
+        {
+            if (Id <= 0)
+            {
+                return BadRequest("Id de pago inválido.");
+            }
+            try
+            {
+                var pago = await _pagoService.BuscarPagoPorIdAsync(Id);
+                if (pago != null)
+                {
+                    return Ok(pago);
+                }
+
+                return NotFound("El pago especificado no fue encontrado");
+
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
     }
 }

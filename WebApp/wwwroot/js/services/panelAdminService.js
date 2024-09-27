@@ -1,17 +1,4 @@
-﻿
-async function buscarAdminPorId(idAdmin) {
-
-    const response = await fetch(`/Administrador/BuscarAdmin?idAdmin=${idAdmin}`);
-
-    if (!response.ok) {
-        throw new Error('Administrador no encontrado.');
-    }
-
-    const admin = await response.json();
-    console.log(admin);
-    return admin;
-}
-
+﻿import { buscarAdminPorId } from './busquedaService.js';
 
 
 const registrarBtn = document.getElementById('registrarAdminBtn');
@@ -39,7 +26,7 @@ async function mostrarDetalleAdminModal(idAdmin) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarDetalleAdminModal = mostrarDetalleAdminModal; //agrego la funcion al window para que sea accesible globalmente
 detalleModal.querySelector('.regular-form-submit-btn').addEventListener('click', () => detalleModal.close());
 
 
@@ -64,7 +51,7 @@ async function mostrarEliminarAdminModal(idAdmin) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarEliminarAdminModal = mostrarEliminarAdminModal; //agrego la funcion al window para que sea accesible globalmente
 eliminarModal.querySelector('.cancel-btn').addEventListener('click', () => eliminarModal.close());
 
 
@@ -87,5 +74,5 @@ async function mostrarModificarAdminModal(idAdmin) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarModificarAdminModal = mostrarModificarAdminModal; //agrego la funcion al window para que sea accesible globalmente
 modificarModal.querySelector('.cancel-btn').addEventListener('click', () => modificarModal.close());

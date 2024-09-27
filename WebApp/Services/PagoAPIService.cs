@@ -1,6 +1,7 @@
 ﻿using Core.Entidades;
 using Newtonsoft.Json;
 using System.Text;
+using WebApp.Models.Membresia;
 using WebApp.Models.Pago;
 using WebApp.Services.Contracts;
 
@@ -71,6 +72,20 @@ namespace WebApp.Services
                     Mensaje = responseMessage
                 };
             }
+        }
+
+
+        public async Task<PagoModel> BuscarPagoPorId(int id)
+        {
+
+            var response = await _httpClient.GetAsync($"api/PagoService/BuscarID?Id={id}");
+            if (response.IsSuccessStatusCode)
+            {
+                var jsonResponse = await response.Content.ReadAsStringAsync();
+                return JsonConvert.DeserializeObject<PagoModel>(jsonResponse);
+            }
+            return null;
+
         }
     }
 }

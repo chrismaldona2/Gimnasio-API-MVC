@@ -44,16 +44,16 @@
     font-size: calc(var(--fs-small) - 2px);
 }
 
-.search-form input {
-    outline: none;
-    border: none;
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
-    box-shadow: inset 0 0 0 1.8px var(--red-color);
-    background-color: #fff;;
-    color: var(--dark-red-color);
-    font-weight: 600;
-}
+    .search-form input {
+        outline: none;
+        border: none;
+        border-radius: 1rem;
+        padding: 1rem 1.5rem;
+        box-shadow: inset 0 0 0 1.8px var(--red-color);
+        background-color: #fffefa;
+        color: var(--dark-red-color);
+        font-weight: 500;
+    }
 
     .search-form input::placeholder {
         color: var(--dark-red-color);

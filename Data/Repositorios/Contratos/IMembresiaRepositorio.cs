@@ -9,6 +9,5 @@ namespace Data.Repositorios.Contratos
 {
     public interface IMembresiaRepositorio : IRepositorio<Membresia>
     {
-        Task<Membresia> ObtenerMembresiaConIdAsync(int id);
     }
 }

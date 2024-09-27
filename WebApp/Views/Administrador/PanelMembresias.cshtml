@@ -6,8 +6,10 @@
 @model PanelMembresiasModel
 
 <head>
-    <script src="~/js/services/panelMembresiaService.js" defer></script>
+    <script src="~/js/services/busquedaService.js" type="module" defer></script>
+    <script src="~/js/services/panelMembresiaService.js" type="module" defer></script>
     <script src="~/js/general/tables.js" defer></script>
+
     <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 
 </head>
@@ -66,7 +68,7 @@
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn form-action-btn">Modificar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Guardar cambios</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
@@ -102,7 +104,7 @@
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Confirmar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>

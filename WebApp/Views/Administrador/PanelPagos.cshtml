@@ -7,22 +7,25 @@
 
 <head>
     <script src="~/js/general/tables.js" defer></script>
-    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 
+    <script src="~/js/services/busquedaService.js" type="module" defer></script>
+    <script src="~/js/services/panelPagoService.js" type="module" defer></script>
+
+    <link rel="stylesheet" href="~/css/layout/admin-dashboard.css">
 </head>
 
 
 
 
 <!-- formulario de registro de pago -->
-<dialog class="popup" id="registrarPagoForm">
+<dialog class="popup" id="registrarPagoModal">
     <h2>Pago de membresía</h2>
     <form asp-action="RegistrarPago" method="post" class="form">
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>DNI del Cliente</label>
                 <div class="input-search-container">
-                    <input type="search" class="regular-form-input" id="dniClienteInput" name="DniCliente" autocomplete="off">
+                    <input type="search" class="regular-form-input" id="dniClienteInput" name="DniCliente" autocomplete="off" asp-for="DniCliente">
                     <button type="button" id="buscarClienteBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
@@ -38,15 +41,15 @@
                 <label>Datos del cliente:</label>
                 <div class="cliente-data">
                     <label>Nombre:</label>
-                    <span id="clienteNombreSel-c">...</span>
+                    <span name="nombreCliente">...</span>
                 </div>
                 <div class="cliente-data">
                     <label>Id. Membresía actual:</label>
-                    <span id="clienteMembresiaIdSel-c">...</span>
+                    <span name="membresiaCliente">...</span>
                 </div>
                 <div class="cliente-data">
                     <label>Vencimiento actual:</label>
-                    <span id="clienteVencimientoSel-c">...</span>
+                    <span name="vencimientoCliente">...</span>
                 </div>
             </div>
 
@@ -55,15 +58,15 @@
                 <label>Membresía seleccionada:</label>
                 <div class="membresia-data">
                     <label>Id:</label>
-                    <span id="membresiaSelId-c">...</span>
+                    <span name="idMembresia">...</span>
                 </div>
                 <div class="membresia-data">
                     <label>Duración (Días):</label>
-                    <span id="membresiaSelDias-c">...</span>
+                    <span name="duracionMembresia">...</span>
                 </div>
                 <div class="membresia-data">
                     <label>Duración (Meses):</label>
-                    <span id="membresiaSelMeses-c">...</span>
+                    <span name="duracionMesesMembresia">...</span>
                 </div>
             </div>
         </div>
@@ -76,11 +79,11 @@
                         <div class="vencimiento-warning oculto">Buscar cliente por DNI para obtener la fecha de vencimiento de su membresía con el pago aplicado.</div>
                     </label>
                 </div>
-                <input type="text" class="regular-form-input" id="vencimientoNuevo-c" disabled>
+                <input type="text" class="regular-form-input" name="vencimientoNuevo" disabled>
             </div>
             <div class="input-container">
                 <label>Monto a pagar (ARS)</label>
-                <input type="text" class="regular-form-input" id="membresiaSelPrecio-c" disabled>
+                <input type="text" class="regular-form-input" name="precioMembresia" disabled>
             </div>
 
         </div>
@@ -95,7 +98,7 @@
 
 
 <!-- formulario de eliminar pago -->
-<dialog class="popup" id="eliminarPagoForm">
+<dialog class="popup" id="eliminarPagoModal">
     <h2>Eliminar pago</h2>
     <form asp-action="EliminarPago" method="post" class="form">
         <div class="input-container">
@@ -105,12 +108,12 @@
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Identificador de cliente</label>
-                <input type="number" class="regular-form-input" name="IdCliente" readonly>
+                <input type="number" class="regular-form-input" name="IdCliente" disabled>
             </div>
 
             <div class="input-container">
                 <label>Identificador de membresía</label>
-                <input type="text" class="regular-form-input" name="IdMembresia" readonly>
+                <input type="number" class="regular-form-input" name="IdMembresia" disabled>
             </div>
         </div>
 
@@ -119,36 +122,34 @@
                 <label>Datos del cliente:</label>
                 <div class="cliente-data">
                     <label>Nombre:</label>
-                    <span id="clienteNombreSel-d">...</span>
+                    <span name="nombreCliente">...</span>
                 </div>
                 <div class="cliente-data">
                     <label>DNI:</label>
-                    <span id="clienteDniSel-d">...</span>
+                    <span name="dniCliente">...</span>
                 </div>
                 <div class="cliente-data">
                     <label>Vencimiento actual:</label>
-                    <span id="clienteVencimientoSel-d">...</span>
+                    <span name="vencimientoActual">...</span>
                 </div>
             </div>
-
 
             <div class="membresia-data-container">
                 <label>Datos de la membresía:</label>
                 <div class="membresia-data">
                     <label>Tipo:</label>
-                    <span id="membresiaSelTipo-d">...</span>
+                    <span name="tipoMembresia">...</span>
                 </div>
                 <div class="membresia-data">
                     <label>Duración (Días):</label>
-                    <span id="membresiaSelDias-d">...</span>
+                    <span name="duracionDiasMembresia">...</span>
                 </div>
                 <div class="membresia-data">
                     <label>Duración (Meses):</label>
-                    <span id="membresiaSelMeses-d">...</span>
+                    <span name="duracionMesesMembresia">...</span>
                 </div>
             </div>
         </div>
-
 
         <div class="eliminar-pago-advice">
             <i class="fa-solid fa-circle-exclamation"></i>
@@ -156,25 +157,23 @@
         </div>
         <div class="input-container">
             <label style="color: var(--dark-red-color);">Vencimiento de membresía revertido</label>
-            <input type="text" class="regular-form-input" id="vencimientoNuevo-d" style="background-color: #FFEFEF; color: var(--dark-red-color); box-shadow: 0 0 0 1.6px var(--dark-red-color);" readonly>
+            <input type="text" class="regular-form-input" name="vencimientoNuevoCliente" style="background-color: #FFEFEF; color: var(--dark-red-color); box-shadow: 0 0 0 1.6px var(--dark-red-color);" disabled>
         </div>
-
-
 
         <div class="multiple-input-container">
             <div class="input-container">
                 <label>Fecha de pago</label>
-                <input type="text" class="regular-form-input" name="FechaPagoDel" readonly>
+                <input type="text" class="regular-form-input" name="FechaPago" disabled>
             </div>
 
             <div class="input-container">
                 <label>Monto pagado (ARS)</label>
-                <input type="text" class="regular-form-input" name="Monto" readonly>
+                <input type="text" class="regular-form-input" name="Monto" disabled>
             </div>
         </div>
 
         <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
+            <button type="submit" class="regular-form-submit-btn form-action-btn">Confirmar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
     </form>
@@ -182,9 +181,9 @@
 
 
 
-<!-- formulario de detalle de cliente -->
-<dialog class="popup" id="detalleClienteForm">
-    <h2>Detalle del cliente</h2>
+<!-- formulario de detalle de -->
+<dialog class="popup" id="detallePagoModal">
+    <h2>Detalle del pago</h2>
     <form class="form">
         <div class="input-container">
             <label>Identificador</label>
@@ -233,42 +232,6 @@
                 <label>Vencimiento de membresía</label>
                 <input type="text" class="regular-form-input" name="Vencimiento" disabled>
             </div>
-        </div>
-
-        <div class="input-container">
-            <button type="button" class="regular-form-submit-btn form-action-btn">Cerrar</button>
-        </div>
-    </form>
-</dialog>
-
-
-
-
-<!-- formulario de detalle de membresía -->
-<dialog class="popup" id="detalleMembresiaForm">
-    <h2>Detalle de la membresía</h2>
-    <form class="form">
-        <div class="input-container">
-            <label>Identificador</label>
-            <input type="text" class="regular-form-input" name="Id" disabled>
-        </div>
-        <div class="input-container">
-            <label>Tipo</label>
-            <input type="text" class="regular-form-input" name="Tipo" disabled>
-        </div>
-        <div class="multiple-input-container">
-            <div class="input-container">
-                <label>Duración (Días)</label>
-                <input type="text" class="regular-form-input" name="Dias" disabled>
-            </div>
-            <div class="input-container">
-                <label>Duración (Meses)</label>
-                <input type="text" class="regular-form-input" name="Meses" disabled>
-            </div>
-        </div>
-        <div class="input-container">
-            <label>Precio</label>
-            <input type="text" class="regular-form-input" name="Precio" disabled>
         </div>
 
         <div class="input-container">
@@ -447,7 +410,7 @@
                 </form>
             </div>
             <div>
-                <button class="admin-action-btn" id="registrarPagoBtn" onclick="mostrarError('Funcion aún no implementada.')">
+                <button class="admin-action-btn" id="registrarPagoBtn">
                     <i class="fa-solid fa-circle-plus"></i>
                     <span>Nuevo registro</span>
                 </button>
@@ -491,9 +454,8 @@
                                 <button class="table-action-btn">
                                     <i class="fa-solid fa-ellipsis"></i>
                                     <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Detalle del cliente</a>
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Detalle de la membresía</a>
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Eliminar</a>
+                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Detalle</a>
+                                        <a href="javascript:void(0);" onclick="mostrarEliminarPagoModal('@item.Id')">Eliminar</a>
                                     </div>
                                 </button>
                             </td>

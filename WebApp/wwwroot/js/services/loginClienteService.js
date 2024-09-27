@@ -1,17 +1,4 @@
-﻿
-async function buscarClientePorDni(dniCliente) {
-
-    const response = await fetch(`/Usuario/BuscarCliente?dniCliente=${dniCliente}`);
-
-    if (!response.ok) {
-        throw new Error('Cliente no encontrado.');
-    }
-
-    const cliente = await response.json();
-    return cliente;
-}
-
-
+﻿import { buscarClientePorDni } from './busquedaService.js';
 
 const buscarClienteForm = document.getElementById('buscarClienteForm');
 const modal = document.getElementById('user-info-card-modal');
@@ -30,8 +17,8 @@ buscarClienteForm.addEventListener('submit', async function (event) {
         modal.querySelector('#tel-field span').textContent = cliente.telefono;
         modal.querySelector('#birthdate-field span').textContent = convertirFechaDateOnly(cliente.fechaNacimiento);
 
-        const fechaVencimiento = cliente.fechaVencimientoMembresia;
-
+        const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
+        console.log(fechaVencimiento);
         if (fechaVencimiento == null || fechaVencimiento < new Date()) {
             modal.querySelector('#vencimiento-field span').style.color = 'var(--red-color)';
         } else {

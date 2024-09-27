@@ -1,16 +1,4 @@
-﻿async function buscarMembresiaPorId(idMembresia) {
-
-    const response = await fetch(`/Administrador/BuscarMembresia?idMembresia=${idMembresia}`);
-    console.log(response);
-    if (!response.ok) {
-        throw new Error('Membresía no encontrada.');
-    }
-
-    const membresia = await response.json();
-    console.log(membresia);
-    return membresia;
-}
-
+﻿import { buscarMembresiaPorId } from './busquedaService.js';
 
 const registrarBtn = document.getElementById('registrarMembresiaBtn');
 const registrarModal = document.getElementById('registrarMembresiaModal');
@@ -34,7 +22,7 @@ async function mostrarEliminarMembresiaModal(idMembresia) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarEliminarMembresiaModal = mostrarEliminarMembresiaModal; //agrego la funcion al window para que sea accesible globalmente
 eliminarModal.querySelector('.cancel-btn').addEventListener('click', () => eliminarModal.close());
 
 
@@ -51,5 +39,5 @@ async function mostrarModificarMembresiaModal(idMembresia) {
         mostrarError(error.message);
     }
 }
-
+window.mostrarModificarMembresiaModal = mostrarModificarMembresiaModal; //agrego la funcion al window para que sea accesible globalmente
 modificarModal.querySelector('.cancel-btn').addEventListener('click', () => modificarModal.close());
