@@ -11,8 +11,12 @@
       "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelpagos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\services\\busquedaservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\services\\busquedaservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\general\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\general\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,32 +26,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "busquedaService.js",
-              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\busquedaService.js",
-              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\busquedaService.js",
-              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\busquedaService.js",
-              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\busquedaService.js",
-              "ViewState": "AgIAADUAAAAAAAAAAAA9wEMAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-27T11:18:06.394Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "panelPagoService.js",
-              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
-              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
-              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
-              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
-              "ViewState": "AgIAAIAAAAAAAAAAAAAIwJYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-09-27T11:17:45.17Z",
+              "Title": "PanelClientes.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-01T10:06:24.341Z",
               "EditorCaption": ""
             },
             {
@@ -58,9 +49,35 @@
               "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
               "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelPagos.cshtml",
               "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
-              "ViewState": "AgIAAIwAAAAAAAAAAAAAAJ8AAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAABUBAAAAAAAAAAAAwCwBAABGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-09-27T11:17:21.978Z",
+              "WhenOpened": "2024-10-01T09:16:33.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "panelPagoService.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAAANgAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-01T09:29:44.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\site.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\general\\site.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\site.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\general\\site.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAqwB8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-01T09:33:53.195Z",
               "EditorCaption": ""
             }
           ]

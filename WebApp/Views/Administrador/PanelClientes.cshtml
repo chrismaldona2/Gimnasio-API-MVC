@@ -387,7 +387,7 @@
                                 @Html.DisplayFor(modelItem => item.Telefono)
                             </td>
                             <td data-label="Fecha de nacimiento">
-                                @item.FechaNacimiento.ToString("dd/MM/yyyy")
+                                @item.FechaNacimiento?.ToString("dd/MM/yyyy")
                             </td>
                             <td data-label="Sexo">
                                 @Html.DisplayFor(modelItem => item.Sexo)

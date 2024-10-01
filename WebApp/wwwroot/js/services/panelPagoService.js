@@ -44,7 +44,7 @@ function mostrarMembresiaSelData() {
     const selectedOption = membresiaSelect.options[membresiaSelect.selectedIndex];
 
     let duracionDias = selectedOption.getAttribute('duracionData');
-    let duracionMeses = (duracionDias / 30).toFixed(1);
+    let duracionMeses = convertirAMes(duracionDias);
 
     registrarModal.querySelector('span[name="idMembresia"]').textContent = selectedOption.value;
     registrarModal.querySelector('span[name="duracionMembresia"]').textContent = duracionDias;
@@ -132,7 +132,7 @@ async function mostrarEliminarPagoModal(id) {
 
         eliminarModal.querySelector('span[name="tipoMembresia"]').textContent = membresia.tipo;
         const duracionDias = membresia.duracionDias;
-        const duracionMeses = (duracionDias / 30).toFixed(1);
+        const duracionMeses = convertirAMes(duracionDias);
         eliminarModal.querySelector('span[name="duracionDiasMembresia"]').textContent = duracionDias;
         eliminarModal.querySelector('span[name="duracionMesesMembresia"]').textContent = duracionMeses;
 
@@ -153,3 +153,88 @@ async function mostrarEliminarPagoModal(id) {
     }
 }
 window.mostrarEliminarPagoModal = mostrarEliminarPagoModal;
+
+
+
+//SCRIPT PARA MOSTRAR ELF ORMULARIO DE ELIMINACION DE PAGO
+const detalleModal = document.getElementById('detallePagoModal');
+
+document.getElementById('cerrarDetallePagoBtn').addEventListener('click', () => detalleModal.close());
+async function mostrarDetallePagoModal(id) {
+    try {
+        const pago = await buscarPagoPorId(id);
+
+        detallePagoModal.querySelector('input[name="Id"]').value = pago.id;
+
+        detallePagoModal.querySelector('input[name="IdCliente"]').value = pago.idCliente;
+        detallePagoModal.querySelector('input[name="IdMembresia"]').value = pago.idMembresia;
+
+        detallePagoModal.querySelector('input[name="FechaPago"]').value = extrarFechaDateTime(pago.fechaPago);
+        detallePagoModal.querySelector('input[name="HoraPago"]').value = extrarHoraDateTime(pago.fechaPago);
+        let monto = parseFloat(pago.monto);
+        monto = monto.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        detallePagoModal.querySelector('input[name="Monto"]').value = monto;
+
+        detallePagoModal.showModal();
+    }
+    catch {
+        mostrarError('Error inesperado.');
+    }
+}
+window.mostrarDetallePagoModal = mostrarDetallePagoModal;
+
+
+
+const detalleMembresia = document.getElementById('infoMembresiaModal');
+const mostrarDetalleMembresiaBtn = document.getElementById('mostrarDetalleMembresiaBtn');
+document.getElementById('cerrarDetalleMembresiaBtn').addEventListener('click', () => detalleMembresia.close());
+
+
+mostrarDetalleMembresiaBtn.addEventListener('click', async () => {
+    try {
+        const idMembresia = detallePagoModal.querySelector('input[name="IdMembresia"]').value;
+        const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
+        
+        detalleMembresia.querySelector('input[name="IdDetalleMembresia"]').value = membresiaBuscada.id;
+        detalleMembresia.querySelector('input[name="Tipo"]').value = membresiaBuscada.tipo;
+        detalleMembresia.querySelector('input[name="DuracionDias"]').value = membresiaBuscada.duracionDias;
+        detalleMembresia.querySelector('input[name="DuracionMeses"]').value = convertirAMes(membresiaBuscada.duracionDias);
+        detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
+
+        detalleMembresia.showModal();
+    }
+    catch {
+        detalleModal.close();
+        mostrarError('Error al buscar la membresía.');
+    }
+})
+
+
+
+
+
+const detalleCliente = document.getElementById('infoClienteModal');
+const mostrarDetalleClienteBtn = document.getElementById('mostrarDetalleClienteBtn');
+document.getElementById('cerrarDetalleClienteBtn').addEventListener('click', () => detalleCliente.close());
+
+mostrarDetalleClienteBtn.addEventListener('click', async () => {
+    try {
+        const idCliente = detallePagoModal.querySelector('input[name="IdCliente"]').value;
+        const clienteBuscado = await buscarClientePorId(idCliente);
+
+        detalleCliente.querySelector('input[name="IdDetalleCliente"]').value = clienteBuscado.id;
+        detalleCliente.querySelector('input[name="Nombre"]').value = clienteBuscado.nombre;
+        detalleCliente.querySelector('input[name="Apellido"]').value = clienteBuscado.apellido;
+        detalleCliente.querySelector('input[name="Dni"]').value = clienteBuscado.dni;
+        detalleCliente.querySelector('input[name="Telefono"]').value = clienteBuscado.telefono;
+        detalleCliente.querySelector('input[name="Email"]').value = clienteBuscado.email;
+        detalleCliente.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(clienteBuscado.fechaNacimiento);
+        detalleCliente.querySelector('input[name="Sexo"]').value = convertirSexo(clienteBuscado.sexo);
+
+        detalleCliente.showModal();
+    }
+    catch {
+        detalleModal.close();
+        mostrarError('Error al buscar el cliente.');
+    }
+})

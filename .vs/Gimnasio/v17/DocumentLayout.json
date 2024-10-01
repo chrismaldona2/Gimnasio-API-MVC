@@ -1,12 +1,105 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\css\\components\\popups.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\css\\components\\popups.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\services\\panelpagoservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\services\\panelpagoservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\panelpagos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelpagos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelclientes.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\general\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\general\\site.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "popups.css",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\popups.css",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\css\\components\\popups.css",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\popups.css",
+              "RelativeToolTip": "WebApp\\wwwroot\\css\\components\\popups.css",
+              "ViewState": "AgIAABUAAAAAAAAAAAAIwDkAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-01T10:14:27.165Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "PanelClientes.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelClientes.cshtml",
+              "ViewState": "AgIAAHwAAAAAAAAAAAAAAIoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-01T10:06:24.341Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "PanelPagos.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "ViewState": "AgIAABUBAAAAAAAAAAAAwCwBAABGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-01T09:16:33.441Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "panelPagoService.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ViewState": "AgIAAMUAAAAAAAAAAAAAANgAAABSAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-01T09:29:44.41Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "site.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\site.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\general\\site.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\general\\site.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\general\\site.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAqwB8AAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-01T09:33:53.195Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }
