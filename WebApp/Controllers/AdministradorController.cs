@@ -36,7 +36,7 @@ namespace WebApp.Controllers
 
             string nombreAdmin = nombreAdminLogueado ?? "Administrador";
 
-            return View("PanelInicio", (nombreAdmin.Trim()).Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]);
+            return View("PanelInicio", nombreAdmin.Trim().Split(' ', StringSplitOptions.RemoveEmptyEntries)[0]);
         }
 
         ////de ayuda
@@ -163,8 +163,6 @@ namespace WebApp.Controllers
             }
             return NotFound();
         }
-
-
 
 
 

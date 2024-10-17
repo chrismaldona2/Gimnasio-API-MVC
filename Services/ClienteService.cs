@@ -9,6 +9,8 @@ using Data.Repositorios.Contratos;
 using Core.Entidades;
 using Microsoft.EntityFrameworkCore;
 using System.Net;
+using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services
 {
@@ -28,6 +30,20 @@ namespace Services
         //alta
         public async Task RegistrarClienteAsync(string dni, string nombre, string apellido, string email, string telefono, DateOnly fechaNacimiento, Sexo sexo)
         {
+            Regex ValidacionNombre = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$");
+
+            if (!ValidacionNombre.IsMatch(nombre.Trim())|| !ValidacionNombre.IsMatch(apellido.Trim()))
+            {
+                throw new NombreInvalidoException("El nombre no debe contener números ni caracteres especiales.");
+            }
+
+            Regex ValidacionEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+            if (!ValidacionEmail.IsMatch(email.Trim()) || email.Split('@')[1].Contains(".."))
+            {
+                throw new EmailInvalidoException();
+            }
+
 
             if (fechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
             {
@@ -39,7 +55,7 @@ namespace Services
                 throw new DniRegistradoException();
             }
 
-            var cliente = new Cliente(dni, nombre, apellido, email, telefono, fechaNacimiento, sexo);
+            var cliente = new Cliente(dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechaNacimiento, sexo);
             try
             {
                 await _clienteRepository.CrearAsync(cliente);
@@ -64,6 +80,10 @@ namespace Services
                 await _clienteRepository.EliminarAsync(idClienteEliminar);
                 await _clienteRepository.GuardarCambiosAsync();
             }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
+            }
             catch (DbUpdateException)
             {
                 throw new InvalidOperationException("Se produjo un error al intentar eliminar el cliente.");
@@ -82,6 +102,20 @@ namespace Services
                 throw new ArgumentNullException("El cliente a modificar no puede ser nulo.");
             }
 
+            Regex ValidacionNombre = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$");
+
+            if (!ValidacionNombre.IsMatch(clienteModificar.Nombre.Trim()) || !ValidacionNombre.IsMatch(clienteModificar.Apellido.Trim()))
+            {
+                throw new NombreInvalidoException("El nombre no debe contener números ni caracteres especiales.");
+            }
+
+            Regex ValidacionEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+            if (!ValidacionEmail.IsMatch(clienteModificar.Email.Trim()) || clienteModificar.Email.Split('@')[1].Contains(".."))
+            {
+                throw new EmailInvalidoException();
+            }
+
             if (clienteModificar.FechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
             {
                 throw new FechaNacimientoException();
@@ -94,6 +128,8 @@ namespace Services
                 throw new DniRegistradoException();
             };
 
+
+
             try
             {
                 var clienteExistente = await _clienteRepository.EncontrarPorIDAsync(clienteModificar.Id);
@@ -102,16 +138,20 @@ namespace Services
                     throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
                 }
 
-                clienteExistente.Dni = clienteModificar.Dni;
-                clienteExistente.Nombre = clienteModificar.Nombre;
-                clienteExistente.Apellido = clienteModificar.Apellido;
-                clienteExistente.Email = clienteModificar.Email;
-                clienteExistente.Telefono = clienteModificar.Telefono;
+                clienteExistente.Dni = clienteModificar.Dni.Trim();
+                clienteExistente.Nombre = clienteModificar.Nombre.Trim();
+                clienteExistente.Apellido = clienteModificar.Apellido.Trim();
+                clienteExistente.Email = clienteModificar.Email.Trim();
+                clienteExistente.Telefono = clienteModificar.Telefono.Trim();
                 clienteExistente.FechaNacimiento = clienteModificar.FechaNacimiento;
                 clienteExistente.Sexo = clienteModificar.Sexo;
 
                 await _clienteRepository.ModificarAsync(clienteExistente);
                 await _clienteRepository.GuardarCambiosAsync();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
             }
             catch (Exception ex)
             {
@@ -176,10 +216,6 @@ namespace Services
             try
             {
                 var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
-                if (cliente == null)
-                {
-                    return null;
-                }
                 return cliente;
             }
             catch (Exception ex)
@@ -193,10 +229,6 @@ namespace Services
             try
             {
                 var cliente = await _clienteRepository.EncontrarPorIDAsync(id);
-                if (cliente == null)
-                {
-                    return null;
-                }
                 return cliente;
             }
             catch (Exception ex)

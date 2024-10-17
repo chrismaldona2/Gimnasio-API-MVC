@@ -11,6 +11,7 @@ using Core.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Data.SqlClient;
 using System.Text.RegularExpressions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Services
 {
@@ -26,17 +27,17 @@ namespace Services
         //alta
         public async Task RegistrarAdminAsync(string usuario, string contraseña, string dni, string nombre, string apellido, string email, string telefono, DateOnly fechanacimiento, Sexo sexo)
         {
-            if (string.IsNullOrWhiteSpace(usuario) || usuario.Contains(" "))
+            if (string.IsNullOrWhiteSpace(usuario) || usuario.Trim().Contains(" "))
             {
                 throw new ArgumentException("El nombre de usuario no puede contener espacios.");
             }
 
-            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Contains(" "))
+            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Trim().Contains(" "))
             {
                 throw new ArgumentException("La contraseña no puede contener espacios.");
             }
 
-            if (await _adminRepository.ObtenerAdminConUsuarioAsync(usuario) != null)
+            if (await _adminRepository.ObtenerAdminConUsuarioAsync(usuario.Trim()) != null)
             {
                 throw new UsuarioRegistradoException();
             }
@@ -46,12 +47,26 @@ namespace Services
                 throw new DniRegistradoException();
             }
 
+            Regex ValidacionNombre = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$");
+
+            if (!ValidacionNombre.IsMatch(nombre.Trim()) || !ValidacionNombre.IsMatch(apellido.Trim()))
+            {
+                throw new NombreInvalidoException("El nombre no debe contener números ni caracteres especiales.");
+            }
+
+            Regex ValidacionEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+            if (!ValidacionEmail.IsMatch(email.Trim()) || email.Split('@')[1].Contains(".."))
+            {
+                throw new EmailInvalidoException();
+            }
+
             if (fechanacimiento > DateOnly.FromDateTime(DateTime.Now))
             {
                 throw new FechaNacimientoException();
             }
 
-            var admin = new Administrador(usuario, BCrypt.Net.BCrypt.HashPassword(contraseña), dni, nombre, apellido, email, telefono, fechanacimiento, sexo);
+            var admin = new Administrador(usuario.Trim(), BCrypt.Net.BCrypt.HashPassword(contraseña.Trim()), dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechanacimiento, sexo);
 
             try
             {
@@ -78,6 +93,10 @@ namespace Services
                 await _adminRepository.EliminarAsync(idAdminEliminar);
                 await _adminRepository.GuardarCambiosAsync();
             }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
+            }
             catch (Exception ex)
             {
                 throw new Exception($"Se produjo un error al eliminar al administrador: {ex.Message}");
@@ -92,14 +111,28 @@ namespace Services
                 throw new ArgumentNullException("El administrador a modificar no puede ser nulo.");
             }
 
-            if (string.IsNullOrWhiteSpace(adminModificar.Usuario) || adminModificar.Usuario.Contains(" "))
+            if (string.IsNullOrWhiteSpace(adminModificar.Usuario) || adminModificar.Usuario.Trim().Contains(" "))
             {
                 throw new ArgumentException("El nombre de usuario no puede contener espacios.");
             }
 
-            if (string.IsNullOrWhiteSpace(adminModificar.Contraseña) || adminModificar.Contraseña.Contains(" "))
+            if (string.IsNullOrWhiteSpace(adminModificar.Contraseña) || adminModificar.Contraseña.Trim().Contains(" "))
             {
                 throw new ArgumentException("La contraseña no puede contener espacios.");
+            }
+
+            Regex ValidacionNombre = new Regex(@"^[A-Za-zÁÉÍÓÚáéíóúÑñ]+(\s[A-Za-zÁÉÍÓÚáéíóúÑñ]+)*$");
+
+            if (!ValidacionNombre.IsMatch(adminModificar.Nombre.Trim()) || !ValidacionNombre.IsMatch(adminModificar.Apellido.Trim()))
+            {
+                throw new NombreInvalidoException("El nombre no debe contener números ni caracteres especiales.");
+            }
+
+            Regex ValidacionEmail = new Regex(@"^[^@\s]+@[^@\s]+\.[^@\s]+$");
+
+            if (!ValidacionEmail.IsMatch(adminModificar.Email.Trim()) || adminModificar.Email.Split('@')[1].Contains(".."))
+            {
+                throw new EmailInvalidoException();
             }
 
             if (adminModificar.FechaNacimiento > DateOnly.FromDateTime(DateTime.Now))
@@ -108,7 +141,7 @@ namespace Services
             }
 
 
-            var usuarioUsado = await _adminRepository.ObtenerAdminConUsuarioAsync(adminModificar.Usuario);
+            var usuarioUsado = await _adminRepository.ObtenerAdminConUsuarioAsync(adminModificar.Usuario.Trim());
             if (usuarioUsado != null && usuarioUsado.Id != adminModificar.Id)
             {
                 throw new UsuarioRegistradoException();
@@ -129,18 +162,22 @@ namespace Services
                     throw new KeyNotFoundException("El administrador con el Id especificado no existe.");
                 }
 
-                adminExistente.Usuario = adminModificar.Usuario;
-                adminExistente.Contraseña = BCrypt.Net.BCrypt.HashPassword(adminModificar.Contraseña);
-                adminExistente.Dni = adminModificar.Dni;
-                adminExistente.Nombre = adminModificar.Nombre;
-                adminExistente.Apellido = adminModificar.Apellido;
-                adminExistente.Email = adminModificar.Email;
-                adminExistente.Telefono = adminModificar.Telefono;
+                adminExistente.Usuario = adminModificar.Usuario.Trim();
+                adminExistente.Contraseña = BCrypt.Net.BCrypt.HashPassword(adminModificar.Contraseña.Trim());
+                adminExistente.Dni = adminModificar.Dni.Trim();
+                adminExistente.Nombre = adminModificar.Nombre.Trim();
+                adminExistente.Apellido = adminModificar.Apellido.Trim();
+                adminExistente.Email = adminModificar.Email.Trim();
+                adminExistente.Telefono = adminModificar.Telefono.Trim();
                 adminExistente.FechaNacimiento = adminModificar.FechaNacimiento;
                 adminExistente.Sexo = adminModificar.Sexo;
 
                 await _adminRepository.ModificarAsync(adminExistente);
                 await _adminRepository.GuardarCambiosAsync();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
             }
             catch (Exception ex)
             {
@@ -156,21 +193,21 @@ namespace Services
                 throw new ArgumentException("El usuario y la contraseña no pueden estar vacíos.");
             }
 
-            if (string.IsNullOrWhiteSpace(usuario) || usuario.Contains(" "))
+            if (string.IsNullOrWhiteSpace(usuario) || usuario.Trim().Contains(" "))
             {
                 throw new ArgumentException("El nombre de usuario no puede contener espacios.");
             }
 
-            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Contains(" "))
+            if (string.IsNullOrWhiteSpace(contraseña) || contraseña.Trim().Contains(" "))
             {
                 throw new ArgumentException("La contraseña no puede contener espacios.");
             }
 
             try
             {
-                var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario);
+                var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario.Trim());
 
-                if (admin == null || !BCrypt.Net.BCrypt.Verify(contraseña, admin.Contraseña))
+                if (admin == null || !BCrypt.Net.BCrypt.Verify(contraseña.Trim(), admin.Contraseña))
                 {
                     return null;
                 }
@@ -202,12 +239,9 @@ namespace Services
             try
             {
                 var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario);
-                if (admin == null)
-                {
-                    throw new KeyNotFoundException("No hay un administrador registrado con ese DNI.");
-                }
                 return admin;
             }
+
             catch (Exception ex)
             {
                 throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
@@ -220,14 +254,9 @@ namespace Services
             try
             {
                 var admin = await _adminRepository.EncontrarPorIDAsync(id);
-
-                if (admin == null)
-                {
-                    throw new KeyNotFoundException("No hay un administrador registrado con ese ID.");
-                }
-
                 return admin;
             }
+
             catch (Exception ex)
             {
                 throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
@@ -239,13 +268,7 @@ namespace Services
         {
             try
             {
-                var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(dni);
-
-                if (admin == null)
-                {
-                    throw new KeyNotFoundException("No hay un administrador registrado con ese DNI.");
-                }
-
+                var admin = await _adminRepository.ObtenerAdminConDniAsync(dni);
                 return admin;
             }
             catch (Exception ex)

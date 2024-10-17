@@ -1,78 +1,93 @@
 ﻿export async function buscarClientePorDni(dniCliente) {
+    try {
+        const response = await fetch(`/Usuario/BuscarCliente?dniCliente=${dniCliente}`);
 
-    const response = await fetch(`/Usuario/BuscarCliente?dniCliente=${dniCliente}`);
+        if (!response.ok) {
+            throw new Error('Cliente no encontrado.');
+        }
 
-    if (!response.ok) {
-        throw new Error('Cliente no encontrado.');
+        const cliente = await response.json();
+        return cliente;
+    }
+    catch (error) {
+        mostrarError(error.message);
     }
 
-    const cliente = await response.json();
-    return cliente;
 }
 
 
 export async function buscarClientePorId(idCliente) {
+    try {
+        const response = await fetch(`/Administrador/BuscarCliente?idCliente=${idCliente}`);
 
-    const response = await fetch(`/Administrador/BuscarCliente?idCliente=${idCliente}`);
+        if (!response.ok) {
+            throw new Error('Cliente no encontrado.');
+        }
 
-    if (!response.ok) {
-        throw new Error('Cliente no encontrado.');
+        const cliente = await response.json();
+        return cliente;
+    } catch (error) {
+        mostrarError(error.message);
     }
 
-    const cliente = await response.json();
-    console.log(cliente);
-    return cliente;
 }
 
 export async function buscarMembresiaPorId(idMembresia) {
+    try {
+        const response = await fetch(`/Administrador/BuscarMembresia?idMembresia=${idMembresia}`);
+        if (!response.ok) {
+            throw new Error('Membresía no encontrada.');
+        }
 
-    const response = await fetch(`/Administrador/BuscarMembresia?idMembresia=${idMembresia}`);
-    console.log(response);
-    if (!response.ok) {
-        throw new Error('Membresía no encontrada.');
+        const membresia = await response.json();
+        return membresia;
     }
-
-    const membresia = await response.json();
-    console.log(membresia);
-    return membresia;
+    catch (error) {
+        mostrarError(error.message);
+    }
 }
 
 export async function listadoMembresias() {
 
     const response = await fetch(`/Administrador/ListadoMembresias`);
-    console.log(response);
     if (!response.ok) {
         throw new Error('Listado no encontrado.');
     }
 
     const membresias = await response.json();
-    console.log(membresias);
     return membresias;
 }
 
 
 export async function buscarAdminPorId(idAdmin) {
+    try {
+        const response = await fetch(`/Administrador/BuscarAdmin?idAdmin=${idAdmin}`);
 
-    const response = await fetch(`/Administrador/BuscarAdmin?idAdmin=${idAdmin}`);
+        if (!response.ok) {
+            throw new Error('Administrador no encontrado.');
+        }
 
-    if (!response.ok) {
-        throw new Error('Administrador no encontrado.');
+        const admin = await response.json();
+        return admin;
+    } catch (error) {
+        mostrarError(error.message);
     }
 
-    const admin = await response.json();
-    console.log(admin);
-    return admin;
 }
 
 
 export async function buscarPagoPorId(idPago) {
-    const response = await fetch(`/Administrador/BuscarPago?idPago=${idPago}`);
+    try {
+        const response = await fetch(`/Administrador/BuscarPago?idPago=${idPago}`);
 
-    if (!response.ok) {
-        throw new Error('Pago no encontrado.');
+        if (!response.ok) {
+            throw new Error('Pago no encontrado.');
+        }
+
+        const pago = await response.json();
+        return pago;
     }
-
-    const pago = await response.json();
-    console.log(pago);
-    return pago;
+    catch (error) {
+        mostrarError(error.message);
+    }
 }

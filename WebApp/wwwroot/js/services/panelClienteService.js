@@ -1,4 +1,4 @@
-﻿import { buscarClientePorId } from './busquedaService.js';
+﻿import { buscarClientePorId, listadoMembresias } from './busquedaService.js';
 
 const registrarBtn = document.getElementById('registrarClienteBtn');
 const registrarModal = document.getElementById('registrarClienteModal');
@@ -10,20 +10,17 @@ registrarModal.querySelector('.cancel-btn').addEventListener('click', () => regi
 
 const eliminarModal = document.getElementById('eliminarClienteModal');
 async function mostrarEliminarClienteModal(idCliente) {
-    try {
-        const cliente = await buscarClientePorId(idCliente);
-        eliminarModal.querySelector('input[name="Id"]').value = cliente.id;
-        eliminarModal.querySelector('input[name="Nombre"]').value = cliente.nombre;
-        eliminarModal.querySelector('input[name="Apellido"]').value = cliente.apellido;
-        eliminarModal.querySelector('input[name="Dni"]').value = cliente.dni;
-        eliminarModal.querySelector('input[name="Telefono"]').value = cliente.telefono;
-        eliminarModal.querySelector('input[name="Email"]').value = cliente.email;
-        eliminarModal.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(cliente.fechaNacimiento);
-        eliminarModal.querySelector('input[name="Sexo"]').value = convertirSexo(cliente.sexo);
-        eliminarModal.showModal();
-    } catch (error) {
-        mostrarError(error.message);
-    }
+    const cliente = await buscarClientePorId(idCliente);
+    eliminarModal.querySelector('input[name="Id"]').value = cliente.id;
+    eliminarModal.querySelector('input[name="Nombre"]').value = cliente.nombre;
+    eliminarModal.querySelector('input[name="Apellido"]').value = cliente.apellido;
+    eliminarModal.querySelector('input[name="Dni"]').value = cliente.dni;
+    eliminarModal.querySelector('input[name="Telefono"]').value = cliente.telefono;
+    eliminarModal.querySelector('input[name="Email"]').value = cliente.email;
+    eliminarModal.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(cliente.fechaNacimiento);
+    eliminarModal.querySelector('input[name="Sexo"]').value = convertirSexo(cliente.sexo);
+    eliminarModal.showModal();
+
 }
 window.mostrarEliminarClienteModal = mostrarEliminarClienteModal; //agrego la funcion al window para que sea accesible globalmente
 eliminarModal.querySelector('.cancel-btn').addEventListener('click', () => eliminarModal.close());
@@ -32,20 +29,25 @@ eliminarModal.querySelector('.cancel-btn').addEventListener('click', () => elimi
 
 const modificarModal = document.getElementById('modificarClienteModal');
 async function mostrarModificarClienteModal(idCliente) {
-    try {
-        const cliente = await buscarClientePorId(idCliente);
-        modificarModal.querySelector('input[name="Id"]').value = cliente.id;
-        modificarModal.querySelector('input[name="Nombre"]').value = cliente.nombre;
-        modificarModal.querySelector('input[name="Apellido"]').value = cliente.apellido;
-        modificarModal.querySelector('input[name="Dni"]').value = cliente.dni;
-        modificarModal.querySelector('input[name="Telefono"]').value = cliente.telefono;
-        modificarModal.querySelector('input[name="Email"]').value = cliente.email;
-        modificarModal.querySelector('input[name="FechaNacimiento"]').value = cliente.fechaNacimiento;
-        modificarModal.querySelector('select[name="Sexo"]').selectedIndex = cliente.sexo;
-        modificarModal.showModal();
-    } catch (error) {
-        mostrarError(error.message);
-    }
+    const cliente = await buscarClientePorId(idCliente);
+    modificarModal.querySelector('input[name="Id"]').value = cliente.id;
+    modificarModal.querySelector('input[name="Nombre"]').value = cliente.nombre;
+    modificarModal.querySelector('input[name="Apellido"]').value = cliente.apellido;
+    modificarModal.querySelector('input[name="Dni"]').value = cliente.dni;
+    modificarModal.querySelector('input[name="Telefono"]').value = cliente.telefono;
+    modificarModal.querySelector('input[name="Email"]').value = cliente.email;
+    modificarModal.querySelector('input[name="FechaNacimiento"]').value = cliente.fechaNacimiento;
+    modificarModal.querySelector('select[name="Sexo"]').selectedIndex = cliente.sexo;
+    modificarModal.showModal();
+
 }
 window.mostrarModificarClienteModal = mostrarModificarClienteModal; //agrego la funcion al window para que sea accesible globalmente
 modificarModal.querySelector('.cancel-btn').addEventListener('click', () => modificarModal.close());
+
+
+const registrarPagoModal = document.getElementById('registrarPagoModal');
+async function mostrarRegistrarPagoModal(idCliente) {
+
+}
+window.mostrarRegistrarPagoModal = mostrarRegistrarPagoModal; //agrego la funcion al window para que sea accesible globalmente
+registrarPagoModal.querySelector('.cancel-btn').addEventListener('click', () => registrarPagoModal.close());

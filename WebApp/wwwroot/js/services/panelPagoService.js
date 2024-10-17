@@ -16,7 +16,7 @@ vencimientoWarning.addEventListener('click', () => {
     setTimeout(() => {
         warning.classList.add('oculto')
         warning.classList.remove('vencimiento-warning-animacion');
-    }, 2000);
+    }, 3500);
 })
 
 
@@ -24,19 +24,24 @@ const membresiaSelect = document.getElementById('membresiaSelect');
 let clienteEncontrado = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
-    const membresias = await listadoMembresias();
-    membresias.forEach(membresia => {
-        const option = document.createElement('option');
-        option.value = membresia.id;
-        option.textContent = membresia.tipo;
+    try {
+        const membresias = await listadoMembresias();
+        membresias.forEach(membresia => {
+            const option = document.createElement('option');
+            option.value = membresia.id;
+            option.textContent = membresia.tipo;
 
-        option.setAttribute('duracionData', membresia.duracionDias);
-        option.setAttribute('precioData', membresia.precio);
+            option.setAttribute('duracionData', membresia.duracionDias);
+            option.setAttribute('precioData', membresia.precio);
 
-        membresiaSelect.appendChild(option);
-    });
+            membresiaSelect.appendChild(option);
+        });
 
-    mostrarMembresiaSelData();
+        mostrarMembresiaSelData();
+    }
+    catch {
+        mostrarError('Error inesperado.');
+    }
 });
 
 
@@ -56,7 +61,7 @@ function mostrarMembresiaSelData() {
 
     
     if (clienteEncontrado != null) {
-        console.log('xd:' + clienteEncontrado.fechaVencimientoMembresia);
+
         if (clienteEncontrado.fechaVencimientoMembresia != null) {
 
             const fechaVencimientoNueva = new Date(clienteEncontrado.fechaVencimientoMembresia);
@@ -66,7 +71,7 @@ function mostrarMembresiaSelData() {
         } else {
             let fecha = new Date(); 
             fecha.setDate(fecha.getDate() + parseInt(duracionDias));
-            console.log(fecha)
+
             registrarModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fecha);
         }
 
@@ -82,9 +87,12 @@ const buscarClienteBtn = document.getElementById('buscarClienteBtn');
 buscarClienteBtn.addEventListener('click', async () => {
     const dniCliente = document.getElementById('dniClienteInput').value;
 
-
     try {
         const cliente = await buscarClientePorDni(dniCliente);
+        if (!cliente) {
+            throw new Error('Cliente no encontrado.');
+        }
+
         registrarModal.querySelector('span[name="nombreCliente"]').textContent = `${cliente.nombre} ${cliente.apellido}`;
         registrarModal.querySelector('span[name="membresiaCliente"]').textContent = "Indefinida";
         clienteEncontrado = cliente;
@@ -92,8 +100,6 @@ buscarClienteBtn.addEventListener('click', async () => {
         if (cliente.idMembresia != null) {
             const membresiaCliente = await buscarMembresiaPorId(cliente.idMembresia);
             registrarModal.querySelector('span[name="membresiaCliente"]').textContent = membresiaCliente.tipo;
-
-
             const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
             registrarModal.querySelector('span[name="vencimientoCliente"]').textContent = convertirFechaDateTime(fechaVencimiento);
         }
@@ -115,42 +121,44 @@ const eliminarModal = document.getElementById('eliminarPagoModal');
 
 document.querySelector('#eliminarPagoModal .cancel-btn').addEventListener('click', () => eliminarModal.close());
 async function mostrarEliminarPagoModal(id) {
-    try {
-        const pago = await buscarPagoPorId(id);
+    const pago = await buscarPagoPorId(id);
+    if (pago) {
         const cliente = await buscarClientePorId(pago.idCliente);
         const membresia = await buscarMembresiaPorId(pago.idMembresia);
 
-        eliminarModal.querySelector('input[name="Id"]').value = pago.id;
-        eliminarModal.querySelector('input[name="IdCliente"]').value = cliente.id;
-        eliminarModal.querySelector('input[name="IdMembresia"]').value = membresia.id;
-        eliminarModal.querySelector('span[name="nombreCliente"]').textContent = `${cliente.nombre} ${cliente.apellido}`;
-        eliminarModal.querySelector('span[name="dniCliente"]').textContent = cliente.dni;
+        if (cliente && membresia) {
+            eliminarModal.querySelector('input[name="Id"]').value = pago.id;
+            eliminarModal.querySelector('input[name="IdCliente"]').value = cliente.id;
+            eliminarModal.querySelector('input[name="IdMembresia"]').value = membresia.id;
+            eliminarModal.querySelector('span[name="nombreCliente"]').textContent = `${cliente.nombre} ${cliente.apellido}`;
+            eliminarModal.querySelector('span[name="dniCliente"]').textContent = cliente.dni;
 
-        const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
+            const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
 
-        eliminarModal.querySelector('span[name="vencimientoActual"]').textContent = convertirFechaDateTime(fechaVencimiento);
+            eliminarModal.querySelector('span[name="vencimientoActual"]').textContent = convertirFechaDateTime(fechaVencimiento);
 
-        eliminarModal.querySelector('span[name="tipoMembresia"]').textContent = membresia.tipo;
-        const duracionDias = membresia.duracionDias;
-        const duracionMeses = convertirAMes(duracionDias);
-        eliminarModal.querySelector('span[name="duracionDiasMembresia"]').textContent = duracionDias;
-        eliminarModal.querySelector('span[name="duracionMesesMembresia"]').textContent = duracionMeses;
+            eliminarModal.querySelector('span[name="tipoMembresia"]').textContent = membresia.tipo;
+            const duracionDias = membresia.duracionDias;
+            const duracionMeses = convertirAMes(duracionDias);
+            eliminarModal.querySelector('span[name="duracionDiasMembresia"]').textContent = duracionDias;
+            eliminarModal.querySelector('span[name="duracionMesesMembresia"]').textContent = duracionMeses;
 
 
-        let fechaVencimientoNueva = new Date(cliente.fechaVencimientoMembresia);
-        fechaVencimientoNueva.setDate(fechaVencimientoNueva.getDate() - membresia.duracionDias);
-        console.log(fechaVencimientoNueva)
+            let fechaVencimientoNueva = new Date(cliente.fechaVencimientoMembresia);
+            fechaVencimientoNueva.setDate(fechaVencimientoNueva.getDate() - membresia.duracionDias);
 
-        eliminarModal.querySelector('input[name="vencimientoNuevoCliente"]').value = convertirFechaDateTime(fechaVencimientoNueva);
+            eliminarModal.querySelector('input[name="vencimientoNuevoCliente"]').value = convertirFechaDateTime(fechaVencimientoNueva);
 
-        eliminarModal.querySelector('input[name="FechaPago"]').value = convertirFechaDateTime(pago.fechaPago);
-        eliminarModal.querySelector('input[name="Monto"]').value = pago.monto;
+            eliminarModal.querySelector('input[name="FechaPago"]').value = convertirFechaDateTime(pago.fechaPago);
+            eliminarModal.querySelector('input[name="Monto"]').value = pago.monto;
 
-        eliminarModal.showModal();
+            eliminarModal.showModal();
+        }
+
+
     }
-    catch {
-        mostrarError('Error inesperado.');
-    }
+
+
 }
 window.mostrarEliminarPagoModal = mostrarEliminarPagoModal;
 
@@ -161,9 +169,9 @@ const detalleModal = document.getElementById('detallePagoModal');
 
 document.getElementById('cerrarDetallePagoBtn').addEventListener('click', () => detalleModal.close());
 async function mostrarDetallePagoModal(id) {
-    try {
-        const pago = await buscarPagoPorId(id);
 
+    const pago = await buscarPagoPorId(id);
+    if (pago) {
         detallePagoModal.querySelector('input[name="Id"]').value = pago.id;
 
         detallePagoModal.querySelector('input[name="IdCliente"]').value = pago.idCliente;
@@ -177,9 +185,8 @@ async function mostrarDetallePagoModal(id) {
 
         detallePagoModal.showModal();
     }
-    catch {
-        mostrarError('Error inesperado.');
-    }
+
+
 }
 window.mostrarDetallePagoModal = mostrarDetallePagoModal;
 
@@ -191,22 +198,19 @@ document.getElementById('cerrarDetalleMembresiaBtn').addEventListener('click', (
 
 
 mostrarDetalleMembresiaBtn.addEventListener('click', async () => {
-    try {
-        const idMembresia = detallePagoModal.querySelector('input[name="IdMembresia"]').value;
-        const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
-        
+    const idMembresia = detallePagoModal.querySelector('input[name="IdMembresia"]').value;
+    const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
+    if (!membresiaBuscada) {
+        detalleModal.close();
+    } else {
         detalleMembresia.querySelector('input[name="IdDetalleMembresia"]').value = membresiaBuscada.id;
         detalleMembresia.querySelector('input[name="Tipo"]').value = membresiaBuscada.tipo;
         detalleMembresia.querySelector('input[name="DuracionDias"]').value = membresiaBuscada.duracionDias;
         detalleMembresia.querySelector('input[name="DuracionMeses"]').value = convertirAMes(membresiaBuscada.duracionDias);
         detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
-
         detalleMembresia.showModal();
-    }
-    catch {
-        detalleModal.close();
-        mostrarError('Error al buscar la membresía.');
-    }
+    }   
+
 })
 
 
@@ -218,10 +222,12 @@ const mostrarDetalleClienteBtn = document.getElementById('mostrarDetalleClienteB
 document.getElementById('cerrarDetalleClienteBtn').addEventListener('click', () => detalleCliente.close());
 
 mostrarDetalleClienteBtn.addEventListener('click', async () => {
-    try {
-        const idCliente = detallePagoModal.querySelector('input[name="IdCliente"]').value;
-        const clienteBuscado = await buscarClientePorId(idCliente);
 
+    const idCliente = detallePagoModal.querySelector('input[name="IdCliente"]').value;
+    const clienteBuscado = await buscarClientePorId(idCliente);
+    if (!clienteBuscado) {
+        detalleModal.close();
+    } else {
         detalleCliente.querySelector('input[name="IdDetalleCliente"]').value = clienteBuscado.id;
         detalleCliente.querySelector('input[name="Nombre"]').value = clienteBuscado.nombre;
         detalleCliente.querySelector('input[name="Apellido"]').value = clienteBuscado.apellido;
@@ -233,8 +239,7 @@ mostrarDetalleClienteBtn.addEventListener('click', async () => {
 
         detalleCliente.showModal();
     }
-    catch {
-        detalleModal.close();
-        mostrarError('Error al buscar el cliente.');
-    }
+
+
+
 })

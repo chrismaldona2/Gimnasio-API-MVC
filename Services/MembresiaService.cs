@@ -8,6 +8,7 @@ using Data.Repositorios;
 using Data.Repositorios.Contratos;
 using Core.Entidades;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.IdentityModel.Tokens;
 
 namespace Services
 {
@@ -23,6 +24,10 @@ namespace Services
         //alta
         public async Task RegistrarMembresiaAsync(string tipo, int duraciondias, double precio)
         {
+            if (string.IsNullOrWhiteSpace(tipo))
+            {
+                throw new ArgumentNullException("El tipo de membresía no puede ser nulo.");
+            }
             if (precio < 0)
             {
                 throw new ArgumentException("El precio debe ser un número mayor o igual a cero.");
@@ -33,7 +38,7 @@ namespace Services
                 throw new ArgumentException("La duración debe ser mayor a 0 días.");
             }
 
-            var membresia = new Membresia(tipo, duraciondias, precio);
+            var membresia = new Membresia(tipo.Trim(), duraciondias, precio);
             
             try
             {
@@ -63,6 +68,10 @@ namespace Services
                 await _membresiaRepository.EliminarAsync(idMembresiaEliminar);
                 await _membresiaRepository.GuardarCambiosAsync();
             }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
+            }
             catch (DbUpdateException)
             {
                 throw new InvalidOperationException("Se produjo un error al intentar eliminar el tipo de membresia.");
@@ -79,6 +88,11 @@ namespace Services
             if (membresiaModificar == null)
             {
                 throw new ArgumentNullException("La membresía a modificar no puede ser nula.");
+            }
+
+            if (string.IsNullOrWhiteSpace(membresiaModificar.Tipo))
+            {
+                throw new ArgumentNullException("El tipo de membresía no puede ser nulo.");
             }
 
             if (membresiaModificar.Precio < 0)
@@ -99,12 +113,16 @@ namespace Services
                     throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
                 }
 
-                membresiaExistente.Tipo = membresiaModificar.Tipo;
+                membresiaExistente.Tipo = membresiaModificar.Tipo.Trim();
                 membresiaExistente.Precio = membresiaModificar.Precio;
                 membresiaExistente.DuracionDias = membresiaModificar.DuracionDias;
 
                 await _membresiaRepository.ModificarAsync(membresiaExistente);
                 await _membresiaRepository.GuardarCambiosAsync();
+            }
+            catch (KeyNotFoundException ex)
+            {
+                throw new KeyNotFoundException(ex.Message);
             }
             catch (DbUpdateException)
             {

@@ -20,4 +20,15 @@ namespace Services
     {
         public FechaNacimientoException() : base("Fecha de nacimiento inválida. Verifique los datos.") { }
     }
+
+    public class NombreInvalidoException : Exception
+    {
+        public NombreInvalidoException() : base("Nombre invalido, verifique los datos e intente nuevamente.") { }
+        public NombreInvalidoException(string message) : base(message) { }
+    }
+
+    public class EmailInvalidoException : Exception
+    {
+        public EmailInvalidoException() : base("Correo electrónico invalido, verifique los datos e intente nuevamente.") { }
+    }
 }

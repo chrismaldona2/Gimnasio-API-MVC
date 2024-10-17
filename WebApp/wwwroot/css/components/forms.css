@@ -130,7 +130,7 @@
 }
 
 .vencimiento-warning-animacion {
-    animation: vencimientoWarningAnimacion 2.1s;
+    animation: vencimientoWarningAnimacion 3.6s;
 }
 
 @keyframes vencimientoWarningAnimacion {

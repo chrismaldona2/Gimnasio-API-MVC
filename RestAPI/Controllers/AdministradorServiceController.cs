@@ -54,6 +54,14 @@ namespace RestAPI.Controllers
             {
                 return BadRequest(ex.Message);
             }
+            catch (NombreInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EmailInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
@@ -131,6 +139,14 @@ namespace RestAPI.Controllers
                 return Conflict(ex.Message);
             }
             catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NombreInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EmailInvalidoException ex)
             {
                 return BadRequest(ex.Message);
             }
@@ -222,24 +238,26 @@ namespace RestAPI.Controllers
             try
             {
                 var admin = await _administradorService.BuscarAdminPorUsuarioAsync(Usuario);
-                var adminModel = new AdministradorModel
+
+                if (admin != null)
                 {
-                    Id = admin.Id,
-                    Usuario = admin.Usuario,
-                    Dni = admin.Dni,
-                    Nombre = admin.Nombre,
-                    Apellido = admin.Apellido,
-                    Email = admin.Email,
-                    Telefono = admin.Telefono,
-                    FechaNacimiento = admin.FechaNacimiento,
-                    Sexo = (SexoModel)admin.Sexo
-                };
-                return Ok(adminModel);
+                    var adminModel = new AdministradorModel
+                    {
+                        Id = admin.Id,
+                        Usuario = admin.Usuario,
+                        Dni = admin.Dni,
+                        Nombre = admin.Nombre,
+                        Apellido = admin.Apellido,
+                        Email = admin.Email,
+                        Telefono = admin.Telefono,
+                        FechaNacimiento = admin.FechaNacimiento,
+                        Sexo = (SexoModel)admin.Sexo
+                    };
+                    return Ok(adminModel);
+                }
+                return NotFound("No se pudo encontrar un administrador con dicho usuario.");
             }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
+
             catch (InvalidOperationException ex)
             {
                 return BadRequest(ex.Message);
@@ -257,23 +275,23 @@ namespace RestAPI.Controllers
             try
             {
                 var admin = await _administradorService.BuscarAdminPorDniAsync(Dni);
-                var adminModel = new AdministradorModel
+                if (admin != null)
                 {
-                    Id = admin.Id,
-                    Usuario = admin.Usuario,
-                    Dni = admin.Dni,
-                    Nombre = admin.Nombre,
-                    Apellido = admin.Apellido,
-                    Email = admin.Email,
-                    Telefono = admin.Telefono,
-                    FechaNacimiento = admin.FechaNacimiento,
-                    Sexo = (SexoModel)admin.Sexo
-                };
-                return Ok(adminModel);
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
+                    var adminModel = new AdministradorModel
+                    {
+                        Id = admin.Id,
+                        Usuario = admin.Usuario,
+                        Dni = admin.Dni,
+                        Nombre = admin.Nombre,
+                        Apellido = admin.Apellido,
+                        Email = admin.Email,
+                        Telefono = admin.Telefono,
+                        FechaNacimiento = admin.FechaNacimiento,
+                        Sexo = (SexoModel)admin.Sexo
+                    };
+                    return Ok(adminModel);
+                }
+                return NotFound("No se pudo encontrar un administrador con dicho DNI.");
             }
             catch (InvalidOperationException ex)
             {
@@ -291,24 +309,24 @@ namespace RestAPI.Controllers
             try
             {
                 var admin = await _administradorService.BuscarAdminPorIdAsync(Id);
-                var adminModel = new AdministradorModel
+                if (admin != null)
                 {
-                    Id = admin.Id,
-                    Usuario = admin.Usuario,
-                    Dni = admin.Dni,
-                    Nombre = admin.Nombre,
-                    Apellido = admin.Apellido,
-                    Email = admin.Email,
-                    Telefono = admin.Telefono,
-                    FechaNacimiento = admin.FechaNacimiento,
-                    Sexo = (SexoModel)admin.Sexo
-                };
-                return Ok(adminModel);
+                    var adminModel = new AdministradorModel
+                    {
+                        Id = admin.Id,
+                        Usuario = admin.Usuario,
+                        Dni = admin.Dni,
+                        Nombre = admin.Nombre,
+                        Apellido = admin.Apellido,
+                        Email = admin.Email,
+                        Telefono = admin.Telefono,
+                        FechaNacimiento = admin.FechaNacimiento,
+                        Sexo = (SexoModel)admin.Sexo
+                    };
+                    return Ok(adminModel);
+                }
 
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
+                return NotFound("No se pudo encontrar un administrador con dicho ID.");
             }
             catch (InvalidOperationException ex)
             {

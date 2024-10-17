@@ -48,6 +48,14 @@ namespace RestAPI.Controllers
             {
                 return Conflict(ex.Message);
             }
+            catch (NombreInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EmailInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (ArgumentException ex)
             {
                 return BadRequest(ex.Message);
@@ -117,6 +125,14 @@ namespace RestAPI.Controllers
                 return Conflict(ex.Message);
             }
             catch (FechaNacimientoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (NombreInvalidoException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (EmailInvalidoException ex)
             {
                 return BadRequest(ex.Message);
             }
