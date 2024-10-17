@@ -1,4 +1,4 @@
-# Proyecto C# .Net - Gestor de Gimnasio
+# Proyecto ASP.NET - Gestor de Gimnasio
 
 Actividad final de la materia Práctica Profesionalizante II en la Técnicatura en Desarrollo de Software.
 
