@@ -33,8 +33,9 @@
         color: #313131;
         font-weight: 400;
         padding: var(--cell-padding);
-    }
 
+        
+    }
 
     .table tbody tr {
         background-color: var(--white-color);
@@ -84,7 +85,9 @@
     border-radius: 6px;
     white-space: nowrap;
     display: none;
+
 }
+
 
 .action-dropdown-menu a {
     color: #ffffff;
@@ -158,6 +161,7 @@
             text-wrap: nowrap;
             color: var(--red-color);
             font-weight: 600;
+
         }
 
         .table tbody tr:nth-of-type(2n) {

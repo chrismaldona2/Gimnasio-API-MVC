@@ -25,6 +25,13 @@ let clienteEncontrado = null;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
+        const defaulOption = document.createElement("option");
+        defaulOption.value = "";
+        defaulOption.disabled = true;
+        defaulOption.selected = true;
+        defaulOption.textContent = "Seleccione una membresía";
+        membresiaSelect.appendChild(defaulOption);
+
         const membresias = await listadoMembresias();
         membresias.forEach(membresia => {
             const option = document.createElement('option');
@@ -46,35 +53,37 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 function mostrarMembresiaSelData() {
-    const selectedOption = membresiaSelect.options[membresiaSelect.selectedIndex];
+    if (membresiaSelect.selectedIndex !== 0) {
+        const selectedOption = membresiaSelect.options[membresiaSelect.selectedIndex];
 
-    let duracionDias = selectedOption.getAttribute('duracionData');
-    let duracionMeses = convertirAMes(duracionDias);
+        let duracionDias = selectedOption.getAttribute('duracionData');
+        let duracionMeses = convertirAMes(duracionDias);
 
-    registrarModal.querySelector('span[name="idMembresia"]').textContent = selectedOption.value;
-    registrarModal.querySelector('span[name="duracionMembresia"]').textContent = duracionDias;
-    registrarModal.querySelector('span[name="duracionMesesMembresia"]').textContent = duracionMeses;
+        registrarModal.querySelector('span[name="idMembresia"]').textContent = selectedOption.value;
+        registrarModal.querySelector('span[name="duracionMembresia"]').textContent = duracionDias;
+        registrarModal.querySelector('span[name="duracionMesesMembresia"]').textContent = duracionMeses;
 
-    let precio = parseFloat(selectedOption.getAttribute('precioData'));
-    precio = precio.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
-    registrarModal.querySelector('input[name="precioMembresia"]').value = precio;
+        let precio = parseFloat(selectedOption.getAttribute('precioData'));
+        precio = precio.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        registrarModal.querySelector('input[name="precioMembresia"]').value = precio;
 
-    
-    if (clienteEncontrado != null) {
 
-        if (clienteEncontrado.fechaVencimientoMembresia != null) {
+        if (clienteEncontrado != null) {
 
-            const fechaVencimientoNueva = new Date(clienteEncontrado.fechaVencimientoMembresia);
-            fechaVencimientoNueva.setDate(fechaVencimientoNueva.getDate() + parseInt(duracionDias));
+            if (clienteEncontrado.fechaVencimientoMembresia != null) {
 
-            registrarModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fechaVencimientoNueva);
-        } else {
-            let fecha = new Date(); 
-            fecha.setDate(fecha.getDate() + parseInt(duracionDias));
+                const fechaVencimientoNueva = new Date(clienteEncontrado.fechaVencimientoMembresia);
+                fechaVencimientoNueva.setDate(fechaVencimientoNueva.getDate() + parseInt(duracionDias));
 
-            registrarModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fecha);
+                registrarModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fechaVencimientoNueva);
+            } else {
+                let fecha = new Date();
+                fecha.setDate(fecha.getDate() + parseInt(duracionDias));
+
+                registrarModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fecha);
+            }
+
         }
-
     }
 
 }

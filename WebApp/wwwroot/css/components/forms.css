@@ -6,11 +6,12 @@
     font-size: calc(var(--fs-small) - 1px);
 }
 
-    .form .multiple-input-container {
+    .form > .multiple-input-container {
         display: flex;
         gap: 1rem;
-        align-items: left;
+        align-items: stretch;
     }
+
 
     .form .input-container, .date-selector-input-container {
         flex: 1;
@@ -35,6 +36,7 @@
 
 .input-search-container {
     display: flex;
+    align-items: normal;
     gap: .5rem;
 }
 
@@ -133,6 +135,23 @@
     animation: vencimientoWarningAnimacion 3.6s;
 }
 
+.fecha-vencimiento-cliente-container, .fecha-vencimiento-cliente {
+    text-align: center;
+}
+
+
+    .fecha-vencimiento-cliente.vigente {
+        background-color: #EFFFF0;
+        color: var(--green-color);
+        box-shadow: 0 0 0 1.6px var(--green-color);
+    }
+
+    .fecha-vencimiento-cliente.vencida {
+        background-color: #ffefef;
+        color: var(--red-color);
+        box-shadow: 0 0 0 1.6px var(--red-color);
+    }
+
 @keyframes vencimientoWarningAnimacion {
     0% {
         opacity: 0;
@@ -176,6 +195,8 @@
     text-align: center;
     border: none;
     transition: background-color .35s ease;
+
+    overflow: hidden;
 }
 
     .regular-form-submit-btn:hover {
@@ -194,8 +215,14 @@
     text-align: center;
     border: none;
     transition: background-color .35s ease;
+    overflow: hidden;
 }
 
     .regular-form-cancel-btn:hover {
         background-color: #f0f0f0;
+    }
+
+
+    .input-container {
+        justify-content: end;
     }

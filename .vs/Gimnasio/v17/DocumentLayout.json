@@ -3,16 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C376AEA0-04B7-4CE3-85F5-9661945517F5}|Services\\Services.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C376AEA0-04B7-4CE3-85F5-9661945517F5}|Services\\Services.csproj|solutionrelative:services\\clienteservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\services\\panelpagoservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\services\\panelpagoservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB176E5-97D9-4BB2-80C6-5A00E1A3DDDA}|ServicesTests\\ServicesTests.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\servicestests\\clienteservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB176E5-97D9-4BB2-80C6-5A00E1A3DDDA}|ServicesTests\\ServicesTests.csproj|solutionrelative:servicestests\\clienteservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\js\\services\\panelclienteservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\js\\services\\panelclienteservice.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3EB176E5-97D9-4BB2-80C6-5A00E1A3DDDA}|ServicesTests\\ServicesTests.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\servicestests\\administradorservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3EB176E5-97D9-4BB2-80C6-5A00E1A3DDDA}|ServicesTests\\ServicesTests.csproj|solutionrelative:servicestests\\administradorservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\css\\components\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\css\\components\\forms.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\wwwroot\\css\\components\\inputs.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\wwwroot\\css\\components\\inputs.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\webapp\\views\\administrador\\panelpagos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{A399093A-0C68-4945-99FE-B2E428DB537E}|WebApp\\WebApp.csproj|solutionrelative:webapp\\views\\administrador\\panelpagos.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8B4F269F-A58C-4026-8EA4-255114ACE494}|RestAPI\\RestAPI.csproj|c:\\users\\chris\\desktop\\coding\\gimnasio-api-mvc\\restapi\\controllers\\clienteservicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8B4F269F-A58C-4026-8EA4-255114ACE494}|RestAPI\\RestAPI.csproj|solutionrelative:restapi\\controllers\\clienteservicecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -26,41 +38,80 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "AdministradorServiceTests.cs",
-              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\ServicesTests\\AdministradorServiceTests.cs",
-              "RelativeDocumentMoniker": "ServicesTests\\AdministradorServiceTests.cs",
-              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\ServicesTests\\AdministradorServiceTests.cs",
-              "RelativeToolTip": "ServicesTests\\AdministradorServiceTests.cs",
-              "ViewState": "AgIAAFwBAAAAAAAAAAAgwGgBAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-16T01:53:28.377Z",
+              "DocumentIndex": 3,
+              "Title": "inputs.css",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\inputs.css",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\css\\components\\inputs.css",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\inputs.css",
+              "RelativeToolTip": "WebApp\\wwwroot\\css\\components\\inputs.css",
+              "ViewState": "AgIAADcAAAAAAAAAAAAmwHcAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-22T15:15:45.277Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ClienteServiceTests.cs",
-              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\ServicesTests\\ClienteServiceTests.cs",
-              "RelativeDocumentMoniker": "ServicesTests\\ClienteServiceTests.cs",
-              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\ServicesTests\\ClienteServiceTests.cs",
-              "RelativeToolTip": "ServicesTests\\ClienteServiceTests.cs",
-              "ViewState": "AgIAAI8DAAAAAAAAAAAAAKQDAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T22:17:35.35Z",
+              "DocumentIndex": 2,
+              "Title": "forms.css",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\forms.css",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\css\\components\\forms.css",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\css\\components\\forms.css",
+              "RelativeToolTip": "WebApp\\wwwroot\\css\\components\\forms.css",
+              "ViewState": "AgIAAM8AAAAAAAAAAAAAAOIAAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-10-22T14:58:24.858Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ClienteService.cs",
-              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\ClienteService.cs",
-              "RelativeDocumentMoniker": "Services\\ClienteService.cs",
-              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\ClienteService.cs",
-              "RelativeToolTip": "Services\\ClienteService.cs",
-              "ViewState": "AgIAAIEAAAAAAAAAAAAIwNkAAABWAAAAAAAAAA==",
+              "Title": "panelPagoService.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\panelPagoService.js",
+              "ViewState": "AgIAABIAAAAAAAAAAAAowCAAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-22T14:28:28.579Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "panelClienteService.js",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelClienteService.js",
+              "RelativeDocumentMoniker": "WebApp\\wwwroot\\js\\services\\panelClienteService.js",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\js\\services\\panelClienteService.js",
+              "RelativeToolTip": "WebApp\\wwwroot\\js\\services\\panelClienteService.js",
+              "ViewState": "AgIAAFUAAAAAAAAAAAAgwF4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-10-20T10:25:45.112Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "PanelPagos.cshtml",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "RelativeDocumentMoniker": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "RelativeToolTip": "WebApp\\Views\\Administrador\\PanelPagos.cshtml",
+              "ViewState": "AgIAACMAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-10-22T14:20:27.874Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ClienteServiceController.cs",
+              "DocumentMoniker": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\RestAPI\\Controllers\\ClienteServiceController.cs",
+              "RelativeDocumentMoniker": "RestAPI\\Controllers\\ClienteServiceController.cs",
+              "ToolTip": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\RestAPI\\Controllers\\ClienteServiceController.cs",
+              "RelativeToolTip": "RestAPI\\Controllers\\ClienteServiceController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-15T23:49:50.58Z",
+              "WhenOpened": "2024-10-20T10:25:27.6Z",
               "EditorCaption": ""
             }
           ]

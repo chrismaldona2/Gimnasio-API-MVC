@@ -1,6 +1,8 @@
 ﻿using Core.Entidades;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using RestAPI.Models.DTOs;
 using Services;
 using Services.Contratos;
@@ -80,6 +82,14 @@ namespace RestAPI.Controllers
             catch (KeyNotFoundException ex)
             {
                 return NotFound(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(ex.Message); 
+            }
+            catch (DbUpdateException ex)
+            {
+                return Conflict("Error al eliminar la membresía: " + ex.Message);
             }
             catch (Exception ex)
             {

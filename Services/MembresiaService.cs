@@ -9,16 +9,19 @@ using Data.Repositorios.Contratos;
 using Core.Entidades;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.Data.SqlClient;
 
 namespace Services
 {
     public class MembresiaService : IMembresiaService
     {
         private readonly IMembresiaRepositorio _membresiaRepository;
+        private readonly IClienteRepositorio _clienteRepository;
 
-        public MembresiaService(IMembresiaRepositorio membresiaRepository)
+        public MembresiaService(IMembresiaRepositorio membresiaRepository, IClienteRepositorio clienteRepository)
         {
             _membresiaRepository = membresiaRepository;
+            _clienteRepository = clienteRepository;
         }
 
         //alta
@@ -65,6 +68,13 @@ namespace Services
                 {
                     throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
                 }
+
+                var clientesAsociados = await _clienteRepository.ObtenerClientesConTipoMembresiaAsync(idMembresiaEliminar);
+                if (clientesAsociados.Any())
+                {
+                    throw new InvalidOperationException("No se puede eliminar la membresía la misma tiene clientes asociados.");
+                }
+
                 await _membresiaRepository.EliminarAsync(idMembresiaEliminar);
                 await _membresiaRepository.GuardarCambiosAsync();
             }
@@ -72,9 +82,13 @@ namespace Services
             {
                 throw new KeyNotFoundException(ex.Message);
             }
-            catch (DbUpdateException)
+            catch (InvalidOperationException ex)
             {
-                throw new InvalidOperationException("Se produjo un error al intentar eliminar el tipo de membresia.");
+                throw new InvalidOperationException(ex.Message);
+            }
+            catch (DbUpdateException ex)
+            {
+                throw new DbUpdateException("Error al eliminar la membresía. Verifique las relaciones existentes.", ex);
             }
             catch (Exception ex)
             {

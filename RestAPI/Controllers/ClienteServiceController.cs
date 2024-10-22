@@ -279,32 +279,6 @@ namespace RestAPI.Controllers
         }
 
 
-        //asistencias
-        [HttpGet("RegistrarAsistencia")]
-        public async Task<IActionResult> registrarAsistencia(string dni)
-        {
-            if (dni.IsNullOrEmpty())
-            {
-                return BadRequest("El DNI del cliente es requerido.");
-            }
-            try
-            {
-                await _clienteService.RegistrarAsistenciaAsync(dni);
-                return Ok("Asistencia registrada exitosamente.");
-            }
-            catch (KeyNotFoundException ex)
-            {
-                return NotFound(ex.Message);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
-            }
-        }
 
 
     }

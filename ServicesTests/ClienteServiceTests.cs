@@ -31,9 +31,6 @@ namespace Services.Tests
         private GimnasioContext _testContext;
 
         private IClienteRepositorio _clienteTestRepository;
-        private IMembresiaRepositorio _membresiaTestRepository;
-        private IAsistenciaRepositorio _asistenciaTestRepository;
-
         private ClienteService _clienteTestService;
 
         [TestInitialize]
@@ -41,9 +38,7 @@ namespace Services.Tests
         {
             _testContext = getGimnasioInMemoryContext();
             _clienteTestRepository = new ClienteRepositorio(_testContext);
-            _membresiaTestRepository = new MembresiaRepositorio(_testContext);
-            _asistenciaTestRepository = new AsistenciaRepositorio(_testContext);
-            _clienteTestService = new ClienteService(_clienteTestRepository, _membresiaTestRepository, _asistenciaTestRepository);
+            _clienteTestService = new ClienteService(_clienteTestRepository);
         }
         [TestCleanup]
         public void Cleanup()
@@ -928,6 +923,66 @@ namespace Services.Tests
             await Assert.ThrowsExceptionAsync<FechaNacimientoException>(async () =>
             {
                 chris.FechaNacimiento = DateOnly.FromDateTime(DateTime.Now.AddDays(30));
+                await _clienteTestService.ModificarClienteAsync(chris);
+            });
+        }
+
+
+        [TestMethod]
+        public async Task ModificarClienteAsync_DeberiaImpedirDniUsado()
+        {
+            await _clienteTestService.RegistrarClienteAsync(
+                dni: "45492726",
+                nombre: "Christian",
+                apellido: "Maldonado",
+                email: "chris.ariel.maldonado@gmail.com",
+                telefono: "+54 3493 439701",
+                fechaNacimiento: new DateOnly(2004, 1, 13),
+                sexo: Core.Entidades.Sexo.Masculino);
+
+            await _clienteTestService.RegistrarClienteAsync(
+                dni: "20034872",
+                nombre: "José Francisco",
+                apellido: "San Martín y Matorras",
+                email: "sanmartin2@gmail.com",
+                telefono: "+54 3493 410375",
+                fechaNacimiento: new DateOnly(1800, 6, 12),
+                sexo: Core.Entidades.Sexo.Masculino);
+
+
+            var chris = await _clienteTestService.BuscarClientePorIdAsync(1);
+            Assert.IsNotNull(chris);
+
+            chris.Dni = "45492726";
+            await _clienteTestService.ModificarClienteAsync(chris);
+
+            await Assert.ThrowsExceptionAsync<DniRegistradoException>(async () =>
+            {
+                chris.Dni = "20034872";
+                await _clienteTestService.ModificarClienteAsync(chris);
+            });
+        }
+
+        [TestMethod]
+        public async Task ModificarClienteAsync_DeberiaLanzarExcepcionSiClienteNoExiste()
+        {
+            await _clienteTestService.RegistrarClienteAsync(
+                dni: "45492726",
+                nombre: "Christian",
+                apellido: "Maldonado",
+                email: "chris.ariel.maldonado@gmail.com",
+                telefono: "+54 3493 439701",
+                fechaNacimiento: new DateOnly(2004, 1, 13),
+                sexo: Core.Entidades.Sexo.Masculino);
+
+            var chris = await _clienteTestService.BuscarClientePorIdAsync(1);
+            Assert.IsNotNull(chris);
+
+            chris.Id = 100000000;
+
+            await Assert.ThrowsExceptionAsync<KeyNotFoundException>(async () =>
+            {
+                chris.Nombre = "Christian Ariel";
                 await _clienteTestService.ModificarClienteAsync(chris);
             });
         }

@@ -53,6 +53,7 @@
         <div class="input-container">
             <label>Sexo</label>
             <select class="regular-form-input" asp-for="Sexo" required>
+                <option value="" selected disabled>Seleccione una opción</option>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -110,6 +111,7 @@
         <div class="input-container">
             <label>Sexo</label>
             <select class="regular-form-input" id="sexo_mod" name="Sexo" asp-for="Sexo" required>
+                <option value="" selected disabled>Seleccione una opción</option>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -170,7 +172,6 @@
                 <input type="text" class="regular-form-input" name="Sexo" disabled>
             </div>
         </div>
-
         <div class="multiple-input-container">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Confirmar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
@@ -180,6 +181,129 @@
 
 
 
+
+
+
+
+<!-- formulario de detalle de cliente -->
+<dialog class="popup" id="detalleClienteModal">
+
+    <dialog class="popup" id="registrarPagoModal">
+        <h2>Pago de membresía</h2>
+        <form asp-action="RegistrarPago" method="post" class="form">
+            <div class="multiple-input-container">
+                <div class="input-container">
+                    <label>DNI del Cliente</label>
+                    <input type="text" class="regular-form-input" name="DniCliente" asp-for="Dni" readonly>
+                </div>
+
+                <div class="input-container">
+                    <label>Membresía</label>
+                    <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia">
+                    </select>
+                </div>
+
+            </div>
+
+
+            <div class="input-container">
+                <label>Vencimiento actual</label>
+                <input type="text" class="regular-form-input" name="vencimientoActual" readonly>
+            </div>
+
+            <div class="input-container">
+                <label>Vencimiento actualizado</label>
+                <input type="text" class="regular-form-input" name="vencimientoNuevo" readonly>
+            </div>
+
+            <div class="input-container">
+                <label>Monto a pagar (ARS)</label>
+                <input type="text" class="regular-form-input" name="precioMembresia" disabled>
+            </div>
+
+            <div class="multiple-input-container">
+                <button type="submit" class="regular-form-submit-btn form-action-btn">Renovar</button>
+                <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
+            </div>
+        </form>
+    </dialog>
+
+
+
+
+    <h2>Detalles del cliente</h2>
+    <form class="form">
+
+
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Identificador</label>
+                <input type="text" class="regular-form-input" name="IdCliente" readonly>
+            </div>
+            <div class="input-container">
+                <label>Identificador de Membresía</label>
+                <div class="input-search-container">
+                    <input type="text" class="regular-form-input" name="IdMembresia" readonly>
+                    <button type="button" id="mostrarDetalleMembresiaBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Nombre</label>
+                <input type="text" class="regular-form-input" name="Nombre" disabled>
+            </div>
+            <div class="input-container">
+                <label>Apellido</label>
+                <input type="text" class="regular-form-input" name="Apellido" disabled>
+            </div>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>DNI</label>
+                <input type="text" class="regular-form-input" name="Dni" disabled>
+            </div>
+            <div class="input-container">
+                <label>Teléfono</label>
+                <input type="tel" class="regular-form-input" name="Telefono" disabled>
+            </div>
+        </div>
+        <div class="input-container">
+            <label>Correo electrónico</label>
+            <input type="text" class="regular-form-input" name="Email" disabled>
+        </div>
+        <div class="multiple-input-container">
+            <div class="input-container">
+                <label>Fecha de nacimiento</label>
+                <input type="text" class="regular-form-input" name="FechaNacimiento" disabled>
+            </div>
+            <div class="input-container">
+                <label>Sexo</label>
+                <input type="text" class="regular-form-input" name="Sexo" disabled>
+            </div>
+        </div>
+        <div class="input-container fecha-vencimiento-cliente-container">
+            <label>Vencimiento de la membresía</label>
+            <input type="text" class="regular-form-input fecha-vencimiento-cliente" name="FechaVencimiento" disabled>
+        </div>
+        <div class="multiple-input-container">
+
+
+
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="mostrarRegistrarPagoBtn">Renovar membresía</button>
+
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="mostrarPagosBtn">Ver pagos</button>
+
+
+        </div>
+
+        <div class="input-container">
+            <button type="button" class="regular-form-submit-btn form-action-btn" id="cerrarDetalleClienteBtn">Cerrar</button>
+        </div>
+    </form>
+</dialog>
 
 
 <!-- formulario de registro de pago -->
@@ -372,11 +496,8 @@
                 <thead>
                     <tr>
                         <th>DNI</th>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Email</th>
+                        <th>Nombre completo</th>
                         <th>Teléfono</th>
-                        <th>Fecha de nacimiento</th>
                         <th>Sexo</th>
                         <th>Id de membresía</th>
                         <th>Vencimiento de membresía</th>
@@ -384,49 +505,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaClientes)
+                    @if (Model.ListaClientes != null && Model.ListaClientes.Any())
+                    {
+                        @foreach (var item in Model.ListaClientes)
+                        {
+                            <tr>
+                                <td data-label="DNI">
+                                    @Html.DisplayFor(modelItem => item.Dni)
+                                </td>
+                                <td data-label="Nombre">
+                                    @($"{item.Nombre} {item.Apellido}")
+                                </td>
+                                <td data-label="Teléfono">
+                                    @Html.DisplayFor(modelItem => item.Telefono)
+                                </td>
+                                <td data-label="Sexo">
+                                    @Html.DisplayFor(modelItem => item.Sexo)
+                                </td>
+                                <td data-label="Id de membresía">
+                                    @(item.IdMembresia == null ? "Sin membresía" : item.IdMembresia.ToString())
+                                </td>
+                                <td data-label="Vencimiento de membresía">
+                                    @(item.FechaVencimientoMembresia == null ? "Sin membresía" : item.FechaVencimientoMembresia.Value.ToString("dd/MM/yyyy HH:mm"))
+                                </td>
+                                <td data-label="Acciones" class="table-action-btn-container">
+                                    <button class="table-action-btn">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="action-dropdown-menu">
+                                            <a href="javascript:void(0);" onclick="mostrarDetalleClienteModal('@item.Id')">Detalle</a>
+                                            <a href="javascript:void(0);" onclick="mostrarEliminarClienteModal('@item.Id')">Eliminar</a>
+                                            <a href="javascript:void(0);" onclick="mostrarModificarClienteModal('@item.Id')">Editar</a>
+                                        </div>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td data-label="DNI">
-                                @Html.DisplayFor(modelItem => item.Dni)
-                            </td>
-                            <td data-label="Nombre">
-                                @Html.DisplayFor(modelItem => item.Nombre)
-                            </td>
-                            <td data-label="Apellido">
-                                @Html.DisplayFor(modelItem => item.Apellido)
-                            </td>
-                            <td data-label="Email">
-                                @Html.DisplayFor(modelItem => item.Email)
-                            </td>
-                            <td data-label="Teléfono">
-                                @Html.DisplayFor(modelItem => item.Telefono)
-                            </td>
-                            <td data-label="Fecha de nacimiento">
-                                @item.FechaNacimiento?.ToString("dd/MM/yyyy")
-                            </td>
-                            <td data-label="Sexo">
-                                @Html.DisplayFor(modelItem => item.Sexo)
-                            </td>
-                            <td data-label="Id de membresía">
-                                @(item.IdMembresia == null ? "Sin membresía" : item.IdMembresia.ToString())
-                            </td>
-                            <td data-label="Vencimiento de membresía">
-                                @(item.FechaVencimientoMembresia == null ? "Sin membresía" : item.FechaVencimientoMembresia.Value.ToString("dd/MM/yyyy HH:mm"))
-                            </td>
-                            <td data-label="Acciones" class="table-action-btn-container">
-                                <button class="table-action-btn">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                    <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarRegistrarPagoModal('@item.Id')">Renovar membresía</a>
-                                        <a href="javascript:void(0);" onclick="mostrarError('Funcion aún no implementada.')">Ver pagos</a>
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarClienteModal('@item.Id')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarModificarClienteModal('@item.Id')">Editar</a>
-                                    </div>
-                                </button>
+                            <td colspan="7" style="text-align: center;">
+                                No hay clientes disponibles.
                             </td>
                         </tr>
                     }
+
                 </tbody>
             </table>
         </div>

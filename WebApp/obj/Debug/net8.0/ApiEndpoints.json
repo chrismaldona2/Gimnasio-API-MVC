@@ -311,22 +311,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "registrarAsistencia",
-    "RelativePath": "api/ClienteService/RegistrarAsistencia",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "dni",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
     "Method": "buscarPorId",
     "RelativePath": "api/MembresiaService/BuscarID",

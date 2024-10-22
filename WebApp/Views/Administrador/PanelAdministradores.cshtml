@@ -59,6 +59,7 @@
         <div class="input-container">
             <label>Sexo</label>
             <select class="regular-form-input" name="Sexo" asp-for="Sexo" required>
+                <option value="" selected disabled>Seleccione una opción</option>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -126,6 +127,7 @@
         <div class="input-container">
             <label>Sexo</label>
             <select class="regular-form-input" name="Sexo" asp-for="Sexo" id="sexo_mod" required>
+                <option value="" selected disabled>Seleccione una opción</option>
                 <option value="0">Masculino</option>
                 <option value="1">Femenino</option>
                 <option value="2">Otro</option>
@@ -200,7 +202,7 @@
 
 <!-- formulario de detalle de admin -->
 <dialog class="popup" id="detalleAdminModal">
-    <h2>Detalle del administrador</h2>
+    <h2>Detalles del administrador</h2>
     <form class="form">
         <div class="input-container">
             <label>Identificador</label>

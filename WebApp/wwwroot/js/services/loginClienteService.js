@@ -18,14 +18,19 @@ buscarClienteForm.addEventListener('submit', async function (event) {
         modal.querySelector('#tel-field span').textContent = cliente.telefono;
         modal.querySelector('#birthdate-field span').textContent = convertirFechaDateOnly(cliente.fechaNacimiento);
 
-        const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
-        console.log(fechaVencimiento);
-        if (fechaVencimiento == null || fechaVencimiento < new Date()) {
-            modal.querySelector('#vencimiento-field span').style.color = 'var(--red-color)';
+        if (cliente.fechaVencimientoMembresia) {
+            const fechaVencimiento = new Date(cliente.fechaVencimientoMembresia);
+            modal.querySelector('#vencimiento-field span').textContent = convertirFechaDateTime(fechaVencimiento);
+            if (fechaVencimiento < new Date()) {
+                modal.querySelector('#vencimiento-field span').style.color = 'var(--red-color)';
+            } else {
+                modal.querySelector('#vencimiento-field span').style.color = 'var(--green-color)';
+            }
         } else {
-            modal.querySelector('#vencimiento-field span').style.color = '#489f4e';
+            modal.querySelector('#vencimiento-field span').style.color = 'var(--red-color)';
+            modal.querySelector('#vencimiento-field span').textContent = "Sin membresía";
         }
-        modal.querySelector('#vencimiento-field span').textContent = convertirFechaDateTime(fechaVencimiento);
+
         modal.showModal();
     }
 

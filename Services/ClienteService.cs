@@ -17,14 +17,11 @@ namespace Services
     public class ClienteService : IClienteService
     {
         private readonly IClienteRepositorio _clienteRepository;
-        private readonly IMembresiaRepositorio _membresiaRepository;
-        private readonly IAsistenciaRepositorio _asistenciaRepository;
 
-        public ClienteService(IClienteRepositorio clienteRepository, IMembresiaRepositorio membresiaRepository, IAsistenciaRepositorio asistenciaRepository)
+        public ClienteService(IClienteRepositorio clienteRepository)
         {
             _clienteRepository = clienteRepository;
-            _membresiaRepository = membresiaRepository;
-            _asistenciaRepository = asistenciaRepository;
+
         }
 
         //alta
@@ -238,33 +235,6 @@ namespace Services
         }
 
 
-        //registrar asistencia
-        public async Task RegistrarAsistenciaAsync(string dni)
-        {
-            var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
-
-            if (cliente == null)
-            {
-                throw new KeyNotFoundException("La cliente especificado no fue encontrado.");
-            }
-
-            var asistencia = new Asistencia(cliente.Id, DateTime.Now);
-
-            try
-            {
-                await _asistenciaRepository.CrearAsync(asistencia);
-                await _asistenciaRepository.GuardarCambiosAsync();
-
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar registrar la asistencia.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
-            }
-        }
 
     }
 }

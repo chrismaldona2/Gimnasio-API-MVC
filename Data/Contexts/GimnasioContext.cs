@@ -61,15 +61,7 @@ namespace Data.Contexts
                 .Property(a => a.Contraseña)
                 .IsRequired();
 
-            //asistencia
-            modelBuilder.Entity<Asistencia>()
-                .HasKey(a => a.Id);
 
-            modelBuilder.Entity<Asistencia>()
-                .HasOne<Cliente>()
-                .WithMany()
-                .HasForeignKey(a => a.IdCliente)
-                .OnDelete(DeleteBehavior.Cascade);
 
             //membresia
             modelBuilder.Entity<Membresia>()
