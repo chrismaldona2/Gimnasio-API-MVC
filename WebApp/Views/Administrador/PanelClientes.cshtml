@@ -59,7 +59,7 @@
                 <option value="2">Otro</option>
             </select>
         </div>
-        <div class="multiple-input-container">
+        <div class="multiple-input-container" style="margin-top: 1.25rem;">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
@@ -118,7 +118,7 @@
             </select>
         </div>
 
-        <div class="multiple-input-container">
+        <div class="multiple-input-container" style="margin-top: 1.25rem;">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Guardar cambios</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
@@ -172,7 +172,7 @@
                 <input type="text" class="regular-form-input" name="Sexo" disabled>
             </div>
         </div>
-        <div class="multiple-input-container">
+        <div class="multiple-input-container" style="margin-top: 1.25rem;">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Confirmar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
         </div>
@@ -187,7 +187,49 @@
 
 <!-- formulario de detalle de cliente -->
 <dialog class="popup" id="detalleClienteModal">
+    
+    <!-- Detalle membresía -->
 
+    <dialog class="popup" id="infoMembresiaModal">
+
+        <div class="form">
+            <div class="input-container">
+                <label>Identificador</label>
+                <input type="text" class="regular-form-input" name="IdDetalleMembresia" disabled>
+            </div>
+
+            <div class="input-container">
+                <label>Descripción</label>
+                <input type="text" class="regular-form-input" name="Tipo" disabled>
+            </div>
+
+            <div class="multiple-input-container">
+                <div class="input-container">
+                    <label>Duración (Días)</label>
+                    <input type="number" class="regular-form-input" name="DuracionDias" disabled>
+                </div>
+                <div class="input-container">
+                    <label>Duración (Meses)</label>
+                    <input type="number" class="regular-form-input" name="DuracionMeses" disabled>
+                </div>
+
+            </div>
+            <div class="input-container">
+                <label>Precio (ARS)</label>
+                <input type="number" class="regular-form-input" name="Precio" disabled>
+            </div>
+            <div class="input-container">
+                <button type="button" class="regular-form-submit-btn form-action-btn" id="cerrarDetalleMembresiaBtn">Cerrar</button>
+            </div>
+
+        </div>
+
+    </dialog>
+
+
+
+
+    <!-- formulario de registro de pago -->
     <dialog class="popup" id="registrarPagoModal">
         <h2>Pago de membresía</h2>
         <form asp-action="RegistrarPago" method="post" class="form">
@@ -205,23 +247,20 @@
 
             </div>
 
-
             <div class="input-container">
                 <label>Vencimiento actual</label>
                 <input type="text" class="regular-form-input" name="vencimientoActual" readonly>
             </div>
-
             <div class="input-container">
                 <label>Vencimiento actualizado</label>
                 <input type="text" class="regular-form-input" name="vencimientoNuevo" readonly>
             </div>
-
             <div class="input-container">
                 <label>Monto a pagar (ARS)</label>
                 <input type="text" class="regular-form-input" name="precioMembresia" disabled>
             </div>
 
-            <div class="multiple-input-container">
+            <div class="multiple-input-container" style="margin-top: 1.25rem;">
                 <button type="submit" class="regular-form-submit-btn form-action-btn">Renovar</button>
                 <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
             </div>
@@ -230,7 +269,35 @@
 
 
 
+    <!-- pagos del cliente -->
+    <dialog class="popup popup--table" id="pagosClienteModal">
+        <h2>Pagos del cliente</h2>
+        <form class="form">
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id de Pago</th>
+                            <th>Id de Membresía</th>
+                            <th>Fecha de pago</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pagosClienteTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="input-container">
+                <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="cerrarPagosClienteModal">Cerrar</button>
+            </div>
+        </form>
+    </dialog>
 
+
+
+
+
+    <!-- detalles cliente-->
     <h2>Detalles del cliente</h2>
     <form class="form">
 
@@ -294,7 +361,7 @@
 
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="mostrarRegistrarPagoBtn">Renovar membresía</button>
 
-            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="mostrarPagosBtn">Ver pagos</button>
+            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="mostrarPagosClienteBtn">Ver pagos</button>
 
 
         </div>
@@ -305,19 +372,6 @@
     </form>
 </dialog>
 
-
-<!-- formulario de registro de pago -->
-<dialog class="popup" id="registrarPagoModal">
-    <h2>Pago de membresía</h2>
-    <form asp-action="RegistrarPago" method="post" class="form">
-
-
-        <div class="multiple-input-container">
-            <button type="submit" class="regular-form-submit-btn form-action-btn">Registrar</button>
-            <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
-        </div>
-    </form>
-</dialog>
 
 
 

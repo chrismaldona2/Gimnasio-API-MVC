@@ -87,5 +87,21 @@ namespace WebApp.Services
             return null;
 
         }
+
+
+        public async Task<List<PagoModel>> ListaPagosCliente(int idCliente)
+        {
+            List<PagoModel> listaPagos = new();
+            var response = await _httpClient.GetAsync($"api/PagoService/PagosClientePorId?IdCliente={idCliente}");
+
+            if (response.IsSuccessStatusCode)
+            {
+                string data = await response.Content.ReadAsStringAsync();
+                listaPagos = JsonConvert.DeserializeObject<List<PagoModel>>(data);
+
+                return listaPagos;
+            }
+            return listaPagos;
+        }
     }
 }

@@ -140,13 +140,13 @@
 }
 
 
-    .fecha-vencimiento-cliente.vigente {
+    .vigente {
         background-color: #EFFFF0;
         color: var(--green-color);
         box-shadow: 0 0 0 1.6px var(--green-color);
     }
 
-    .fecha-vencimiento-cliente.vencida {
+    .vencida {
         background-color: #ffefef;
         color: var(--red-color);
         box-shadow: 0 0 0 1.6px var(--red-color);

@@ -3,6 +3,7 @@ using System.Net;
 using System.Text;
 using WebApp.Models.Administrador;
 using WebApp.Models.Cliente;
+using WebApp.Models.Pago;
 using WebApp.Services.Contracts;
 
 namespace WebApp.Services
@@ -135,7 +136,5 @@ namespace WebApp.Services
 
         }
 
-
-        
     }
 }

@@ -164,7 +164,16 @@ namespace WebApp.Controllers
             return NotFound();
         }
 
-
+        [HttpGet]
+        public async Task<IActionResult> ListadoPagosCliente(int idCliente)
+        {
+            var pagos = await _pagoService.ListaPagosCliente(idCliente);
+            if (pagos != null)
+            {
+                return Json(pagos);
+            }
+            return NotFound();
+        }
 
 
 

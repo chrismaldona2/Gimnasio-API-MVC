@@ -9,13 +9,15 @@ namespace WebApp.Controllers
     public class UsuarioController : Controller
     {
 
-        private readonly IAdministradorAPIService _administradorApiService;
+        private readonly IAdministradorAPIService _administradorService;
         private readonly IClienteAPIService _clienteService;
+        private readonly IPagoAPIService _pagoService;
 
-        public UsuarioController(IAdministradorAPIService administradorApiService, IClienteAPIService clienteService)
+        public UsuarioController(IAdministradorAPIService administradorApiService, IClienteAPIService clienteService, IPagoAPIService pagoService)
         {
-            _administradorApiService = administradorApiService;
+            _administradorService = administradorApiService;
             _clienteService = clienteService;
+            _pagoService = pagoService;
         }
 
 
@@ -44,6 +46,21 @@ namespace WebApp.Controllers
             return NotFound();
         }
 
+
+        [HttpGet]
+        public async Task<IActionResult> ListadoPagosCliente(int idCliente)
+        {
+            var pagos = await _pagoService.ListaPagosCliente(idCliente);
+            if (pagos != null)
+            {
+                return Json(pagos);
+            }
+            return NotFound();
+        }
+
+
+
+
         [HttpPost]
         public async Task<IActionResult> AutenticarAdmin(LoginAdminDTO model)
         {
@@ -51,13 +68,13 @@ namespace WebApp.Controllers
             {
                 return View("LoginAdmin", model);
             }
-            var respuesta = await _administradorApiService.AutenticarAdminAsync(model.Usuario, model.Contraseña);
+            var respuesta = await _administradorService.AutenticarAdminAsync(model.Usuario, model.Contraseña);
 
             if (respuesta.Exitoso)
             {
                 TempData["SuccessMessage"] = $"{respuesta.Mensaje}";
 
-                var adminLoguado = await _administradorApiService.BuscarAdminPorUsuarioAsync(model.Usuario);
+                var adminLoguado = await _administradorService.BuscarAdminPorUsuarioAsync(model.Usuario);
 
                 HttpContext.Session.SetString("AdminLogueado", JsonConvert.SerializeObject(adminLoguado));
 

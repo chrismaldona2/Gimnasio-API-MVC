@@ -60,6 +60,17 @@
     transition: display 0.5s allow-discrete, overlay 0.5s allow-discrete;
 }
 
+    .popup .popup--table {
+        width: 90%;
+        max-width: 900px;
+
+    }
+
+        .popup .popup--table table {
+            padding: 1.25rem 1rem .25rem 1rem;
+            background-color: #e5e5e5;
+        }
+
     .popup::backdrop {
         background-color: rgba(0, 0, 0, 0.45);
         animation: backdropFadeOut 0.5s forwards;

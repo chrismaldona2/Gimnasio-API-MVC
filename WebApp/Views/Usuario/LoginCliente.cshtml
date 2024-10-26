@@ -12,6 +12,36 @@
 
 
 <dialog id="user-info-card-modal" class="popup">
+
+
+    <!-- pagos del cliente -->
+    <dialog class="popup popup--table" id="pagosClienteModal">
+        <h2>Pagos del cliente</h2>
+        <form class="form">
+            <div class="table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id de Pago</th>
+                            <th>Id de Membresía</th>
+                            <th>Fecha de pago</th>
+                            <th>Monto</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pagosClienteTableBody">
+                    </tbody>
+                </table>
+            </div>
+            <div class="input-container">
+                <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn" id="cerrarPagosClienteModal">Cerrar</button>
+            </div>
+        </form>
+    </dialog>
+
+
+
+
+
     <div class="user-card-container">
         <div class="left">
             <div class="user-pic">
@@ -53,7 +83,7 @@
                 <span>...</span>
             </div>
             <div class="action-btns">
-                <button class="show-payments-btn">Ver pagos recientes<i class="fa-solid fa-arrow-right"></i></button>
+                <button class="show-payments-btn" id="mostrarPagosClienteBtn">Ver pagos recientes<i class="fa-solid fa-arrow-right"></i></button>
                 <button class="close-btn" id="close-btn"><i class="fa-solid fa-arrow-right-from-bracket"></i></button>
             </div>
         </div>

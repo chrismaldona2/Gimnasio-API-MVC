@@ -91,3 +91,21 @@ export async function buscarPagoPorId(idPago) {
         mostrarError(error.message);
     }
 }
+
+export async function listadoPagosCliente(idCliente, baseUrl = "/Administrador/") {
+    try {
+        const response = await fetch(`${baseUrl}ListadoPagosCliente?idCliente=${idCliente}`);
+
+        if (!response.ok) {
+            throw new Error('Pagos no encontrados.')
+        }
+
+        const pagos = await response.json();
+        return pagos;
+    }
+    catch (error) {
+        mostrarError(error.message);
+    }
+}
+
+

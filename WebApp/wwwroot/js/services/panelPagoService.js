@@ -219,7 +219,6 @@ mostrarDetalleMembresiaBtn.addEventListener('click', async () => {
         detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
         detalleMembresia.showModal();
     }   
-
 })
 
 

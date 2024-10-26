@@ -1,4 +1,4 @@
-﻿import { buscarClientePorId, listadoMembresias } from './busquedaService.js';
+﻿import { buscarClientePorId, buscarMembresiaPorId, listadoMembresias, listadoPagosCliente } from './busquedaService.js';
 
 let clienteSeleccionado = null;
 
@@ -88,6 +88,29 @@ document.getElementById('cerrarDetalleClienteBtn').addEventListener('click', () 
 
 
 
+const detalleMembresia = document.getElementById('infoMembresiaModal');
+const mostrarDetalleMembresiaBtn = document.getElementById('mostrarDetalleMembresiaBtn');
+document.getElementById('cerrarDetalleMembresiaBtn').addEventListener('click', () => detalleMembresia.close());
+
+
+mostrarDetalleMembresiaBtn.addEventListener('click', async () => {
+    const idMembresia = detalleModal.querySelector('input[name="IdMembresia"]').value;
+    const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
+    if (!membresiaBuscada) {
+        detalleModal.close();
+    } else {
+        detalleMembresia.querySelector('input[name="IdDetalleMembresia"]').value = membresiaBuscada.id;
+        detalleMembresia.querySelector('input[name="Tipo"]').value = membresiaBuscada.tipo;
+        detalleMembresia.querySelector('input[name="DuracionDias"]').value = membresiaBuscada.duracionDias;
+        detalleMembresia.querySelector('input[name="DuracionMeses"]').value = convertirAMes(membresiaBuscada.duracionDias);
+        detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
+        detalleMembresia.showModal();
+    }
+})
+
+
+
+
 const membresiaSelect = document.getElementById('membresiaSelect');
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -138,6 +161,8 @@ function mostrarMembresiaSelData() {
                 fechaVencimientoNueva.setDate(fechaVencimientoNueva.getDate() + parseInt(duracionDias));
 
                 registrarPagoModal.querySelector('input[name="vencimientoNuevo"]').value = convertirFechaDateTime(fechaVencimientoNueva);
+                registrarPagoModal.querySelector('input[name="vencimientoNuevo"]').classList.add('vigente');
+
             } else {
                 let fecha = new Date();
                 fecha.setDate(fecha.getDate() + parseInt(duracionDias));
@@ -146,6 +171,10 @@ function mostrarMembresiaSelData() {
             }
 
         }
+    } else {
+        registrarPagoModal.querySelector('input[name="precioMembresia"]').value = null;
+        registrarPagoModal.querySelector('input[name="vencimientoNuevo"]').value = null;
+        registrarPagoModal.querySelector('input[name="vencimientoNuevo"]').classList.remove('vigente');
     }
 
 
@@ -160,8 +189,16 @@ const registrarPagoBtn = document.getElementById('mostrarRegistrarPagoBtn');
 
 async function mostrarRegistrarPagoModal() {
     if (clienteSeleccionado) {
+        membresiaSelect.selectedIndex = 0;
+        mostrarMembresiaSelData();
         registrarPagoModal.querySelector('input[name="DniCliente"]').value = clienteSeleccionado.dni;
         registrarPagoModal.querySelector('input[name="vencimientoActual"]').value = convertirFechaDateTime(clienteSeleccionado.fechaVencimientoMembresia);
+
+        if (clienteSeleccionado.fechaVencimientoMembresia == null || new Date(clienteSeleccionado.fechaVencimientoMembresia) < new Date()) {
+            registrarPagoModal.querySelector('input[name="vencimientoActual"]').classList.add('vencida');
+        } else {
+            registrarPagoModal.querySelector('input[name="vencimientoActual"]').classList.remove('vencida');
+        }
         registrarPagoModal.showModal();
     }
 
@@ -169,3 +206,56 @@ async function mostrarRegistrarPagoModal() {
 
 registrarPagoBtn.addEventListener('click', mostrarRegistrarPagoModal);
 registrarPagoModal.querySelector('.cancel-btn').addEventListener('click', () => registrarPagoModal.close());
+
+
+
+const pagosClienteModal = document.getElementById('pagosClienteModal');
+const mostrarPagosClienteBtn = document.getElementById('mostrarPagosClienteBtn');
+
+async function mostrarPagosClienteModal() {
+    if (clienteSeleccionado) {
+        const pagosCliente = await listadoPagosCliente(clienteSeleccionado.id);
+        const pagosTableBody = document.getElementById('pagosClienteTableBody');
+        pagosTableBody.innerHTML = "";
+
+        if (pagosCliente.length === 0) {
+            const trHtml = `                        
+                        <tr>
+                            <td>
+                                No hay pagos registrados
+                            </td>
+                            <td></td
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>`;
+            pagosTableBody.innerHTML += trHtml;
+        } else {
+            pagosCliente.forEach((pago) => {
+                const trHtml = `                        
+                        <tr>
+                            <td data-label="Id de Pago">
+                                ${pago.id}
+                            </td>
+
+                            <td data-label="Id de Membresía">
+                               ${pago.idMembresia}
+                            </td>
+                            <td data-label="Fecha de pago">
+                                ${convertirFechaDateTime(pago.fechaPago)}
+                            </td>
+                            <td data-label="Monto">
+                                ${pago.monto} ARS
+                            </td>
+
+                        </tr>`;
+                pagosTableBody.innerHTML += trHtml;
+            })
+        }
+
+        
+        pagosClienteModal.showModal();
+    }
+}
+mostrarPagosClienteBtn.addEventListener('click', mostrarPagosClienteModal);
+document.getElementById('cerrarPagosClienteModal').addEventListener('click', () => pagosClienteModal.close());

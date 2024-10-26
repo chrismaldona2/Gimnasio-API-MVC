@@ -24,60 +24,23 @@
     box-shadow: 0 0 0 2px #adadad;
 }
 
-/*custom checkbox*/
+.checkbox-container {
+    display: flex;
+    gap: .75rem;
+}
+
 .checkbox-container input {
-    position: absolute;
-    opacity: 0;
+    accent-color: var(--red-color);
     cursor: pointer;
-    height: 0;
-    width: 0;
-  }
+    scale: 1.15;
+}
   
-.checkbox-container{
-    display: block;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
-}
 
-.checkmark {
-    position: relative;
-    top: 0;
-    left: 0;
-    height: 1.3em;
-    width: 1.3em;
-    background-color: #f1f1f1;
-    box-shadow: 0px 0px 2px rgb(79, 79, 79);
-    border-radius: 50%;
-    transition: 300ms;
-}
 
-.checkbox-container input:checked ~ .checkmark {
-    background-color: var(--red-color);
-    box-shadow: 0px 0px 0px rgb(79, 79, 79);
-    border-radius: .5rem;
-    animation: pulse 500ms ease;
-}
 
-.checkmark:after {
-    content: "";
-    position: absolute;
-    display: none;
-}
 
-.checkbox-container input:checked ~ .checkmark:after {
-    display: block;
-}
 
-.checkbox-container .checkmark:after {
-    left: 0.45em;
-    top: 0.25em;
-    width: 0.25em;
-    height: 0.5em;
-    border: solid #ffffff;
-    border-width: 0 0.15em 0.15em 0;
-    transform: rotate(45deg);
-}
+
 
 @keyframes pulse {
     0% {
@@ -115,6 +78,6 @@
     transition: box-shadow .35s ease;
 }
 
-    .regular-form-input:focus {
+    .regular-form-input:focus:not(.vigente):not(.vencida) {
         box-shadow: 0 0 0 2px #adadad;
     }
