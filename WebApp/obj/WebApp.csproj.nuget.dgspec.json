@@ -171,9 +171,6 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj": {
-                "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Core\\Core.csproj"
-              },
               "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\Services.csproj": {
                 "projectPath": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\Services\\Services.csproj"
               }

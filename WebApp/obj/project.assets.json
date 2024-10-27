@@ -1127,7 +1127,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "Core": "1.0.0",
           "Services": "1.0.0",
           "Swashbuckle.AspNetCore": "6.4.0"
         },

@@ -2,7 +2,6 @@ using Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Services.Contratos;
 using Services;
-using Core.Entidades;
 using Data.Repositorios.Contratos;
 using Data.Repositorios;
 
