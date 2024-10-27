@@ -234,7 +234,45 @@ namespace Services
             }
         }
 
+        public async Task<IEnumerable<Cliente>> BuscarClientesPorNombreAsync(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Nombre.StartsWith(prefijo));
+                return clientes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
 
 
+        public async Task<IEnumerable<Cliente>> BuscarClientesPorApellidoAsync(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Apellido.StartsWith(prefijo));
+                return clientes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
+
+
+        public async Task<IEnumerable<Cliente>> BuscarClientesPorDniAsync(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Dni.StartsWith(prefijo));
+                return clientes;
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
+            }
+        }
     }
 }

@@ -280,6 +280,76 @@ namespace RestAPI.Controllers
 
 
 
+        [HttpGet("BuscarClientesPorNombre")]
+        public async Task<IActionResult> listaClientesPorNombre(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteService.BuscarClientesPorNombreAsync(prefijo);
+                if (!clientes.Any())
+                {
+                    return NotFound($"No se encontraron clientes con nombres que comienzan con {prefijo}.");
+                }
+
+                return Ok(clientes);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("BuscarClientesPorApellido")]
+        public async Task<IActionResult> listaClientesPorApellido(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteService.BuscarClientesPorApellidoAsync(prefijo);
+                if (!clientes.Any())
+                {
+                    return NotFound($"No se encontraron clientes con apellidos que comienzan con {prefijo}.");
+                }
+
+                return Ok(clientes);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
+
+
+        [HttpGet("BuscarClientesPorDNI")]
+        public async Task<IActionResult> listaClientesPorDNI(string prefijo)
+        {
+            try
+            {
+                var clientes = await _clienteService.BuscarClientesPorDniAsync(prefijo);
+                if (!clientes.Any())
+                {
+                    return NotFound($"No se encontraron clientes con DNIs que comienzan con {prefijo}.");
+                }
+
+                return Ok(clientes);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
 
     }
 }

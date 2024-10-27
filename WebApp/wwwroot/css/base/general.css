@@ -18,6 +18,7 @@
     --light-red-color: #f75d68;
     --white-color: #faf9f6;
     --dark-grey-color: #484848;
+    --grey-color: #c1c1c1;
     --fs-large: clamp(2rem, 1vw + 2.5rem, 4.5rem);
     --fs-medium: clamp(1.1rem, 1vw + 1rem, 1.5rem);
     --fs-small: clamp(1rem, 1vw + 0.5rem, 1.25rem);

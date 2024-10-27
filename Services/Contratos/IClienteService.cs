@@ -18,6 +18,9 @@ namespace Services.Contratos
         Task<Cliente> BuscarClientePorDniAsync(string dni);
         Task<Cliente> BuscarClientePorIdAsync(int id);
 
+        Task<IEnumerable<Cliente>> BuscarClientesPorNombreAsync(string prefijo);
+        Task<IEnumerable<Cliente>> BuscarClientesPorApellidoAsync(string prefijo);
+        Task<IEnumerable<Cliente>> BuscarClientesPorDniAsync(string prefijo);
 
     }
 }

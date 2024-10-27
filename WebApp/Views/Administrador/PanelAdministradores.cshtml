@@ -263,6 +263,14 @@
 
     <nav class="nav">
         <ul>
+            <li class="help-btn-container">
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="help-btn">
+                        <i class="fa-solid fa-headset"></i>
+                    </button>
+                </a>
+            </li>
+
             <li class="profile-btn-container">
                 <a asp-controller="Administrador" asp-action="PanelPerfil">
                     <button class="profile-btn">
@@ -407,14 +415,16 @@
 
         <div class="action-btns">
             <div class="search-box">
-                <form action="#" class="search-form">
-                    <input type="text" placeholder="Buscar registro..." autocomplete="off">
-                    <select>
-                        <option>Usuario</option>
-                        <option>DNI</option>
-                        <option>Nombre</option>
+                <form action="#" method="post" class="search-form" autocomplete="off">
+                    <input type="text" name="busqueda" placeholder="Buscar registro...">
+                    <select name="tipoBusqueda" id="tipoBusqueda">
+                        <option value="Usuario">Usuario</option>
+                        <option value="Nombre">Nombre</option>
+                        <option value="Apellido">Apellido</option>
+                        <option value="DNI">DNI</option>
                     </select>
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                    <a asp-controller="Administrador" asp-action="PanelAdministradores" class="reload-btn"><i class="fa-solid fa-rotate-right"></i></a>
                 </form>
             </div>
             <div>

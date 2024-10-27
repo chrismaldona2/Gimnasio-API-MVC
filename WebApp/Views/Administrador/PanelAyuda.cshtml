@@ -19,6 +19,14 @@
         <ul>
 
             <!-- Estos siguientes dos botones aparecen solo en pantallas chicas-->
+            <li class="help-btn-container">
+                <a asp-controller="Administrador" asp-action="PanelAyuda">
+                    <button class="help-btn">
+                        <i class="fa-solid fa-headset"></i>
+                    </button>
+                </a>
+            </li>
+
             <li class="profile-btn-container">
                 <a asp-controller="Administrador" asp-action="PanelPerfil">
                     <button class="profile-btn">
@@ -164,5 +172,31 @@
 
     <!-- app -->
     <div class="app help">
+        <section class="help-main-sec card">
+            <h1 class="help-main-sec__title ">¿Necesitas ayuda?</h1>
+            <p class="help-main-sec__body">Encuentra guías, respuestas a preguntas frecuentes y soporte técnico para resolver cualquier problema con el sistema.</p>
+        </section>
+        <section class="frecuent-question-sec card">
+            <div class="frecuent-question-sec__top"><h2 class="frecuent-question-sec__title">Preguntas frecuentes</h2></div>
+            <div class="frecuent-question-sec__body"></div>
+        </section>
+        <section class="support-sec card">
+            <div class="support-sec__top"><h2 class="support-sec__title">Soporte</h2></div>
+            <div class="support-sec__body">
+                <div class="support-sec__card">
+                    <div class="support-sec__card-icon">
+                        <i class="fa-solid fa-phone-volume"></i>
+                    </div>
+                    <div class="support-sec__card-text">
+                        <div class="support-sec__card-number">
+                            <span>Número de contacto</span>
+                            <span>+54 3493 349701</span>
+                        </div>
+                        <span class="support-sec__card-message">Si necesitas ayuda, no dudes en comunicarte</span>
+                    </div>
+
+                </div>
+            </div>
+        </section>
     </div>
 </main>

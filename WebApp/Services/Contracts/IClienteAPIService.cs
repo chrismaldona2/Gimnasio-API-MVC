@@ -10,5 +10,8 @@ namespace WebApp.Services.Contracts
         Task<List<ClienteModel>> ListaClientes();
         Task<ClienteModel> BuscarClientePorDni(string dni);
         Task<ClienteModel> BuscarClientePorId(int id);
+        Task<APIResponse> BuscarClientesPorNombre(string prefijo);
+        Task<APIResponse> BuscarClientesPorApellido(string prefijo);
+        Task<APIResponse> BuscarClientesPorDNI(string prefijo);
     }
 }

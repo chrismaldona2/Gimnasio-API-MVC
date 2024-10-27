@@ -61,5 +61,9 @@ namespace Data.Repositorios
         {
             return await Task.FromResult(this._context.Set<T>().Where(expression));
         }
+
+
+
+
     }
 }

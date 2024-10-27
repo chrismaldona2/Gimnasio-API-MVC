@@ -133,6 +133,54 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaClientesPorApellido",
+    "RelativePath": "api/ClienteService/BuscarClientesPorApellido",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaClientesPorDNI",
+    "RelativePath": "api/ClienteService/BuscarClientesPorDNI",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "listaClientesPorNombre",
+    "RelativePath": "api/ClienteService/BuscarClientesPorNombre",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "buscarPorDni",
     "RelativePath": "api/ClienteService/BuscarDNI",
     "HttpMethod": "GET",

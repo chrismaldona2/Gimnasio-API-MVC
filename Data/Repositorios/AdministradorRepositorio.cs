@@ -23,5 +23,8 @@ namespace Data.Repositorios
         {
             return await this._context.Set<Administrador>().Where(c => c.Dni == dni).FirstOrDefaultAsync();
         }
+
+
+
     }
 }

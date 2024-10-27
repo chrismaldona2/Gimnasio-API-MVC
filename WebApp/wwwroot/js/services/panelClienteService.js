@@ -42,7 +42,7 @@ async function mostrarModificarClienteModal(idCliente) {
     modificarModal.querySelector('input[name="Telefono"]').value = cliente.telefono;
     modificarModal.querySelector('input[name="Email"]').value = cliente.email;
     modificarModal.querySelector('input[name="FechaNacimiento"]').value = cliente.fechaNacimiento;
-    modificarModal.querySelector('select[name="Sexo"]').selectedIndex = cliente.sexo;
+    modificarModal.querySelector('select[name="Sexo"]').selectedIndex = cliente.sexo + 1;
     modificarModal.showModal();
 
 }
@@ -259,3 +259,6 @@ async function mostrarPagosClienteModal() {
 }
 mostrarPagosClienteBtn.addEventListener('click', mostrarPagosClienteModal);
 document.getElementById('cerrarPagosClienteModal').addEventListener('click', () => pagosClienteModal.close());
+
+
+

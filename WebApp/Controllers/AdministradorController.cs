@@ -8,6 +8,7 @@ using WebApp.Models.Membresia;
 using WebApp.Models.Pago;
 using WebApp.Services.Contracts;
 using WebApp.ViewPermissions;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace WebApp.Controllers
 {
@@ -88,6 +89,8 @@ namespace WebApp.Controllers
             };
             return View("PanelClientes", model);
         }        
+
+
         ////de pagos
         public async Task<IActionResult> PanelPagos()
         {
@@ -175,9 +178,6 @@ namespace WebApp.Controllers
             }
             return NotFound();
         }
-
-
-
 
 
         //METODOS DE LA PANTALLA DE ADMINISTRADOR
@@ -526,5 +526,85 @@ namespace WebApp.Controllers
             TempData["ErrorMessage"] = "Error inesperado.";
             return RedirectToAction("PanelPagos");
         }
+
+
+
+
+
+
+
+
+
+
+
+        //FILTRADO DE TABLAS
+        public async Task<IActionResult> FiltrarClientes(string busqueda, string tipoBusqueda)
+        {
+
+            switch (tipoBusqueda)
+            {
+                case "Nombre":
+                    var respuestaNombre = await _clienteService.BuscarClientesPorNombre(busqueda);
+
+                    if (respuestaNombre.Exitoso)
+                    {
+                        var listaClientes = JsonConvert.DeserializeObject<List<ClienteModel>>(respuestaNombre.Mensaje);
+                        PanelClientesModel modelNuevo = new()
+                        {
+                            ListaClientes = listaClientes
+                        };
+                        return View("PanelClientes", modelNuevo);
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = respuestaNombre.Mensaje;
+                        return RedirectToAction("PanelClientes");
+                    }
+
+                case "Apellido":
+                    var respuestaApellido = await _clienteService.BuscarClientesPorApellido(busqueda);
+
+                    if (respuestaApellido.Exitoso)
+                    {
+                        var listaClientes = JsonConvert.DeserializeObject<List<ClienteModel>>(respuestaApellido.Mensaje);
+                        PanelClientesModel modelNuevo = new()
+                        {
+                            ListaClientes = listaClientes
+                        };
+                        return View("PanelClientes", modelNuevo);
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = respuestaApellido.Mensaje;
+                        return RedirectToAction("PanelClientes");
+                    }
+                case "DNI":
+                    var respuestaDNI = await _clienteService.BuscarClientesPorDNI(busqueda);
+
+                    if (respuestaDNI.Exitoso)
+                    {
+                        var listaClientes = JsonConvert.DeserializeObject<List<ClienteModel>>(respuestaDNI.Mensaje);
+                        PanelClientesModel modelNuevo = new()
+                        {
+                            ListaClientes = listaClientes
+                        };
+                        return View("PanelClientes", modelNuevo);
+                    }
+                    else
+                    {
+                        TempData["ErrorMessage"] = respuestaDNI.Mensaje;
+                        return RedirectToAction("PanelClientes");
+                    }
+                default:
+                    return RedirectToAction("PanelClientes");
+            }
+
+        }
+
+
+
+
+
+
     }
 }

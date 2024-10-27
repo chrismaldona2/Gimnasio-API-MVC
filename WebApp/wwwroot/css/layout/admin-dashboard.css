@@ -84,6 +84,23 @@
     transition: background-color .35s ease;
 }
 
+.reload-btn {
+    border: none;
+    outline: none;
+    background-color: #faf9f6;
+    box-shadow: inset 0 0 0 1.6px var(--red-color);
+    font-size: var(--fs-small);
+    color: var(--red-color);
+    text-align: center;
+    border: none;
+    aspect-ratio: 1/1;
+    height: 100%;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+
+
 .admin-action-btn {
     height: 100%;
     border: none;
@@ -91,13 +108,11 @@
     padding: 1rem;
     border-radius: 1rem;
     background-color: var(--red-color);
-
     display: flex;
     gap: 1rem;
     align-items: center;
     justify-content: center;
     text-wrap: nowrap;
-
     color: var(--white-color);
     transition: background-color .35s ease;
 }
@@ -221,7 +236,7 @@
     background-color: var(--red-color);
     z-index: -10;
 }
-.nav .profile-btn-container, .nav .admin-logout-btn-2-container {
+.nav .profile-btn-container, .nav .admin-logout-btn-2-container, .nav .help-btn-container {
     display: none;
 }
 .nav .profile-btn, .nav .admin-logout-btn-2 {
@@ -233,10 +248,28 @@
     transition: background-color .35s ease;
     border: none;
     font-size: var(--fs-medium);
+    cursor: pointer;
 }
 .nav .profile-btn:hover, .nav .admin-logout-btn-2:hover {
     background-color: #e5e5e5;
 }
+
+
+.nav .help-btn {
+    padding: 1.25rem;
+    border-radius: 50%;
+    background-color: transparent;
+    color: var(--grey-color);
+    align-items: center;
+    transition: background-color .35s ease;
+    border: none;
+    font-size: var(--fs-medium);
+    cursor: pointer;
+}
+
+    .nav .help-btn:hover {
+        background-color: #f1f1f1;
+    }
 
 @media only screen and (max-width: 884px) {
     .app.dashboard h1 {
@@ -286,7 +319,7 @@
         display: none;
     }
 
-    .nav .profile-btn-container, .nav .admin-logout-btn-2-container {
+    .nav .profile-btn-container, .nav .admin-logout-btn-2-container, .nav .help-btn-container {
         display: block;
     }
 

@@ -52,39 +52,40 @@ async function mostrarPagosClienteModal() {
         const pagosTableBody = document.getElementById('pagosClienteTableBody');
         pagosTableBody.innerHTML = "";
 
+
         if (pagosCliente.length === 0) {
-            const trHtml = `                        
-                        <tr>
-                            <td>
-                                No hay pagos registrados
-                            </td>
-                            <td></td
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>`;
-            pagosTableBody.innerHTML += trHtml;
+            const tr = document.createElement('tr');
+            const td = document.createElement('td');
+            td.colSpan = 6;
+            td.textContent = "No se encontraron pagos registrados.";
+            tr.appendChild(td);
+            pagosTableBody.appendChild(tr);
         } else {
             pagosCliente.forEach((pago) => {
-                const trHtml = `                        
-                        <tr>
-                            <td data-label="Id de Pago">
-                                ${pago.id}
-                            </td>
+                const tr = document.createElement('tr');
 
-                            <td data-label="Id de Membresía">
-                               ${pago.idMembresia}
-                            </td>
-                            <td data-label="Fecha de pago">
-                                ${convertirFechaDateTime(pago.fechaPago)}
-                            </td>
-                            <td data-label="Monto">
-                                ${pago.monto} ARS
-                            </td>
+                const idTd = document.createElement('td');
+                idTd.setAttribute('data-label', 'Id de Pago');
+                idTd.textContent = pago.id;
+                tr.appendChild(idTd);
 
-                        </tr>`;
-                pagosTableBody.innerHTML += trHtml;
-            })
+                const idMembresiaTd = document.createElement('td');
+                idMembresiaTd.setAttribute('data-label', 'Id de Membresía');
+                idMembresiaTd.textContent = pago.idMembresia;
+                tr.appendChild(idMembresiaTd);
+
+                const fechaTd = document.createElement('td');
+                fechaTd.setAttribute('data-label', 'Fecha de pago');
+                fechaTd.textContent = convertirFechaDateTime(pago.fechaPago);
+                tr.appendChild(fechaTd);
+
+                const montoTd = document.createElement('td');
+                montoTd.setAttribute('data-label', 'Monto');
+                montoTd.textContent = `${pago.monto} ARS`;
+                tr.appendChild(montoTd);
+
+                pagosTableBody.appendChild(tr);
+            });
         }
 
         pagosClienteModal.showModal();
@@ -92,3 +93,5 @@ async function mostrarPagosClienteModal() {
 }
 mostrarPagosClienteBtn.addEventListener('click', mostrarPagosClienteModal);
 document.getElementById('cerrarPagosClienteModal').addEventListener('click', () => pagosClienteModal.close());
+
+

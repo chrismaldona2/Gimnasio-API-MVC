@@ -63,7 +63,7 @@ async function mostrarModificarAdminModal(idAdmin) {
     modificarModal.querySelector('input[name="Email"]').value = admin.email;
     modificarModal.querySelector('input[name="Usuario"]').value = admin.usuario;
     modificarModal.querySelector('input[name="FechaNacimiento"]').value = admin.fechaNacimiento;
-    modificarModal.querySelector('select[name="Sexo"]').selectedIndex = admin.sexo;
+    modificarModal.querySelector('select[name="Sexo"]').selectedIndex = admin.sexo + 1;
     modificarModal.showModal();
 
 }
