@@ -441,37 +441,48 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaAdministradores)
+                    @if (Model.ListaAdministradores != null && Model.ListaAdministradores.Any())
+                    {
+                        @foreach (var item in Model.ListaAdministradores)
+                        {
+                            <tr>
+                                <td data-label="Usuario">
+                                    @item.Usuario
+                                </td>
+                                <td data-label="DNI">
+                                    @item.Dni
+                                </td>
+                                <td data-label="Nombre">
+                                    @item.Nombre @item.Apellido
+                                </td>
+
+                                <td data-label="Email">
+                                    @item.Email
+                                </td>
+                                <td data-label="Teléfono">
+                                    @item.Telefono
+                                </td>
+                                <td data-label="Sexo">
+                                    @item.Sexo
+                                </td>
+                                <td data-label="Acciones" class="table-action-btn-container">
+                                    <button class="table-action-btn">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="action-dropdown-menu">
+                                            <a href="javascript:void(0);" onclick="mostrarDetalleAdminModal('@item.Id')">Detalle</a>
+                                            <a href="javascript:void(0);" onclick="mostrarEliminarAdminModal('@item.Id')">Eliminar</a>
+                                            <a href="javascript:void(0);" onclick="mostrarModificarAdminModal('@item.Id')">Editar</a>
+                                        </div>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td data-label="Usuario">
-                                @item.Usuario
-                            </td>
-                            <td data-label="DNI">
-                                @item.Dni
-                            </td>
-                            <td data-label="Nombre">
-                                @item.Nombre @item.Apellido
-                            </td>
-
-                            <td data-label="Email">
-                                @item.Email
-                            </td>
-                            <td data-label="Teléfono">
-                                @item.Telefono
-                            </td>
-                            <td data-label="Sexo">
-                                @item.Sexo
-                            </td>
-                            <td data-label="Acciones" class="table-action-btn-container">
-                                <button class="table-action-btn">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                    <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarDetalleAdminModal('@item.Id')">Detalle</a>
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarAdminModal('@item.Id')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarModificarAdminModal('@item.Id')">Editar</a>
-                                    </div>
-                                </button>
+                            <td colspan="7" >
+                                No se encontraron administradores registrados.
                             </td>
                         </tr>
                     }

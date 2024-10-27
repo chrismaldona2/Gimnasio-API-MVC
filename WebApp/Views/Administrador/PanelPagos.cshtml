@@ -515,35 +515,51 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaPagos)
+
+
+                    @if (Model.ListaPagos != null && Model.ListaPagos.Any())
+                    {
+
+                        @foreach (var item in Model.ListaPagos)
+                        {
+                            <tr>
+                                <td data-label="Identificador">
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td data-label="Id de Cliente">
+                                    @Html.DisplayFor(modelItem => item.IdCliente)
+                                </td>
+                                <td data-label="Id de Membresía">
+                                    @Html.DisplayFor(modelItem => item.IdMembresia)
+                                </td>
+                                <td data-label="Fecha de pago">
+                                    @item.FechaPago?.ToString("dd/MM/yyyy")
+                                </td>
+                                <td data-label="Monto">
+                                    @($"{item.Monto:N2} ARS")
+                                </td>
+                                <td data-label="Acciones" class="table-action-btn-container">
+                                    <button class="table-action-btn">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="action-dropdown-menu">
+                                            <a href="javascript:void(0);" onclick="mostrarDetallePagoModal('@item.Id')">Detalle</a>
+                                            <a href="javascript:void(0);" onclick="mostrarEliminarPagoModal('@item.Id')">Eliminar</a>
+                                        </div>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td data-label="Identificador">
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td data-label="Id de Cliente">
-                                @Html.DisplayFor(modelItem => item.IdCliente)
-                            </td>
-                            <td data-label="Id de Membresía">
-                                @Html.DisplayFor(modelItem => item.IdMembresia)
-                            </td>
-                            <td data-label="Fecha de pago">
-                                @item.FechaPago?.ToString("dd/MM/yyyy")
-                            </td>
-                            <td data-label="Monto">
-                                @($"{item.Monto:N2} ARS")
-                            </td>
-                            <td data-label="Acciones" class="table-action-btn-container">
-                                <button class="table-action-btn">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                    <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarDetallePagoModal('@item.Id')">Detalle</a>
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarPagoModal('@item.Id')">Eliminar</a>
-                                    </div>
-                                </button>
+                            <td colspan="6">
+                                No se encontraron pagos registrados.
                             </td>
                         </tr>
                     }
+
+
                 </tbody>
             </table>
         </div>

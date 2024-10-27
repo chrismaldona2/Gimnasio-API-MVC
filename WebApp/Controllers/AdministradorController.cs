@@ -1,5 +1,6 @@
 ﻿using Core.Entidades;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json;
 using WebApp.Models.Administrador;
 using WebApp.Models.Cliente;
@@ -461,8 +462,13 @@ namespace WebApp.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (model.DniCliente.IsNullOrEmpty() || !model.IdMembresia.HasValue)
+                {
+                    TempData["ErrorMessage"] = "Error, no se permiten datos nulos.";
+                    return RedirectToAction("PanelPagos");
+                } 
+                
                 var cliente = await _clienteService.BuscarClientePorDni(model.DniCliente);
-
                 if (cliente != null)
                 {
                     PagoModel data = new()
@@ -483,6 +489,8 @@ namespace WebApp.Controllers
                         TempData["ErrorMessage"] = respuesta.Mensaje;
                         return RedirectToAction("PanelPagos");
                     }
+
+
                 } else
                 {
                     TempData["ErrorMessage"] = "Cliente no encontrado.";

@@ -27,15 +27,19 @@ namespace Services.Tests
         }
 
         private GimnasioContext _testContext;
+
+        private IClienteRepositorio _clienteTestRepository;
         private IMembresiaRepositorio _membresiaTestRepository;
+
         private MembresiaService _membresiaTestService;
 
         [TestInitialize]
         public void TestInitialize()
         {
             _testContext = getGimnasioInMemoryContext();
+            _clienteTestRepository = new ClienteRepositorio(_testContext);
             _membresiaTestRepository = new MembresiaRepositorio(_testContext);
-            _membresiaTestService = new MembresiaService(_membresiaTestRepository);
+            _membresiaTestService = new MembresiaService(_membresiaTestRepository, _clienteTestRepository);
         }
         [TestCleanup]
         public void Cleanup()

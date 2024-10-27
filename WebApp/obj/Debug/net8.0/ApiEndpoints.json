@@ -132,64 +132,6 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
-    "Method": "listaAsistenciasPorDniCliente",
-    "RelativePath": "api/AsistenciaService/AsistenciasClientePorDni",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "DniCliente",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
-    "Method": "listaAsistenciasPorIdCliente",
-    "RelativePath": "api/AsistenciaService/AsistenciasClientePorId",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "IdCliente",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
-    "Method": "eliminarAsistencia",
-    "RelativePath": "api/AsistenciaService/Eliminar",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "Id",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.AsistenciaServiceController",
-    "Method": "listaAsistencias",
-    "RelativePath": "api/AsistenciaService/Lista",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "buscarPorDni",
     "RelativePath": "api/ClienteService/BuscarDNI",

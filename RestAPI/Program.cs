@@ -11,14 +11,12 @@ var builder = WebApplication.CreateBuilder(args);
 //repositorios
 builder.Services.AddDbContext<GimnasioContext>(options => options.UseSqlServer("Data Source=localhost\\SQLEXPRESS;Initial Catalog=GimnasioBD;Integrated Security=True;TrustServerCertificate=true"), ServiceLifetime.Scoped);
 builder.Services.AddScoped<IAdministradorRepositorio, AdministradorRepositorio>();
-builder.Services.AddScoped<IAsistenciaRepositorio, AsistenciaRepositorio>();
 builder.Services.AddScoped<IClienteRepositorio, ClienteRepositorio>();
 builder.Services.AddScoped<IMembresiaRepositorio, MembresiaRepositorio>();
 builder.Services.AddScoped<IPagoRepositorio, PagoRepositorio>();
 
 //servicios
 builder.Services.AddScoped<IAdministradorService, AdministradorService>();
-builder.Services.AddScoped<IAsistenciaService, AsistenciaService>();
 builder.Services.AddScoped<IClienteService, ClienteService>();
 builder.Services.AddScoped<IMembresiaService, MembresiaService>();
 builder.Services.AddScoped<IPagoService, PagoService>();

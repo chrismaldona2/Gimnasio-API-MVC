@@ -316,32 +316,45 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model.ListaMembresias)
+
+                    @if (Model.ListaMembresias != null && Model.ListaMembresias.Any())
+                    {
+                        @foreach (var item in Model.ListaMembresias)
+                        {
+                            <tr>
+                                <td data-label="Identificador">
+                                    @Html.DisplayFor(modelItem => item.Id)
+                                </td>
+                                <td data-label="Descripción">
+                                    @Html.DisplayFor(modelItem => item.Tipo)
+                                </td>
+                                <td data-label="Duración (Días)">
+                                    @Html.DisplayFor(modelItem => item.DuracionDias)
+                                </td>
+                                <td data-label="Precio">
+                                    @($"{item.Precio:N2} ARS")
+                                </td>
+                                <td data-label="Acciones" class="table-action-btn-container">
+                                    <button class="table-action-btn">
+                                        <i class="fa-solid fa-ellipsis"></i>
+                                        <div class="action-dropdown-menu">
+                                            <a href="javascript:void(0);" onclick="mostrarEliminarMembresiaModal('@item.Id')">Eliminar</a>
+                                            <a href="javascript:void(0);" onclick="mostrarModificarMembresiaModal('@item.Id')">Editar</a>
+                                        </div>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    }
+                    else
                     {
                         <tr>
-                            <td data-label="Identificador">
-                                @Html.DisplayFor(modelItem => item.Id)
-                            </td>
-                            <td data-label="Descripción">
-                                @Html.DisplayFor(modelItem => item.Tipo)
-                            </td>
-                            <td data-label="Duración (Días)">
-                                @Html.DisplayFor(modelItem => item.DuracionDias)
-                            </td>
-                            <td data-label="Precio">
-                                @($"{item.Precio:N2} ARS")
-                            </td>
-                            <td data-label="Acciones" class="table-action-btn-container">
-                                <button class="table-action-btn">
-                                    <i class="fa-solid fa-ellipsis"></i>
-                                    <div class="action-dropdown-menu">
-                                        <a href="javascript:void(0);" onclick="mostrarEliminarMembresiaModal('@item.Id')">Eliminar</a>
-                                        <a href="javascript:void(0);" onclick="mostrarModificarMembresiaModal('@item.Id')">Editar</a>
-                                    </div>
-                                </button>
+                            <td colspan="5">
+                                No se encontraron membresías registradas.
                             </td>
                         </tr>
                     }
+
                 </tbody>
             </table>
         </div>

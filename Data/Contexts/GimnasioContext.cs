@@ -20,7 +20,6 @@ namespace Data.Contexts
             }
         }
         public DbSet<Cliente> Clientes { get; set; }
-        public DbSet<Asistencia> Asistencias { get; set; }
         public DbSet<Membresia> Membresias { get; set; }
         public DbSet<Pago> Pagos { get; set; }
         public DbSet<Administrador> Administradores { get; set; }

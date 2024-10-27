@@ -236,12 +236,12 @@
             <div class="multiple-input-container">
                 <div class="input-container">
                     <label>DNI del Cliente</label>
-                    <input type="text" class="regular-form-input" name="DniCliente" asp-for="Dni" readonly>
+                    <input type="text" class="regular-form-input" name="DniCliente" asp-for="Dni" required readonly>
                 </div>
 
                 <div class="input-container">
                     <label>Membresía</label>
-                    <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia">
+                    <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia" required>
                     </select>
                 </div>
 
@@ -598,8 +598,8 @@
                     else
                     {
                         <tr>
-                            <td colspan="7" style="text-align: center;">
-                                No hay clientes disponibles.
+                            <td colspan="7">
+                                No se encontraron clientes registrados.
                             </td>
                         </tr>
                     }
