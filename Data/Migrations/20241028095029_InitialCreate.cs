@@ -19,6 +19,7 @@ namespace Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Usuario = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    FechaRegistro = table.Column<DateOnly>(type: "date", nullable: false),
                     Dni = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     Nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -53,6 +54,7 @@ namespace Data.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    FechaRegistro = table.Column<DateOnly>(type: "date", nullable: false),
                     IdMembresia = table.Column<int>(type: "int", nullable: true),
                     FechaVencimientoMembresia = table.Column<DateTime>(type: "datetime2", nullable: true),
                     Dni = table.Column<string>(type: "nvarchar(450)", nullable: false),
@@ -72,26 +74,6 @@ namespace Data.Migrations
                         principalTable: "Membresias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Asistencias",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdCliente = table.Column<int>(type: "int", nullable: false),
-                    FechaAsistencia = table.Column<DateTime>(type: "datetime2", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Asistencias", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Asistencias_Clientes_IdCliente",
-                        column: x => x.IdCliente,
-                        principalTable: "Clientes",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -135,11 +117,6 @@ namespace Data.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Asistencias_IdCliente",
-                table: "Asistencias",
-                column: "IdCliente");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Clientes_Dni",
                 table: "Clientes",
                 column: "Dni",
@@ -166,9 +143,6 @@ namespace Data.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Administradores");
-
-            migrationBuilder.DropTable(
-                name: "Asistencias");
 
             migrationBuilder.DropTable(
                 name: "Pagos");

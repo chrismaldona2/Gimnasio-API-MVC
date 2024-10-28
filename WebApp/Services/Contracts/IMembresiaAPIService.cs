@@ -9,5 +9,7 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> RegistrarMembresiaAsync(MembresiaModel datosMembresia);
         Task<APIResponse> ModificarMembresiaAsync(MembresiaModel datosMembresia);
         Task<APIResponse> EliminarMembresiaAsync(int idMembresia);
+
+        Task<APIResponse> FiltrarMembresiasPorPropiedad(string propiedad, string prefijo);
     }
 }

@@ -11,7 +11,6 @@ namespace Data.Repositorios.Contratos
     public interface IClienteRepositorio : IRepositorio<Cliente>
     {
         Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync();
-        Task<IEnumerable<Cliente>> ObtenerClientesConTipoMembresiaAsync(int idMembresia);
         Task<Cliente> ObtenerClienteConDniAsync(string dni);
     }
 }

@@ -113,6 +113,10 @@
       "PackagePath": "staticwebassets\\images\\logo.png"
     },
     {
+      "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\preguntandose.png",
+      "PackagePath": "staticwebassets\\images\\preguntandose.png"
+    },
+    {
       "Id": "C:\\Users\\chris\\Desktop\\Coding\\Gimnasio-API-MVC\\WebApp\\wwwroot\\images\\user-pic-2.png",
       "PackagePath": "staticwebassets\\images\\user-pic-2.png"
     },

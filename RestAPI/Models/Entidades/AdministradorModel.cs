@@ -19,5 +19,6 @@
         public string Telefono { get; set; }
         public DateOnly FechaNacimiento { get; set; }
         public SexoModel Sexo { get; set; }
+        public DateOnly FechaRegistro {  get; set; }
     }
 }

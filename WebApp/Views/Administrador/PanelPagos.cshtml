@@ -25,13 +25,13 @@
             <div class="input-container">
                 <label>DNI del Cliente</label>
                 <div class="input-search-container">
-                    <input type="search" class="regular-form-input" id="dniClienteInput" name="DniCliente" autocomplete="off" asp-for="DniCliente">
+                    <input type="search" class="regular-form-input" id="dniClienteInput" name="DniCliente" autocomplete="off" asp-for="DniCliente" required>
                     <button type="button" id="buscarClienteBtn"><i class="fa-solid fa-magnifying-glass"></i></button>
                 </div>
             </div>
             <div class="input-container">
                 <label>Membresía</label>
-                <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia">
+                <select class="regular-form-input" id="membresiaSelect" name="IdMembresia" asp-for="IdMembresia" required>
 
                 </select>
             </div>
@@ -491,12 +491,13 @@
 
         <div class="action-btns">
             <div class="search-box">
-                <form action="#" method="post" class="search-form" autocomplete="off">
-                    <input type="text" name="busqueda" placeholder="Buscar registro...">
-                    <select name="tipoBusqueda" id="tipoBusqueda">
-                        <option value="DNICliente">DNI Cliente</option>
-                        <option value="IDCliente">ID Cliente</option>
-                        <option value="IDMembresia">ID Membresía</option>
+                <form action="/Administrador/FiltrarPagos" method="post" class="search-form" autocomplete="off">
+                    <input type="text" id="busqueda" name="busqueda" placeholder="Buscar registro..." required>
+                    <select id="tipoBusqueda" name="tipoBusqueda"  required>
+                        <option value="IDCliente">ID de Cliente</option>
+                        <option value="IDMembresia">ID de Membresía</option>
+                        <option value="FechaPago">Fecha de pago</option>
+                        <option value="Monto">Monto</option>
                     </select>
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <a asp-controller="Administrador" asp-action="PanelPagos" class="reload-btn"><i class="fa-solid fa-rotate-right"></i></a>

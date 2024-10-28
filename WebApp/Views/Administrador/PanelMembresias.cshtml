@@ -293,11 +293,13 @@
 
         <div class="action-btns">
             <div class="search-box">
-                <form action="#" method="post" class="search-form" autocomplete="off">
-                    <input type="text" name="busqueda" placeholder="Buscar registro...">
-                    <select name="tipoBusqueda" id="tipoBusqueda">
-                        <option value="Descripción">Descripción</option>
-                        <option value="Identificador">Identificador</option>
+                <form action="/Administrador/FiltrarMembresias" method="post" class="search-form" autocomplete="off">
+                    <input type="text" name="busqueda" placeholder="Buscar registro..." required>
+                    <select name="tipoBusqueda" id="tipoBusqueda" required>
+                        <option value="Precio">Precio</option>
+                        <option value="Tipo">Descripción</option>
+                        <option value="DuracionDias">Duración en días</option>
+                        <option value="Id">Identificador</option>
                     </select>
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <a asp-controller="Administrador" asp-action="PanelMembresias" class="reload-btn"><i class="fa-solid fa-rotate-right"></i></a>

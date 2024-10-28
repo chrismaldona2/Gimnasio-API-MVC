@@ -251,3 +251,21 @@ mostrarDetalleClienteBtn.addEventListener('click', async () => {
 
 
 })
+
+
+
+
+const tipobusquedaSelect = document.getElementById('tipoBusqueda');
+const busquedaInput = document.getElementById('busqueda');
+
+function actualizarBusquedaInputPlaceholder() {
+    if (tipobusquedaSelect.value === 'FechaPago') {
+
+        busquedaInput.placeholder = 'yyyy/mm/dd hh:mm';
+    }
+    else {
+        busquedaInput.placeholder = 'Buscar registro...';
+    }
+}
+tipobusquedaSelect.addEventListener('change', actualizarBusquedaInputPlaceholder);
+actualizarBusquedaInputPlaceholder();

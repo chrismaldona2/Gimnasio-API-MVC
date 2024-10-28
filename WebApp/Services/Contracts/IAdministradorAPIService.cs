@@ -12,6 +12,7 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> RegistrarAdminAsync(AdminModel datosAdmin);
         Task<APIResponse> ModificarAdminAsync(AdminModel datosAdmin);
         Task<APIResponse> EliminarAdminAsync(int id);
+        Task<APIResponse> FiltrarAdministradoresPorPropiedad(string propiedad, string prefijo);
 
     }
 }

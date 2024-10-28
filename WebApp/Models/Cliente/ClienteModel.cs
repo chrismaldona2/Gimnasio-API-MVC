@@ -10,6 +10,7 @@
         public string? Telefono { get; set; }
         public DateOnly? FechaNacimiento { get; set; }
         public SexoEnum? Sexo { get; set; }
+        public DateOnly? FechaRegistro { get; set; }
         public int? IdMembresia { get; set; }
         public DateTime? FechaVencimientoMembresia { get; set; }
     }

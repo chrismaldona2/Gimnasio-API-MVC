@@ -173,30 +173,6 @@ namespace RestAPI.Controllers
             }
         }
 
-        //lista2
-        [HttpGet("ListaConMembresiaEspecifica")]
-        public async Task<IActionResult> listaClientesMembresia(int idMembresia)
-        {
-            try
-            {
-                var clientes = await _clienteService.ObtenerClientesConTipoMembresiaAsync(idMembresia);
-                if (!clientes.Any())
-                {
-                    return NotFound("No hay clientes el tipo de membresía especificado.");
-                }
-
-                return Ok(clientes);
-            }
-            catch (InvalidOperationException ex)
-            {
-                return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
-            }
-        }
-
         //lista
         [HttpGet("ListaConMembresiaVencida")]
         public async Task<IActionResult> listaClientesMembresiaVencida()
@@ -278,68 +254,27 @@ namespace RestAPI.Controllers
             }
         }
 
-
-
-        [HttpGet("BuscarClientesPorNombre")]
-        public async Task<IActionResult> listaClientesPorNombre(string prefijo)
+        [HttpGet("FiltrarClientesPorPropiedad")]
+        public async Task<IActionResult> filtrarClientesPorPropiedad(string propiedad, string prefijo)
         {
             try
             {
-                var clientes = await _clienteService.BuscarClientesPorNombreAsync(prefijo);
-                if (!clientes.Any())
+                var clientesFiltrados = await _clienteService.FiltrarClientesPorPropiedadAsync(propiedad, prefijo);
+
+                if (!clientesFiltrados.Any())
                 {
-                    return NotFound($"No se encontraron clientes con nombres que comienzan con {prefijo}.");
+                    return NotFound($"No se encontraron clientes cuya propiedad '{propiedad}' verifique '{prefijo}'.");
                 }
 
-                return Ok(clientes);
+                return Ok(clientesFiltrados);
             }
-            catch (InvalidOperationException ex)
+            catch (FormatException ex)
             {
                 return BadRequest(ex.Message);
             }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
-            }
-        }
-
-
-        [HttpGet("BuscarClientesPorApellido")]
-        public async Task<IActionResult> listaClientesPorApellido(string prefijo)
-        {
-            try
-            {
-                var clientes = await _clienteService.BuscarClientesPorApellidoAsync(prefijo);
-                if (!clientes.Any())
-                {
-                    return NotFound($"No se encontraron clientes con apellidos que comienzan con {prefijo}.");
-                }
-
-                return Ok(clientes);
-            }
-            catch (InvalidOperationException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
                 return BadRequest(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
-            }
-        }
-
-
-        [HttpGet("BuscarClientesPorDNI")]
-        public async Task<IActionResult> listaClientesPorDNI(string prefijo)
-        {
-            try
-            {
-                var clientes = await _clienteService.BuscarClientesPorDniAsync(prefijo);
-                if (!clientes.Any())
-                {
-                    return NotFound($"No se encontraron clientes con DNIs que comienzan con {prefijo}.");
-                }
-
-                return Ok(clientes);
             }
             catch (InvalidOperationException ex)
             {

@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using System.Net;
 using System.Text.RegularExpressions;
 using static System.Runtime.InteropServices.JavaScript.JSType;
+using System.Globalization;
 
 namespace Services
 {
@@ -52,43 +53,26 @@ namespace Services
                 throw new DniRegistradoException();
             }
 
-            var cliente = new Cliente(dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechaNacimiento, sexo);
-            try
-            {
-                await _clienteRepository.CrearAsync(cliente);
-                await _clienteRepository.GuardarCambiosAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
+            var cliente = new Cliente(dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechaNacimiento, sexo, DateOnly.FromDateTime(DateTime.Now));
+
+            await _clienteRepository.CrearAsync(cliente);
+            await _clienteRepository.GuardarCambiosAsync();
+
         }
 
         //baja
         public async Task EliminarClienteAsync(int idClienteEliminar)
         {
-            try
+
+            var clienteExistente = await _clienteRepository.EncontrarPorIDAsync(idClienteEliminar);
+            if (clienteExistente == null)
             {
-                var clienteExistente = await _clienteRepository.EncontrarPorIDAsync(idClienteEliminar);
-                if (clienteExistente == null)
-                {
-                    throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
-                }
-                await _clienteRepository.EliminarAsync(idClienteEliminar);
-                await _clienteRepository.GuardarCambiosAsync();
+                throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
             }
-            catch (KeyNotFoundException ex)
-            {
-                throw new KeyNotFoundException(ex.Message);
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar eliminar el cliente.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
+            await _clienteRepository.EliminarAsync(idClienteEliminar);
+            await _clienteRepository.GuardarCambiosAsync();
+
+
         }
 
         //modificacion
@@ -126,153 +110,195 @@ namespace Services
             };
 
 
-
-            try
+            var clienteExistente = await _clienteRepository.EncontrarPorIDAsync(clienteModificar.Id);
+            if (clienteExistente == null)
             {
-                var clienteExistente = await _clienteRepository.EncontrarPorIDAsync(clienteModificar.Id);
-                if (clienteExistente == null)
-                {
-                    throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
-                }
+                throw new KeyNotFoundException("El cliente con el Id especificado no existe.");
+            }
 
-                clienteExistente.Dni = clienteModificar.Dni.Trim();
-                clienteExistente.Nombre = clienteModificar.Nombre.Trim();
-                clienteExistente.Apellido = clienteModificar.Apellido.Trim();
-                clienteExistente.Email = clienteModificar.Email.Trim();
-                clienteExistente.Telefono = clienteModificar.Telefono.Trim();
-                clienteExistente.FechaNacimiento = clienteModificar.FechaNacimiento;
-                clienteExistente.Sexo = clienteModificar.Sexo;
+            clienteExistente.Dni = clienteModificar.Dni.Trim();
+            clienteExistente.Nombre = clienteModificar.Nombre.Trim();
+            clienteExistente.Apellido = clienteModificar.Apellido.Trim();
+            clienteExistente.Email = clienteModificar.Email.Trim();
+            clienteExistente.Telefono = clienteModificar.Telefono.Trim();
+            clienteExistente.FechaNacimiento = clienteModificar.FechaNacimiento;
+            clienteExistente.Sexo = clienteModificar.Sexo;
 
-                await _clienteRepository.ModificarAsync(clienteExistente);
-                await _clienteRepository.GuardarCambiosAsync();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                throw new KeyNotFoundException(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
+            await _clienteRepository.ModificarAsync(clienteExistente);
+            await _clienteRepository.GuardarCambiosAsync();
+
         }
 
         //listas
-        public async Task<IEnumerable<Cliente>> ObtenerClientesAsync()
-        {
-            try
-            {
-                return await _clienteRepository.ReturnListaAsync();
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar retornar la lista de clientes.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+        public async Task<IEnumerable<Cliente>> ObtenerClientesAsync() => await _clienteRepository.ReturnListaAsync();
 
-        public async Task<IEnumerable<Cliente>> ObtenerClientesConTipoMembresiaAsync(int idMembresia)
-        {
-            try
-            {
-                return await _clienteRepository.ObtenerClientesConTipoMembresiaAsync(idMembresia);
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar retornar la lista de clientes.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
-
-        public async Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync()
-        {
-            try
-            {
-                return await _clienteRepository.ObtenerClientesConMembresiaVencidaAsync();
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar retornar la lista de clientes.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+        public async Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync() => await _clienteRepository.ObtenerClientesConMembresiaVencidaAsync();
 
 
         //buscar por dni
-        public async Task<Cliente> BuscarClientePorDniAsync(string dni)
+        public async Task<Cliente> BuscarClientePorDniAsync(string dni) => await _clienteRepository.ObtenerClienteConDniAsync(dni);
+
+        public async Task<Cliente> BuscarClientePorIdAsync(int id) => await _clienteRepository.EncontrarPorIDAsync(id);
+
+        public async Task<IEnumerable<Cliente>> FiltrarClientesPorPropiedadAsync(string propiedad, string prefijo)
         {
 
-            try
+            string trimedPrefijo = prefijo.Trim();
+            string operador = Utils.ObtenerOperador(trimedPrefijo);
+            switch (propiedad.ToLower())
             {
-                var cliente = await _clienteRepository.ObtenerClienteConDniAsync(dni);
-                return cliente;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+                case "id":
+                    string valorID = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (int.TryParse(valorID, out int resultadoInt))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Id >= resultadoInt);
+                            case "<=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Id <= resultadoInt);
+                            case ">":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Id > resultadoInt);
+                            case "<":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Id < resultadoInt);
+                            case "=":
+                            default:
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Id == resultadoInt);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de ID no valido.");
+                    }
+                case "nombre":
+                    return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Nombre.StartsWith(trimedPrefijo));
+                case "apellido":
+                    return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Apellido.StartsWith(trimedPrefijo));
+                case "dni":
+                    return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Dni.StartsWith(trimedPrefijo));
+                case "email":
+                    return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Email.StartsWith(trimedPrefijo));
+                case "telefono":
+                    return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Telefono.StartsWith(trimedPrefijo));
+                case "sexo":
+                    if (Enum.TryParse<Sexo>(trimedPrefijo, true, out var sexoValor))
+                    {
+                        return await _clienteRepository.EncontrarPorCondicionAsync(c => c.Sexo == sexoValor);
+                    }
+                    else
+                    {
+                        throw new FormatException("Tipo de 'sexo' no valido.");
+                    }
+                case "fechanacimiento":
 
-        public async Task<Cliente> BuscarClientePorIdAsync(int id)
-        {
-            try
-            {
-                var cliente = await _clienteRepository.EncontrarPorIDAsync(id);
-                return cliente;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+                    string valorFecha = trimedPrefijo.TrimStart('>', '<', '=', ' ');
 
-        public async Task<IEnumerable<Cliente>> BuscarClientesPorNombreAsync(string prefijo)
-        {
-            try
-            {
-                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Nombre.StartsWith(prefijo));
-                return clientes;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+                    if (DateOnly.TryParse(valorFecha, out DateOnly fecha))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaNacimiento >= fecha);
+                            case "<=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaNacimiento <= fecha);
+                            case ">":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaNacimiento > fecha);
+                            case "<":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaNacimiento < fecha);
+                            case "=":
+                            default:
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaNacimiento == fecha);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de fecha no valido.");
+                    } 
 
+                case "idmembresia":
+                    string valorIDMembresia = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (int.TryParse(valorIDMembresia, out int resultadoInt2))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia >= resultadoInt2);
+                            case "<=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia <= resultadoInt2);
+                            case ">":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia > resultadoInt2);
+                            case "<":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia < resultadoInt2);
+                            case "=":
+                            default:
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia == resultadoInt2);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de ID Membresía no valido.");
+                    }
+                case "fechavencimientomembresia":
+                    string valorFecha2 = trimedPrefijo.TrimStart('>', '<', '=', ' ');
 
-        public async Task<IEnumerable<Cliente>> BuscarClientesPorApellidoAsync(string prefijo)
-        {
-            try
-            {
-                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Apellido.StartsWith(prefijo));
-                return clientes;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+                    if (DateTime.TryParse(valorFecha2, out DateTime fecha2))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c =>
+                                    c.FechaVencimientoMembresia.HasValue && c.FechaVencimientoMembresia.Value >= fecha2);
 
+                            case "<=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c =>
+                                    c.FechaVencimientoMembresia.HasValue && c.FechaVencimientoMembresia.Value <= fecha2);
 
-        public async Task<IEnumerable<Cliente>> BuscarClientesPorDniAsync(string prefijo)
-        {
-            try
-            {
-                var clientes = await _clienteRepository.EncontrarPorCondicionAsync(c => c.Dni.StartsWith(prefijo));
-                return clientes;
+                            case ">":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c =>
+                                    c.FechaVencimientoMembresia.HasValue && c.FechaVencimientoMembresia.Value > fecha2);
+
+                            case "<":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c =>
+                                    c.FechaVencimientoMembresia.HasValue && c.FechaVencimientoMembresia.Value < fecha2);
+
+                            case "=":
+                            default:
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c =>
+                                    c.FechaVencimientoMembresia.HasValue && c.FechaVencimientoMembresia.Value == fecha2);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de fecha no valido.");
+                    }
+                case "fecharegistro":
+                    string valorFecha3 = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+
+                    if (DateOnly.TryParse(valorFecha3, out DateOnly fecha3))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaRegistro >= fecha3);
+                            case "<=":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaRegistro <= fecha3);
+                            case ">":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaRegistro > fecha3);
+                            case "<":
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaRegistro < fecha3);
+                            case "=":
+                            default:
+                                return await _clienteRepository.EncontrarPorCondicionAsync(c => c.FechaRegistro == fecha3);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de fecha no valido.");
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException($"La clase Cliente no contiene la propiedad {propiedad}.");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
+
         }
     }
 }

@@ -165,5 +165,38 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
+
+
+        [HttpGet("FiltrarMembresiasPorPropiedad")]
+        public async Task<IActionResult> filtrarClientesPorPropiedad(string propiedad, string prefijo)
+        {
+            try
+            {
+                var membresiasFiltradas = await _membresiaService.FiltrarMembresiasPorPropiedadAsync(propiedad, prefijo);
+
+                if (!membresiasFiltradas.Any())
+                {
+                    return NotFound($"No se encontraron membresías cuya propiedad '{propiedad}' verifique con '{prefijo}'.");
+                }
+
+                return Ok(membresiasFiltradas);
+            }
+            catch (FormatException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
     }
 }

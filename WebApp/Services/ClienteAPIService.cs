@@ -137,9 +137,10 @@ namespace WebApp.Services
         }
 
 
-        public async Task<APIResponse> BuscarClientesPorNombre(string prefijo)
+        public async Task<APIResponse> FiltrarClientesPorPropiedad(string propiedad, string prefijo)
         {
-            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarClientesPorNombre?prefijo={prefijo}");
+            string encodedPrefijo = Uri.EscapeDataString(prefijo);
+            var response = await _httpClient.GetAsync($"api/ClienteService/FiltrarClientesPorPropiedad?propiedad={propiedad}&prefijo={encodedPrefijo}");
             string responseMessage = await response.Content.ReadAsStringAsync();
 
             if (response.IsSuccessStatusCode)
@@ -161,52 +162,7 @@ namespace WebApp.Services
         }
 
 
-        public async Task<APIResponse> BuscarClientesPorApellido(string prefijo)
-        {
-            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarClientesPorApellido?prefijo={prefijo}");
-            string responseMessage = await response.Content.ReadAsStringAsync();
 
-            if (response.IsSuccessStatusCode)
-            {
-                return new APIResponse
-                {
-                    Exitoso = true,
-                    Mensaje = responseMessage
-                };
-            }
-            else
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = responseMessage
-                };
-            }
-        }
-
-
-        public async Task<APIResponse> BuscarClientesPorDNI(string prefijo)
-        {
-            var response = await _httpClient.GetAsync($"api/ClienteService/BuscarClientesPorDNI?prefijo={prefijo}");
-            string responseMessage = await response.Content.ReadAsStringAsync();
-
-            if (response.IsSuccessStatusCode)
-            {
-                return new APIResponse
-                {
-                    Exitoso = true,
-                    Mensaje = responseMessage
-                };
-            }
-            else
-            {
-                return new APIResponse
-                {
-                    Exitoso = false,
-                    Mensaje = responseMessage
-                };
-            }
-        }
 
     }
 }

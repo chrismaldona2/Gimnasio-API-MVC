@@ -86,6 +86,27 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
+    "Method": "filtrarAdministradoresPorPropiedad",
+    "RelativePath": "api/AdministradorService/FiltrarAdministradoresPorPropiedad",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "propiedad",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.AdministradorServiceController",
     "Method": "listaAdministradores",
     "RelativePath": "api/AdministradorService/Lista",
     "HttpMethod": "GET",
@@ -127,54 +148,6 @@
         "Name": "AdministradorDto",
         "Type": "RestAPI.Models.DTOs.AdministradorDTO",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "listaClientesPorApellido",
-    "RelativePath": "api/ClienteService/BuscarClientesPorApellido",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "prefijo",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "listaClientesPorDNI",
-    "RelativePath": "api/ClienteService/BuscarClientesPorDNI",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "prefijo",
-        "Type": "System.String",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "listaClientesPorNombre",
-    "RelativePath": "api/ClienteService/BuscarClientesPorNombre",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "prefijo",
-        "Type": "System.String",
-        "IsRequired": false
       }
     ],
     "ReturnTypes": []
@@ -229,28 +202,33 @@
   },
   {
     "ContainingType": "RestAPI.Controllers.ClienteServiceController",
+    "Method": "filtrarClientesPorPropiedad",
+    "RelativePath": "api/ClienteService/FiltrarClientesPorPropiedad",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "propiedad",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
     "Method": "listaClientes",
     "RelativePath": "api/ClienteService/Lista",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "RestAPI.Controllers.ClienteServiceController",
-    "Method": "listaClientesMembresia",
-    "RelativePath": "api/ClienteService/ListaConMembresiaEspecifica",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "idMembresia",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -301,6 +279,36 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "RestAPI.Controllers.EstadisticasGeneralesController",
+    "Method": "AdministradoresNuevosUltimoMes",
+    "RelativePath": "api/EstadisticasGenerales/AdministradoresNuevosUltimoMes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.EstadisticasGeneralesController",
+    "Method": "ClientesNuevosUltimoMes",
+    "RelativePath": "api/EstadisticasGenerales/ClientesNuevosUltimoMes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.EstadisticasGeneralesController",
+    "Method": "GananciasDelUltimoMes",
+    "RelativePath": "api/EstadisticasGenerales/GananciasDelUltimoMes",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
     "Method": "buscarPorId",
     "RelativePath": "api/MembresiaService/BuscarID",
@@ -327,6 +335,27 @@
       {
         "Name": "Id",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.MembresiaServiceController",
+    "Method": "filtrarClientesPorPropiedad",
+    "RelativePath": "api/MembresiaService/FiltrarMembresiasPorPropiedad",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "propiedad",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],
@@ -406,6 +435,27 @@
       {
         "Name": "Id",
         "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "RestAPI.Controllers.PagoServiceController",
+    "Method": "filtrarClientesPorPropiedad",
+    "RelativePath": "api/PagoService/FiltrarPagosPorPropiedad",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "propiedad",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "prefijo",
+        "Type": "System.String",
         "IsRequired": false
       }
     ],

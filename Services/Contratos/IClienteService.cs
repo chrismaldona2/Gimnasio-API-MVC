@@ -10,7 +10,6 @@ namespace Services.Contratos
     public interface IClienteService
     {
         Task<IEnumerable<Cliente>> ObtenerClientesAsync();
-        Task<IEnumerable<Cliente>> ObtenerClientesConTipoMembresiaAsync(int idMembresia);
         Task<IEnumerable<Cliente>> ObtenerClientesConMembresiaVencidaAsync();
         Task RegistrarClienteAsync(string dni, string nombre, string apellido, string email, string telefono, DateOnly fechanacimiento, Sexo sexo);
         Task EliminarClienteAsync(int id);
@@ -18,9 +17,7 @@ namespace Services.Contratos
         Task<Cliente> BuscarClientePorDniAsync(string dni);
         Task<Cliente> BuscarClientePorIdAsync(int id);
 
-        Task<IEnumerable<Cliente>> BuscarClientesPorNombreAsync(string prefijo);
-        Task<IEnumerable<Cliente>> BuscarClientesPorApellidoAsync(string prefijo);
-        Task<IEnumerable<Cliente>> BuscarClientesPorDniAsync(string prefijo);
+        Task<IEnumerable<Cliente>> FiltrarClientesPorPropiedadAsync(string propiedad, string prefijo);
 
     }
 }

@@ -55,22 +55,22 @@
         font-weight: 500;
     }
 
-    .search-form input::placeholder {
-        color: var(--dark-red-color);
+        .search-form input::placeholder {
+            color: #DF5959;
+        }
+
+
+    .search-form select {
+        outline: none;
+        border: solid 1.6px var(--red-color);
+        border-radius: 1rem;
+        padding: 1rem .65rem;
+        background-color: var(--red-color);
+        color: #faf9f6;
+        cursor: pointer;
+        font-weight: 600;
+        transition: background-color .35s ease;
     }
-
-
-.search-form select {
-    outline: none;
-    border: solid 1.6px var(--red-color);
-    border-radius: 1rem;
-    padding: 1rem 1.5rem;
-    background-color: var(--red-color);
-    color: #faf9f6;
-    cursor: pointer;
-    font-weight: 600;
-    transition: background-color .35s ease;
-}
 
 .search-form button {
     height: 100%;
@@ -87,35 +87,36 @@
 .reload-btn {
     border: none;
     outline: none;
-    background-color: #faf9f6;
+    background-color: #fffefa;
     box-shadow: inset 0 0 0 1.6px var(--red-color);
     font-size: var(--fs-small);
     color: var(--red-color);
     text-align: center;
     border: none;
+    border-radius: 1rem;
     aspect-ratio: 1/1;
-    height: 100%;
-    padding: 1rem;
-    border-radius: 1rem;
-}
-
-
-
-.admin-action-btn {
-    height: 100%;
-    border: none;
-    outline: none;
-    padding: 1rem;
-    border-radius: 1rem;
-    background-color: var(--red-color);
     display: flex;
-    gap: 1rem;
     align-items: center;
     justify-content: center;
-    text-wrap: nowrap;
-    color: var(--white-color);
-    transition: background-color .35s ease;
 }
+
+
+
+    .admin-action-btn {
+        height: 100%;
+        border: none;
+        outline: none;
+        padding: 1rem;
+        border-radius: 1rem;
+        background-color: var(--red-color);
+        display: flex;
+        gap: 1rem;
+        align-items: center;
+        justify-content: center;
+        text-wrap: nowrap;
+        color: var(--white-color);
+        transition: background-color .35s ease;
+    }
 
 .search-form select:hover, .search-form button:hover, .admin-action-btn:hover {
     background-color: #d61724;

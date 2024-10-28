@@ -187,7 +187,8 @@ namespace RestAPI.Controllers
                     Email = admin.Email,
                     Telefono = admin.Telefono,
                     FechaNacimiento = admin.FechaNacimiento,
-                    Sexo = (SexoModel)admin.Sexo
+                    Sexo = (SexoModel)admin.Sexo,
+                    FechaRegistro = admin.FechaRegistro,
                 }); ;
                 return Ok(administradoresModel);
             }
@@ -251,7 +252,8 @@ namespace RestAPI.Controllers
                         Email = admin.Email,
                         Telefono = admin.Telefono,
                         FechaNacimiento = admin.FechaNacimiento,
-                        Sexo = (SexoModel)admin.Sexo
+                        Sexo = (SexoModel)admin.Sexo,
+                        FechaRegistro = admin.FechaRegistro,
                     };
                     return Ok(adminModel);
                 }
@@ -287,7 +289,8 @@ namespace RestAPI.Controllers
                         Email = admin.Email,
                         Telefono = admin.Telefono,
                         FechaNacimiento = admin.FechaNacimiento,
-                        Sexo = (SexoModel)admin.Sexo
+                        Sexo = (SexoModel)admin.Sexo,
+                        FechaRegistro = admin.FechaRegistro,
                     };
                     return Ok(adminModel);
                 }
@@ -321,7 +324,8 @@ namespace RestAPI.Controllers
                         Email = admin.Email,
                         Telefono = admin.Telefono,
                         FechaNacimiento = admin.FechaNacimiento,
-                        Sexo = (SexoModel)admin.Sexo
+                        Sexo = (SexoModel)admin.Sexo,
+                        FechaRegistro = admin.FechaRegistro,
                     };
                     return Ok(adminModel);
                 }
@@ -337,6 +341,39 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
 
+        }
+
+
+        [HttpGet("FiltrarAdministradoresPorPropiedad")]
+        public async Task<IActionResult> filtrarAdministradoresPorPropiedad(string propiedad, string prefijo)
+        {
+            try
+            {
+                var adminsFiltrados = await _administradorService.FiltrarAdministradoresPorPropiedadAsync(propiedad, prefijo);
+                if (!adminsFiltrados.Any())
+                {
+
+                    return NotFound($"No se encontraron administradores cuya propiedad '{propiedad}' verifique '{prefijo}'.");
+                }
+
+                return Ok(adminsFiltrados);
+            }
+            catch (FormatException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
         }
     }
 }

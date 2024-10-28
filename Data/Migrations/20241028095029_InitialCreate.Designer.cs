@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Data.Migrations
 {
     [DbContext(typeof(GimnasioContext))]
-    [Migration("20240906111734_InitialCreate")]
+    [Migration("20241028095029_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -52,6 +52,9 @@ namespace Data.Migrations
                     b.Property<DateOnly>("FechaNacimiento")
                         .HasColumnType("date");
 
+                    b.Property<DateOnly>("FechaRegistro")
+                        .HasColumnType("date");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -78,27 +81,6 @@ namespace Data.Migrations
                     b.ToTable("Administradores");
                 });
 
-            modelBuilder.Entity("Core.Entidades.Asistencia", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<DateTime>("FechaAsistencia")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IdCliente");
-
-                    b.ToTable("Asistencias");
-                });
-
             modelBuilder.Entity("Core.Entidades.Cliente", b =>
                 {
                     b.Property<int>("Id")
@@ -120,6 +102,9 @@ namespace Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateOnly>("FechaNacimiento")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("FechaRegistro")
                         .HasColumnType("date");
 
                     b.Property<DateTime?>("FechaVencimientoMembresia")
@@ -199,15 +184,6 @@ namespace Data.Migrations
                     b.HasIndex("IdMembresia");
 
                     b.ToTable("Pagos");
-                });
-
-            modelBuilder.Entity("Core.Entidades.Asistencia", b =>
-                {
-                    b.HasOne("Core.Entidades.Cliente", null)
-                        .WithMany()
-                        .HasForeignKey("IdCliente")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Core.Entidades.Cliente", b =>

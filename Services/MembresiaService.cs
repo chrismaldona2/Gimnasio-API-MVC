@@ -43,57 +43,30 @@ namespace Services
 
             var membresia = new Membresia(tipo.Trim(), duraciondias, precio);
             
-            try
-            {
-                await _membresiaRepository.CrearAsync(membresia);
-                await _membresiaRepository.GuardarCambiosAsync();
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar registrar el tipo de membresia.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
-            }
+            await _membresiaRepository.CrearAsync(membresia);
+            await _membresiaRepository.GuardarCambiosAsync();
+
         }
 
         //baja
         public async Task EliminarMembresiaAsync(int idMembresiaEliminar)
         {
-            try
-            {
-                var membresiaExistente = await _membresiaRepository.EncontrarPorIDAsync(idMembresiaEliminar);
-                if (membresiaExistente == null)
-                {
-                    throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
-                }
 
-                var clientesAsociados = await _clienteRepository.ObtenerClientesConTipoMembresiaAsync(idMembresiaEliminar);
-                if (clientesAsociados.Any())
-                {
-                    throw new InvalidOperationException("No se puede eliminar la membresía la misma tiene clientes asociados.");
-                }
+            var membresiaExistente = await _membresiaRepository.EncontrarPorIDAsync(idMembresiaEliminar);
+            if (membresiaExistente == null)
+            {
+                throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
+            }
 
-                await _membresiaRepository.EliminarAsync(idMembresiaEliminar);
-                await _membresiaRepository.GuardarCambiosAsync();
-            }
-            catch (KeyNotFoundException ex)
+            var clientesAsociados = await _clienteRepository.EncontrarPorCondicionAsync(c => c.IdMembresia == idMembresiaEliminar);
+            if (clientesAsociados.Any())
             {
-                throw new KeyNotFoundException(ex.Message);
+                throw new InvalidOperationException("No se puede eliminar la membresía porque tiene clientes asociados.");
             }
-            catch (InvalidOperationException ex)
-            {
-                throw new InvalidOperationException(ex.Message);
-            }
-            catch (DbUpdateException ex)
-            {
-                throw new DbUpdateException("Error al eliminar la membresía. Verifique las relaciones existentes.", ex);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
-            }
+
+            await _membresiaRepository.EliminarAsync(idMembresiaEliminar);
+            await _membresiaRepository.GuardarCambiosAsync();
+
         }
 
         //modificacion
@@ -119,68 +92,113 @@ namespace Services
                 throw new ArgumentException("La duración debe ser mayor a 0 días.");
             }
 
-            try
-            {
-                var membresiaExistente = await _membresiaRepository.EncontrarPorIDAsync(membresiaModificar.Id);
-                if (membresiaExistente == null)
-                {
-                    throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
-                }
 
-                membresiaExistente.Tipo = membresiaModificar.Tipo.Trim();
-                membresiaExistente.Precio = membresiaModificar.Precio;
-                membresiaExistente.DuracionDias = membresiaModificar.DuracionDias;
+            var membresiaExistente = await _membresiaRepository.EncontrarPorIDAsync(membresiaModificar.Id);
+            if (membresiaExistente == null)
+            {
+                throw new KeyNotFoundException("La membresía con el Id especificado no existe.");
+            }
 
-                await _membresiaRepository.ModificarAsync(membresiaExistente);
-                await _membresiaRepository.GuardarCambiosAsync();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                throw new KeyNotFoundException(ex.Message);
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar modificar el tipo de membresia.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
-            }
+            membresiaExistente.Tipo = membresiaModificar.Tipo.Trim();
+            membresiaExistente.Precio = membresiaModificar.Precio;
+            membresiaExistente.DuracionDias = membresiaModificar.DuracionDias;
+
+            await _membresiaRepository.ModificarAsync(membresiaExistente);
+            await _membresiaRepository.GuardarCambiosAsync();
+
         }
 
         //lista
-        public async Task<IEnumerable<Membresia>> ObtenerMembresiasAsync()
-        {
-            try
-            {
-                return await _membresiaRepository.ReturnListaAsync();
-            }
-            catch (DbUpdateException)
-            {
-                throw new InvalidOperationException("Se produjo un error al intentar retornar la lista de membresías.");
-            }
-            catch (Exception ex)
-            {
-                throw new Exception("Se produjo un error inesperado al intentar realizar la acción:", ex);
-            }
-        }
+        public async Task<IEnumerable<Membresia>> ObtenerMembresiasAsync() => await _membresiaRepository.ReturnListaAsync();
 
 
-        public async Task<Membresia> BuscarMembresiaPorIdAsync(int id)
+        public async Task<Membresia> BuscarMembresiaPorIdAsync(int id) => await _membresiaRepository.EncontrarPorIDAsync(id);
+
+
+
+        public async Task<IEnumerable<Membresia>> FiltrarMembresiasPorPropiedadAsync(string propiedad, string prefijo)
         {
-            try
+            string trimedPrefijo = prefijo.Trim();
+            string operador = Utils.ObtenerOperador(trimedPrefijo);
+            switch (propiedad.ToLower())
             {
-                var membresia = await _membresiaRepository.EncontrarPorIDAsync(id);
-                if (membresia == null)
-                {
-                    return null;
-                }
-                return membresia;
+                case "id":
+                    string valorID = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (int.TryParse(valorID, out int resultadoInt))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Id >= resultadoInt);
+                            case "<=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Id <= resultadoInt);
+                            case ">":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Id > resultadoInt);
+                            case "<":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Id < resultadoInt);
+                            case "=":
+                            default:
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Id == resultadoInt);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de ID no valido.");
+                    }
+                case "tipo":
+                    return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Tipo.StartsWith(trimedPrefijo));
+                case "duraciondias":
+                    string valorDias = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (int.TryParse(valorDias, out int resultadoInt2))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.DuracionDias >= resultadoInt2);
+                            case "<=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.DuracionDias <= resultadoInt2);
+                            case ">":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.DuracionDias > resultadoInt2);
+                            case "<":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.DuracionDias < resultadoInt2);
+                            case "=":
+                            default:
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.DuracionDias == resultadoInt2);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de duración de días no valido.");
+                    }
+
+                case "precio":
+                    
+                    string valorPrecio = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (double.TryParse(valorPrecio, out double resultadoDouble))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Precio >= resultadoDouble);
+                            case "<=":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Precio <= resultadoDouble);
+                            case ">":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Precio > resultadoDouble);
+                            case "<":
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Precio < resultadoDouble);
+                            case "=":
+                            default:
+                                return await _membresiaRepository.EncontrarPorCondicionAsync(m => m.Precio == resultadoDouble);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de monto no valido.");
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException($"La clase Membresía no contiene la propiedad {propiedad}.");
             }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
+
         }
     }
 }

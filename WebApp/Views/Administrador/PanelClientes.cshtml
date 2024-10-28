@@ -172,6 +172,11 @@
                 <input type="text" class="regular-form-input" name="Sexo" disabled>
             </div>
         </div>
+        <div class="input-container">
+            <label>Fecha de registro</label>
+            <input type="text" class="regular-form-input" name="FechaRegistro" disabled>
+        </div>
+
         <div class="multiple-input-container" style="margin-top: 1.25rem;">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Confirmar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
@@ -351,6 +356,12 @@
                 <input type="text" class="regular-form-input" name="Sexo" disabled>
             </div>
         </div>
+
+        <div class="input-container">
+            <label>Fecha de registro</label>
+            <input type="text" class="regular-form-input" name="FechaRegistro" disabled>
+        </div>
+
         <div class="input-container fecha-vencimiento-cliente-container">
             <label>Vencimiento de la membresía</label>
             <input type="text" class="regular-form-input fecha-vencimiento-cliente" name="FechaVencimiento" disabled>
@@ -535,11 +546,18 @@
         <div class="action-btns">
             <div class="search-box">
                 <form action="/Administrador/FiltrarClientes" method="post" class="search-form" autocomplete="off">
-                    <input type="text" name="busqueda" placeholder="Buscar registro...">
-                    <select name="tipoBusqueda" id="tipoBusqueda">
+                    <input type="text" id="busqueda" name="busqueda" placeholder="Buscar registro..." required>
+                    <select id="tipoBusqueda" name="tipoBusqueda" required>
                         <option value="Nombre">Nombre</option>
                         <option value="Apellido">Apellido</option>
                         <option value="DNI">DNI</option>
+                        <option value="Email">Email</option>
+                        <option value="Telefono">Teléfono</option>
+                        <option value="Sexo">Sexo</option>
+                        <option value="FechaNacimiento">Nacimiento</option>
+                        <option value="IdMembresia">ID de Membresía</option>
+                        <option value="FechaVencimientoMembresia">Vencimiento de membresía</option>
+                        <option value="FechaRegistro">Fecha de registro</option>
                     </select>
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <a asp-controller="Administrador" asp-action="PanelClientes" class="reload-btn"><i class="fa-solid fa-rotate-right"></i></a>

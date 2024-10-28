@@ -12,8 +12,9 @@ namespace Core.Entidades
         public int Id {  get; set; }
         public string Usuario { get; set; }
         public string Contraseña { get; set; }
+        public DateOnly FechaRegistro { get; set; }
         public Administrador() { }
-        public Administrador(string usuario, string contraseña, string dni, string nombre, string apellido, string email, string telefono, DateOnly fechanacimiento, Sexo sexo)
+        public Administrador(string usuario, string contraseña, string dni, string nombre, string apellido, string email, string telefono, DateOnly fechanacimiento, Sexo sexo, DateOnly fechaRegistro)
         {
             Usuario = usuario;
             Contraseña = contraseña;
@@ -24,6 +25,7 @@ namespace Core.Entidades
             Telefono = telefono;
             FechaNacimiento = fechanacimiento;
             Sexo = sexo;
+            FechaRegistro = fechaRegistro;
         }
     }
 }

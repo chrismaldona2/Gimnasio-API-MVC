@@ -14,5 +14,6 @@ namespace Services.Contratos
         Task RegistrarMembresiaAsync(string tipo, int duraciondias, double precio);
         Task EliminarMembresiaAsync(int id);
         Task ModificarMembresiaAsync(Membresia membresia);
+        Task<IEnumerable<Membresia>> FiltrarMembresiasPorPropiedadAsync(string propiedad, string prefijo);
     }
 }

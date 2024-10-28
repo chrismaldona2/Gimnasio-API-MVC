@@ -66,41 +66,26 @@ namespace Services
                 throw new FechaNacimientoException();
             }
 
-            var admin = new Administrador(usuario.Trim(), BCrypt.Net.BCrypt.HashPassword(contraseña.Trim()), dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechanacimiento, sexo);
+            var admin = new Administrador(usuario.Trim(), BCrypt.Net.BCrypt.HashPassword(contraseña.Trim()), dni.Trim(), nombre.Trim(), apellido.Trim(), email.Trim(), telefono.Trim(), fechanacimiento, sexo, DateOnly.FromDateTime(DateTime.Now));
 
-            try
-            {
-                await _adminRepository.CrearAsync(admin);
-                await _adminRepository.GuardarCambiosAsync();
 
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error al registrar al administrador: {ex.Message}");
-            }
+            await _adminRepository.CrearAsync(admin);
+            await _adminRepository.GuardarCambiosAsync();
+
         }
 
         //baja
         public async Task EliminarAdminAsync(int idAdminEliminar)
         {
-            try
+
+            var adminExistente = await _adminRepository.EncontrarPorIDAsync(idAdminEliminar);
+            if (adminExistente == null)
             {
-                var adminExistente = await _adminRepository.EncontrarPorIDAsync(idAdminEliminar);
-                if (adminExistente == null)
-                {
-                    throw new KeyNotFoundException("El administrador con el Id especificado no existe.");
-                }
-                await _adminRepository.EliminarAsync(idAdminEliminar);
-                await _adminRepository.GuardarCambiosAsync();
+                throw new KeyNotFoundException("El administrador con el Id especificado no existe.");
             }
-            catch (KeyNotFoundException ex)
-            {
-                throw new KeyNotFoundException(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error al eliminar al administrador: {ex.Message}");
-            }
+            await _adminRepository.EliminarAsync(idAdminEliminar);
+            await _adminRepository.GuardarCambiosAsync();
+
         }
 
         //modificacion
@@ -154,35 +139,26 @@ namespace Services
             }
 
 
-            try
-            {
-                var adminExistente = await _adminRepository.EncontrarPorIDAsync(adminModificar.Id);
-                if (adminExistente == null)
-                {
-                    throw new KeyNotFoundException("El administrador con el Id especificado no existe.");
-                }
 
-                adminExistente.Usuario = adminModificar.Usuario.Trim();
-                adminExistente.Contraseña = BCrypt.Net.BCrypt.HashPassword(adminModificar.Contraseña.Trim());
-                adminExistente.Dni = adminModificar.Dni.Trim();
-                adminExistente.Nombre = adminModificar.Nombre.Trim();
-                adminExistente.Apellido = adminModificar.Apellido.Trim();
-                adminExistente.Email = adminModificar.Email.Trim();
-                adminExistente.Telefono = adminModificar.Telefono.Trim();
-                adminExistente.FechaNacimiento = adminModificar.FechaNacimiento;
-                adminExistente.Sexo = adminModificar.Sexo;
+            var adminExistente = await _adminRepository.EncontrarPorIDAsync(adminModificar.Id);
+            if (adminExistente == null)
+            {
+                throw new KeyNotFoundException("El administrador con el Id especificado no existe.");
+            }
 
-                await _adminRepository.ModificarAsync(adminExistente);
-                await _adminRepository.GuardarCambiosAsync();
-            }
-            catch (KeyNotFoundException ex)
-            {
-                throw new KeyNotFoundException(ex.Message);
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error al modificar al administrador: {ex.Message}");
-            }
+            adminExistente.Usuario = adminModificar.Usuario.Trim();
+            adminExistente.Contraseña = BCrypt.Net.BCrypt.HashPassword(adminModificar.Contraseña.Trim());
+            adminExistente.Dni = adminModificar.Dni.Trim();
+            adminExistente.Nombre = adminModificar.Nombre.Trim();
+            adminExistente.Apellido = adminModificar.Apellido.Trim();
+            adminExistente.Email = adminModificar.Email.Trim();
+            adminExistente.Telefono = adminModificar.Telefono.Trim();
+            adminExistente.FechaNacimiento = adminModificar.FechaNacimiento;
+            adminExistente.Sexo = adminModificar.Sexo;
+
+            await _adminRepository.ModificarAsync(adminExistente);
+            await _adminRepository.GuardarCambiosAsync();
+
         }
 
         //autenticacion
@@ -203,80 +179,134 @@ namespace Services
                 throw new ArgumentException("La contraseña no puede contener espacios.");
             }
 
-            try
-            {
-                var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario.Trim());
 
-                if (admin == null || !BCrypt.Net.BCrypt.Verify(contraseña.Trim(), admin.Contraseña))
-                {
-                    return null;
-                }
+            var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario.Trim());
 
-                return admin;
-            }
-            catch (Exception ex)
+            if (admin == null || !BCrypt.Net.BCrypt.Verify(contraseña.Trim(), admin.Contraseña))
             {
-                throw new Exception($"Se produjo un error al autenticar al administrador: {ex.Message}");
+                return null;
             }
+
+            return admin;
+
         }
 
         //lista
-        public async Task<IEnumerable<Administrador>> ObtenerAdministradoresAsync()
-        {
-            try
-            {
-                return await _adminRepository.ReturnListaAsync();
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
+        public async Task<IEnumerable<Administrador>> ObtenerAdministradoresAsync() => await _adminRepository.ReturnListaAsync();
 
         //buscar
-        public async Task<Administrador> BuscarAdminPorUsuarioAsync(string usuario)
+        public async Task<Administrador> BuscarAdminPorUsuarioAsync(string usuario) => await _adminRepository.ObtenerAdminConUsuarioAsync(usuario);
+
+
+        public async Task<Administrador> BuscarAdminPorIdAsync(int id) => await _adminRepository.EncontrarPorIDAsync(id);
+
+
+        public async Task<Administrador> BuscarAdminPorDniAsync(string dni) => await _adminRepository.ObtenerAdminConDniAsync(dni);
+
+
+        public async Task<IEnumerable<Administrador>> FiltrarAdministradoresPorPropiedadAsync(string propiedad, string prefijo)
         {
-            try
+            string trimedPrefijo = prefijo.Trim();
+            string operador = Utils.ObtenerOperador(trimedPrefijo);
+            switch (propiedad.ToLower())
             {
-                var admin = await _adminRepository.ObtenerAdminConUsuarioAsync(usuario);
-                return admin;
+                case "id":
+                    string valorID = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+                    if (int.TryParse(valorID, out int resultadoInt))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(c => c.Id >= resultadoInt);
+                            case "<=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(c => c.Id <= resultadoInt);
+                            case ">":
+                                return await _adminRepository.EncontrarPorCondicionAsync(c => c.Id > resultadoInt);
+                            case "<":
+                                return await _adminRepository.EncontrarPorCondicionAsync(c => c.Id < resultadoInt);
+                            case "=":
+                            default:
+                                return await _adminRepository.EncontrarPorCondicionAsync(c => c.Id == resultadoInt);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de ID no valido.");
+                    }
+
+                case "usuario":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Usuario.StartsWith(trimedPrefijo));
+                case "nombre":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Nombre.StartsWith(trimedPrefijo));
+                case "apellido":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Apellido.StartsWith(trimedPrefijo));
+                case "dni":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Dni.StartsWith(trimedPrefijo));
+                case "email":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Email.StartsWith(trimedPrefijo));
+                case "telefono":
+                    return await _adminRepository.EncontrarPorCondicionAsync(a => a.Telefono.StartsWith(trimedPrefijo));
+                case "sexo":
+                    if (Enum.TryParse<Sexo>(trimedPrefijo, true, out var sexoValor))
+                    {
+                        return await _adminRepository.EncontrarPorCondicionAsync(a => a.Sexo == sexoValor);
+                    }
+                    else
+                    {
+                        throw new FormatException("Tipo de 'sexo' no valido.");
+                    }
+                case "fechanacimiento":
+                    string valorFecha = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+
+                    if (DateOnly.TryParse(valorFecha, out DateOnly fecha))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaNacimiento >= fecha);
+                            case "<=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaNacimiento <= fecha);
+                            case ">":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaNacimiento > fecha);
+                            case "<":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaNacimiento < fecha);
+                            case "=":
+                            default:
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaNacimiento == fecha);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de fecha no valido.");
+                    }
+                case "fecharegistro":
+                    string valorFecha2 = trimedPrefijo.TrimStart('>', '<', '=', ' ');
+
+                    if (DateOnly.TryParse(valorFecha2, out DateOnly fecha2))
+                    {
+                        switch (operador)
+                        {
+                            case ">=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaRegistro >= fecha2);
+                            case "<=":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaRegistro <= fecha2);
+                            case ">":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaRegistro > fecha2);
+                            case "<":
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaRegistro < fecha2);
+                            case "=":
+                            default:
+                                return await _adminRepository.EncontrarPorCondicionAsync(a => a.FechaRegistro == fecha2);
+                        }
+                    }
+                    else
+                    {
+                        throw new FormatException("Formato de fecha no valido.");
+                    }
+                default:
+                    throw new ArgumentOutOfRangeException($"La clase Administrador no contiene la propiedad {propiedad}.");
             }
 
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
         }
-
-        //buscar
-        public async Task<Administrador> BuscarAdminPorIdAsync(int id)
-        {
-            try
-            {
-                var admin = await _adminRepository.EncontrarPorIDAsync(id);
-                return admin;
-            }
-
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
-
-        //buscar
-        public async Task<Administrador> BuscarAdminPorDniAsync(string dni)
-        {
-            try
-            {
-                var admin = await _adminRepository.ObtenerAdminConDniAsync(dni);
-                return admin;
-            }
-            catch (Exception ex)
-            {
-                throw new Exception($"Se produjo un error inesperado al intentar realizar la acción: {ex.Message}");
-            }
-        }
-
-
     }
 }

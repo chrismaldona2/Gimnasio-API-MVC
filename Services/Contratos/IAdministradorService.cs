@@ -17,5 +17,6 @@ namespace Services.Contratos
         Task<Administrador> BuscarAdminPorIdAsync(int id);
         Task<Administrador> BuscarAdminPorUsuarioAsync(string usuario);
         Task<Administrador> BuscarAdminPorDniAsync(string dni);
+        Task<IEnumerable<Administrador>> FiltrarAdministradoresPorPropiedadAsync(string propiedad, string prefijo);
     }
 }

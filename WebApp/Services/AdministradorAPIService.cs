@@ -169,5 +169,33 @@ namespace WebApp.Services
                 };
             }
         }
+
+
+
+        public async Task<APIResponse> FiltrarAdministradoresPorPropiedad(string propiedad, string prefijo)
+        {
+
+            string encodedPrefijo = Uri.EscapeDataString(prefijo);
+            var response = await _httpClient.GetAsync($"api/AdministradorService/FiltrarAdministradoresPorPropiedad?propiedad={propiedad}&prefijo={encodedPrefijo}");
+
+            string responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+        }
     }
 }

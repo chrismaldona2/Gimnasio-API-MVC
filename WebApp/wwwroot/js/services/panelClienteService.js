@@ -23,6 +23,7 @@ async function mostrarEliminarClienteModal(idCliente) {
     eliminarModal.querySelector('input[name="Email"]').value = cliente.email;
     eliminarModal.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(cliente.fechaNacimiento);
     eliminarModal.querySelector('input[name="Sexo"]').value = convertirSexo(cliente.sexo);
+    eliminarModal.querySelector('input[name="FechaRegistro"]').value = convertirFechaDateOnly(cliente.fechaRegistro);
     eliminarModal.showModal();
 
 }
@@ -76,6 +77,7 @@ async function mostrarDetalleClienteModal(idCliente) {
     }
 
     detalleModal.querySelector('input[name="Sexo"]').value = convertirSexo(cliente.sexo);
+    detalleModal.querySelector('input[name="FechaRegistro"]').value = convertirFechaDateOnly(cliente.fechaRegistro);
 
     clienteSeleccionado = cliente;
 
@@ -95,17 +97,23 @@ document.getElementById('cerrarDetalleMembresiaBtn').addEventListener('click', (
 
 mostrarDetalleMembresiaBtn.addEventListener('click', async () => {
     const idMembresia = detalleModal.querySelector('input[name="IdMembresia"]').value;
-    const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
-    if (!membresiaBuscada) {
-        detalleModal.close();
-    } else {
-        detalleMembresia.querySelector('input[name="IdDetalleMembresia"]').value = membresiaBuscada.id;
-        detalleMembresia.querySelector('input[name="Tipo"]').value = membresiaBuscada.tipo;
-        detalleMembresia.querySelector('input[name="DuracionDias"]').value = membresiaBuscada.duracionDias;
-        detalleMembresia.querySelector('input[name="DuracionMeses"]').value = convertirAMes(membresiaBuscada.duracionDias);
-        detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
-        detalleMembresia.showModal();
+    const numeroMembresia = Number(idMembresia);
+    if (!isNaN(numeroMembresia) && idMembresia.trim() !== '') {
+        const membresiaBuscada = await buscarMembresiaPorId(idMembresia);
+        if (membresiaBuscada) {
+
+            detalleMembresia.querySelector('input[name="IdDetalleMembresia"]').value = membresiaBuscada.id;
+            detalleMembresia.querySelector('input[name="Tipo"]').value = membresiaBuscada.tipo;
+            detalleMembresia.querySelector('input[name="DuracionDias"]').value = membresiaBuscada.duracionDias;
+            detalleMembresia.querySelector('input[name="DuracionMeses"]').value = convertirAMes(membresiaBuscada.duracionDias);
+            detalleMembresia.querySelector('input[name="Precio"]').value = membresiaBuscada.precio;
+            detalleMembresia.showModal();
+            
+        } else {
+            detalleModal.close();
+        }
     }
+
 })
 
 
@@ -262,3 +270,23 @@ document.getElementById('cerrarPagosClienteModal').addEventListener('click', () 
 
 
 
+
+const tipobusquedaSelect = document.getElementById('tipoBusqueda');
+const busquedaInput = document.getElementById('busqueda');
+
+function actualizarBusquedaInputPlaceholder() {
+    if (tipobusquedaSelect.value === 'FechaNacimiento' || tipobusquedaSelect.value === "FechaRegistro") {
+
+        busquedaInput.placeholder = 'yyyy/mm/dd';
+    }
+    else if (tipobusquedaSelect.value === "FechaVencimientoMembresia")
+    {
+        busquedaInput.placeholder = 'yyyy/mm/dd hh:mm';
+    }
+
+    else {
+        busquedaInput.placeholder = 'Buscar registro...';
+    }
+}
+tipobusquedaSelect.addEventListener('change', actualizarBusquedaInputPlaceholder);
+actualizarBusquedaInputPlaceholder();

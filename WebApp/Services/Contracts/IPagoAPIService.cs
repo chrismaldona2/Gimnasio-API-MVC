@@ -9,5 +9,6 @@ namespace WebApp.Services.Contracts
         Task<APIResponse> EliminarPagoAsync(int id);
         Task<PagoModel> BuscarPagoPorId(int id);
         Task<List<PagoModel>> ListaPagosCliente(int idCliente);
+        Task<APIResponse> FiltrarPagosPorPropiedad(string propiedad, string prefijo);
     }
 }

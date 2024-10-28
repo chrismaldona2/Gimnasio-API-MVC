@@ -103,5 +103,30 @@ namespace WebApp.Services
             }
             return listaPagos;
         }
+
+
+        public async Task<APIResponse> FiltrarPagosPorPropiedad(string propiedad, string prefijo)
+        {
+            string encodedPrefijo = Uri.EscapeDataString(prefijo);
+            var response = await _httpClient.GetAsync($"api/PagoService/FiltrarPagosPorPropiedad?propiedad={propiedad}&prefijo={encodedPrefijo}");
+            string responseMessage = await response.Content.ReadAsStringAsync();
+
+            if (response.IsSuccessStatusCode)
+            {
+                return new APIResponse
+                {
+                    Exitoso = true,
+                    Mensaje = responseMessage
+                };
+            }
+            else
+            {
+                return new APIResponse
+                {
+                    Exitoso = false,
+                    Mensaje = responseMessage
+                };
+            }
+        }
     }
 }

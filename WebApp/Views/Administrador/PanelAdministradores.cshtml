@@ -191,6 +191,11 @@
             </div>
         </div>
 
+        <div class="input-container">
+            <label>Fecha de registro</label>
+            <input type="text" class="regular-form-input" name="FechaRegistro" disabled>
+        </div>
+
         <div class="multiple-input-container" style="margin-top: 1.25rem;">
             <button type="submit" class="regular-form-submit-btn form-action-btn">Eliminar</button>
             <button type="button" class="cancel-btn regular-form-cancel-btn form-action-btn">Cancelar</button>
@@ -245,6 +250,11 @@
                 <label>Sexo</label>
                 <input class="regular-form-input" name="Sexo" disabled>
             </div>
+        </div>
+
+        <div class="input-container">
+            <label>Fecha de registro</label>
+            <input type="text" class="regular-form-input" name="FechaRegistro" disabled>
         </div>
 
         <div class="input-container">
@@ -415,13 +425,19 @@
 
         <div class="action-btns">
             <div class="search-box">
-                <form action="#" method="post" class="search-form" autocomplete="off">
-                    <input type="text" name="busqueda" placeholder="Buscar registro...">
-                    <select name="tipoBusqueda" id="tipoBusqueda">
+                <form action="/Administrador/FiltrarAdministradores" method="post" class="search-form" autocomplete="off">
+                    <input type="text" id="busqueda" name="busqueda" placeholder="Buscar registro..." required>
+                    <select id="tipoBusqueda" name="tipoBusqueda" required>
                         <option value="Usuario">Usuario</option>
+                        <option value="DNI">DNI</option>
+                        <option value="Id">Identificador</option>
                         <option value="Nombre">Nombre</option>
                         <option value="Apellido">Apellido</option>
-                        <option value="DNI">DNI</option>
+                        <option value="Email">Email</option>
+                        <option value="Telefono">Teléfono</option>
+                        <option value="Sexo">Sexo</option>
+                        <option value="FechaNacimiento">Nacimiento</option>
+                        <option value="FechaRegistro">Fecha de registro</option>
                     </select>
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
                     <a asp-controller="Administrador" asp-action="PanelAdministradores" class="reload-btn"><i class="fa-solid fa-rotate-right"></i></a>

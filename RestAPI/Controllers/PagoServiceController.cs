@@ -169,5 +169,39 @@ namespace RestAPI.Controllers
                 return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
             }
         }
+
+
+        [HttpGet("FiltrarPagosPorPropiedad")]
+        public async Task<IActionResult> filtrarClientesPorPropiedad(string propiedad, string prefijo)
+        {
+            try
+            {
+                var pagosFiltrados = await _pagoService.FiltrarPagosPorPropiedadAsync(propiedad, prefijo);
+
+                string propiedadLower = propiedad.ToLower();
+                if (!pagosFiltrados.Any())
+                {
+                    return NotFound($"No se encontraron pagos cuya propiedad '{propiedad}' verifique '{prefijo}'.");
+                }
+
+                return Ok(pagosFiltrados);
+            }
+            catch (FormatException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, "Error inesperado del servidor: " + ex.Message);
+            }
+        }
     }
 }

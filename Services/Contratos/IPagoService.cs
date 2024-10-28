@@ -15,5 +15,6 @@ namespace Services.Contratos
         Task<IEnumerable<Pago>> ObtenerPagosPorIdClienteAsync(int id);  
         Task<IEnumerable<Pago>> ObtenerPagosPorDniClienteAsync(string dni);
         Task<Pago> BuscarPagoPorIdAsync(int id);
+        Task<IEnumerable<Pago>> FiltrarPagosPorPropiedadAsync(string propiedad, string prefijo);
     }
 }

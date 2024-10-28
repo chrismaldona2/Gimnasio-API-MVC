@@ -20,6 +20,8 @@ async function mostrarDetalleAdminModal(idAdmin) {
     detalleModal.querySelector('input[name="Usuario"]').value = admin.usuario;
     detalleModal.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(admin.fechaNacimiento);
     detalleModal.querySelector('input[name="Sexo"]').value = convertirSexo(admin.sexo);
+
+    detalleModal.querySelector('input[name="FechaRegistro"]').value = convertirFechaDateOnly(admin.fechaRegistro);
     detalleModal.showModal();
 
 }
@@ -43,6 +45,8 @@ async function mostrarEliminarAdminModal(idAdmin) {
     eliminarModal.querySelector('input[name="Usuario"]').value = admin.usuario;
     eliminarModal.querySelector('input[name="FechaNacimiento"]').value = convertirFechaDateOnly(admin.fechaNacimiento);
     eliminarModal.querySelector('input[name="Sexo"]').value = convertirSexo(admin.sexo);
+
+    eliminarModal.querySelector('input[name="FechaRegistro"]').value = convertirFechaDateOnly(admin.fechaRegistro);
     eliminarModal.showModal();
 
 }
@@ -69,3 +73,18 @@ async function mostrarModificarAdminModal(idAdmin) {
 }
 window.mostrarModificarAdminModal = mostrarModificarAdminModal; //agrego la funcion al window para que sea accesible globalmente
 modificarModal.querySelector('.cancel-btn').addEventListener('click', () => modificarModal.close());
+
+
+const tipobusquedaSelect = document.getElementById('tipoBusqueda');
+const busquedaInput = document.getElementById('busqueda');
+
+function actualizarBusquedaInputPlaceholder() {
+    if (tipobusquedaSelect.value === 'FechaNacimiento' || tipobusquedaSelect.value === "FechaRegistro") {
+
+        busquedaInput.placeholder = 'yyyy/mm/dd';
+    } else {
+        busquedaInput.placeholder = 'Buscar registro...';
+    }
+}
+tipobusquedaSelect.addEventListener('change', actualizarBusquedaInputPlaceholder);
+actualizarBusquedaInputPlaceholder();
